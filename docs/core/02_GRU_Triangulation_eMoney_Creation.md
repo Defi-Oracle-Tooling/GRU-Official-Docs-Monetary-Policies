@@ -18,6 +18,10 @@ Triangulation converts any source asset → XAU → GRU → target asset, enforc
 
 All GRU triangulations pass through XAU irrespective of destination class (commodity, currency, security, other).
 
+### Triangulation Flow Diagram
+![Triangulation Flow](../media/triangulation_flow.svg)
+*Figure: Reserve (M0) → Issuance (M1) → Distribution (M2+) with control instrument feedback path.*
+
 ## 3. Atomic Issuance Logic (7:10 Protocol)
 For every 7 units input (fiat-equivalent), 10 units GRU M1 are minted.
 ```

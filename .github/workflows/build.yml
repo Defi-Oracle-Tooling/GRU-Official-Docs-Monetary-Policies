@@ -1,0 +1,72 @@
+name: GRU Documentation Build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up caching for TeX & apt
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/share/texlive
+            ~/.texlive
+          key: texlive-${{ runner.os }}-v1
+          restore-keys: texlive-${{ runner.os }}-
+
+      - name: Install dependencies (pandoc + LaTeX + tools)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-xetex librsvg2-bin zip
+
+      - name: Build artifacts
+        run: |
+          chmod +x scripts/build.sh
+          ./scripts/build.sh
+
+      - name: Sign checksum log (optional)
+        if: env.GPG_PRIVATE_KEY != ''
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          chmod +x scripts/sign_checksums.sh
+          ./scripts/sign_checksums.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gru-dist
+          path: dist
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: gru-dist
+          path: dist
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/GRU_Master_Whitepaper_PRO.zip
+            dist/metadata/GRU_Checksum_Verification_Log.txt
+            dist/metadata/GRU_Checksum_Verification_Log.txt.asc
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

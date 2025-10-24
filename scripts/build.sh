@@ -24,26 +24,43 @@ if ! command -v pandoc >/dev/null 2>&1; then
 else
   echo "[INFO] pandoc detected. Preparing format conversion..."
 
-  # Detect PDF engine; prefer pdflatex, fallback to wkhtmltopdf; skip if none.
-  PDF_ENGINE="pdflatex"
-  if ! command -v "$PDF_ENGINE" >/dev/null 2>&1; then
-    if command -v wkhtmltopdf >/dev/null 2>&1; then
-      PDF_ENGINE="wkhtmltopdf"
-    else
-      echo "[WARN] No PDF engine (pdflatex/wkhtmltopdf) detected. PDF generation will be skipped." >&2
-      SKIP_PDF=1
+  # Detect PDF engine; prefer Unicode-aware engines (xelatex, lualatex) then pdflatex, fallback to wkhtmltopdf; skip if none.
+  PDF_ENGINE=""
+  if command -v xelatex >/dev/null 2>&1; then
+    PDF_ENGINE="xelatex"  # Full Unicode + font support
+  elif command -v lualatex >/dev/null 2>&1; then
+    PDF_ENGINE="lualatex" # Unicode capable
+  elif command -v pdflatex >/dev/null 2>&1; then
+    PDF_ENGINE="pdflatex"
+  elif command -v wkhtmltopdf >/dev/null 2>&1; then
+    PDF_ENGINE="wkhtmltopdf" # HTML-based fallback (limited metadata control)
+  else
+    echo "[WARN] No suitable PDF engine (xelatex/lualatex/pdflatex/wkhtmltopdf) detected. PDF generation will be skipped." >&2
+    SKIP_PDF=1
+  fi
+
+  if [ -n "$PDF_ENGINE" ]; then
+    echo "[INFO] Using PDF engine: $PDF_ENGINE" >&2
+  fi
+  # Common PDF options (Unicode-capable fonts to avoid missing glyph warnings for ≥ ≤ ≈ ↔)
+  if [ -z "${SKIP_PDF:-}" ]; then
+    RESOURCE_PATH="$CORE_DIR:$ROOT_DIR/docs/media:$META_DIR"
+    PDF_OPTS=(--pdf-engine="$PDF_ENGINE" --include-in-header "$ROOT_DIR/docs/meta/preamble.tex" --resource-path="$RESOURCE_PATH" -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono" -V mathfont="TeX Gyre Termes Math")
+    if [ ! -f "$ROOT_DIR/docs/meta/preamble.tex" ]; then
+      echo "[WARN] Preamble header missing; proceeding without custom styling." >&2
+      PDF_OPTS=(--pdf-engine="$PDF_ENGINE" --resource-path="$RESOURCE_PATH" -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono" -V mathfont="TeX Gyre Termes Math")
     fi
   fi
 
   for f in "$CORE_DIR"/*.md; do
     base="$(basename "$f" .md)"
     # DOCX always attempted
-    if ! pandoc "$f" -o "$DIST_DIR/docx/${base}.docx"; then
+    if ( cd "$(dirname "$f")" && pandoc "$(basename "$f")" -o "$DIST_DIR/docx/${base}.docx" ); then :; else
       echo "[ERROR] DOCX conversion failed for $f" >&2
     fi
     # PDF conditional
     if [ -z "${SKIP_PDF:-}" ]; then
-      if ! pandoc "$f" --pdf-engine="$PDF_ENGINE" -o "$DIST_DIR/pdf/${base}.pdf" 2>"$DIST_DIR/metadata/${base}_pdf_error.log"; then
+      if ( cd "$(dirname "$f")" && pandoc "$(basename "$f")" "${PDF_OPTS[@]}" -o "$DIST_DIR/pdf/${base}.pdf" 2>"$DIST_DIR/metadata/${base}_pdf_error.log" ); then :; else
         echo "[WARN] PDF conversion failed for $f (see metadata/${base}_pdf_error.log)." >&2
       fi
     fi
@@ -51,13 +68,21 @@ else
 
   # Master collection (concatenate in numeric order)
   MASTER_INPUTS=$(ls -1 "$CORE_DIR"/*_GRU_*.md | sort)
-  if pandoc $MASTER_INPUTS -o "$DIST_DIR/markdown/00_GRU_Master_Whitepaper_Collection.md"; then
-    if [ -z "${SKIP_PDF:-}" ]; then
-      pandoc $MASTER_INPUTS --pdf-engine="$PDF_ENGINE" -o "$DIST_DIR/pdf/00_GRU_Master_Whitepaper_Collection.pdf" 2>"$DIST_DIR/metadata/master_pdf_error.log" || echo "[WARN] Master PDF conversion failed (see metadata/master_pdf_error.log)." >&2
+  MASTER_MD="$DIST_DIR/markdown/00_GRU_Master_Whitepaper_Collection.md"
+  : > "$MASTER_MD"
+  for mf in $MASTER_INPUTS; do
+    echo "\n\n# Source: $(basename "$mf")\n" >> "$MASTER_MD"
+    cat "$mf" >> "$MASTER_MD"
+    echo "\n\n---" >> "$MASTER_MD"
+  done
+  # Attempt richer PDF/DOCX via pandoc on concatenated master markdown
+  if [ -z "${SKIP_PDF:-}" ]; then
+    if ! pandoc "$MASTER_MD" "${PDF_OPTS[@]}" -o "$DIST_DIR/pdf/00_GRU_Master_Whitepaper_Collection.pdf" 2>"$DIST_DIR/metadata/master_pdf_error.log"; then
+      echo "[WARN] Master PDF conversion failed (see metadata/master_pdf_error.log)." >&2
     fi
-    pandoc $MASTER_INPUTS -o "$DIST_DIR/docx/00_GRU_Master_Whitepaper_Collection.docx" || echo "[WARN] Master DOCX conversion failed." >&2
-  else
-    echo "[ERROR] Master collection markdown build failed." >&2
+  fi
+  if ! pandoc "$MASTER_MD" -o "$DIST_DIR/docx/00_GRU_Master_Whitepaper_Collection.docx"; then
+    echo "[WARN] Master DOCX conversion failed." >&2
   fi
 fi
 

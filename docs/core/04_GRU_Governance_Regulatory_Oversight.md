@@ -20,6 +20,10 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 | TLC (Technology & Ledger) | DSL integrity, smart contract ops | Ledger upgrade proposals, security reviews |
 | ECC (Ethics & Compliance) | AML/KYC, legal neutrality, conduct | Compliance certifications |
 
+### Governance Structure Diagram
+![Governance Chambers](../media/governance_chambers.svg)
+*Figure: Multi-chamber model with external audit / DBIS council integration.*
+
 ## 3. Oversight Principles
 - Transparency: Real-time reserve + bond cycle stats
 - Accountability: Segregated chamber authority w/ multi-sig approvals

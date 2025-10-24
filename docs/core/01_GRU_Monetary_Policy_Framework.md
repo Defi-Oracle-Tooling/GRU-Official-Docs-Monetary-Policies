@@ -11,6 +11,10 @@ checksum: pending
 ## Overview
 The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility.
 
+### Issuance Cycle Diagram
+![GRU Issuance Cycle](../media/issuance_cycle.svg)
+*Figure: Reserve → Issuance → Circulation with liquidity recycling loop and coverage maintenance.*
+
 ## Core Ratios
 ```
 1 M00 GRU = 5 M0 GRU
