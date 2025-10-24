@@ -32,6 +32,11 @@ Bond servicing integrated with atomic issuance & 40/40/20 cycles:
 - Net liquidity assigned to coverage + stabilization
 - Coupons funnel into reserve reinforcement and future buy-back escrow
 
+### Bond Cycle Diagram
+The following diagram illustrates the closed-loop liquidity path for Li99-series bonds over the 10-year coupon and buy-back horizon:
+
+![Bond Cycle Liquidity Loop](../media/bond_cycle.pdf)
+
 ## 5. Coupon Flow
 | Stage | Action | Impact |
 |-------|--------|--------|
@@ -69,6 +74,9 @@ Bond servicing integrated with atomic issuance & 40/40/20 cycles:
 - Multi-curve bonding (tranching coupons by velocity tiers)
 - ESG-linked coupon channel (green reserve expansion pool)
 - Synthetic bond wrappers for secondary institutional access
+
+### Coverage-Weighted Velocity Integration (Preview)
+Upcoming revisions will align coupon reinvestment pacing with coverage-weighted velocity (v_cov), dynamically scaling escrow top-ups when transactional velocity softens, preserving buy-back funding certainty.
 
 ## Summary
 Li99-series bonds enable scalable, self-redeeming liquidity expansion without external leverage, ensuring perpetual stability through structured coupon cycles and reserve-tied buy-back mechanics.

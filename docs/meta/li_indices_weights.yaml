@@ -1,0 +1,38 @@
+schema_version: 1
+scalar_S: "1.2/(0.9475^4)"  # applied to all Li(Index)
+indices:
+  LiPMG:
+    constituents:
+      - {name: Au, weight: 0.40}
+      - {name: Ag, weight: 0.20}
+      - {name: Pt, weight: 0.18}
+      - {name: Pd, weight: 0.15}
+      - {name: Rh, weight: 0.07}
+  LiBMG1:
+    constituents:
+      - {name: Cu, weight: 0.35}
+      - {name: Ni, weight: 0.20}
+      - {name: Al, weight: 0.25}
+      - {name: Zn, weight: 0.12}
+      - {name: Pb, weight: 0.08}
+  LiBMG2:
+    constituents:
+      - {name: Li, weight: 0.40}
+      - {name: Co, weight: 0.18}
+      - {name: C,  weight: 0.22}
+      - {name: Mn, weight: 0.10}
+      - {name: Ni, weight: 0.10}
+  LiBMG3:
+    constituents:
+      - {name: Fe,  weight: 0.40}
+      - {name: Cmt, weight: 0.20}
+      - {name: Si,  weight: 0.12}
+      - {name: Lbr, weight: 0.18}
+      - {name: Agg, weight: 0.10}
+constraints:
+  weights_sum_to: 1.0
+  min_weight: 0.05
+  max_weight: 0.50
+update_policy:
+  cadence: quarterly
+  methodology: production+liquidity weighted with cap/floor bands

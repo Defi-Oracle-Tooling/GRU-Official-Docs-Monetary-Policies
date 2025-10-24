@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="DejaVu Sans" font-size="14">
+  <style>
+    .panel { fill:#ffffff; stroke:#005577; stroke-width:2; rx:10; ry:10; }
+    .title { font-weight:bold; }
+    .sub { fill:#333; }
+    .calc { fill:#005577; font-weight:bold; }
+    .arrow { stroke:#005577; stroke-width:2; marker-end:url(#arr); }
+    .metric { fill:#FF6600; font-weight:bold; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#005577" />
+    </marker>
+  </defs>
+
+  <text x="40" y="35" class="title">Velocity Metrics (V_GRU)</text>
+  <text x="40" y="55" class="sub">Framework for monitoring transactional throughput &amp; health</text>
+
+  <rect class="panel" x="40" y="80" width="240" height="110" />
+  <text x="55" y="105" class="title">Raw Velocity</text>
+  <text x="55" y="130" class="sub">v_raw = Tx_count / Interval</text>
+  <text x="55" y="155" class="sub">Baseline transactional cadence</text>
+
+  <rect class="panel" x="320" y="80" width="240" height="110" />
+  <text x="335" y="105" class="title">Adjusted Velocity</text>
+  <text x="335" y="130" class="sub">v_adj = (Tx_value / Float)</text>
+  <text x="335" y="155" class="sub">Weights by monetary float</text>
+
+  <rect class="panel" x="600" y="80" width="240" height="110" />
+  <text x="615" y="105" class="title">Stability Filter</text>
+  <text x="615" y="130" class="sub">Remove outlier bursts (Z-score)</text>
+  <text x="615" y="155" class="sub">Smooth seasonal pattern</text>
+
+  <rect class="panel" x="180" y="210" width="240" height="110" />
+  <text x="195" y="235" class="title">Coverage-Weighted</text>
+  <text x="195" y="260" class="sub">v_cov = v_adj * (Coverage / 120%)</text>
+  <text x="195" y="285" class="sub">Penalizes weak coverage</text>
+
+  <rect class="panel" x="460" y="210" width="240" height="110" />
+  <text x="475" y="235" class="title">Composite Index</text>
+  <text x="475" y="260" class="sub">V_GRU = w1*v_adj + w2*v_cov + w3*Stab</text>
+  <text x="475" y="285" class="sub">Weights tuned to volatility</text>
+
+  <line class="arrow" x1="280" y1="135" x2="320" y2="135" />
+  <line class="arrow" x1="560" y1="135" x2="600" y2="135" />
+  <line class="arrow" x1="440" y1="265" x2="460" y2="265" />
+
+  <line class="arrow" x1="440" y1="135" x2="300" y2="265" />
+  <line class="arrow" x1="720" y1="135" x2="580" y2="265" />
+
+  <text x="40" y="330" class="sub">Note: Coverage normalized to 120%. Stability component (Stab) is bounded [0,1] after filtering.</text>
+</svg>

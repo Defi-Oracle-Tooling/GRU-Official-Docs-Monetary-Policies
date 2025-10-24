@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300" font-family="DejaVu Sans" font-size="14">
+  <style>
+    .stage { fill:#f5f9ff; stroke:#0044AA; stroke-width:2; rx:8; ry:8; }
+    .arrow { stroke:#0044AA; stroke-width:2; marker-end:url(#arr); }
+    .title { font-weight:bold; }
+    .caption { fill:#333; }
+    .emph { fill:#FF8800; font-weight:bold; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0044AA" />
+    </marker>
+  </defs>
+
+  <rect class="stage" x="30" y="60" width="150" height="80" />
+  <text x="40" y="90" class="title">Deposit</text>
+  <text x="40" y="115" class="caption">Capital inflow</text>
+
+  <rect class="stage" x="210" y="60" width="170" height="80" />
+  <text x="220" y="90" class="title">Discount Purchase</text>
+  <text x="220" y="115" class="caption">Li99 bond acquisition</text>
+
+  <rect class="stage" x="410" y="60" width="170" height="80" />
+  <text x="420" y="90" class="title">Coupon Accrual</text>
+  <text x="420" y="115" class="caption">Periodic yield flow</text>
+
+  <rect class="stage" x="610" y="60" width="170" height="80" />
+  <text x="620" y="90" class="title">Escrow &amp; Buy-back</text>
+  <text x="620" y="115" class="caption">10y cycle closure</text>
+
+  <line class="arrow" x1="180" y1="100" x2="210" y2="100" />
+  <line class="arrow" x1="380" y1="100" x2="410" y2="100" />
+  <line class="arrow" x1="580" y1="100" x2="610" y2="100" />
+  <line class="arrow" x1="695" y1="140" x2="495" y2="200" />
+  <line class="arrow" x1="495" y1="200" x2="295" y2="140" />
+  <line class="arrow" x1="295" y1="140" x2="95" y2="200" />
+  <line class="arrow" x1="95" y1="200" x2="105" y2="140" />
+
+  <text x="60" y="35" class="caption">Bond Cycle Liquidity Loop (Li99)</text>
+  <text x="230" y="200" class="caption">Reinvest surplus coupons</text>
+  <text x="430" y="225" class="caption">Stabilization tranche top-up</text>
+  <text x="640" y="225" class="caption">Coverage reinforcement</text>
+</svg>

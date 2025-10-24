@@ -87,7 +87,44 @@ Per Bond ≈ 333.333M
 - Parity deviation trigger: ±2.5% from XAU anchor → invoke MPAP (Monetary Parity Adjustment Protocol).
 - Inflation ceiling: Annual net GRU expansion ≤ 2.75% (excluding sanctioned crisis windows).
 
-## 7. Terminology Quick Reference
+## 7. Velocity & Coverage Metrics
+To quantify transactional health and guide adaptive issuance pacing:
+
+Raw transactional velocity (count-based):
+```
+v_raw = Tx_count / Δt
+```
+
+Value-adjusted velocity (float-weighted):
+```
+v_adj = Tx_value / Monetary_Float
+```
+
+Coverage-weighted velocity (penalizes weak reserves):
+```
+v_cov = v_adj × (Coverage_Ratio / 1.20)
+```
+Where Coverage_Ratio = (Reserve_Value / Circulating_GRU_Value). Normalized to 1.20 (120%).
+
+Stability filter (Z-score dampening; output bounded [0,1]):
+```
+Stab = max(0, 1 - σ_outlier_factor)
+```
+Illustrative: σ_outlier_factor derived from rolling deviation beyond k standard deviations (k ≈ 2.25 seasonal).
+
+Composite velocity index:
+```
+V_GRU = w1·v_adj + w2·v_cov + w3·Stab
+```
+Weights (w1, w2, w3) tuned quarterly to maintain target velocity volatility band (±10%). Example regime: w1=0.45, w2=0.35, w3=0.20.
+
+Adaptive issuance modulation (preview):
+```
+Issuance_Rate = Base_Issuance × f(V_GRU)
+```
+Where f(V_GRU) is a piecewise stabilizer reducing expansion when V_GRU < lower_threshold or > upper_threshold to dampen extremes.
+
+## 8. Terminology Quick Reference
 | Term | Definition |
 |------|------------|
 | M00 | Sovereign issuance base layer |
@@ -100,10 +137,54 @@ Per Bond ≈ 333.333M
 | MPAP | Monetary Parity Adjustment Protocol |
 | ACP | Automatic Compression Protocol (excess burn) |
 
-## 8. Notes & Pending Items
+## 9. Notes & Pending Items
 - Precise derivation of LiXAU decay exponent (0.9475^4) to be documented in Technical Annex.
 - Dynamic allocation coefficients (x, y) require publication of policy weighting formula.
 - Formal smart contract specifications for atomic issuance loop (E function) pending engineering review.
 
 ---
-© 2025 GRU Monetary Authority — Formula Reference v1.0.0 (Provisional)
+
+# GRU Commodity Indices — Formula Reference
+
+## Universal Parity Rule
+All Li-based commodity indices are defined by:
+```
+1 Li(Index) = 1.2 / (0.9475 ^ 4) XAU
+```
+
+## 1. LiXAU — Core Gold-Linked Index
+```
+1 LiXAU = 1.2 / (0.9475 ^ 4) XAU
+```
+
+## 2. LiPMG — Precious Metals Group
+```
+1 LiPMG = 1.2 / (0.9475 ^ 4) XAU × (Weighted basket of [Au, Ag, Pt, Pd, Rh])
+```
+
+## 3. LiBMG1 — Base Metals Group
+```
+1 LiBMG1 = 1.2 / (0.9475 ^ 4) XAU × (Industrial metals weighted index)
+```
+
+## 4. LiBMG2 — Battery Materials Group
+```
+1 LiBMG2 = 1.2 / (0.9475 ^ 4) XAU × (Energy metals weighted index)
+```
+
+## 5. LiBMG3 — Building Materials Group
+```
+1 LiBMG3 = 1.2 / (0.9475 ^ 4) XAU × (Construction commodity weighted index)
+```
+
+## Composite Reserve Index
+```
+LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+```
+
+---
+
+*See Glossary for definitions and integration notes.*
+
+---
+© 2025 GRU Monetary Authority — Commodity Index Division

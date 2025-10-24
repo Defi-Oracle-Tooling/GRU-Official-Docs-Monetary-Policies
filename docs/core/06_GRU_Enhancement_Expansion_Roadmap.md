@@ -83,5 +83,17 @@ Add GRU Monetary Authority (GMA) as permanent secretariat coordinating:
 | CBDC Integration Count | ≥ 5 | Year 3 |
 | DRB Composite Adoption | Indexed on ≥2 exchanges | Year 4 |
 
+### Velocity Metrics Diagram
+The composite velocity index (V_GRU) integrates adjusted transaction cadence, coverage weighting, and stability filtering:
+
+![Velocity Metrics (V_GRU)](../media/velocity_metrics.pdf)
+
+Where:
+- v_raw = Tx_count / Interval
+- v_adj = Tx_value / Float
+- v_cov = v_adj × (Coverage / 120%)
+- Stab ∈ [0,1] after outlier filtering
+- V_GRU = w1·v_adj + w2·v_cov + w3·Stab (weights tuned by volatility regime)
+
 ## Summary
 This roadmap operationalizes GRU as a transparent, adaptive, and globally interoperable monetary infrastructure, enabling resilient institutional adoption under the DBIS umbrella.

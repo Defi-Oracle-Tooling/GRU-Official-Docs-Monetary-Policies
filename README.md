@@ -6,7 +6,7 @@ This repository contains the structured institutional documentation set for the 
 ## Directory Structure
 ```
 docs/
-	core/                      # Primary white paper section documents
+	core/               # Primary white paper section documents
 		00_GRU_Executive_Summary.md
 		01_GRU_Monetary_Policy_Framework.md
 		02_GRU_Triangulation_eMoney_Creation.md
@@ -14,19 +14,21 @@ docs/
 		04_GRU_Governance_Regulatory_Oversight.md
 		05_Digital_Bank_for_International_Settlements_Charter.md
 		06_GRU_Enhancement_Expansion_Roadmap.md
-	meta/                      # Supporting references & annexes
+	meta/               # Supporting references & annexes
 		GRU_Formulas.md
 		Glossary.md
 		Risk_Annex.md
-		preamble.tex               # LaTeX PDF styling header
-	media/                     # Diagrams (SVG assets)
+		preamble.tex    # LaTeX PDF styling header
+	media/              # Diagrams (SVG assets)
 		issuance_cycle.svg
 		triangulation_flow.svg
 		governance_chambers.svg
-scripts/                     # Build & packaging automation
-dist/                        # Generated artifacts (ignored on commit)
-LICENSE                      # License (CC BY 4.0)
-README.md                    # This file
+		bond_cycle.svg
+		velocity_metrics.svg
+scripts/                # Build & packaging automation
+dist/                   # Generated artifacts (ignored on commit)
+LICENSE                 # License (CC BY 4.0)
+README.md               # This file
 ```
 
 ## Core Documents Overview
@@ -75,6 +77,8 @@ Inline references to:
 - `docs/media/issuance_cycle.svg` (Reserve → Issuance → Circulation loop)
 - `docs/media/triangulation_flow.svg` (Triangulation path & control instruments)
 - `docs/media/governance_chambers.svg` (Multi-chamber governance + external audit)
+- `docs/media/bond_cycle.svg` (Li99 coupon accrual → escrow → buy-back loop)
+- `docs/media/velocity_metrics.svg` (Composite velocity index construction: v_raw, v_adj, v_cov, stability filter)
 
 ### Master Collection Ordering
 `00_GRU_Executive_Summary.md` precedes numerically ordered core sections. The master aggregate (`00_GRU_Master_Whitepaper_Collection.*`) concatenates all core docs post-build.
@@ -103,8 +107,8 @@ Content is released under **Creative Commons Attribution 4.0 (CC BY 4.0)**. Attr
 - [x] Executive Summary integration
 - [x] Master collection auto-generation
 - [x] Diagram assets (issuance, triangulation, governance)
-- [ ] Bond cycle diagram + velocity metric dashboard
-- [ ] Extended glossary (ESG, velocity, oracle classes, settlement taxonomy)
+- [x] Bond cycle diagram + velocity metric dashboard
+- [x] Extended glossary (ESG, velocity, oracle classes, settlement taxonomy)
 - [ ] CI signing key management automation
 - [ ] External oracle redundancy specification
 
@@ -120,6 +124,7 @@ Content is released under **Creative Commons Attribution 4.0 (CC BY 4.0)**. Attr
 ## Integrity & Transparency Notes
 - Reserve and issuance modeling assumes external validation modules (planned DSL PoR interface).
 - Risk Annex is provisional—thresholds subject to operational telemetry after initial deployment.
+- Master PDF build stabilization achieved via YAML front matter stripping & removed decorative end markers plus pre-converted SVG→PDF assets for reliable embedding.
 
 ## Contact / Stewardship
 Primary stewardship: **GRU Monetary Authority** — Policy & Systems Division.

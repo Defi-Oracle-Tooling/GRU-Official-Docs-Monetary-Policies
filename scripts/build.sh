@@ -12,6 +12,24 @@ DIST_DIR="$ROOT_DIR/dist"
 DATE_UTC="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
 mkdir -p "$DIST_DIR/markdown" "$DIST_DIR/pdf" "$DIST_DIR/docx" "$DIST_DIR/metadata"
+MEDIA_DIR="$ROOT_DIR/docs/media"
+
+# Pre-convert SVG diagrams to PDF (and PNG fallback) for reliable embedding
+if command -v rsvg-convert >/dev/null 2>&1; then
+  for svg in "$MEDIA_DIR"/*.svg; do
+    [ -f "$svg" ] || continue
+    pdf_out="${svg%.svg}.pdf"
+    png_out="${svg%.svg}.png"
+    if ! rsvg-convert -f pdf -o "$pdf_out" "$svg" 2>/dev/null; then
+      echo "[WARN] SVG→PDF conversion failed for $svg" >&2
+    fi
+    if ! rsvg-convert -f png -o "$png_out" "$svg" 2>/dev/null; then
+      echo "[WARN] SVG→PNG conversion failed for $svg" >&2
+    fi
+  done
+else
+  echo "[WARN] rsvg-convert not found; SVG diagrams may not embed in PDFs." >&2
+fi
 
 # Copy markdown sources
 cp "$CORE_DIR"/*.md "$DIST_DIR/markdown/"
@@ -71,10 +89,17 @@ else
   MASTER_MD="$DIST_DIR/markdown/00_GRU_Master_Whitepaper_Collection.md"
   : > "$MASTER_MD"
   for mf in $MASTER_INPUTS; do
-    echo "\n\n# Source: $(basename "$mf")\n" >> "$MASTER_MD"
-    cat "$mf" >> "$MASTER_MD"
-    echo "\n\n---" >> "$MASTER_MD"
+    printf "\n\n# Source: %s\n\n" "$(basename "$mf")" >> "$MASTER_MD"
+    # Strip YAML front matter blocks and decorative end markers
+    awk 'BEGIN{inmeta=0} /^---[[:space:]]*$/ { if(inmeta==0){inmeta=1; next} else if(inmeta==1){inmeta=2; next} } { if(inmeta!=1) print }' "$mf" \
+      | sed '/\*End of Executive Summary\*/d' >> "$MASTER_MD"
+    printf "\n\n" >> "$MASTER_MD"
   done
+  # Normalize image paths for master aggregation: copy media assets locally and rewrite ../media/ to media/
+  mkdir -p "$DIST_DIR/markdown/media"
+  cp "$ROOT_DIR/docs/media"/*.pdf "$DIST_DIR/markdown/media/" 2>/dev/null || true
+  cp "$ROOT_DIR/docs/media"/*.png "$DIST_DIR/markdown/media/" 2>/dev/null || true
+  sed -i 's#](../media/#](media/#g' "$MASTER_MD"
   # Attempt richer PDF/DOCX via pandoc on concatenated master markdown
   if [ -z "${SKIP_PDF:-}" ]; then
     if ! pandoc "$MASTER_MD" "${PDF_OPTS[@]}" -o "$DIST_DIR/pdf/00_GRU_Master_Whitepaper_Collection.pdf" 2>"$DIST_DIR/metadata/master_pdf_error.log"; then
