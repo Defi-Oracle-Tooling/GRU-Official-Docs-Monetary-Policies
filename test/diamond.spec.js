@@ -211,6 +211,25 @@ describe('GrcDiamond', () => {
         expect(previewAfter).to.equal(1980n);
         await expect(tri.redeem.staticCall(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
         await expect(tri.redeem(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
+        await expect(tri.setFees(451n)).to.be.revertedWithCustomError(tri, 'ErrFeeTooHigh');
+    });
+    it('diamondCut reentrancy prevented via init delegatecall', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        // prepare init contract
+        const Reenter = await ethers.getContractFactory('ReenterInit');
+        const reInit = await Reenter.deploy(); await reInit.waitForDeployment();
+        // create empty cut and use init that re-calls diamondCut -> expect reentrancy revert
+        await expect(d.diamondCut([], await reInit.getAddress(), '0x')).to.be.revertedWithCustomError(d, 'ErrReentrancy');
+    });
+    it('facet code length integrity check', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        // attempt to add selectors with EOA address (no code) should revert
+        const fakeSel = '0x12345678';
+        await expect(d.diamondCut([{ facetAddress: deployer.address, action: 0, functionSelectors: [fakeSel] }], ethers.ZeroAddress, '0x')).to.be.revertedWithCustomError(d, 'ErrFacetCodeMissing');
     });
     it('monetary scalar bounds enforced', async () => {
         const [deployer] = await ethers.getSigners();
