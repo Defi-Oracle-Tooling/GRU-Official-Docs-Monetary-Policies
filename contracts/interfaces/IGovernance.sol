@@ -14,4 +14,5 @@ interface IGovernance {
     function quorumBps() external view returns (uint256);
     function eta(bytes32 id) external view returns (uint256);
     function proposer(bytes32 id) external view returns (address);
+    function setGovernanceParams(uint256 timelockSeconds, uint256 quorumBps) external;
 }
