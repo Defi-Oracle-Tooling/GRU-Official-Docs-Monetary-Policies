@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/GrcDiamond.sol": {
-      "lastModificationDate": 1761340700156,
-      "contentHash": "c1f415fb0ae53cdfb977dcca287cd526",
+      "lastModificationDate": 1761341363923,
+      "contentHash": "a9e937ece929784af18495c78d6faaf0",
       "sourceName": "contracts/GrcDiamond.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -35,7 +35,8 @@
         "./interfaces/IERC165.sol",
         "./interfaces/IERC173.sol",
         "./interfaces/IGrcLoupe.sol",
-        "./libraries/GRCStorage.sol"
+        "./libraries/GRCStorage.sol",
+        "./libraries/Errors.sol"
       ],
       "versionPragmas": [
         "^0.8.21"
@@ -261,8 +262,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/PauseFacet.sol": {
-      "lastModificationDate": 1761340701016,
-      "contentHash": "bffe26f39a7c52b535f0a68f243a5df6",
+      "lastModificationDate": 1761341374607,
+      "contentHash": "3fd4779eb36980e27e1e36aeb153e239",
       "sourceName": "contracts/facets/PauseFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -291,6 +292,7 @@
       "imports": [
         "../interfaces/IPause.sol",
         "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
         "../interfaces/IERC173.sol",
         "../interfaces/IAccess.sol"
       ],
@@ -302,8 +304,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IPause.sol": {
-      "lastModificationDate": 1761338564808,
-      "contentHash": "56ff363dc955592a23f00113361bc419",
+      "lastModificationDate": 1761341475131,
+      "contentHash": "594fd90d1c08e3816217671ee4dfe399",
       "sourceName": "contracts/interfaces/IPause.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -338,8 +340,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/MonetaryFacet.sol": {
-      "lastModificationDate": 1761340758315,
-      "contentHash": "38ad63f3978ea3c14d1167aa18e6017b",
+      "lastModificationDate": 1761341369388,
+      "contentHash": "ada6f4744a1c1418b677b6bb61f4413c",
       "sourceName": "contracts/facets/MonetaryFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -367,7 +369,8 @@
       },
       "imports": [
         "../interfaces/IMonetary.sol",
-        "../libraries/GRCStorage.sol"
+        "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol"
       ],
       "versionPragmas": [
         "^0.8.21"
@@ -413,8 +416,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/IndexFacet.sol": {
-      "lastModificationDate": 1761340758676,
-      "contentHash": "00a1c8d164c213102050a783dc4f662d",
+      "lastModificationDate": 1761341369388,
+      "contentHash": "7dcfc255a6dc04bd3b1cceb810286411",
       "sourceName": "contracts/facets/IndexFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -442,7 +445,8 @@
       },
       "imports": [
         "../interfaces/IIndex.sol",
-        "../libraries/GRCStorage.sol"
+        "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol"
       ],
       "versionPragmas": [
         "^0.8.21"
@@ -488,8 +492,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/GovernanceFacet.sol": {
-      "lastModificationDate": 1761340558947,
-      "contentHash": "2e0c273e6e15c9dc641c448e8b945d69",
+      "lastModificationDate": 1761341369396,
+      "contentHash": "e2bf5de1049ee325b32ab737d7f7662a",
       "sourceName": "contracts/facets/GovernanceFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -520,6 +524,7 @@
         "../interfaces/IDiamondCut.sol",
         "../interfaces/IAccess.sol",
         "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
         "../interfaces/IERC173.sol"
       ],
       "versionPragmas": [
@@ -530,8 +535,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IGovernance.sol": {
-      "lastModificationDate": 1761340553356,
-      "contentHash": "04820f26c5bd22bb886a703dd3825346",
+      "lastModificationDate": 1761341469634,
+      "contentHash": "10b3fe7406181579f3aea7ba0d7475a7",
       "sourceName": "contracts/interfaces/IGovernance.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -568,8 +573,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/BondFacet.sol": {
-      "lastModificationDate": 1761340700637,
-      "contentHash": "d353a1f989ce557ab059f6047ad6dbce",
+      "lastModificationDate": 1761341387976,
+      "contentHash": "220034f9d04bf12ab5159e0e401a29f3",
       "sourceName": "contracts/facets/BondFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -598,6 +603,7 @@
       "imports": [
         "../interfaces/IBond.sol",
         "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
         "../interfaces/IERC173.sol"
       ],
       "versionPragmas": [
@@ -608,8 +614,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IBond.sol": {
-      "lastModificationDate": 1761338563343,
-      "contentHash": "a901f67722a6ace3b67f42f80184c8b1",
+      "lastModificationDate": 1761341463931,
+      "contentHash": "031f5ebddb5f23f6e5b350989e22d320",
       "sourceName": "contracts/interfaces/IBond.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -719,8 +725,8 @@
       ]
     },
     "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/AccessFacet.sol": {
-      "lastModificationDate": 1761340267793,
-      "contentHash": "0fd8387df1f9ba91e7bce84a6d9ecf67",
+      "lastModificationDate": 1761341374598,
+      "contentHash": "99e048310e002a436ed86470d7d59580",
       "sourceName": "contracts/facets/AccessFacet.sol",
       "solcConfig": {
         "version": "0.8.21",
@@ -749,6 +755,7 @@
       "imports": [
         "../interfaces/IAccess.sol",
         "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
         "../interfaces/IERC173.sol"
       ],
       "versionPragmas": [
@@ -866,6 +873,42 @@
       ],
       "artifacts": [
         "ITriangulation"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/libraries/Errors.sol": {
+      "lastModificationDate": 1761341374607,
+      "contentHash": "f1f4262e98f1b32e8c19667b638ab03e",
+      "sourceName": "contracts/libraries/Errors.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "Errors"
       ]
     }
   }

@@ -2,24 +2,25 @@
 pragma solidity ^0.8.21;
 import {IBond} from "../interfaces/IBond.sol";
 import {GRCStorage} from "../libraries/GRCStorage.sol";
+import {Errors} from "../libraries/Errors.sol";
 import {IERC173} from "../interfaces/IERC173.sol";
 contract BondFacet is IBond {
     uint256 internal constant ROLE_GOVERNANCE = 1 << 1;
     modifier onlyGovOrOwner() {
-        if(IERC173(address(this)).owner() != msg.sender && (GRCStorage.roles().roleBits[msg.sender] & ROLE_GOVERNANCE) == 0) revert("NO_GOV");
+        if(IERC173(address(this)).owner() != msg.sender && (GRCStorage.roles().roleBits[msg.sender] & ROLE_GOVERNANCE) == 0) revert Errors.ErrGovernanceRole();
         _;
     }
     function issueLi99(bytes32 series, address to, uint256 notional) external onlyGovOrOwner {
-        require(to != address(0), "ZERO_TO"); require(notional > 0, "ZERO_NOTIONAL");
+    if(to == address(0)) revert Errors.ErrZeroAddress(); if(notional == 0) revert Errors.ErrZeroNotional();
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
-        require(!bs.active, "EXISTS_SERIES");
+    if(bs.active) revert Errors.ErrSeriesExists();
         bs.active = true; bs.principal = notional; bs.couponBps = 500; // 5% placeholder
         bs.termYears = 5; bs.lastCouponTs = uint64(block.timestamp);
         emit BondIssued(series, to, notional);
     }
     function accrueCoupons(bytes32 series) external returns (uint256 accrued) {
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
-        require(bs.active, "NO_SERIES");
+    if(!bs.active) revert Errors.ErrSeriesInactive();
         uint256 elapsed = block.timestamp - bs.lastCouponTs;
         // simple linear accrual: principal * couponBps * elapsed / (YEAR * 10000)
         uint256 yearly = 365 days;
@@ -29,7 +30,7 @@ contract BondFacet is IBond {
     }
     function buyback(bytes32 series) external returns (uint256 principalClosed) {
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
-        require(bs.active, "NO_SERIES");
+    if(!bs.active) revert Errors.ErrSeriesInactive();
         principalClosed = bs.principal; bs.principal = 0; bs.active = false;
         emit BondBuyback(series, principalClosed);
     }

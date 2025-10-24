@@ -1,0 +1,126 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Errors",
+  "sourceName": "contracts/libraries/Errors.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ErrCoverageFail",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrFacetZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrGovernanceRole",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrIndexRole",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrLengthMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrMissingRole",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrMonetaryRole",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrNoFacet",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrNoProposal",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrNotReady",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrPausedFunc",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrPausedGlobal",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrProposalExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrProposalUsed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrSelectorExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrSelectorMissing",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrSeriesExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrSeriesInactive",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrSumInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrUpgradeRole",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrZeroNotional",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cde249344b1d3a0cb1650a1cca10775c603a61d1a369648a31d5abc7d7e39fe64736f6c63430008150033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cde249344b1d3a0cb1650a1cca10775c603a61d1a369648a31d5abc7d7e39fe64736f6c63430008150033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

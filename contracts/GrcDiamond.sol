@@ -6,6 +6,7 @@ import {IERC165} from "./interfaces/IERC165.sol";
 import {IERC173} from "./interfaces/IERC173.sol";
 import {IGrcLoupe} from "./interfaces/IGrcLoupe.sol";
 import {GRCStorage} from "./libraries/GRCStorage.sol";
+import {Errors} from "./libraries/Errors.sol";
 
 contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
     struct SelectorInfo { address facet; }
@@ -16,7 +17,7 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
     address private _owner;
     string private _grcVersion;
 
-    modifier onlyOwner() { require(msg.sender == _owner, "OWNER"); _; }
+    modifier onlyOwner() { if(msg.sender != _owner) revert Errors.ErrOwner(); _; }
 
     constructor(address owner_, string memory version_) {
         _owner = owner_ == address(0) ? msg.sender : owner_;
@@ -26,7 +27,7 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
 
     // IERC173
     function owner() external view override returns (address) { return _owner; }
-    function transferOwnership(address newOwner) external override onlyOwner { require(newOwner!=address(0),"ZERO"); emit OwnershipTransferred(_owner,newOwner); _owner=newOwner; }
+    function transferOwnership(address newOwner) external override onlyOwner { if(newOwner==address(0)) revert Errors.ErrZeroAddress(); emit OwnershipTransferred(_owner,newOwner); _owner=newOwner; }
 
     // IGrcLoupe minimal wires
     function grcVersion() external view returns (string memory) { return _grcVersion; }
@@ -54,21 +55,21 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
     function diamondCut(FacetCut[] calldata _cut, address _init, bytes calldata _calldata) external override {
         // access control: owner, internal (self-call), or upgrade role holder
         if(msg.sender != _owner && msg.sender != address(this)) {
-            if((GRCStorage.roles().roleBits[msg.sender] & ROLE_UPGRADE) == 0) revert("NO_UPGRADE_ROLE");
+            if((GRCStorage.roles().roleBits[msg.sender] & ROLE_UPGRADE) == 0) revert Errors.ErrUpgradeRole();
         }
         for(uint i; i<_cut.length; i++) {
             FacetCut memory fc = _cut[i];
             if(fc.action == FacetCutAction.Add || fc.action == FacetCutAction.Replace) {
-                require(fc.facetAddress != address(0), "FACET_ZERO");
+                if(fc.facetAddress == address(0)) revert Errors.ErrFacetZero();
             }
             for(uint s; s<fc.functionSelectors.length; s++) {
                 bytes4 sel = fc.functionSelectors[s];
                 if(fc.action == FacetCutAction.Add) {
-                    require(_selectorInfo[sel].facet == address(0), "EXISTS");
+                    if(_selectorInfo[sel].facet != address(0)) revert Errors.ErrSelectorExists();
                     _selectorInfo[sel].facet = fc.facetAddress;
                     _addSelectorToFacet(fc.facetAddress, sel);
                 } else if(fc.action == FacetCutAction.Replace) {
-                    require(_selectorInfo[sel].facet != address(0), "MISSING");
+                    if(_selectorInfo[sel].facet == address(0)) revert Errors.ErrSelectorMissing();
                     address oldFacet = _selectorInfo[sel].facet;
                     if(oldFacet != fc.facetAddress) {
                         _removeSelectorFromFacet(oldFacet, sel);
@@ -76,7 +77,7 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
                         _addSelectorToFacet(fc.facetAddress, sel);
                     }
                 } else if(fc.action == FacetCutAction.Remove) {
-                    require(_selectorInfo[sel].facet != address(0), "MISSING");
+                    if(_selectorInfo[sel].facet == address(0)) revert Errors.ErrSelectorMissing();
                     address oldFacetRemove = _selectorInfo[sel].facet;
                     _selectorInfo[sel].facet = address(0);
                     _removeSelectorFromFacet(oldFacetRemove, sel);
@@ -110,10 +111,10 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
     fallback() external payable {
         // pause checks
         GRCStorage.PauseState storage ps = GRCStorage.pause();
-        require(!ps.global, "PAUSED_GLOBAL");
-        require(!ps.func[msg.sig], "PAUSED_FUNC");
+        if(ps.global) revert Errors.ErrPausedGlobal();
+        if(ps.func[msg.sig]) revert Errors.ErrPausedFunc();
         address facet = _selectorInfo[msg.sig].facet;
-        require(facet != address(0), "NO_FACET");
+        if(facet == address(0)) revert Errors.ErrNoFacet();
         assembly {
             calldatacopy(0, 0, calldatasize())
             let result := delegatecall(gas(), facet, 0, calldatasize(), 0, 0)

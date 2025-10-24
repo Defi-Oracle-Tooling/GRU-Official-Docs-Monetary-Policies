@@ -7,7 +7,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bytes32",
           "name": "id",
           "type": "bytes32"
@@ -20,7 +20,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bytes32",
           "name": "id",
           "type": "bytes32"
@@ -51,7 +51,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bytes32",
           "name": "id",
           "type": "bytes32"
@@ -70,7 +70,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bytes4",
           "name": "selector",
           "type": "bytes4"

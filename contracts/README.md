@@ -53,12 +53,75 @@ Outputs JSON mapping of function signatures to selectors.
 - Removing the last selector of a facet triggers facet address removal (array swap/pop) maintaining compact storage.
 - Mapping index eliminates O(n) facet existence checks.
 
-## Planned Enhancements
-- Role modifiers referencing `AccessFacet` bitmasks.
-- Governance timelock execution path for authorized diamondCut calls.
-- Index registry weight persistence and on-chain Li composite calculations.
-- Bond coupon accrual and coverage checks.
-- Reentrancy / pause guards across state-changing facets.
+## Implemented Capabilities
+- Role bitmask gating (upgrade, governance, index, monetary) with `AccessFacet`.
+- Governance timelock proposal -> queue -> execute flow (`GovernanceFacet`).
+- Index weight registry + dashboard hash snapshot + placeholder LiCRI calculation (`IndexFacet`).
+- Bond issuance, coupon accrual (linear), buyback, coverage placeholder (`BondFacet`).
+- Global + per-function pause controls enforced in diamond fallback (`PauseFacet`).
+- Centralized custom error codes (`Errors.sol`) replacing string reverts for gas efficiency.
+
+## Remaining / Future Enhancements
+- Weighted LiCRI composite (use stored per-index values and weights).
+- Reentrancy guards and additional upgrade integrity assertions.
+- Audit / Triangulation facet full logic (proof-of-reserves, asset conversion).
+- Extended economic invariant tests (coverage thresholds, scalar bounds).
+- Event off-chain indexing examples / subgraph schema.
+
+## Custom Errors Catalog
+All revert conditions are normalized via `Errors.sol`:
+
+| Error | Meaning |
+|-------|---------|
+| `ErrOwner()` | Caller is not current diamond owner. |
+| `ErrUpgradeRole()` | Missing upgrade role for diamondCut / execution path. |
+| `ErrGovernanceRole()` | Missing governance role. |
+| `ErrIndexRole()` | Missing index management role. |
+| `ErrMonetaryRole()` | Missing monetary management role. |
+| `ErrMissingRole()` | Generic required role absent. |
+| `ErrFacetZero()` | Facet address is zero on Add/Replace. |
+| `ErrSelectorExists()` | Adding a selector that already exists. |
+| `ErrSelectorMissing()` | Replacing/removing a selector that does not exist. |
+| `ErrNoFacet()` | Fallback dispatch found no facet for selector. |
+| `ErrPausedGlobal()` | Global pause active. |
+| `ErrPausedFunc()` | Selector-specific pause active. |
+| `ErrLengthMismatch()` | Array length mismatch (e.g., keys vs weights). |
+| `ErrSumInvalid()` | Weight sum not equal to required fixed point (1e18). |
+| `ErrNotReady()` | Timelock ETA not reached or initialization placeholder. |
+| `ErrNoProposal()` | Referenced proposal absent (not encoded). |
+| `ErrProposalExists()` | Proposal already queued/exists. |
+| `ErrProposalUsed()` | Proposal already has ETA or consumed. |
+| `ErrZeroNotional()` | Bond issuance notional must be > 0. |
+| `ErrSeriesExists()` | Bond series already active. |
+| `ErrSeriesInactive()` | Bond series inactive when expected active. |
+| `ErrCoverageFail()` | Coverage ratio check failed (< threshold). |
+| `ErrZeroAddress()` | Provided address is zero. |
+
+## Event Indexing Normalization
+Events now index primary identifiers for efficient off-chain filtering:
+- `IndexWeightsUpdated(bytes32 indexed id, ...)`
+- `DashboardSnapshot(bytes32 indexed dashboardHash, ...)`
+- `BondIssued(bytes32 indexed series, address indexed to, ...)`
+- `CouponsAccrued(bytes32 indexed series, ...)`
+- `BondBuyback(bytes32 indexed series, ...)`
+- `CutProposed(bytes32 indexed id, ...)`
+- `CutQueued(bytes32 indexed id, ...)`
+- `CutExecuted(bytes32 indexed id)`
+- `EmergencyBrake(bytes4 indexed selector, ...)`
+- `FunctionPaused(bytes4 indexed selector, ...)`
+
+Where practical, only unique identifiers are indexed (to conserve topic space and gas).
+
+## Testing
+`test/diamond.spec.js` covers deployment, interface support, diamondCut actions, governance timelock, role gating, pause enforcement, index weight persistence, bond lifecycle and custom error expectations.
+
+Run:
+```
+npx hardhat test
+```
+
+## Notes
+Several domain implementations remain placeholders (e.g., monetary mint/burn, full LiCRI weighting). These emit `ErrNotReady()` on invocation until logic is finalized.
 
 ## Testing
 `test/diamond.spec.js` covers:

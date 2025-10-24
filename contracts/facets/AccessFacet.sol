@@ -2,6 +2,7 @@
 pragma solidity ^0.8.21;
 import {IAccess} from "../interfaces/IAccess.sol";
 import {GRCStorage} from "../libraries/GRCStorage.sol";
+import {Errors} from "../libraries/Errors.sol";
 import {IERC173} from "../interfaces/IERC173.sol";
 contract AccessFacet is IAccess {
     // Role bit constants
@@ -11,7 +12,7 @@ contract AccessFacet is IAccess {
     uint256 internal constant ROLE_MONETARY = 1 << 3;
 
     modifier onlyOwnerOrRole(uint256 roleBit) {
-        if(!_isOwner() && (GRCStorage.roles().roleBits[msg.sender] & roleBit) == 0) revert("NO_ROLE");
+        if(!_isOwner() && (GRCStorage.roles().roleBits[msg.sender] & roleBit) == 0) revert Errors.ErrMissingRole();
         _;
     }
     function _isOwner() internal view returns (bool) {

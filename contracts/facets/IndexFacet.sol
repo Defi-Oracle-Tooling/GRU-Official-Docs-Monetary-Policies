@@ -2,17 +2,18 @@
 pragma solidity ^0.8.21;
 import {IIndex} from "../interfaces/IIndex.sol";
 import {GRCStorage} from "../libraries/GRCStorage.sol";
+import {Errors} from "../libraries/Errors.sol";
 contract IndexFacet is IIndex {
     uint256 internal constant ROLE_INDEX = 1 << 2;
     modifier onlyIndexRole() {
-        if((GRCStorage.roles().roleBits[msg.sender] & ROLE_INDEX) == 0) revert("NO_INDEX_ROLE");
+        if((GRCStorage.roles().roleBits[msg.sender] & ROLE_INDEX) == 0) revert Errors.ErrIndexRole();
         _;
     }
     function setWeights(bytes32 indexId, bytes32[] calldata keys, uint256[] calldata weights, uint64 version, bytes32 dashboardHash) external onlyIndexRole {
-        require(keys.length == weights.length, "LEN");
+    if(keys.length != weights.length) revert Errors.ErrLengthMismatch();
         uint256 sum;
         for(uint i; i<weights.length; i++){ sum += weights[i]; }
-        require(sum == 1e18, "SUM");
+    if(sum != 1e18) revert Errors.ErrSumInvalid();
         GRCStorage.IndexEntry storage ie = GRCStorage.indexEntry(indexId);
         ie.version = version;
         ie.dashboardHash = dashboardHash;
@@ -26,7 +27,7 @@ contract IndexFacet is IIndex {
         version = ie.version; dashboardHash = ie.dashboardHash; keys = ie.keys; weights = ie.weights;
     }
     function recalcLiCRI(bytes32[] calldata componentIds, uint256[] calldata componentValues) external onlyIndexRole returns (uint256 faceValueComposite) {
-        require(componentIds.length == componentValues.length, "LEN");
+    if(componentIds.length != componentValues.length) revert Errors.ErrLengthMismatch();
         uint256 sum;
         for(uint i; i<componentValues.length; i++){ sum += componentValues[i]; }
         faceValueComposite = sum / componentValues.length; // simple average placeholder

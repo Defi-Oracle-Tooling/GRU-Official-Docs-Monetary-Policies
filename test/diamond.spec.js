@@ -166,7 +166,7 @@ describe('GrcDiamond', () => {
         await gov.queueCut(proposalId);
         const eta = await gov.eta(proposalId);
         // attempt premature execute should fail
-        await expect(gov.executeCut(proposalId)).to.be.revertedWith('NOT_READY');
+        await expect(gov.executeCut(proposalId)).to.be.revertedWithCustomError(gov, 'ErrNotReady');
         // fast-forward time
         const increaseBy = Number(eta) - Math.floor(Date.now() / 1000) + 2; // ensure past eta
         await ethers.provider.send('evm_increaseTime', [increaseBy]);
@@ -194,7 +194,7 @@ describe('GrcDiamond', () => {
         const ROLE_INDEX = await access.ROLE_INDEX_BIT();
         // attacker tries without role
         const hundred = 100n * 10n ** 18n;
-        await expect(index.connect(attacker).setIndexValue(ethers.id('LiXAU'), hundred)).to.be.revertedWith('NO_INDEX_ROLE');
+        await expect(index.connect(attacker).setIndexValue(ethers.id('LiXAU'), hundred)).to.be.revertedWithCustomError(index, 'ErrIndexRole');
         // grant role
         await access.grantRoles(deployer.address, ROLE_INDEX);
         await index.setIndexValue(ethers.id('LiXAU'), hundred);
@@ -254,12 +254,12 @@ describe('GrcDiamond', () => {
         const sel = monetaryImpl.interface.getFunction('setScalarS').selector;
         await pause.setFunctionPause(sel, true);
         const monetary = await ethers.getContractAt('MonetaryFacet', await d.getAddress());
-        await expect(monetary.setScalarS(123n)).to.be.revertedWith('PAUSED_FUNC');
+        await expect(monetary.setScalarS(123n)).to.be.revertedWithCustomError(d, 'ErrPausedFunc');
         await pause.setFunctionPause(sel, false);
         await monetary.setScalarS(123n);
         // global pause
         await pause.setGlobalPause(true);
-        await expect(monetary.setScalarS(456n)).to.be.revertedWith('PAUSED_GLOBAL');
+        await expect(monetary.setScalarS(456n)).to.be.revertedWithCustomError(d, 'ErrPausedGlobal');
     });
 });
 

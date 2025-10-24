@@ -7,7 +7,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bytes4",
           "name": "selector",
           "type": "bytes4"
