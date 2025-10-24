@@ -8,6 +8,8 @@ library GRCStorage {
     bytes32 internal constant S_AUDIT    = keccak256("grc.storage.audit");
     bytes32 internal constant S_ACCESS   = keccak256("grc.storage.access");
     bytes32 internal constant S_PAUSE    = keccak256("grc.storage.pause");
+    bytes32 internal constant S_TRIANG   = keccak256("grc.storage.triang");
+    bytes32 internal constant S_REENT    = keccak256("grc.storage.reentrancy");
 
     struct MonetaryState { uint256 m00; uint256 m0; uint256 m1; uint256 scalarS; }
     struct IndexEntry { uint64 version; bytes32 dashboardHash; bytes32[] keys; uint256[] weights; }
@@ -24,6 +26,8 @@ library GRCStorage {
         mapping(bytes32 => bytes) initData;             // optional init calldata
         mapping(bytes32 => address) proposer;           // proposer address
     }
+    struct TriangulationState { uint256 feeBps; mapping(bytes32 => mapping(bytes32 => uint256)) rate; }
+    struct Reentrancy { uint256 entered; }
 
     // Accessors
     function monetary() internal pure returns (MonetaryState storage ms) { bytes32 p = S_MONETARY; assembly { ms.slot := p } }
@@ -34,4 +38,6 @@ library GRCStorage {
     function roles() internal pure returns (Roles storage rs) { bytes32 p = S_ACCESS; assembly { rs.slot := p } }
     function pause() internal pure returns (PauseState storage ps) { bytes32 p = S_PAUSE; assembly { ps.slot := p } }
     function governance() internal pure returns (GovernanceState storage gs) { bytes32 p = S_GOV; assembly { gs.slot := p } }
+    function triangulation() internal pure returns (TriangulationState storage ts) { bytes32 p = S_TRIANG; assembly { ts.slot := p } }
+    function reentrancy() internal pure returns (Reentrancy storage rs) { bytes32 p = S_REENT; assembly { rs.slot := p } }
 }

@@ -35,6 +35,17 @@ contract IndexFacet is IIndex {
         isx.liCRI = faceValueComposite;
     emit DashboardSnapshot(bytes32(0), isx.globalVersion, faceValueComposite, block.timestamp);
     }
+    function recalcLiCRIWeighted(bytes32[] calldata componentIds, uint256[] calldata componentValues, uint256[] calldata weights) external onlyIndexRole returns (uint256 liCRI) {
+        if(componentIds.length != componentValues.length || componentIds.length != weights.length) revert Errors.ErrLengthMismatch();
+        uint256 wsum;
+        uint256 acc;
+        for(uint i; i<weights.length; i++) { wsum += weights[i]; acc += componentValues[i] * weights[i] / 1e18; }
+        if(wsum != 1e18) revert Errors.ErrSumInvalid();
+        liCRI = acc; // weighted sum already scaled
+        GRCStorage.IndexState storage isx = GRCStorage.index();
+        isx.liCRI = liCRI;
+        emit DashboardSnapshot(bytes32(0), isx.globalVersion, liCRI, block.timestamp);
+    }
     function setDashboardComposite(bytes32 dashboardHash, uint256 liCRI, uint64 globalVersion) external onlyIndexRole {
         GRCStorage.IndexState storage isx = GRCStorage.index();
         isx.liCRI = liCRI; isx.globalVersion = globalVersion;

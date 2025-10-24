@@ -134,6 +134,102 @@ describe('GrcDiamond', () => {
         expect(viaLoupe[0]).to.equal(1n);
         expect(viaLoupe[3]).to.equal(dashboardHash);
     });
+    it('weighted LiCRI composite calculation', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0');
+        await d.waitForDeployment();
+        const Index = await ethers.getContractFactory('IndexFacet');
+        const idx = await Index.deploy(); await idx.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([{ facetAddress: await idx.getAddress(), action: 0, functionSelectors: addSelectors(idx) }], ethers.ZeroAddress, '0x');
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        await d.diamondCut([{ facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) }], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        await access.grantRoles(deployer.address, await access.ROLE_INDEX_BIT());
+        const indexFacet = await ethers.getContractAt('IndexFacet', await d.getAddress());
+        const ids = [ethers.id('LiXAU'), ethers.id('LiPMG'), ethers.id('LiBMG1')];
+        const values = [1000n, 2000n, 4000n];
+        const weights = [500000000000000000n, 300000000000000000n, 200000000000000000n]; // sum 1e18
+        const wLiCRI = await indexFacet.recalcLiCRIWeighted.staticCall(ids, values, weights);
+        // expected weighted = 1000*0.5 + 2000*0.3 + 4000*0.2 = 500 + 600 + 800 = 1900
+        expect(wLiCRI).to.equal(1900n);
+        await indexFacet.recalcLiCRIWeighted(ids, values, weights);
+        expect(await indexFacet.getLiCRI()).to.equal(1900n);
+    });
+    it('audit facet record and seal', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Audit = await ethers.getContractFactory('AuditFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const auditFacetImpl = await Audit.deploy(); await auditFacetImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await auditFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(auditFacetImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const audit = await ethers.getContractAt('AuditFacet', await d.getAddress());
+        await access.grantRoles(deployer.address, await access.ROLE_GOVERNANCE_BIT());
+        await audit.postPoR(1, ethers.id('root1'), 'ipfs://hash1');
+        const por = await audit.getPoR(1);
+        expect(por[0]).to.equal(ethers.id('root1'));
+        expect(por[1]).to.equal('ipfs://hash1');
+        expect(por[2]).to.equal(false);
+        await audit.seal(1);
+        const por2 = await audit.getPoR(1);
+        expect(por2[2]).to.equal(true);
+        await expect(audit.postPoR(1, ethers.id('root2'), 'ipfs://hash2')).to.be.revertedWithCustomError(audit, 'ErrPeriodSealed');
+    });
+    it('triangulation rates and fee application', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Tri = await ethers.getContractFactory('TriangulationFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const triFacetImpl = await Tri.deploy(); await triFacetImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await triFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(triFacetImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const tri = await ethers.getContractAt('TriangulationFacet', await d.getAddress());
+        await access.grantRoles(deployer.address, await access.ROLE_GOVERNANCE_BIT());
+        const GOLD = ethers.id('XAU');
+        const GRU = ethers.id('GRU');
+        await tri.setRate(GOLD, GRU, 2n * 10n ** 18n); // 2 GRU per XAU
+        await tri.setFees(100n); // 1%
+        const preview = await tri.triangulate.staticCall(GOLD, GRU, 1000n); // 1000 * 2 = 2000 -1% = 1980
+        expect(preview).to.equal(1980n);
+        const out = await tri.triangulate(GOLD, GRU, 1000n);
+        expect(out).to.equal(1980n);
+        const backPreview = await tri.redeem.staticCall(GRU, GOLD, 500n); // 500 * rate? rate unset GRU->XAU => error
+        await expect(tri.redeem(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
+    });
+    it('monetary scalar bounds enforced', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Monetary = await ethers.getContractFactory('MonetaryFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const monFacetImpl = await Monetary.deploy(); await monFacetImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await monFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(monFacetImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const mon = await ethers.getContractAt('MonetaryFacet', await d.getAddress());
+        await access.grantRoles(deployer.address, await access.ROLE_MONETARY_BIT());
+        await mon.setScalarS(123n);
+        await expect(mon.setScalarS(10000000000000000000000001n)).to.be.revertedWithCustomError(mon, 'ErrScalarBounds');
+    });
     it('governance proposes, queues, executes diamondCut adding MonetaryFacet', async () => {
         const [deployer] = await ethers.getSigners();
         const Diamond = await ethers.getContractFactory('GrcDiamond');

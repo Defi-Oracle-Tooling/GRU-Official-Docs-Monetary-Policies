@@ -1,15 +1,47 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 import {ITriangulation} from "../interfaces/ITriangulation.sol";
+import {GRCStorage} from "../libraries/GRCStorage.sol";
+import {Errors} from "../libraries/Errors.sol";
+import {IERC173} from "../interfaces/IERC173.sol";
 contract TriangulationFacet is ITriangulation {
-    uint256 private _feeBps;
-    function triangulateToGRU(uint256 xauAmount) external returns (uint256 gruOut) { xauAmount; revert("NOT_IMPL"); }
-    function redeemFromGRU(uint256 gruAmount) external returns (uint256 xauOut) { gruAmount; revert("NOT_IMPL"); }
-    function atomicLoop7to10(uint256 input, uint8 n, uint256 feeBps) external returns (uint256 expanded) {
-        require(n>0 && n<=3, "n"); require(feeBps<=450, "fee");
-        uint256 e = input;
-        for(uint8 i; i<n; i++){ e = e * 10 / 7; e = e * (10000 - feeBps) / 10000; }
-        return e;
+    uint256 internal constant ROLE_GOVERNANCE = 1 << 1;
+    modifier onlyGov() {
+        if(IERC173(address(this)).owner() != msg.sender && (GRCStorage.roles().roleBits[msg.sender] & ROLE_GOVERNANCE) == 0) revert Errors.ErrGovernanceRole();
+        _;
     }
-    function setFees(uint256 feeBps) external { require(feeBps<=450,"fee"); _feeBps = feeBps; }
+    function setRate(bytes32 fromAsset, bytes32 toAsset, uint256 rate) external onlyGov {
+        if(rate == 0) revert Errors.ErrRateUnset();
+        GRCStorage.TriangulationState storage ts = GRCStorage.triangulation();
+        ts.rate[fromAsset][toAsset] = rate;
+        emit RateSet(fromAsset, toAsset, rate);
+    }
+    function getRate(bytes32 fromAsset, bytes32 toAsset) external view returns (uint256 rate) {
+        rate = GRCStorage.triangulation().rate[fromAsset][toAsset];
+    }
+    function triangulate(bytes32 fromAsset, bytes32 toAsset, uint256 amount) external returns (uint256 outAmount) {
+        GRCStorage.TriangulationState storage ts = GRCStorage.triangulation();
+        uint256 rate = ts.rate[fromAsset][toAsset];
+        if(rate == 0) revert Errors.ErrRateUnset();
+        outAmount = amount * rate / 1e18;
+        uint256 fee = outAmount * ts.feeBps / 10000;
+        outAmount -= fee;
+        emit Triangulated(fromAsset, toAsset, amount, outAmount);
+    }
+    function redeem(bytes32 fromAsset, bytes32 toAsset, uint256 amount) external returns (uint256 outAmount) {
+        GRCStorage.TriangulationState storage ts = GRCStorage.triangulation();
+        uint256 rate = ts.rate[fromAsset][toAsset];
+        if(rate == 0) revert Errors.ErrRateUnset();
+        outAmount = amount * rate / 1e18;
+        uint256 fee = outAmount * ts.feeBps / 10000;
+        outAmount -= fee;
+        emit Redeemed(fromAsset, toAsset, amount, outAmount);
+    }
+    function setFees(uint256 feeBps_) external onlyGov {
+        if(feeBps_ > 450) revert Errors.ErrFeeTooHigh();
+        GRCStorage.TriangulationState storage ts = GRCStorage.triangulation();
+        emit FeeUpdated(ts.feeBps, feeBps_);
+        ts.feeBps = feeBps_;
+    }
+    function feeBps() external view returns (uint256) { return GRCStorage.triangulation().feeBps; }
 }

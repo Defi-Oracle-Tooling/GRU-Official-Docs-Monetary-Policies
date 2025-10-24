@@ -15,6 +15,7 @@ contract MonetaryFacet is IMonetary {
     function redeemM0(address from, uint256 amount) external onlyMonetaryRole { from; amount; revert Errors.ErrNotReady(); }
     function setScalarS(uint256 newScalar) external onlyMonetaryRole {
         GRCStorage.MonetaryState storage ms = GRCStorage.monetary();
+        if(newScalar > 10e24) revert Errors.ErrScalarBounds();
         emit ScalarUpdated(ms.scalarS, newScalar);
         ms.scalarS = newScalar;
     }

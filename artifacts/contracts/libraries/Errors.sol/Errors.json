@@ -10,7 +10,17 @@
     },
     {
       "inputs": [],
+      "name": "ErrFacetCodeMissing",
+      "type": "error"
+    },
+    {
+      "inputs": [],
       "name": "ErrFacetZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrFeeTooHigh",
       "type": "error"
     },
     {
@@ -70,12 +80,32 @@
     },
     {
       "inputs": [],
+      "name": "ErrPeriodSealed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
       "name": "ErrProposalExists",
       "type": "error"
     },
     {
       "inputs": [],
       "name": "ErrProposalUsed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrRateUnset",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrReentrancy",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ErrScalarBounds",
       "type": "error"
     },
     {
@@ -119,8 +149,8 @@
       "type": "error"
     }
   ],
-  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cde249344b1d3a0cb1650a1cca10775c603a61d1a369648a31d5abc7d7e39fe64736f6c63430008150033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cde249344b1d3a0cb1650a1cca10775c603a61d1a369648a31d5abc7d7e39fe64736f6c63430008150033",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220515a09ab5c5ec76d83791f259f873b0457454d346f5359dc413095118c5bfc1964736f6c63430008150033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220515a09ab5c5ec76d83791f259f873b0457454d346f5359dc413095118c5bfc1964736f6c63430008150033",
   "linkReferences": {},
   "deployedLinkReferences": {}
 }

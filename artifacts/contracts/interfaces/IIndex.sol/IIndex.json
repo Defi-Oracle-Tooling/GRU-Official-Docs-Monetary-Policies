@@ -127,6 +127,35 @@
     {
       "inputs": [
         {
+          "internalType": "bytes32[]",
+          "name": "componentIds",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "componentValues",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "weights",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "recalcLiCRIWeighted",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "liCRI",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "bytes32",
           "name": "dashboardHash",
           "type": "bytes32"

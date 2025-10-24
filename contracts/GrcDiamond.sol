@@ -61,6 +61,7 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
             FacetCut memory fc = _cut[i];
             if(fc.action == FacetCutAction.Add || fc.action == FacetCutAction.Replace) {
                 if(fc.facetAddress == address(0)) revert Errors.ErrFacetZero();
+                if(fc.facetAddress.code.length == 0) revert Errors.ErrFacetCodeMissing();
             }
             for(uint s; s<fc.functionSelectors.length; s++) {
                 bytes4 sel = fc.functionSelectors[s];

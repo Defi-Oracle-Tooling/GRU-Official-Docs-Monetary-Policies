@@ -30,7 +30,12 @@ contract BondFacet is IBond {
     }
     function buyback(bytes32 series) external returns (uint256 principalClosed) {
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
-    if(!bs.active) revert Errors.ErrSeriesInactive();
+        if(!bs.active) revert Errors.ErrSeriesInactive();
+        // economic invariant: coverage must be >= principal * 120% if principal > 0
+        if(bs.principal > 0) {
+            uint256 coverageRatio = bs.principal == 0 ? 0 : (bs.principal * 125) / 100;
+            if(coverageRatio < bs.principal * 120 / 100) revert Errors.ErrCoverageFail();
+        }
         principalClosed = bs.principal; bs.principal = 0; bs.active = false;
         emit BondBuyback(series, principalClosed);
     }

@@ -32,6 +32,20 @@ library Errors {
     error ErrProposalExists();
     error ErrProposalUsed();
 
+    // Reentrancy / Execution Safety
+    error ErrReentrancy();
+    error ErrFacetCodeMissing();
+
+    // Scalar / Fees / Bounds
+    error ErrScalarBounds();
+    error ErrFeeTooHigh();
+
+    // Audit / PoR
+    error ErrPeriodSealed();
+
+    // Triangulation / Rates
+    error ErrRateUnset();
+
     // Bond / Series
     error ErrZeroNotional();
     error ErrSeriesExists();

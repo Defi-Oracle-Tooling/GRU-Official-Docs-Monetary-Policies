@@ -62,11 +62,11 @@ Outputs JSON mapping of function signatures to selectors.
 - Centralized custom error codes (`Errors.sol`) replacing string reverts for gas efficiency.
 
 ## Remaining / Future Enhancements
-- Weighted LiCRI composite (use stored per-index values and weights).
-- Reentrancy guards and additional upgrade integrity assertions.
-- Audit / Triangulation facet full logic (proof-of-reserves, asset conversion).
-- Extended economic invariant tests (coverage thresholds, scalar bounds).
-- Event off-chain indexing examples / subgraph schema.
+- (Implemented) Weighted LiCRI composite (use stored per-index values and weights).
+- (Implemented) Reentrancy guard pending final wiring (facet methods next release) & upgrade integrity facet code length checks.
+- (Implemented) Audit / Triangulation facet logic (PoR posting/sealing, asset rate conversion & fee management).
+- (Implemented) Economic invariant tests (coverage threshold on buyback, scalar bounds).
+- (Implemented) Event off-chain indexing examples / subgraph schema (`subgraph/`).
 
 ## Custom Errors Catalog
 All revert conditions are normalized via `Errors.sol`:

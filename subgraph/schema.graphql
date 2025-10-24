@@ -1,0 +1,31 @@
+type IndexWeightsUpdated @entity { id: ID! indexId: Bytes! version: BigInt! }
+
+type DashboardSnapshot @entity { id: ID! dashboardHash: Bytes globalVersion: BigInt liCRI: BigInt timestamp: BigInt }
+
+type BondIssued @entity { id: ID! series: Bytes! to: Bytes! notional: BigInt! }
+
+type CouponsAccrued @entity { id: ID! series: Bytes! amount: BigInt! }
+
+type BondBuyback @entity { id: ID! series: Bytes! principalClosed: BigInt! }
+
+type CutProposed @entity { id: ID! proposalId: Bytes! proposer: Bytes! init: Bytes initData: Bytes }
+
+type CutQueued @entity { id: ID! proposalId: Bytes! eta: BigInt! }
+
+type CutExecuted @entity { id: ID! proposalId: Bytes! }
+
+type EmergencyBrake @entity { id: ID! selector: Bytes! paused: Boolean! }
+
+type FunctionPaused @entity { id: ID! selector: Bytes! paused: Boolean! }
+
+type PoRPosted @entity { id: ID! period: BigInt! root: Bytes! ipfsRef: String! }
+
+type PoRSealed @entity { id: ID! period: BigInt! }
+
+type RateSet @entity { id: ID! fromAsset: Bytes! toAsset: Bytes! rate: BigInt! }
+
+type Triangulated @entity { id: ID! fromAsset: Bytes! toAsset: Bytes! inputAmount: BigInt! outputAmount: BigInt! }
+
+type Redeemed @entity { id: ID! fromAsset: Bytes! toAsset: Bytes! inputAmount: BigInt! outputAmount: BigInt! }
+
+type FeeUpdated @entity { id: ID! oldFeeBps: BigInt! newFeeBps: BigInt! }
