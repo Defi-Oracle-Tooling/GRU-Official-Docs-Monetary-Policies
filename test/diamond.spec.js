@@ -126,6 +126,46 @@ describe('GrcDiamond', () => {
         expect(viaLoupe[0]).to.equal(1n);
         expect(viaLoupe[3]).to.equal(dashboardHash);
     });
+    it('governance proposes, queues, executes diamondCut adding MonetaryFacet', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0');
+        await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Gov = await ethers.getContractFactory('GovernanceFacet');
+        const Monetary = await ethers.getContractFactory('MonetaryFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const govFacet = await Gov.deploy(); await govFacet.waitForDeployment();
+        // add access & governance facets to diamond so we can call them through diamond
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await govFacet.getAddress(), action: 0, functionSelectors: addSelectors(govFacet) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const gov = await ethers.getContractAt('GovernanceFacet', await d.getAddress());
+        // grant governance and upgrade roles to deployer
+        const ROLE_GOV = await access.ROLE_GOVERNANCE_BIT();
+        const ROLE_UP = await access.ROLE_UPGRADE_BIT();
+        await access.grantRoles(deployer.address, ROLE_GOV | ROLE_UP);
+        // Prepare monetary facet cut (not yet added)
+        const monetaryFacet = await Monetary.deploy(); await monetaryFacet.waitForDeployment();
+        const mSelectors = addSelectors(monetaryFacet);
+        const proposalId = ethers.keccak256(ethers.toUtf8Bytes('proposal-monetary-1'));
+        await gov.proposeCut(proposalId, [{ facetAddress: await monetaryFacet.getAddress(), action: 0, functionSelectors: mSelectors }], ethers.ZeroAddress, '0x');
+        await gov.queueCut(proposalId);
+        const eta = await gov.eta(proposalId);
+        // attempt premature execute should fail
+        await expect(gov.executeCut(proposalId)).to.be.revertedWith('NOT_READY');
+        // fast-forward time
+        const increaseBy = Number(eta) - Math.floor(Date.now() / 1000) + 2; // ensure past eta
+        await ethers.provider.send('evm_increaseTime', [increaseBy]);
+        await ethers.provider.send('evm_mine', []);
+        await gov.executeCut(proposalId);
+        // verify facet now present
+        const [facetAddresses] = await d.facets();
+        expect(facetAddresses).to.include(await monetaryFacet.getAddress());
+    });
 });
 
 function xorSelectors(signatures) {

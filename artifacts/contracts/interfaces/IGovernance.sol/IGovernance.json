@@ -30,6 +30,18 @@
           "internalType": "address",
           "name": "proposer",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "init",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "initData",
+          "type": "bytes"
         }
       ],
       "name": "CutProposed",
@@ -99,6 +111,25 @@
           "type": "bytes32"
         }
       ],
+      "name": "eta",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
       "name": "executeCut",
       "outputs": [],
       "stateMutability": "nonpayable",
@@ -132,11 +163,40 @@
           "internalType": "struct IDiamondCut.FacetCut[]",
           "name": "cut",
           "type": "tuple[]"
+        },
+        {
+          "internalType": "address",
+          "name": "init",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "initData",
+          "type": "bytes"
         }
       ],
       "name": "proposeCut",
       "outputs": [],
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "proposer",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {

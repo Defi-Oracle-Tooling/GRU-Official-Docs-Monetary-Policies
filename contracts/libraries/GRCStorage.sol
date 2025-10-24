@@ -16,7 +16,14 @@ library GRCStorage {
     struct AuditPeriod { bytes32 merkleRoot; string ipfs; bool isSealed; }
     struct Roles { mapping(address => uint256) roleBits; }
     struct PauseState { bool global; mapping(bytes4 => bool) func; }
-    struct GovernanceState { uint256 timelockSeconds; uint256 quorumBps; mapping(bytes32 => uint256) eta; }
+    struct GovernanceState {
+        uint256 timelockSeconds; uint256 quorumBps;
+        mapping(bytes32 => uint256) eta;                // proposal id => execution time
+        mapping(bytes32 => bytes) encodedCut;           // proposal id => abi.encode(FacetCut[])
+        mapping(bytes32 => address) initAddr;           // optional init address
+        mapping(bytes32 => bytes) initData;             // optional init calldata
+        mapping(bytes32 => address) proposer;           // proposer address
+    }
 
     // Accessors
     function monetary() internal pure returns (MonetaryState storage ms) { bytes32 p = S_MONETARY; assembly { ms.slot := p } }

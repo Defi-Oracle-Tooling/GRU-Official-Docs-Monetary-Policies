@@ -6,4 +6,8 @@ interface IAccess {
     function grantRoles(address account, uint256 roleBits) external;
     function revokeRoles(address account, uint256 roleBits) external;
     function hasRoles(address account, uint256 roleBits) external view returns (bool);
+    function ROLE_UPGRADE_BIT() external pure returns (uint256);
+    function ROLE_GOVERNANCE_BIT() external pure returns (uint256);
+    function ROLE_INDEX_BIT() external pure returns (uint256);
+    function ROLE_MONETARY_BIT() external pure returns (uint256);
 }
