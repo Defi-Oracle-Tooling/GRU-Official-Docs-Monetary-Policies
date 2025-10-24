@@ -1,0 +1,91 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ITriangulation",
+  "sourceName": "contracts/interfaces/ITriangulation.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "input",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "n",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "feeBps",
+          "type": "uint256"
+        }
+      ],
+      "name": "atomicLoop7to10",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "expanded",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "gruAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "redeemFromGRU",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "xauOut",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "feeBps",
+          "type": "uint256"
+        }
+      ],
+      "name": "setFees",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "xauAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "triangulateToGRU",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "gruOut",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

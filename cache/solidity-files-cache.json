@@ -1,0 +1,866 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/GrcDiamond.sol": {
+      "lastModificationDate": 1761339656543,
+      "contentHash": "b6514a14624a0b9cbc121c175f161b70",
+      "sourceName": "contracts/GrcDiamond.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IDiamondCut.sol",
+        "./interfaces/IDiamondLoupe.sol",
+        "./interfaces/IERC165.sol",
+        "./interfaces/IERC173.sol",
+        "./interfaces/IGrcLoupe.sol",
+        "./libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "GrcDiamond"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IDiamondCut.sol": {
+      "lastModificationDate": 1761338467673,
+      "contentHash": "e853cca0e9c19a20d22ce00e7a86b2dd",
+      "sourceName": "contracts/interfaces/IDiamondCut.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IDiamondCut"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IDiamondLoupe.sol": {
+      "lastModificationDate": 1761338468043,
+      "contentHash": "efcf35038270e0791455df4e249724f7",
+      "sourceName": "contracts/interfaces/IDiamondLoupe.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IDiamondLoupe"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IERC165.sol": {
+      "lastModificationDate": 1761338466829,
+      "contentHash": "c3655a4794a0e001990b31096d2e10fa",
+      "sourceName": "contracts/interfaces/IERC165.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IERC165"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IERC173.sol": {
+      "lastModificationDate": 1761338467217,
+      "contentHash": "3efd9678c52a868196579c101e854080",
+      "sourceName": "contracts/interfaces/IERC173.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IERC173"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IGrcLoupe.sol": {
+      "lastModificationDate": 1761338549954,
+      "contentHash": "b598644da17cf044069bfcf50c455da1",
+      "sourceName": "contracts/interfaces/IGrcLoupe.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IGrcLoupe"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/libraries/GRCStorage.sol": {
+      "lastModificationDate": 1761338820013,
+      "contentHash": "49bb6a6a92c226ece39f05bc9ddf8c6e",
+      "sourceName": "contracts/libraries/GRCStorage.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "GRCStorage"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/PauseFacet.sol": {
+      "lastModificationDate": 1761338677767,
+      "contentHash": "98a3bbfedcc5c16977f10070b884f977",
+      "sourceName": "contracts/facets/PauseFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPause.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "PauseFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IPause.sol": {
+      "lastModificationDate": 1761338564808,
+      "contentHash": "56ff363dc955592a23f00113361bc419",
+      "sourceName": "contracts/interfaces/IPause.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IPause"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/MonetaryFacet.sol": {
+      "lastModificationDate": 1761338593373,
+      "contentHash": "84e2290a551ad29e4c68c48a43d85503",
+      "sourceName": "contracts/facets/MonetaryFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IMonetary.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "MonetaryFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IMonetary.sol": {
+      "lastModificationDate": 1761338555381,
+      "contentHash": "3ad16dee421801fa68bd1c2725eaa3de",
+      "sourceName": "contracts/interfaces/IMonetary.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IMonetary"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/IndexFacet.sol": {
+      "lastModificationDate": 1761338615888,
+      "contentHash": "e5895e9df5e3fca52a9caf6bca3836ba",
+      "sourceName": "contracts/facets/IndexFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IIndex.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IndexFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IIndex.sol": {
+      "lastModificationDate": 1761338562962,
+      "contentHash": "3a6ffb40fd5dda51412541d0d5300723",
+      "sourceName": "contracts/interfaces/IIndex.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IIndex"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/GovernanceFacet.sol": {
+      "lastModificationDate": 1761338677012,
+      "contentHash": "288ffbb6ab41d74314b635aab6ff3613",
+      "sourceName": "contracts/facets/GovernanceFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IGovernance.sol",
+        "../interfaces/IDiamondCut.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "GovernanceFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IGovernance.sol": {
+      "lastModificationDate": 1761338856656,
+      "contentHash": "d852443e5e1a9c7cd3baa82ec6f1fecd",
+      "sourceName": "contracts/interfaces/IGovernance.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IDiamondCut.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IGovernance"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/BondFacet.sol": {
+      "lastModificationDate": 1761338632513,
+      "contentHash": "50313080014eb67d849f2bc74d5c1aff",
+      "sourceName": "contracts/facets/BondFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IBond.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "BondFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IBond.sol": {
+      "lastModificationDate": 1761338563343,
+      "contentHash": "a901f67722a6ace3b67f42f80184c8b1",
+      "sourceName": "contracts/interfaces/IBond.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IBond"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/AuditFacet.sol": {
+      "lastModificationDate": 1761338843731,
+      "contentHash": "405a50768c36b6d3efcfe0ce50b8755b",
+      "sourceName": "contracts/facets/AuditFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IAudit.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "AuditFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IAudit.sol": {
+      "lastModificationDate": 1761338843352,
+      "contentHash": "f223e61419ac56dc0793da8e2984aadd",
+      "sourceName": "contracts/interfaces/IAudit.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IAudit"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/AccessFacet.sol": {
+      "lastModificationDate": 1761338677367,
+      "contentHash": "15514808fb7f55fcb124c794465f72f5",
+      "sourceName": "contracts/facets/AccessFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IAccess.sol",
+        "../libraries/GRCStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "AccessFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/IAccess.sol": {
+      "lastModificationDate": 1761338564448,
+      "contentHash": "52adafd6545acc6dbad116f73aa19ec2",
+      "sourceName": "contracts/interfaces/IAccess.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "IAccess"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/TriangulationFacet.sol": {
+      "lastModificationDate": 1761338614887,
+      "contentHash": "69173fd11efa478df7e5f8cd9246d6e4",
+      "sourceName": "contracts/facets/TriangulationFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/ITriangulation.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "TriangulationFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/interfaces/ITriangulation.sol": {
+      "lastModificationDate": 1761338560329,
+      "contentHash": "505332a85f991cc28bde5fd34fd495a3",
+      "sourceName": "contracts/interfaces/ITriangulation.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "ITriangulation"
+      ]
+    }
+  }
+}

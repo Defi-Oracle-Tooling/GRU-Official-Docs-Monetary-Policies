@@ -68,3 +68,21 @@ Annual net expansion capped at 2.75% unless crisis override executed by unanimou
 
 ## Summary
 The framework combines mathematically disciplined issuance, gold parity, and multi-layer liquidity routing to form a sovereign-neutral, auditable reserve standard.
+
+---
+
+## Li Composite Indices & M00 Collateral — Reference
+
+- **LiCRI (Face-Value Composite):**
+  ```
+  LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+  ```
+  Used for reporting, benchmarking, and dashboards.
+
+- **M00 Composite (Asset-Backed Collateral):**
+  ```
+  1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+  ```
+  Used for reserve magnitude and issuance collateral.
+
+*See Glossary and GRU_Formulas for full specification and audit fields.*

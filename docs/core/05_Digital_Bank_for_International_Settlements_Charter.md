@@ -98,5 +98,23 @@ DRB = 0.40 XAU + 0.25 EUR + 0.15 USD + 0.10 BTC + 0.10 LiXAU
 - Annex IV: PoR Attestation Template
 - Annex V: Legal Reference Index
 
+---
+
+## Commodity Index Registry & Dashboard Integration
+
+- **LiCRI (Face-Value Composite):**
+  ```
+  LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+  ```
+  Used for DBIS reporting and benchmarking.
+
+- **M00 Composite (Asset-Backed Collateral):**
+  ```
+  1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+  ```
+  Used for reserve magnitude and issuance collateral.
+
+*See Glossary and GRU_Formulas for full specification and audit fields.*
+
 ## Summary
 The DBIS Charter codifies a modern institutional reserve framework, delivering transparent, asset-backed global settlement capability through GRU integration.

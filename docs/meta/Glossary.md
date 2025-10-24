@@ -236,7 +236,80 @@ mindmap
 
 ---
 
-*Prepared for the GRU Commodity Index Division — Visual & Reference Aids*
+# GRU Li Composite (LiCRI) vs. M00 Composite — Definitive Specification
+
+> This note formalizes the relationship between the **Li Composite Reserve Index (LiCRI)** and the **M00 Composite** under the GRU framework, based on your latest definitions.
+
+---
+
+## 1) Composite Equation (Face‑Value Index)
+**Definition:** The **Li Composite Reserve Index (LiCRI)** is a *face‑value* composite that averages the five Li indices:
+
+```
+LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+```
+
+**Interpretation:** LiCRI is a *face‑value composite of M00* (not the asset‑collateral sum). It is primarily used for reporting, benchmarking, and policy dashboards.
+
+> **Note:** Each Li(Index) adheres to the scalar parity S = 1.2/(0.9475^4) × XAU basis.
+
+---
+
+## 2) Actual Composite Assets of M00 (Collateral Definition)
+**Definition:** The *asset‑backed* composite for the **M00** layer is the scalar‑weighted **sum** of the Li indices (not the average):
+
+```
+1 M00  =  1.2 × ( LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3 )
+```
+
+**Interpretation:** This represents the **collateral side** (asset base) for M00, aggregating all five Li indices and multiplying by 1.2 to reflect the M00 face‑to‑asset mapping.
+
+---
+
+## 3) Relationship Summary
+* **LiCRI** = *Average* of the five Li indices → **Face‑value composite** for presentation/benchmarking.
+* **M00 Composite** = *Sum* of the five Li indices × **1.2** → **Asset‑backed collateral** definition for issuance.
+* Therefore, LiCRI provides a normalized indicator; the M00 composite defines actual reserve magnitude.
+
+---
+
+## 4) Consistency & Parity Notes
+* All Li indices are defined over the same parity scalar **S = 1.2/(0.9475^4)** ensuring XAU triangulation.
+* If any Li basket’s internal **weights** change, **re‑publish** both:
+  * the **LiCRI** (face value), and
+  * the **M00 composite** (asset value),
+    with effective timestamps and hash/version in the PoR/Registry.
+
+---
+
+## 5) Audit/Registry Fields (Recommended)
+| Field                 | Example                                            |
+| --------------------- | -------------------------------------------------- |
+| scalar_S              | `1.2/(0.9475^4)`                                   |
+| LiCRI_formula         | `(LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)/5`     |
+| M00_composite_formula | `1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)` |
+| weights_version       | `v1.0.0`                                           |
+| effective_date        | `2025‑10‑24`                                       |
+| registry_record       | `DSL#GRU-LiCRI-M00-20251024`                       |
+
+---
+
+## 6) Sanity‑Check Example (Symbolic)
+Let each Li index be reported in the same units (already S‑scaled to XAU parity). Then:
+
+```
+Given: LiXAU=a, LiPMG=b, LiBMG1=c, LiBMG2=d, LiBMG3=e
+
+LiCRI               = (a + b + c + d + e) / 5
+M00_CompositeAssets = 1.2 × (a + b + c + d + e)
+```
+
+This keeps **reporting** (LiCRI) and **collateral** (M00 composite) consistent yet distinct.
+
+---
+
+### ✅ Status
+*Spec captured per your inputs. Ready to propagate to the Commodity Index docs, DBIS charter annex, and Reserve Dashboard formulas.*
 
 ---
 

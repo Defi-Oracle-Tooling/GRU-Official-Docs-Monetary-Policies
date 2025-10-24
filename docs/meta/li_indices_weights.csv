@@ -1,0 +1,21 @@
+Index,Constituent,Symbol,Weight
+LiPMG,Gold,Au,0.40
+LiPMG,Silver,Ag,0.20
+LiPMG,Platinum,Pt,0.18
+LiPMG,Palladium,Pd,0.15
+LiPMG,Rhodium,Rh,0.07
+LiBMG1,Copper,Cu,0.35
+LiBMG1,Nickel,Ni,0.20
+LiBMG1,Aluminum,Al,0.25
+LiBMG1,Zinc,Zn,0.12
+LiBMG1,Lead,Pb,0.08
+LiBMG2,Lithium,Li,0.40
+LiBMG2,Cobalt,Co,0.18
+LiBMG2,Graphite,C,0.22
+LiBMG2,Manganese,Mn,0.10
+LiBMG2,Nickel,Ni,0.10
+LiBMG3,Iron Ore,Fe,0.40
+LiBMG3,Cement,Cmt,0.20
+LiBMG3,Glass (Silica),Si,0.12
+LiBMG3,Lumber,Lbr,0.18
+LiBMG3,Aggregates,Agg,0.10

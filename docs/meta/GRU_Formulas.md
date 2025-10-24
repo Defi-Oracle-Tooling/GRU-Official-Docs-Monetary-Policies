@@ -184,6 +184,37 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
 
 ---
 
+# LiCRI vs. M00 Composite — Cross-Reference
+
+## Composite Equations
+- **LiCRI (Face-Value Composite):**
+  ```
+  LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+  ```
+  Used for reporting, benchmarking, and dashboards.
+
+- **M00 Composite (Asset-Backed Collateral):**
+  ```
+  1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+  ```
+  Used for reserve magnitude and issuance collateral.
+
+## Consistency Notes
+- Scalar parity S = 1.2/(0.9475^4) applies to all Li indices.
+- Any change in basket weights requires re-publication of both LiCRI and M00 composite, with effective date and version.
+
+## Audit/Registry Fields (Recommended)
+| Field                 | Example                                            |
+| --------------------- | -------------------------------------------------- |
+| scalar_S              | `1.2/(0.9475^4)`                                   |
+| LiCRI_formula         | `(LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)/5`     |
+| M00_composite_formula | `1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)` |
+| weights_version       | `v1.0.0`                                           |
+| effective_date        | `2025‑10‑24`                                       |
+| registry_record       | `DSL#GRU-LiCRI-M00-20251024`                       |
+
+---
+
 *See Glossary for definitions and integration notes.*
 
 ---

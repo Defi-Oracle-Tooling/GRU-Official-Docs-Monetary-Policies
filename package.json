@@ -1,0 +1,14 @@
+{
+    "name": "gru-grc-2535",
+    "version": "0.1.0",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "compile": "hardhat compile",
+        "test": "hardhat test"
+    },
+    "devDependencies": {
+        "hardhat": "^2.22.0",
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+    }
+}

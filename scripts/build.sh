@@ -122,6 +122,14 @@ CHECKSUM_FILE="$DIST_DIR/metadata/GRU_Checksum_Verification_Log.txt"
     rel=${file#"$DIST_DIR/"}
     echo "$sum  $rel"
   done
+   # Add Li-Indices diagram and weights files to checksum log
+   for f in "$ROOT_DIR/docs/meta/li_indices_enhancement_playbook.md" "$ROOT_DIR/docs/meta/li_indices_weights.yaml" "$ROOT_DIR/docs/meta/li_indices_weights.csv" "$ROOT_DIR/docs/meta/CHANGELOG.md"; do
+     if [ -f "$f" ]; then
+       sum=$(sha256sum "$f" | awk '{print $1}')
+       rel=${f#"$ROOT_DIR/"}
+       echo "$sum  $rel"
+     fi
+   done
 } > "$CHECKSUM_FILE"
 
 # Create ZIP archive

@@ -2,3 +2,4 @@
 /dist/
 GRU_Master_Whitepaper_PRO.zip
 *.log
+node_modules

@@ -95,5 +95,23 @@ Where:
 - Stab ∈ [0,1] after outlier filtering
 - V_GRU = w1·v_adj + w2·v_cov + w3·Stab (weights tuned by volatility regime)
 
+---
+
+## Dashboard & Registry Formula Integration
+
+- **LiCRI (Face-Value Composite):**
+  ```
+  LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
+  ```
+  Used for monthly dashboard and reporting.
+
+- **M00 Composite (Asset-Backed Collateral):**
+  ```
+  1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+  ```
+  Used for reserve magnitude and issuance collateral.
+
+*See Glossary and GRU_Formulas for full specification and audit fields.*
+
 ## Summary
 This roadmap operationalizes GRU as a transparent, adaptive, and globally interoperable monetary infrastructure, enabling resilient institutional adoption under the DBIS umbrella.
