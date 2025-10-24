@@ -53,6 +53,10 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
     // DiamondCut
     uint256 internal constant ROLE_UPGRADE = 1 << 0;
     function diamondCut(FacetCut[] calldata _cut, address _init, bytes calldata _calldata) external override {
+        // reentrancy guard
+        GRCStorage.Reentrancy storage rs = GRCStorage.reentrancy();
+        if(rs.entered == 1) revert Errors.ErrReentrancy();
+        rs.entered = 1;
         // access control: owner, internal (self-call), or upgrade role holder
         if(msg.sender != _owner && msg.sender != address(this)) {
             if((GRCStorage.roles().roleBits[msg.sender] & ROLE_UPGRADE) == 0) revert Errors.ErrUpgradeRole();
@@ -90,6 +94,7 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
             (bool ok, bytes memory err) = _init.delegatecall(_calldata);
             require(ok, string(err));
         }
+        rs.entered = 0;
     }
 
     // Loupe minimal (expand later)

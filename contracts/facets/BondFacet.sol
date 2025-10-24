@@ -6,11 +6,16 @@ import {Errors} from "../libraries/Errors.sol";
 import {IERC173} from "../interfaces/IERC173.sol";
 contract BondFacet is IBond {
     uint256 internal constant ROLE_GOVERNANCE = 1 << 1;
+    modifier nonReentrant() {
+        GRCStorage.Reentrancy storage rs = GRCStorage.reentrancy();
+        if(rs.entered == 1) revert Errors.ErrReentrancy();
+        rs.entered = 1; _; rs.entered = 0;
+    }
     modifier onlyGovOrOwner() {
         if(IERC173(address(this)).owner() != msg.sender && (GRCStorage.roles().roleBits[msg.sender] & ROLE_GOVERNANCE) == 0) revert Errors.ErrGovernanceRole();
         _;
     }
-    function issueLi99(bytes32 series, address to, uint256 notional) external onlyGovOrOwner {
+    function issueLi99(bytes32 series, address to, uint256 notional) external onlyGovOrOwner nonReentrant {
     if(to == address(0)) revert Errors.ErrZeroAddress(); if(notional == 0) revert Errors.ErrZeroNotional();
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
     if(bs.active) revert Errors.ErrSeriesExists();
@@ -18,7 +23,7 @@ contract BondFacet is IBond {
         bs.termYears = 5; bs.lastCouponTs = uint64(block.timestamp);
         emit BondIssued(series, to, notional);
     }
-    function accrueCoupons(bytes32 series) external returns (uint256 accrued) {
+    function accrueCoupons(bytes32 series) external nonReentrant returns (uint256 accrued) {
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
     if(!bs.active) revert Errors.ErrSeriesInactive();
         uint256 elapsed = block.timestamp - bs.lastCouponTs;
@@ -28,7 +33,7 @@ contract BondFacet is IBond {
         bs.lastCouponTs = uint64(block.timestamp);
         emit CouponsAccrued(series, accrued);
     }
-    function buyback(bytes32 series) external returns (uint256 principalClosed) {
+    function buyback(bytes32 series) external nonReentrant returns (uint256 principalClosed) {
         GRCStorage.BondSeries storage bs = GRCStorage.bond(series);
         if(!bs.active) revert Errors.ErrSeriesInactive();
         // economic invariant: coverage must be >= principal * 120% if principal > 0

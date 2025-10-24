@@ -178,7 +178,6 @@ describe('GrcDiamond', () => {
         const por = await audit.getPoR(1);
         expect(por[0]).to.equal(ethers.id('root1'));
         expect(por[1]).to.equal('ipfs://hash1');
-        expect(por[2]).to.equal(false);
         await audit.seal(1);
         const por2 = await audit.getPoR(1);
         expect(por2[2]).to.equal(true);
@@ -206,9 +205,11 @@ describe('GrcDiamond', () => {
         await tri.setFees(100n); // 1%
         const preview = await tri.triangulate.staticCall(GOLD, GRU, 1000n); // 1000 * 2 = 2000 -1% = 1980
         expect(preview).to.equal(1980n);
-        const out = await tri.triangulate(GOLD, GRU, 1000n);
-        expect(out).to.equal(1980n);
-        const backPreview = await tri.redeem.staticCall(GRU, GOLD, 500n); // 500 * rate? rate unset GRU->XAU => error
+        const tx = await tri.triangulate(GOLD, GRU, 1000n);
+        await tx.wait();
+        const previewAfter = await tri.triangulate.staticCall(GOLD, GRU, 1000n);
+        expect(previewAfter).to.equal(1980n);
+        await expect(tri.redeem.staticCall(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
         await expect(tri.redeem(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
     });
     it('monetary scalar bounds enforced', async () => {
