@@ -9,6 +9,24 @@ import {GRCStorage} from "./libraries/GRCStorage.sol";
 import {Errors} from "./libraries/Errors.sol";
 
 contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
+    // Event declarations aggregated for subgraph ABI (emitted via delegatecall from facets)
+    event IndexWeightsUpdated(bytes32 indexed id, uint64 version);
+    event DashboardSnapshot(bytes32 indexed dashboardHash, uint64 globalVersion, uint256 liCRI, uint256 timestamp);
+    event BondIssued(bytes32 indexed series, address indexed to, uint256 notional);
+    event CouponsAccrued(bytes32 indexed series, uint256 amount);
+    event BondBuyback(bytes32 indexed series, uint256 principalClosed);
+    event CutProposed(bytes32 indexed id, address proposer, address init, bytes initData);
+    event CutQueued(bytes32 indexed id, uint256 eta);
+    event CutExecuted(bytes32 indexed id);
+    event EmergencyBrake(bytes4 indexed selector, bool paused);
+    event FunctionPaused(bytes4 indexed selector, bool paused);
+    event PoRPosted(uint64 indexed period, bytes32 root, string ipfsRef);
+    event PoRSealed(uint64 indexed period);
+    event RateSet(bytes32 indexed fromAsset, bytes32 indexed toAsset, uint256 rate);
+    event Triangulated(bytes32 indexed fromAsset, bytes32 indexed toAsset, uint256 inputAmount, uint256 outputAmount);
+    event Redeemed(bytes32 indexed fromAsset, bytes32 indexed toAsset, uint256 inputAmount, uint256 outputAmount);
+    event FeeUpdated(uint256 oldFeeBps, uint256 newFeeBps);
+    event ScalarUpdated(uint256 oldScalar, uint256 newScalar);
     struct SelectorInfo { address facet; }
     mapping(bytes4 => SelectorInfo) internal _selectorInfo;
     address[] private _facetAddresses;              // dynamic list of facet addresses
@@ -92,7 +110,15 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
         emit DiamondCut(_cut, _init, _calldata);
         if(_init != address(0)) {
             (bool ok, bytes memory err) = _init.delegatecall(_calldata);
-            require(ok, string(err));
+            if(!ok) {
+                if(err.length > 0) {
+                    assembly {
+                        revert(add(err,0x20), mload(err))
+                    }
+                } else {
+                    revert("INIT_FAIL");
+                }
+            }
         }
         rs.entered = 0;
     }

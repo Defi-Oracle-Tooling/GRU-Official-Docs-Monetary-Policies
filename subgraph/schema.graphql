@@ -29,3 +29,25 @@ type Triangulated @entity { id: ID! fromAsset: Bytes! toAsset: Bytes! inputAmoun
 type Redeemed @entity { id: ID! fromAsset: Bytes! toAsset: Bytes! inputAmount: BigInt! outputAmount: BigInt! }
 
 type FeeUpdated @entity { id: ID! oldFeeBps: BigInt! newFeeBps: BigInt! }
+
+# Daily LiCRI snapshot (aggregated from DashboardSnapshot events)
+type DailyLiCRISnapshot @entity {
+	id: ID!            # day key YYYY-MM-DD
+	dayStart: BigInt!  # unix start of day
+	lastLiCRI: BigInt! # latest LiCRI seen this day
+	globalVersion: BigInt!
+	updates: Int!      # number of snapshots processed
+}
+
+# Governance proposal lifecycle tracking
+type GovernanceProposal @entity {
+	id: ID!              # proposalId bytes32 hex
+	proposer: Bytes
+	init: Bytes
+	initData: Bytes
+	eta: BigInt          # set on queue
+	executed: Boolean!   # true when executed
+	queued: Boolean!     # true when queued
+	createdAt: BigInt!   # block timestamp of proposal
+	executedAt: BigInt   # block timestamp of execution
+}

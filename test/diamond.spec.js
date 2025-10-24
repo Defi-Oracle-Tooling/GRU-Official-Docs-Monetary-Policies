@@ -220,8 +220,9 @@ describe('GrcDiamond', () => {
         // prepare init contract
         const Reenter = await ethers.getContractFactory('ReenterInit');
         const reInit = await Reenter.deploy(); await reInit.waitForDeployment();
-        // create empty cut and use init that re-calls diamondCut -> expect reentrancy revert
-        await expect(d.diamondCut([], await reInit.getAddress(), '0x')).to.be.revertedWithCustomError(d, 'ErrReentrancy');
+        // encode init(address) with diamond address so initializer delegatecalls and attempts recursive diamondCut
+        const initCalldata = reInit.interface.encodeFunctionData('init', [await d.getAddress()]);
+        await expect(d.diamondCut([], await reInit.getAddress(), initCalldata)).to.be.revertedWithCustomError(d, 'ErrReentrancy');
     });
     it('facet code length integrity check', async () => {
         const [deployer] = await ethers.getSigners();
