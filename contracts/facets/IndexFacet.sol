@@ -3,7 +3,12 @@ pragma solidity ^0.8.21;
 import {IIndex} from "../interfaces/IIndex.sol";
 import {GRCStorage} from "../libraries/GRCStorage.sol";
 contract IndexFacet is IIndex {
-    function setWeights(bytes32 indexId, bytes32[] calldata keys, uint256[] calldata weights, uint64 version, bytes32 dashboardHash) external {
+    uint256 internal constant ROLE_INDEX = 1 << 2;
+    modifier onlyIndexRole() {
+        if((GRCStorage.roles().roleBits[msg.sender] & ROLE_INDEX) == 0) revert("NO_INDEX_ROLE");
+        _;
+    }
+    function setWeights(bytes32 indexId, bytes32[] calldata keys, uint256[] calldata weights, uint64 version, bytes32 dashboardHash) external onlyIndexRole {
         require(keys.length == weights.length, "LEN");
         uint256 sum;
         for(uint i; i<weights.length; i++){ sum += weights[i]; }
@@ -20,7 +25,7 @@ contract IndexFacet is IIndex {
         GRCStorage.IndexEntry storage ie = GRCStorage.indexEntry(indexId);
         version = ie.version; dashboardHash = ie.dashboardHash; keys = ie.keys; weights = ie.weights;
     }
-    function recalcLiCRI(bytes32[] calldata componentIds, uint256[] calldata componentValues) external returns (uint256 faceValueComposite) {
+    function recalcLiCRI(bytes32[] calldata componentIds, uint256[] calldata componentValues) external onlyIndexRole returns (uint256 faceValueComposite) {
         require(componentIds.length == componentValues.length, "LEN");
         uint256 sum;
         for(uint i; i<componentValues.length; i++){ sum += componentValues[i]; }
@@ -29,10 +34,19 @@ contract IndexFacet is IIndex {
         isx.liCRI = faceValueComposite;
     emit DashboardSnapshot(bytes32(0), isx.globalVersion, faceValueComposite, block.timestamp);
     }
-    function setDashboardComposite(bytes32 dashboardHash, uint256 liCRI, uint64 globalVersion) external {
+    function setDashboardComposite(bytes32 dashboardHash, uint256 liCRI, uint64 globalVersion) external onlyIndexRole {
         GRCStorage.IndexState storage isx = GRCStorage.index();
         isx.liCRI = liCRI; isx.globalVersion = globalVersion;
     emit DashboardSnapshot(dashboardHash, globalVersion, liCRI, block.timestamp);
     }
     function getLiCRI() external view returns (uint256) { return GRCStorage.index().liCRI; }
+    function setIndexValue(bytes32 indexId, uint256 value) external onlyIndexRole {
+        GRCStorage.IndexEntry storage ie = GRCStorage.indexEntry(indexId);
+        if(ie.keys.length == 0){ ie.keys.push(bytes32("VALUE")); ie.weights.push(value); }
+        else { ie.weights[0] = value; }
+    }
+    function getIndexValue(bytes32 indexId) external view returns (uint256) {
+        GRCStorage.IndexEntry storage ie = GRCStorage.indexEntry(indexId);
+        return ie.weights.length == 0 ? 0 : ie.weights[0];
+    }
 }

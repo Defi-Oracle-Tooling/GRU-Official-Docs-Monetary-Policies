@@ -62,4 +62,9 @@ contract GovernanceFacet is IGovernance {
     function quorumBps() external view returns (uint256) { return GRCStorage.governance().quorumBps; }
     function eta(bytes32 id) external view returns (uint256) { return GRCStorage.governance().eta[id]; }
     function proposer(bytes32 id) external view returns (address) { return GRCStorage.governance().proposer[id]; }
+    function setGovernanceParams(uint256 timelockSeconds, uint256 quorumBps) external onlyGov {
+        GRCStorage.GovernanceState storage gs = GRCStorage.governance();
+        gs.timelockSeconds = timelockSeconds;
+        gs.quorumBps = quorumBps;
+    }
 }

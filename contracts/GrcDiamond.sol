@@ -108,6 +108,10 @@ contract GrcDiamond is IDiamondCut, IDiamondLoupe, IERC165, IERC173, IGrcLoupe {
 
     // Fallback delegate to facet
     fallback() external payable {
+        // pause checks
+        GRCStorage.PauseState storage ps = GRCStorage.pause();
+        require(!ps.global, "PAUSED_GLOBAL");
+        require(!ps.func[msg.sig], "PAUSED_FUNC");
         address facet = _selectorInfo[msg.sig].facet;
         require(facet != address(0), "NO_FACET");
         assembly {

@@ -12,7 +12,7 @@ library GRCStorage {
     struct MonetaryState { uint256 m00; uint256 m0; uint256 m1; uint256 scalarS; }
     struct IndexEntry { uint64 version; bytes32 dashboardHash; bytes32[] keys; uint256[] weights; }
     struct IndexState { uint64 globalVersion; uint256 liCRI; mapping(bytes32 => IndexEntry) indices; }
-    struct BondSeries { uint256 coverage; uint256 couponBps; uint64 termYears; bool active; }
+    struct BondSeries { uint256 principal; uint256 coverage; uint256 couponBps; uint64 termYears; uint64 lastCouponTs; bool active; }
     struct AuditPeriod { bytes32 merkleRoot; string ipfs; bool isSealed; }
     struct Roles { mapping(address => uint256) roleBits; }
     struct PauseState { bool global; mapping(bytes4 => bool) func; }

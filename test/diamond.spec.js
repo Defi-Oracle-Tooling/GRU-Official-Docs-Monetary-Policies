@@ -104,6 +104,14 @@ describe('GrcDiamond', () => {
         // add IndexFacet selectors
         const selectors = idx.interface.fragments.filter(f => f.type === 'function').map(f => idx.interface.getFunction(f.name).selector);
         await d.diamondCut([{ facetAddress: await idx.getAddress(), action: 0, functionSelectors: selectors }], ethers.ZeroAddress, '0x');
+        // add access facet & grant index role
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const accessSelectors = accessFacet.interface.fragments.filter(f => f.type === 'function').map(f => accessFacet.interface.getFunction(f.name).selector);
+        await d.diamondCut([{ facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: accessSelectors }], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const ROLE_INDEX = await access.ROLE_INDEX_BIT();
+        await access.grantRoles(deployer.address, ROLE_INDEX);
         const indexId = ethers.id('LiPMG');
         const keys = [ethers.id('Au'), ethers.id('Ag'), ethers.id('Pt'), ethers.id('Pd'), ethers.id('Rh')];
         const rawWeights = [
@@ -148,6 +156,8 @@ describe('GrcDiamond', () => {
         const ROLE_GOV = await access.ROLE_GOVERNANCE_BIT();
         const ROLE_UP = await access.ROLE_UPGRADE_BIT();
         await access.grantRoles(deployer.address, ROLE_GOV | ROLE_UP);
+        // set timelock to 1 hour
+        await gov.setGovernanceParams(3600, 0);
         // Prepare monetary facet cut (not yet added)
         const monetaryFacet = await Monetary.deploy(); await monetaryFacet.waitForDeployment();
         const mSelectors = addSelectors(monetaryFacet);
@@ -165,6 +175,91 @@ describe('GrcDiamond', () => {
         // verify facet now present
         const [facetAddresses] = await d.facets();
         expect(facetAddresses).to.include(await monetaryFacet.getAddress());
+    });
+    it('role enforcement prevents unauthorized index updates', async () => {
+        const [deployer, attacker] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Index = await ethers.getContractFactory('IndexFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const indexFacetImpl = await Index.deploy(); await indexFacetImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await indexFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(indexFacetImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const index = await ethers.getContractAt('IndexFacet', await d.getAddress());
+        const ROLE_INDEX = await access.ROLE_INDEX_BIT();
+        // attacker tries without role
+        const hundred = 100n * 10n ** 18n;
+        await expect(index.connect(attacker).setIndexValue(ethers.id('LiXAU'), hundred)).to.be.revertedWith('NO_INDEX_ROLE');
+        // grant role
+        await access.grantRoles(deployer.address, ROLE_INDEX);
+        await index.setIndexValue(ethers.id('LiXAU'), hundred);
+        expect(await index.getIndexValue(ethers.id('LiXAU'))).to.equal(hundred);
+    });
+    it('bond series issuance and coupon accrual functions', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Bond = await ethers.getContractFactory('BondFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const bondFacetImpl = await Bond.deploy(); await bondFacetImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await bondFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(bondFacetImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const bond = await ethers.getContractAt('BondFacet', await d.getAddress());
+        const ROLE_GOV = await access.ROLE_GOVERNANCE_BIT();
+        await access.grantRoles(deployer.address, ROLE_GOV);
+        const series = ethers.id('Li99-2025A');
+        await bond.issueLi99(series, deployer.address, 1_000_000n);
+        await ethers.provider.send('evm_increaseTime', [30 * 24 * 3600]); // advance ~30 days
+        await ethers.provider.send('evm_mine', []);
+        const accruedPreview = await bond.accrueCoupons.staticCall(series);
+        expect(accruedPreview).to.be.gt(0n);
+        await bond.accrueCoupons(series);
+        const coverage = await bond.coverageCheck(series);
+        expect(coverage[0]).to.equal(true);
+        const closedPreview = await bond.buyback.staticCall(series);
+        expect(closedPreview).to.equal(1_000_000n);
+        await bond.buyback(series);
+    });
+    it('pause system blocks facet calls', async () => {
+        const [deployer] = await ethers.getSigners();
+        const Diamond = await ethers.getContractFactory('GrcDiamond');
+        const d = await Diamond.deploy(deployer.address, 'grc-0.1.0'); await d.waitForDeployment();
+        const Access = await ethers.getContractFactory('AccessFacet');
+        const Pause = await ethers.getContractFactory('PauseFacet');
+        const Monetary = await ethers.getContractFactory('MonetaryFacet');
+        const accessFacet = await Access.deploy(); await accessFacet.waitForDeployment();
+        const pauseFacetImpl = await Pause.deploy(); await pauseFacetImpl.waitForDeployment();
+        const monetaryImpl = await Monetary.deploy(); await monetaryImpl.waitForDeployment();
+        const addSelectors = (c) => c.interface.fragments.filter(f => f.type === 'function').map(f => c.interface.getFunction(f.name).selector);
+        await d.diamondCut([
+            { facetAddress: await accessFacet.getAddress(), action: 0, functionSelectors: addSelectors(accessFacet) },
+            { facetAddress: await pauseFacetImpl.getAddress(), action: 0, functionSelectors: addSelectors(pauseFacetImpl) },
+            { facetAddress: await monetaryImpl.getAddress(), action: 0, functionSelectors: addSelectors(monetaryImpl) }
+        ], ethers.ZeroAddress, '0x');
+        const access = await ethers.getContractAt('AccessFacet', await d.getAddress());
+        const pause = await ethers.getContractAt('PauseFacet', await d.getAddress());
+        const ROLE_MON = await access.ROLE_MONETARY_BIT();
+        await access.grantRoles(deployer.address, ROLE_MON | (await access.ROLE_GOVERNANCE_BIT()));
+        // function selector for setScalarS(uint256)
+        const sel = monetaryImpl.interface.getFunction('setScalarS').selector;
+        await pause.setFunctionPause(sel, true);
+        const monetary = await ethers.getContractAt('MonetaryFacet', await d.getAddress());
+        await expect(monetary.setScalarS(123n)).to.be.revertedWith('PAUSED_FUNC');
+        await pause.setFunctionPause(sel, false);
+        await monetary.setScalarS(123n);
+        // global pause
+        await pause.setGlobalPause(true);
+        await expect(monetary.setScalarS(456n)).to.be.revertedWith('PAUSED_GLOBAL');
     });
 });
 
