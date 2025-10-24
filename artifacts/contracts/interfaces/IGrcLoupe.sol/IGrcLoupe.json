@@ -27,6 +27,11 @@
           "internalType": "uint256[]",
           "name": "weights",
           "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "dashboardHash",
+          "type": "bytes32"
         }
       ],
       "stateMutability": "view",

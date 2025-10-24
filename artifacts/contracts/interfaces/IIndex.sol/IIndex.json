@@ -9,6 +9,37 @@
         {
           "indexed": true,
           "internalType": "bytes32",
+          "name": "dashboardHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "globalVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "liCRI",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "DashboardSnapshot",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
           "name": "id",
           "type": "bytes32"
         },
@@ -46,6 +77,11 @@
           "internalType": "uint256[]",
           "name": "weights",
           "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "dashboardHash",
+          "type": "bytes32"
         }
       ],
       "stateMutability": "view",
@@ -65,7 +101,18 @@
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "componentIds",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "componentValues",
+          "type": "uint256[]"
+        }
+      ],
       "name": "recalcLiCRI",
       "outputs": [
         {
@@ -74,7 +121,30 @@
           "type": "uint256"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "dashboardHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "liCRI",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint64",
+          "name": "globalVersion",
+          "type": "uint64"
+        }
+      ],
+      "name": "setDashboardComposite",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -98,6 +168,11 @@
           "internalType": "uint64",
           "name": "version",
           "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "dashboardHash",
+          "type": "bytes32"
         }
       ],
       "name": "setWeights",

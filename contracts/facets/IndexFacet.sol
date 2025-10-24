@@ -3,7 +3,6 @@ pragma solidity ^0.8.21;
 import {IIndex} from "../interfaces/IIndex.sol";
 import {GRCStorage} from "../libraries/GRCStorage.sol";
 contract IndexFacet is IIndex {
-    event DashboardSnapshot(bytes32 indexed dashboardHash, uint64 globalVersion, uint256 liCRI, uint256 timestamp);
     function setWeights(bytes32 indexId, bytes32[] calldata keys, uint256[] calldata weights, uint64 version, bytes32 dashboardHash) external {
         require(keys.length == weights.length, "LEN");
         uint256 sum;
@@ -28,12 +27,12 @@ contract IndexFacet is IIndex {
         faceValueComposite = sum / componentValues.length; // simple average placeholder
         GRCStorage.IndexState storage isx = GRCStorage.index();
         isx.liCRI = faceValueComposite;
-        emit DashboardSnapshot(bytes32(0), isx.globalVersion, faceValueComposite, block.timestamp);
+    emit DashboardSnapshot(bytes32(0), isx.globalVersion, faceValueComposite, block.timestamp);
     }
     function setDashboardComposite(bytes32 dashboardHash, uint256 liCRI, uint64 globalVersion) external {
         GRCStorage.IndexState storage isx = GRCStorage.index();
         isx.liCRI = liCRI; isx.globalVersion = globalVersion;
-        emit DashboardSnapshot(dashboardHash, globalVersion, liCRI, block.timestamp);
+    emit DashboardSnapshot(dashboardHash, globalVersion, liCRI, block.timestamp);
     }
     function getLiCRI() external view returns (uint256) { return GRCStorage.index().liCRI; }
 }

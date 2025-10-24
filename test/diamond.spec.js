@@ -106,7 +106,13 @@ describe('GrcDiamond', () => {
         await d.diamondCut([{ facetAddress: await idx.getAddress(), action: 0, functionSelectors: selectors }], ethers.ZeroAddress, '0x');
         const indexId = ethers.id('LiPMG');
         const keys = [ethers.id('Au'), ethers.id('Ag'), ethers.id('Pt'), ethers.id('Pd'), ethers.id('Rh')];
-        const rawWeights = [0.4e18, 0.2e18, 0.18e18, 0.15e18, 0.07e18];
+        const rawWeights = [
+            400000000000000000n,
+            200000000000000000n,
+            180000000000000000n,
+            150000000000000000n,
+            70000000000000000n
+        ];
         // sum validation is 1e18 (1.0 in fixed point)
         const dashboardHash = ethers.keccak256(ethers.toUtf8Bytes('dashboard:LiCRI:2025-10-24'));
         const indexFacet = await ethers.getContractAt('IndexFacet', await d.getAddress());
