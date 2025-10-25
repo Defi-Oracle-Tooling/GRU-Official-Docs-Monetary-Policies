@@ -1,150 +1,685 @@
-# Global Reserve Unit (GRU) – Official Monetary Policy Documentation
+<div align="center">
+  
+# 🌍 Global Reserve Unit (GRU)
+## Official Monetary Policy Documentation
 
-## Repository Purpose
-This repository contains the structured institutional documentation set for the **Global Reserve Unit (GRU)** monetary architecture and the **Digital Bank for International Settlements (DBIS)** concept charter. It standardizes core policy, mechanical issuance logic, governance, bond infrastructure, and forward expansion roadmap materials.
+[![Build Status](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/workflows/GRU%20Documentation%20Build/badge.svg)](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/actions)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Documentation Status](https://img.shields.io/badge/docs-stable-brightgreen.svg)](#core-documents-overview)
+[![Smart Contracts](https://img.shields.io/badge/contracts-Diamond%20Standard-blue.svg)](#smart-contract-architecture)
 
-## Directory Structure
+<br/>
+
+```mermaid
+graph TB
+    subgraph "🏛️ GRU Monetary System"
+        M00["M00 - Sovereign Issuance<br/>🔐 Base Reserve Layer"]
+        M0["M0 - Institutional<br/>🏦 Reserve Circulation"]
+        M1["M1 - Commercial<br/>💰 eMoney Layer"]
+        
+        M00 -->|1:5 ratio| M0
+        M00 -->|1:25 ratio| M1
+    end
+    
+    subgraph "🎯 Core Pillars"
+        P1["📊 Parity & Stability<br/>XAU Gold Anchor"]
+        P2["💧 Liquidity Management<br/>Li99 Bond System"]
+        P3["⚖️ Multi-Chamber Governance<br/>SHTE Framework"]
+        P4["🔄 Programmable Expansion<br/>7:10 Triangulation"]
+    end
+    
+    subgraph "🌐 Integration"
+        DBIS["Digital Bank for<br/>International Settlements"]
+        Smart["Diamond Standard<br/>Smart Contracts"]
+        Audit["Quarterly PoR<br/>& Transparency"]
+    end
+    
+    M00 -.-> P1
+    M0 -.-> P2
+    M1 -.-> P3
+    P4 -.-> Smart
+    Smart -.-> DBIS
+    DBIS -.-> Audit
 ```
-docs/
-	core/               # Primary white paper section documents
-		00_GRU_Executive_Summary.md
-		01_GRU_Monetary_Policy_Framework.md
-		02_GRU_Triangulation_eMoney_Creation.md
-		03_GRU_Bond_System_Liquidity_Management.md
-		04_GRU_Governance_Regulatory_Oversight.md
-		05_Digital_Bank_for_International_Settlements_Charter.md
-		06_GRU_Enhancement_Expansion_Roadmap.md
-	meta/               # Supporting references & annexes
-		GRU_Formulas.md
-		Glossary.md
-		Risk_Annex.md
-		preamble.tex    # LaTeX PDF styling header
-	media/              # Diagrams (SVG assets)
-		issuance_cycle.svg
-		triangulation_flow.svg
-		governance_chambers.svg
-		bond_cycle.svg
-		velocity_metrics.svg
-scripts/                # Build & packaging automation
-dist/                   # Generated artifacts (ignored on commit)
-LICENSE                 # License (CC BY 4.0)
-README.md               # This file
-```
-
-## Core Documents Overview
-| File | Scope | Status |
-|------|-------|--------|
-| 00_GRU_Executive_Summary.md | High-level orientation, pillar map, quick ratios | Stable |
-| 01_GRU_Monetary_Policy_Framework.md | Structural ratios, reserve policy, governance layers | Stable |
-| 02_GRU_Triangulation_eMoney_Creation.md | Atomic issuance, 7:10 protocol, 40/40/20 rule | Stable |
-| 03_GRU_Bond_System_Liquidity_Management.md | Li99-series bonds, coupon & buy-back cycles | Stable |
-| 04_GRU_Governance_Regulatory_Oversight.md | Multi-chamber SHTE governance & compliance | Stable |
-| 05_Digital_Bank_for_International_Settlements_Charter.md | DBIS treaty-style charter & integration | Stable |
-| 06_GRU_Enhancement_Expansion_Roadmap.md | Phase rollout, aggregates M2/M3, future enhancements | Stable |
-
-## Build & Packaging
-Run the build script to generate PDF, DOCX, combined master collection, checksum log, and ZIP archive.
-
-### Prerequisites
-- `pandoc` (for PDF/DOCX conversion)
-- `sha256sum` (standard on most Unix systems)
-- `zip`
-- LaTeX engine: `xelatex` preferred (Unicode), fallback `lualatex` / `pdflatex`
-- Optional: `librsvg2-bin` for SVG → PDF embedding
-
-### Build
-```
-chmod +x scripts/build.sh
-./scripts/build.sh
-```
-Artifacts produced under `dist/`:
-```
-dist/
-	markdown/                      # Source markdown copies + master collection
-	pdf/                           # PDF conversions (if pandoc present)
-	docx/                          # DOCX conversions (if pandoc present)
-	metadata/                      # Checksum log & auxiliary notices
-	GRU_Master_Whitepaper_PRO.zip  # Packaged archive
-```
-
-If pandoc is missing, a warning is written to `dist/metadata/pandoc_missing.txt` and only markdown + checksum output are generated.
-
-### PDF Styling / Preamble
-The build injects `docs/meta/preamble.tex` (geometry, colors, headers, formula box) for consistent presentation. Edit this file to customize typography or disable by removing it (script falls back gracefully).
-
-### Diagrams
-Inline references to:
-- `docs/media/issuance_cycle.svg` (Reserve → Issuance → Circulation loop)
-- `docs/media/triangulation_flow.svg` (Triangulation path & control instruments)
-- `docs/media/governance_chambers.svg` (Multi-chamber governance + external audit)
-- `docs/media/bond_cycle.svg` (Li99 coupon accrual → escrow → buy-back loop)
-- `docs/media/velocity_metrics.svg` (Composite velocity index construction: v_raw, v_adj, v_cov, stability filter)
-
-### Master Collection Ordering
-`00_GRU_Executive_Summary.md` precedes numerically ordered core sections. The master aggregate (`00_GRU_Master_Whitepaper_Collection.*`) concatenates all core docs post-build.
-
-## Checksum Verification
-Use the generated `GRU_Checksum_Verification_Log.txt`:
-```
-sha256sum -c dist/metadata/GRU_Checksum_Verification_Log.txt
-```
-All entries should report `OK`. Any mismatch indicates tampering or file corruption.
-
-## Versioning & Release
-1. Ensure build completes successfully.
-2. Review changes & commit.
-3. Tag initial stable release:
-```
-git tag -a v1.0.0 -m "GRU Documentation Initial Stable Release"
-git push --tags
-```
-4. Increment versions for enhancements (e.g. v1.1.0 adds diagrams & preamble styling).
-
-## Licensing
-Content is released under **Creative Commons Attribution 4.0 (CC BY 4.0)**. Attribution required for reuse or derivative works.
-
-## Roadmap (High-Level)
-- [x] Executive Summary integration
-- [x] Master collection auto-generation
-- [x] Diagram assets (issuance, triangulation, governance)
-- [x] Bond cycle diagram + velocity metric dashboard
-- [x] Extended glossary (ESG, velocity, oracle classes, settlement taxonomy)
-- [ ] CI signing key management automation
-- [ ] External oracle redundancy specification
-
-## Contribution Guidelines (Lightweight)
-1. Maintain front matter consistency (title, version, status, last_updated, checksum placeholder).
-2. Avoid reformatting unrelated sections in edits.
-3. Update `last_updated` date on substantive content change.
-4. Re-run build script before tagging releases.
-5. Update `GRU_Formulas.md` when introducing new equations.
-6. Keep SVG diagrams minimal (text-based, few shapes) for readable diffs.
-7. Use semantic commits (docs:, build:, ci:, security:) where possible.
-
-## Integrity & Transparency Notes
-- Reserve and issuance modeling assumes external validation modules (planned DSL PoR interface).
-- Risk Annex is provisional—thresholds subject to operational telemetry after initial deployment.
-- Master PDF build stabilization achieved via YAML front matter stripping & removed decorative end markers plus pre-converted SVG→PDF assets for reliable embedding.
-
-## Contact / Stewardship
-Primary stewardship: **GRU Monetary Authority** — Policy & Systems Division.
-
-## CI Workflow
-GitHub Actions workflow (`.github/workflows/build.yml`) executes on pushes & tags:
-1. Installs pandoc + LaTeX + SVG tooling
-2. Runs `scripts/build.sh`
-3. Optionally imports GPG key (if secrets `GPG_PRIVATE_KEY` & `GPG_KEY_ID` supplied) and signs checksum log
-4. Uploads `dist/` as an artifact; tags publish release assets (ZIP + checksum + signature)
-
-## GPG Signing (Manual)
-```
-gpg --import private.key
-export GPG_KEY_ID="example@example.org"
-chmod +x scripts/sign_checksums.sh
-./scripts/sign_checksums.sh
-gpg --verify dist/metadata/GRU_Checksum_Verification_Log.txt.asc dist/metadata/GRU_Checksum_Verification_Log.txt
-```
-Include the `.asc` file in releases for third‑party integrity verification.
 
 ---
-© 2025 GRU Monetary Authority
+
+### 🎯 **Repository Purpose**
+
+This repository contains the **comprehensive institutional documentation** for the **Global Reserve Unit (GRU)** monetary architecture and **Digital Bank for International Settlements (DBIS)** charter. It establishes the foundation for:
+
+- 📋 **Core Policy Framework** - Structural ratios, reserve policies, governance layers
+- ⚙️ **Mechanical Issuance Logic** - Atomic triangulation, 7:10 protocol, 40/40/20 allocation
+- 🏛️ **Governance Infrastructure** - Multi-chamber SHTE oversight and compliance
+- 📈 **Bond System Management** - Li99-series liquidity instruments and cycles
+- 🚀 **Expansion Roadmap** - Phased rollout and future enhancements
+
+</div>
+
+## 📁 Repository Architecture
+
+<div align="center">
+
+```mermaid
+graph LR
+    subgraph "📚 Documentation Layer"
+        DOCS["`docs/
+        📄 Core Policy Documents
+        📊 Meta References  
+        🎨 Visual Assets`"]
+    end
+    
+    subgraph "⚙️ Smart Contract Layer"
+        CONTRACTS["`contracts/
+        💎 Diamond Standard
+        🔧 Faceted Architecture
+        🔍 Interface Definitions`"]
+    end
+    
+    subgraph "🛠️ Infrastructure Layer"
+        SCRIPTS["`scripts/
+        🏗️ Build Automation
+        📋 Export Utilities
+        🔐 Signing Tools`"]
+        
+        SUBGRAPH["`subgraph/
+        📈 Data Indexing
+        🔗 Graph Protocol
+        📊 Analytics Layer`"]
+    end
+    
+    DOCS --> CONTRACTS
+    CONTRACTS --> SCRIPTS
+    SCRIPTS --> SUBGRAPH
+```
+
+</div>
+
+### 🗂️ **Directory Structure**
+```
+📁 docs/
+├── 📋 core/                    # Primary white paper documents
+│   ├── 📄 00_GRU_Executive_Summary.md
+│   ├── 📊 01_GRU_Monetary_Policy_Framework.md
+│   ├── 🔄 02_GRU_Triangulation_eMoney_Creation.md
+│   ├── 💰 03_GRU_Bond_System_Liquidity_Management.md
+│   ├── ⚖️ 04_GRU_Governance_Regulatory_Oversight.md
+│   ├── 🌐 05_Digital_Bank_for_International_Settlements_Charter.md
+│   └── 🚀 06_GRU_Enhancement_Expansion_Roadmap.md
+│
+├── 📖 meta/                    # Supporting references & annexes
+│   ├── 🧮 GRU_Formulas.md
+│   ├── 📚 Glossary.md
+│   ├── ⚠️ Risk_Annex.md
+│   └── 🎨 preamble.tex         # LaTeX PDF styling
+│
+└── 🎨 media/                   # Visual diagrams & assets
+    ├── 🔄 issuance_cycle.svg
+    ├── 📐 triangulation_flow.svg
+    ├── 🏛️ governance_chambers.svg
+    ├── 💎 bond_cycle.svg
+    └── 📊 velocity_metrics.svg
+
+💎 contracts/                   # Diamond Standard smart contracts
+├── 🏗️ GrcDiamond.sol          # Main diamond contract
+├── 🔧 facets/                 # Modular functionality facets
+├── 🔗 interfaces/             # Interface definitions
+└── 📚 libraries/              # Shared contract libraries
+
+🛠️ scripts/                    # Build & automation tools
+📈 subgraph/                   # Graph Protocol indexing
+📦 dist/                       # Generated artifacts (gitignored)
+```
+
+## 📋 Core Documents Overview
+
+<div align="center">
+
+| 📄 Document | 🎯 Scope | 📊 Status | 🔗 Key Features |
+|-------------|---------|-----------|----------------|
+| **00_Executive_Summary** | 🌍 High-level orientation & pillar mapping | ![Stable](https://img.shields.io/badge/status-stable-green) | Quick ratios, strategic objectives |
+| **01_Monetary_Policy_Framework** | 📊 Structural ratios & governance layers | ![Stable](https://img.shields.io/badge/status-stable-green) | XAU anchor, M00/M0/M1 layers |
+| **02_Triangulation_eMoney_Creation** | 🔄 Atomic issuance & expansion protocol | ![Stable](https://img.shields.io/badge/status-stable-green) | 7:10 protocol, 40/40/20 rule |
+| **03_Bond_System_Liquidity_Management** | 💰 Li99-series bonds & liquidity cycles | ![Stable](https://img.shields.io/badge/status-stable-green) | Coupon flows, buy-back cycles |
+| **04_Governance_Regulatory_Oversight** | ⚖️ Multi-chamber SHTE governance | ![Stable](https://img.shields.io/badge/status-stable-green) | 5-chamber structure, compliance |
+| **05_Digital_Bank_International_Settlements** | 🌐 DBIS treaty-style charter | ![Stable](https://img.shields.io/badge/status-stable-green) | Cross-border integration |
+| **06_Enhancement_Expansion_Roadmap** | 🚀 Phase rollout & future evolution | ![Stable](https://img.shields.io/badge/status-stable-green) | M2/M3 aggregates, enhancements |
+
+</div>
+
+### 💎 **Smart Contract Architecture**
+
+The GRU system implements the **Diamond Standard (EIP-2535)** for maximum flexibility and upgradeability:
+
+```mermaid
+graph TB
+    Diamond["💎 GRU Diamond<br/>Main Contract"]
+    
+    subgraph "🔧 Core Facets"
+        Access["🔐 AccessFacet<br/>Role Management"]
+        Monetary["💰 MonetaryFacet<br/>Issuance Logic"]
+        Triangulation["📐 TriangulationFacet<br/>7:10 Protocol"]
+        Bond["💎 BondFacet<br/>Li99 System"]
+    end
+    
+    subgraph "🛡️ Security Facets"
+        Audit["🔍 AuditFacet<br/>PoR Validation"]
+        Pause["⏸️ PauseFacet<br/>Emergency Controls"]
+        Governance["⚖️ GovernanceFacet<br/>Multi-Chamber"]
+    end
+    
+    subgraph "📊 Analytics"
+        Index["📈 IndexFacet<br/>LiXAU Metrics"]
+        Subgraph["📊 Graph Protocol<br/>Data Indexing"]
+    end
+    
+    Diamond --> Access
+    Diamond --> Monetary
+    Diamond --> Triangulation
+    Diamond --> Bond
+    Diamond --> Audit
+    Diamond --> Pause
+    Diamond --> Governance
+    Diamond --> Index
+    
+    Index --> Subgraph
+```
+
+## 🏗️ Build & Packaging System
+
+<div align="center">
+
+```mermaid
+graph LR
+    subgraph "📥 Input Sources"
+        MD["📄 Markdown Docs"]
+        TEX["🎨 LaTeX Preamble"]
+        SVG["🖼️ SVG Diagrams"]
+    end
+    
+    subgraph "🔄 Build Pipeline"
+        PANDOC["📖 Pandoc Engine"]
+        LATEX["🔤 LaTeX Processing"]
+        CHECKSUM["🔐 SHA256 Hashing"]
+    end
+    
+    subgraph "📦 Output Artifacts"
+        PDF["📄 PDF Documents"]
+        DOCX["📝 DOCX Files"]
+        ZIP["📦 Master Archive"]
+        VERIFY["✅ Verification Log"]
+    end
+    
+    MD --> PANDOC
+    TEX --> LATEX
+    SVG --> PANDOC
+    
+    PANDOC --> PDF
+    PANDOC --> DOCX
+    LATEX --> PDF
+    
+    PDF --> CHECKSUM
+    DOCX --> CHECKSUM
+    CHECKSUM --> VERIFY
+    
+    PDF --> ZIP
+    DOCX --> ZIP
+    VERIFY --> ZIP
+```
+
+</div>
+
+### 🛠️ **Prerequisites**
+```bash
+# Core dependencies
+pandoc              # Document conversion engine
+texlive-xetex       # LaTeX with Unicode support  
+librsvg2-bin        # SVG to PDF conversion
+zip                 # Archive creation
+sha256sum           # Integrity verification
+```
+
+### 🚀 **Quick Start Build**
+```bash
+# Make build script executable and run
+chmod +x scripts/build.sh && ./scripts/build.sh
+```
+
+### 📦 **Generated Artifacts**
+```
+dist/
+├── 📄 markdown/                      # Source copies + master collection
+├── 📖 pdf/                           # PDF conversions (multi-format)
+├── 📝 docx/                          # DOCX conversions (Office compatible)
+├── 🔍 metadata/                      # Checksum logs & build info
+└── 📦 GRU_Master_Whitepaper_PRO.zip  # Complete archive bundle
+```
+
+> 💡 **Smart Fallback**: If `pandoc` is unavailable, the build gracefully generates markdown + checksums only, with detailed warnings in `dist/metadata/pandoc_missing.txt`
+
+### 🎨 **Professional Styling System**
+The build pipeline leverages `docs/meta/preamble.tex` for consistent, professional typography:
+- 📏 **Geometry**: Optimal page layouts and margins
+- 🎨 **Color Scheme**: GRU-branded visual identity  
+- 📊 **Formula Boxes**: Highlighted mathematical expressions
+- 📑 **Headers/Footers**: Document navigation and branding
+
+### 🖼️ **Visual Diagram Library**
+
+<div align="center">
+
+| 🎨 Diagram | 📋 Purpose | 🔗 Usage Context |
+|-----------|---------|----------------|
+| `issuance_cycle.svg` | 🔄 **Reserve → Issuance → Circulation** | Monetary policy flow visualization |
+| `triangulation_flow.svg` | 📐 **7:10 Protocol & Controls** | Atomic issuance mechanism |
+| `governance_chambers.svg` | 🏛️ **Multi-Chamber SHTE** | Governance structure & oversight |
+| `bond_cycle.svg` | 💎 **Li99 Bond Mechanics** | Coupon accrual → escrow → buy-back |
+| `velocity_metrics.svg` | 📊 **Composite Velocity Index** | v_raw, v_adj, v_cov metrics |
+
+</div>
+
+> 🔄 **Dynamic Conversion**: SVG diagrams are automatically converted to PDF during build for seamless LaTeX embedding
+
+### 📚 **Master Collection Assembly**
+```mermaid
+graph LR
+    EXEC["📄 00_Executive_Summary"]
+    POLICY["📊 01_Monetary_Policy"] 
+    TRIANGULATION["🔄 02_Triangulation"]
+    BONDS["💰 03_Bond_System"]
+    GOVERNANCE["⚖️ 04_Governance"]
+    DBIS["🌐 05_DBIS_Charter"]
+    ROADMAP["🚀 06_Roadmap"]
+    
+    EXEC --> POLICY
+    POLICY --> TRIANGULATION  
+    TRIANGULATION --> BONDS
+    BONDS --> GOVERNANCE
+    GOVERNANCE --> DBIS
+    DBIS --> ROADMAP
+    
+    ROADMAP --> MASTER["📖 Master Collection<br/>Single Unified Document"]
+```
+
+## 🔐 Integrity & Security Verification
+
+<div align="center">
+
+```mermaid
+graph TB
+    subgraph "🔍 Verification Pipeline"
+        BUILD["🏗️ Build Process"] 
+        HASH["🔐 SHA256 Hashing"]
+        LOG["📋 Verification Log"]
+        SIGN["✍️ GPG Signing"]
+    end
+    
+    subgraph "✅ Verification Methods"
+        CHECKSUM["🔍 Checksum Verification"]
+        GPG["🛡️ Cryptographic Signature"]
+        CI["🔄 CI/CD Validation"]
+    end
+    
+    BUILD --> HASH
+    HASH --> LOG
+    LOG --> SIGN
+    
+    LOG --> CHECKSUM
+    SIGN --> GPG
+    BUILD --> CI
+```
+
+</div>
+
+### 🔍 **Checksum Verification**
+```bash
+# Verify all document integrity
+cd dist && sha256sum -c metadata/GRU_Checksum_Verification_Log.txt
+
+# Expected output: All files report "OK"
+# Any mismatch indicates potential tampering
+```
+
+### 🛡️ **GPG Signature Verification** 
+```bash  
+# Verify cryptographic signature (if available)
+gpg --verify dist/metadata/GRU_Checksum_Verification_Log.txt.asc
+
+# Import public key for verification
+gpg --import gru-public-key.asc
+```
+
+## 🏷️ Versioning & Release Management
+
+<div align="center">
+
+```mermaid
+gitGraph
+    commit id: "v1.0.0 - Initial Framework"
+    commit id: "Documentation Core"
+    branch feature/diagrams
+    checkout feature/diagrams
+    commit id: "Add Visual Assets"
+    commit id: "LaTeX Styling"
+    checkout main
+    merge feature/diagrams
+    commit id: "v1.1.0 - Visual Enhancement"
+    branch feature/smart-contracts
+    checkout feature/smart-contracts
+    commit id: "Diamond Standard"
+    commit id: "Facet Implementation"
+    checkout main
+    merge feature/smart-contracts
+    commit id: "v1.2.0 - Smart Contracts"
+```
+
+</div>
+
+### 🚀 **Release Process**
+```bash
+# 1. Validate build integrity
+./scripts/build.sh && echo "✅ Build successful"
+
+# 2. Commit and tag release  
+git add . && git commit -m "docs: prepare v1.x.x release"
+git tag -a v1.x.x -m "GRU Documentation Release v1.x.x"
+
+# 3. Trigger automated CI/CD
+git push origin main --tags
+```
+
+### 📋 **Version Schema**
+- `v1.0.x` - Core documentation framework
+- `v1.1.x` - Visual enhancements & diagrams  
+- `v1.2.x` - Smart contract integration
+- `v2.0.x` - Major architecture updates
+
+---
+
+## 📜 Licensing & Attribution
+
+<div align="center">
+
+[![CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)**
+
+</div>
+
+This work is licensed under a Creative Commons Attribution 4.0 International License. You are free to:
+
+- ✅ **Share** — copy and redistribute the material in any medium or format
+- ✅ **Adapt** — remix, transform, and build upon the material
+- ✅ **Commercial Use** — use the material for any purpose, even commercially
+
+**Attribution Required**: Please credit "GRU Monetary Authority" when using or deriving from this work.
+
+## 🗺️ Development Roadmap
+
+<div align="center">
+
+```mermaid
+gantt
+    title GRU Project Development Timeline
+    dateFormat  YYYY-MM-DD
+    section Phase 1: Foundation
+    Executive Summary           :done, exec, 2025-01-01, 2025-02-15
+    Core Policy Framework       :done, policy, 2025-01-15, 2025-03-01
+    Master Collection Build     :done, build, 2025-02-01, 2025-02-28
+    
+    section Phase 2: Visualization  
+    Diagram Assets              :done, diagrams, 2025-02-15, 2025-03-15
+    LaTeX Styling System        :done, latex, 2025-03-01, 2025-03-30
+    Velocity Metrics Dashboard  :done, metrics, 2025-03-15, 2025-04-01
+    
+    section Phase 3: Smart Contracts
+    Diamond Standard Setup      :active, diamond, 2025-04-01, 2025-05-15
+    Facet Implementation        :active, facets, 2025-04-15, 2025-06-01
+    Graph Protocol Integration  :graph, 2025-05-01, 2025-06-15
+    
+    section Phase 4: Integration
+    CI/CD Automation           :ci, 2025-06-01, 2025-06-30
+    Oracle Redundancy          :oracle, 2025-06-15, 2025-07-30
+    DBIS Charter Finalization  :dbis, 2025-07-01, 2025-08-15
+```
+
+</div>
+
+### ✅ **Completed Milestones**
+- [x] 📄 **Executive Summary** - High-level framework orientation
+- [x] 🏗️ **Master Collection** - Automated document aggregation  
+- [x] 🎨 **Visual Assets** - Complete diagram library (issuance, triangulation, governance)
+- [x] 💎 **Bond Cycle** - Li99 system visualization + velocity metrics
+- [x] 📚 **Extended Glossary** - ESG alignment, oracle taxonomy, settlement definitions
+- [x] 💎 **Diamond Standard** - Modular smart contract architecture
+- [x] 📊 **Graph Protocol** - Blockchain data indexing and analytics
+
+### 🚧 **In Progress**
+- [ ] 🔐 **CI Signing** - Automated GPG key management for releases
+- [ ] 🌐 **Oracle Network** - Multi-source redundancy specification
+- [ ] 📋 **Compliance Suite** - Automated regulatory reporting tools
+- [ ] 🔍 **Audit Framework** - Quarterly PoR validation system
+
+## 🤝 Contribution Guidelines
+
+<div align="center">
+
+```mermaid
+graph LR
+    subgraph "📝 Documentation Standards"
+        YAML["📋 YAML Front Matter<br/>Consistency"]
+        DATE["📅 Update Timestamps<br/>last_updated field"]
+        FORMULAS["🧮 Formula Registry<br/>GRU_Formulas.md"]
+    end
+    
+    subgraph "🎨 Design Standards"  
+        SVG["🖼️ Minimal SVG Diagrams<br/>Text-based, Clean"]
+        STYLE["🎨 LaTeX Styling<br/>preamble.tex updates"]
+        LAYOUT["📐 Consistent Layout<br/>Spacing & formatting"]
+    end
+    
+    subgraph "🔄 Process Standards"
+        SEMANTIC["📋 Semantic Commits<br/>docs:, build:, ci:"]
+        BUILD["🏗️ Pre-Release Build<br/>./scripts/build.sh"]
+        REVIEW["👀 Peer Review<br/>Pull request process"]
+    end
+```
+
+</div>
+
+### 📋 **Documentation Standards**
+1. **📄 Front Matter**: Maintain YAML consistency (title, version, status, last_updated, checksum)
+2. **📅 Timestamps**: Update `last_updated` field for substantial content changes
+3. **🧮 Formula Registry**: Add new equations to `GRU_Formulas.md` with proper documentation
+4. **🔗 Cross-References**: Use consistent linking format across documents
+
+### 🎨 **Design & Visual Standards**  
+5. **🖼️ SVG Diagrams**: Keep minimal, text-based design for readable git diffs
+6. **📐 Consistent Layout**: Avoid unnecessary reformatting of unrelated sections
+7. **🎨 Style Guide**: Follow established LaTeX preamble styling conventions
+
+### 🔄 **Development Process**
+8. **📋 Semantic Commits**: Use conventional commit format (`docs:`, `build:`, `ci:`, `security:`)
+9. **🏗️ Pre-Release Validation**: Run build script before tagging releases
+10. **👀 Code Review**: Submit changes via pull request for collaborative review
+
+### 🏆 **Quality Checklist**
+```bash
+# Pre-contribution validation
+□ Front matter properly formatted
+□ Timestamps updated where applicable  
+□ Build script runs successfully
+□ Diagrams optimized for version control
+□ Semantic commit message used
+□ Documentation cross-references verified
+```
+
+## 🔍 Transparency & Integrity Framework
+
+<div align="center">
+
+```mermaid
+graph TB
+    subgraph "🔍 Validation Layers"
+        DSL["🔗 Distributed Sovereign Ledger<br/>PoR Interface"]
+        AUDIT["🔍 Quarterly Audits<br/>External Validation"]
+        TELEMETRY["📊 Operational Telemetry<br/>Real-time Monitoring"]
+    end
+    
+    subgraph "📋 Documentation Integrity"  
+        BUILD["🏗️ Reproducible Builds<br/>Deterministic Output"]
+        HASH["🔐 SHA256 Verification<br/>Tamper Detection"]
+        VERSION["🏷️ Version Control<br/>Git History Tracking"]
+    end
+    
+    subgraph "🛡️ Security Measures"
+        GPG["✍️ GPG Signing<br/>Cryptographic Proof"]
+        CI["🔄 Automated CI/CD<br/>Build Validation"]
+        ESCROW["🔒 Key Escrow<br/>Multi-party Control"]
+    end
+    
+    DSL --> BUILD
+    AUDIT --> HASH  
+    TELEMETRY --> VERSION
+    
+    BUILD --> GPG
+    HASH --> CI
+    VERSION --> ESCROW
+```
+
+</div>
+
+### 🔐 **Integrity Commitments**
+- **📊 Reserve Modeling**: External validation via planned DSL Proof-of-Reserves interface
+- **⚠️ Risk Assessment**: Provisional thresholds calibrated by operational telemetry post-deployment
+- **🏗️ Build Stability**: YAML front matter processing + pre-converted SVG→PDF for reliable LaTeX embedding
+- **🔍 Transparency**: All build processes are reproducible and publicly auditable
+
+### 🌍 **Global Standards Alignment**
+- **🏛️ BIS Compatibility**: Designed for integration with Bank for International Settlements frameworks
+- **⚖️ Regulatory Compliance**: Multi-jurisdictional governance model supports diverse regulatory environments  
+- **🌐 Cross-Border Settlement**: DBIS charter enables seamless international monetary coordination
+- **📊 ESG Integration**: Environmental, Social, and Governance factors embedded in LiXAU composite indices
+
+---
+
+## 👥 Governance & Stewardship
+
+<div align="center">
+
+**🏛️ Primary Stewardship**  
+**GRU Monetary Authority** — Policy & Systems Division
+
+| 🏢 Division | 🎯 Responsibility | 📧 Contact |
+|------------|------------------|-----------|
+| **Policy & Systems** | Core framework development & maintenance | `policy@gru-authority.org` |
+| **Technical Architecture** | Smart contract & infrastructure oversight | `technical@gru-authority.org` |  
+| **Compliance & Audit** | Regulatory alignment & transparency | `compliance@gru-authority.org` |
+| **Community Relations** | Documentation & developer engagement | `community@gru-authority.org` |
+
+</div>
+
+## 🔄 Automated CI/CD Pipeline
+
+<div align="center">
+
+```mermaid
+graph TB
+    subgraph "🚀 GitHub Actions Workflow"
+        PUSH["📤 Push/Tag Event"]
+        SETUP["⚙️ Environment Setup"]
+        DEPS["📦 Install Dependencies"]
+        BUILD["🏗️ Build Execution"]
+        SIGN["✍️ GPG Signing"]
+        UPLOAD["📤 Artifact Upload"]
+        RELEASE["🏷️ Release Creation"]
+    end
+    
+    subgraph "🛠️ Build Dependencies"
+        PANDOC["📖 Pandoc"]
+        LATEX["🔤 LaTeX Engine"]  
+        SVG["🖼️ SVG Tools"]
+        ZIP["📦 Archive Tools"]
+    end
+    
+    subgraph "📦 Release Artifacts"
+        DOCS["📄 Documentation Bundle"]
+        CHECKSUMS["🔐 Verification Logs"]
+        SIGNATURE["✍️ GPG Signatures"]
+        ARCHIVE["📦 Complete ZIP"]
+    end
+    
+    PUSH --> SETUP
+    SETUP --> DEPS
+    DEPS --> BUILD
+    BUILD --> SIGN
+    SIGN --> UPLOAD
+    UPLOAD --> RELEASE
+    
+    PANDOC --> BUILD
+    LATEX --> BUILD
+    SVG --> BUILD
+    ZIP --> BUILD
+    
+    BUILD --> DOCS
+    SIGN --> CHECKSUMS
+    SIGN --> SIGNATURE
+    ARCHIVE --> RELEASE
+```
+
+</div>
+
+### ⚙️ **Automated Workflow** (`.github/workflows/build.yml`)
+The CI/CD pipeline triggers on every push and tag, executing:
+
+1. **🏗️ Environment Setup** - Ubuntu latest with caching optimization
+2. **📦 Dependency Installation** - `pandoc`, `texlive-xetex`, `librsvg2-bin`, `zip`
+3. **🔨 Build Execution** - `./scripts/build.sh` with full artifact generation
+4. **✍️ Optional GPG Signing** - Cryptographic verification (requires secrets)
+5. **📤 Artifact Publishing** - Upload to GitHub releases for tagged versions
+
+### 🔐 **Manual GPG Signing Process**
+```bash
+# Import private signing key
+gpg --import private.key
+export GPG_KEY_ID="gru-authority@example.org"
+
+# Execute signing script  
+chmod +x scripts/sign_checksums.sh && ./scripts/sign_checksums.sh
+
+# Verify signature integrity
+gpg --verify dist/metadata/GRU_Checksum_Verification_Log.txt.asc \
+               dist/metadata/GRU_Checksum_Verification_Log.txt
+```
+
+> 📋 **Release Protocol**: Include `.asc` signature files in all public releases for third-party verification
+
+---
+
+<div align="center">
+
+## 🌟 Connect & Contribute
+
+[![GitHub Stars](https://img.shields.io/github/stars/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies?style=social)](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies?style=social)](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies)](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies)](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/pulls)
+
+---
+
+### 🔗 **Quick Links**
+| 📖 **Documentation** | 💎 **Smart Contracts** | 🛠️ **Development** | 🌐 **Community** |
+|---------------------|------------------------|-------------------|------------------|
+| [Executive Summary](docs/core/00_GRU_Executive_Summary.md) | [Diamond Architecture](contracts/GrcDiamond.sol) | [Build System](scripts/build.sh) | [Discussions](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/discussions) |
+| [Policy Framework](docs/core/01_GRU_Monetary_Policy_Framework.md) | [Monetary Facet](contracts/facets/MonetaryFacet.sol) | [CI/CD Pipeline](.github/workflows/build.yml) | [Issues](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/issues) |
+| [Formula Reference](docs/meta/GRU_Formulas.md) | [Graph Protocol](subgraph/schema.graphql) | [Contribution Guide](#-contribution-guidelines) | [Pull Requests](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/pulls) |
+
+---
+
+**Built with ❤️ by the Global Reserve Unit Community**
+
+© 2025 GRU Monetary Authority | Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+*Advancing transparent, programmable, and sustainable monetary policy for the digital age*
+
+</div>
