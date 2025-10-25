@@ -455,10 +455,10 @@ gantt
 - [x] 📊 **Graph Protocol** - Blockchain data indexing and analytics
 
 ### 🚧 **In Progress**
-- [ ] 🔐 **CI Signing** - Automated GPG key management for releases
-- [ ] 🌐 **Oracle Network** - Multi-source redundancy specification
-- [ ] 📋 **Compliance Suite** - Automated regulatory reporting tools
-- [ ] 🔍 **Audit Framework** - Quarterly PoR validation system
+ [x] 🔐 **CI Signing** - Automated GPG key management for releases
+ [ ] 🌐 **Oracle Network** - Multi-source redundancy specification
+ [ ] 📋 **Compliance Suite** - Automated regulatory reporting tools
+ [x] 🔍 **Audit Framework** - Quarterly PoR validation system
 
 ## 🤝 Contribution Guidelines
 
