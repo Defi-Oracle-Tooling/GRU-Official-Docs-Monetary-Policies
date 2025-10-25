@@ -455,10 +455,26 @@ gantt
 - [x] 📊 **Graph Protocol** - Blockchain data indexing and analytics
 
 ### 🚧 **In Progress**
- [x] 🔐 **CI Signing** - Automated GPG key management for releases
- [ ] 🌐 **Oracle Network** - Multi-source redundancy specification
- [ ] 📋 **Compliance Suite** - Automated regulatory reporting tools
- [x] 🔍 **Audit Framework** - Quarterly PoR validation system
+[x] 🔐 **CI Signing** - Automated GPG key management for releases
+[ ] 🌐 **Oracle Network** - Multi-source redundancy specification *(single-feed foundation live in companion; redundancy + aggregation pending)*
+[ ] 📋 **Compliance Suite** - Automated regulatory reporting tools *(interfaces & stub facet added; enforcement/storage pending)*
+[x] 🔍 **Audit Framework** - Quarterly PoR validation system
+
+## 🔗 Companion Integration
+The separate repository **GREM-GRU-eMoney-Companion** supplies execution-layer components (multi-asset controller, oracle interfaces, compliance & reporting abstractions) that extend this policy framework.
+
+| Item | This Repo Status | Companion Capabilities | Next Step |
+|------|------------------|------------------------|-----------|
+| CI Signing | Implemented (GPG in CI) | N/A | Cross-sign PoR bundle |
+| Oracle Network | Pending redundancy | Multiple mock feeds (USD/EUR/XAU) + deviation logic | Add `OracleAggregatorFacet` logic & median calc |
+| Compliance Suite | Stub facet only | Interfaces for KYC/AML/jurisdiction & velocity | Implement storage + execution gates |
+| Audit Framework | Implemented (PoR) | Structured reporting interface (`IReporting`) | Bundle signed PoR + compliance snapshot |
+
+New stub facets introduced:
+- `ComplianceFacet.sol` – role-gated placeholders for KYC/AML functions (currently revert `ErrNotReady`).
+- `OracleAggregatorFacet.sol` – median price query placeholder (returns zero; mutators revert `ErrNotReady`).
+
+See `docs/meta/Companion_Integration.md` for detailed integration roadmap (oracle redundancy phases, compliance gating plan, signing enhancements).
 
 ## 🤝 Contribution Guidelines
 

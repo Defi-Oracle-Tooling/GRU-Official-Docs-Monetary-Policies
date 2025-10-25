@@ -953,6 +953,86 @@
       "artifacts": [
         "ReenterInit"
       ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/OracleAggregatorFacet.sol": {
+      "lastModificationDate": 1761409315382,
+      "contentHash": "94fccc191347979238e1d1a20e7e63bb",
+      "sourceName": "contracts/facets/OracleAggregatorFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
+        "../interfaces/IERC173.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "OracleAggregatorFacet"
+      ]
+    },
+    "/workspaces/GRU-Official-Docs-Monetary-Policies/contracts/facets/ComplianceFacet.sol": {
+      "lastModificationDate": 1761409312091,
+      "contentHash": "60b70dc58b1fd20b5c3e37cba4178a6e",
+      "sourceName": "contracts/facets/ComplianceFacet.sol",
+      "solcConfig": {
+        "version": "0.8.21",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/GRCStorage.sol",
+        "../libraries/Errors.sol",
+        "../interfaces/IERC173.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "ComplianceFacet"
+      ]
     }
   }
 }
