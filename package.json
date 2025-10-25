@@ -5,7 +5,11 @@
     "license": "MIT",
     "scripts": {
         "compile": "hardhat compile",
-        "test": "hardhat test"
+        "test": "hardhat test",
+        "subgraph:codegen": "npm --prefix subgraph run codegen",
+        "subgraph:build": "npm --prefix subgraph run build",
+        "subgraph:deploy": "graph deploy $SUBGRAPH_NAME subgraph/subgraph.yaml --product hosted-service",
+        "gas:summary": "node scripts/gas-summary.js"
     },
     "devDependencies": {
         "hardhat": "^2.22.0",

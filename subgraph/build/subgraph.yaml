@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: GrcDiamond
@@ -36,7 +36,7 @@ dataSources:
         - LiCRIRollingWindow
       abis:
         - name: GrcDiamond
-          file: ../artifacts/contracts/GrcDiamond.sol/GrcDiamond.json
+          file: artifacts/contracts/GrcDiamond.sol/GrcDiamond.json
       eventHandlers:
         - event: IndexWeightsUpdated(indexed bytes32,uint64)
           handler: handleIndexWeightsUpdated
@@ -70,4 +70,4 @@ dataSources:
           handler: handleRedeemed
         - event: FeeUpdated(uint256,uint256)
           handler: handleFeeUpdated
-      file: ./src/mapping.ts
+      file: GrcDiamond/GrcDiamond.wasm

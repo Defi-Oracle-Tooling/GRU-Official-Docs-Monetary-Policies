@@ -1,3 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Recreate subgraph/subgraph.yaml with clean indentation using a heredoc.
+# Backs up existing manifest to subgraph/subgraph.yaml.bak if present.
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+MANIFEST="subgraph/subgraph.yaml"
+BACKUP="subgraph/subgraph.yaml.bak"
+
+if [ -f "$MANIFEST" ]; then
+  echo "Backing up existing $MANIFEST to $BACKUP" >&2
+  mv "$MANIFEST" "$BACKUP"
+fi
+
+cat > "$MANIFEST" <<'EOF'
 specVersion: 0.0.5
 schema:
   file: ./schema.graphql
@@ -71,3 +89,6 @@ dataSources:
         - event: FeeUpdated(uint256,uint256)
           handler: handleFeeUpdated
       file: ./src/mapping.ts
+EOF
+
+echo "Recreated $MANIFEST successfully." >&2

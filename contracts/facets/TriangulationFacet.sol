@@ -15,11 +15,17 @@ contract TriangulationFacet is ITriangulation {
         if(IERC173(address(this)).owner() != msg.sender && (GRCStorage.roles().roleBits[msg.sender] & ROLE_GOVERNANCE) == 0) revert Errors.ErrGovernanceRole();
         _;
     }
+    // Sets a forward rate (fromAsset -> toAsset) scaled by 1e18 and auto-stores the inverse (toAsset -> fromAsset).
+    // If rate = 2e18 (2 toAsset per 1 fromAsset), inverse becomes 0.5e18 via 1e36 / rate to preserve 1e18 scaling.
     function setRate(bytes32 fromAsset, bytes32 toAsset, uint256 rate) external onlyGov nonReentrant {
         if(rate == 0) revert Errors.ErrRateUnset();
         GRCStorage.TriangulationState storage ts = GRCStorage.triangulation();
         ts.rate[fromAsset][toAsset] = rate;
         emit RateSet(fromAsset, toAsset, rate);
+        // compute and store inverse
+        uint256 inverse = (1e36 / rate); // (1e18 * 1e18) / rate keeps 1e18 scaling
+        ts.rate[toAsset][fromAsset] = inverse;
+        emit RateSet(toAsset, fromAsset, inverse);
     }
     function getRate(bytes32 fromAsset, bytes32 toAsset) external view returns (uint256 rate) {
         rate = GRCStorage.triangulation().rate[fromAsset][toAsset];

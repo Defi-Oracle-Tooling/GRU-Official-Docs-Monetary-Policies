@@ -209,8 +209,11 @@ describe('GrcDiamond', () => {
         await tx.wait();
         const previewAfter = await tri.triangulate.staticCall(GOLD, GRU, 1000n);
         expect(previewAfter).to.equal(1980n);
-        await expect(tri.redeem.staticCall(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
-        await expect(tri.redeem(GRU, GOLD, 500n)).to.be.revertedWithCustomError(tri, 'ErrRateUnset');
+        // Inverse rate now auto-set; redeem path should succeed producing ~248 (500 * 0.5 = 250 less 1% fee => 248 after truncation)
+        const redeemPreview = await tri.redeem.staticCall(GRU, GOLD, 500n);
+        expect(redeemPreview).to.equal(248n);
+        const redeemTx = await tri.redeem(GRU, GOLD, 500n);
+        await redeemTx.wait();
         await expect(tri.setFees(451n)).to.be.revertedWithCustomError(tri, 'ErrFeeTooHigh');
     });
     it('diamondCut reentrancy prevented via init delegatecall', async () => {

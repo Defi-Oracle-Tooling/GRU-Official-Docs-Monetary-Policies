@@ -4,8 +4,8 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "codegen": "graph codegen subgraph.yaml",
-        "build": "graph build subgraph.yaml"
+        "codegen": "npx graph codegen subgraph.yaml",
+        "build": "npx graph build subgraph.yaml"
     },
     "devDependencies": {
         "@graphprotocol/graph-cli": "^0.53.0",

@@ -1,0 +1,21 @@
+{
+  "generatedAt": 1761353194,
+  "setRate": {
+    "min": "85603",
+    "max": "85603",
+    "avg": "85603",
+    "samples": 1
+  },
+  "triangulate": {
+    "min": "49067",
+    "max": "49067",
+    "avg": "49067",
+    "samples": 1
+  },
+  "redeem": {
+    "min": "49032",
+    "max": "49032",
+    "avg": "49032",
+    "samples": 1
+  }
+}

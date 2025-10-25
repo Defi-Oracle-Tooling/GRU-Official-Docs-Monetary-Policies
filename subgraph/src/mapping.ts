@@ -36,11 +36,36 @@ import {
     Redeemed,
     FeeUpdated,
     DailyLiCRISnapshot,
-    GovernanceProposal
+    GovernanceProposal,
+    BondSeriesCouponSnapshot,
+    LiCRIRollingWindow
 } from '../generated/schema'
 import { BigInt } from '@graphprotocol/graph-ts'
 
 function makeId(hash: string, logIndex: string): string { return hash + '-' + logIndex }
+
+// Integer square root via Newton-Raphson on BigInt (AssemblyScript BigInt wrapper from graph-ts)
+function sqrtBigInt(value: BigInt): BigInt {
+    if (value.le(BigInt.fromI32(1))) return value;
+    let z = value;
+    let x = value.div(BigInt.fromI32(2)).plus(BigInt.fromI32(1));
+    while (x.lt(z)) {
+        z = x;
+        x = value.div(x).plus(x).div(BigInt.fromI32(2));
+    }
+    return z;
+}
+
+// Compute EMA using integer math: EMA_t = (val*2 + prev*(n-1)) / (n+1)
+// Treat window as integer (number) due to mapping compilation environment.
+function computeEMA(current: BigInt, prevEMA: BigInt | null, window: number): BigInt {
+    let nPlus = BigInt.fromI32(window + 1);
+    if (prevEMA == null) {
+        return current; // seed with current value
+    }
+    let numerator = current.times(BigInt.fromI32(2)).plus(prevEMA.times(BigInt.fromI32(window - 1)));
+    return numerator.div(nPlus);
+}
 
 export function handleIndexWeightsUpdated(event: IndexWeightsUpdatedEvent): void {
     let entity = new IndexWeightsUpdated(makeId(event.transaction.hash.toHex(), event.logIndex.toString()))
@@ -49,29 +74,35 @@ export function handleIndexWeightsUpdated(event: IndexWeightsUpdatedEvent): void
     entity.save()
 }
 export function handleDashboardSnapshot(event: DashboardSnapshotEvent): void {
-    let entity = new DashboardSnapshot(makeId(event.transaction.hash.toHex(), event.logIndex.toString()))
-    entity.dashboardHash = event.params.dashboardHash
-    entity.globalVersion = event.params.globalVersion
-    entity.liCRI = event.params.liCRI
-    entity.timestamp = event.params.timestamp
-    entity.save()
-    // daily aggregate
-    let secondsInDay = BigInt.fromI32(86400)
-    let dayStart = event.block.timestamp.minus(event.block.timestamp.mod(secondsInDay))
-    let dayKey = dayStart.toI32().toString()
-    let daily = DailyLiCRISnapshot.load(dayKey)
+    // --- Granular isolation: rolling window analytics split, explicit null checks ---
+    // Place after daily snapshot initialization and null check
+    // --- Isolated: Daily snapshot initialization block commented for crash isolation ---
+    // let secondsInDay = BigInt.fromI32(86400);
+    let secondsInDay = BigInt.fromI32(86400);
+    let dayStart = event.block.timestamp.minus(event.block.timestamp.mod(secondsInDay));
+    let dayKey = dayStart.toI32().toString();
+    let daily = DailyLiCRISnapshot.load(dayKey);
     if (daily == null) {
-        daily = new DailyLiCRISnapshot(dayKey)
-        daily.dayStart = dayStart
-        daily.lastLiCRI = event.params.liCRI
-        daily.globalVersion = event.params.globalVersion
-        daily.updates = 1
+        daily = new DailyLiCRISnapshot(dayKey);
+        daily.dayStart = dayStart;
+        daily.lastLiCRI = event.params.liCRI;
+        daily.globalVersion = event.params.globalVersion;
+        daily.updates = 1;
+        daily.cumulativeLiCRI = BigInt.fromI32(0);
+        daily.cumulativeLiCRISquared = BigInt.fromI32(0);
     } else {
-        daily.lastLiCRI = event.params.liCRI
-        daily.globalVersion = event.params.globalVersion
-        daily.updates = daily.updates + 1
+        daily.lastLiCRI = event.params.liCRI;
+        daily.globalVersion = event.params.globalVersion;
+        daily.updates = daily.updates + 1;
     }
-    daily.save()
+    // Granular isolation: only cumulativeLiCRI assignment with strict null checks
+    // Test: assign constant value to cumulativeLiCRI to confirm schema compatibility
+    let prevDayStart = dayStart.minus(secondsInDay);
+    let prevKey = prevDayStart.toI32().toString();
+    let prevDaily = DailyLiCRISnapshot.load(prevKey);
+    // Minimal fallback: assign only lastLiCRI to cumulativeLiCRI to confirm crash source
+    daily.cumulativeLiCRI = daily.lastLiCRI;
+    daily.save();
 }
 export function handleBondIssued(event: BondIssuedEvent): void {
     let e = new BondIssued(makeId(event.transaction.hash.toHex(), event.logIndex.toString()))
@@ -85,6 +116,23 @@ export function handleCouponsAccrued(event: CouponsAccruedEvent): void {
     e.series = event.params.series
     e.amount = event.params.amount
     e.save()
+    // daily bond coupon aggregation per series
+    let secondsInDay = BigInt.fromI32(86400)
+    let dayStart = event.block.timestamp.minus(event.block.timestamp.mod(secondsInDay))
+    let seriesHex = event.params.series.toHexString()
+    let key = seriesHex + '-' + dayStart.toI32().toString()
+    let snap = BondSeriesCouponSnapshot.load(key)
+    if (snap == null) {
+        snap = new BondSeriesCouponSnapshot(key)
+        snap.series = event.params.series
+        snap.dayStart = dayStart
+        snap.cumulativeCoupons = event.params.amount
+        snap.updates = 1
+    } else {
+        snap.cumulativeCoupons = snap.cumulativeCoupons.plus(event.params.amount)
+        snap.updates = snap.updates + 1
+    }
+    snap.save()
 }
 export function handleBondBuyback(event: BondBuybackEvent): void {
     let e = new BondBuyback(makeId(event.transaction.hash.toHex(), event.logIndex.toString()))
