@@ -519,6 +519,7 @@ Audit_Trail_Framework:
 **Document Control:**
 - **Version**: 1.0.0
 - **Approved by**: Board Risk Committee, Oracle Risk Committee
-- **Classification**: Restricted - Risk Management Personnel Only
+- **Classification**: Internal Use - Risk Management Framework
 - **Next Review**: Semi-annually
-- **Distribution**: Risk committee, technical leadership, external auditors
+- **Distribution**: Risk committee, technical leadership
+- **External Access**: Summary version for external auditors (detailed procedures available under separate agreement)

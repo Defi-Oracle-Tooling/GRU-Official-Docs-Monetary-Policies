@@ -61,6 +61,7 @@ Compliant with EPC SCT Scheme Implementation Guidelines 2025 v1.0
             <!-- Debtor Account -->
             <DbtrAcct>
                 <Id>
+                    <!-- Sample IBAN - For documentation purposes only -->
                     <IBAN>MT84MALT012000000000000000123</IBAN>
                 </Id>
                 <Ccy>EUR</Ccy>

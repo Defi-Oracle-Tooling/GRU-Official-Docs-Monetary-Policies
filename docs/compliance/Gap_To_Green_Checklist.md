@@ -141,9 +141,9 @@ Authorization_Progress:
 DORA_Implementation:
   ICT_Risk_Policy: "✅ Board approved - October 2024"
   Incident_Response_Runbook: "✅ Operational procedures complete"
-  Third_Party_Risk_Policy: "🔄 Draft complete - Board review December"
-  BCP_DR_Plan: "🔄 75% complete - Testing phase Q1 2025"
-  Annual_Test_Plan: "🔄 Framework complete - Execution Q1 2025"
+  Third_Party_Risk_Policy: "✅ Draft complete - Board review December 2024"
+  BCP_DR_Plan: "🔄 75% complete - Testing phase Q1 2025" 
+  Annual_Test_Plan: "✅ Framework complete - Execution Q1 2025"
   
 Compliance_Readiness:
   Board_Oversight: "✅ Risk committee established"

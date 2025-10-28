@@ -409,7 +409,8 @@ Training_Curriculum:
 
 ---
 
-**Document Classification**: Confidential - AML Committee Only
+**Document Classification**: Internal Use - Risk Management Framework
 **Next Review**: October 2026
 **Regulatory Basis**: 4AMLD, 5AMLD, 6AMLD, Transfer of Funds Regulation
 **Approval Required**: Board AML Committee
+**Public Version**: Risk management framework overview (detailed risk analysis available separately)

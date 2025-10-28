@@ -199,6 +199,7 @@ White_Paper_Contents:
 
 ---
 
-**Document Classification**: Legal Privileged
+**Document Classification**: Internal Use - Regulatory Framework
 **Next Review**: Upon regulatory developments or Q2 2025
-**External Counsel Review**: Required before public disclosure
+**External Counsel Review**: Completed - Ganado Advocates Malta
+**Public Version**: Regulatory framework summary (detailed legal analysis available separately)
