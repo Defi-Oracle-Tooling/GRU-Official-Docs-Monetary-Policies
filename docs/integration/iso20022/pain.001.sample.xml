@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SEPA Credit Transfer Initiation (pain.001.001.03)
+GRU Sample Message - Customer to Bank Payment Instruction
+Compliant with EPC SCT Scheme Implementation Guidelines 2025 v1.0
+-->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <!-- Group Header -->
+        <GrpHdr>
+            <MsgId>GRU20251028141530001</MsgId>
+            <CreDtTm>2025-10-28T14:15:30.000Z</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>1000.00</CtrlSum>
+            <InitgPty>
+                <Nm>GRU Digital Bank</Nm>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>GRU001DBANK</Id>
+                            <SchmeNm>
+                                <Prtry>GRU_PARTICIPANT_ID</Prtry>
+                            </SchmeNm>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>MT</CtryOfRes>
+            </InitgPty>
+        </GrpHdr>
+        
+        <!-- Payment Information -->
+        <PmtInf>
+            <PmtInfId>GRU-PMT-20251028-001</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            
+            <!-- Payment Type Information -->
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+                <!-- For SCT Inst, add: -->
+                <!-- <LclInstrm>
+                    <Cd>INST</Cd>
+                </LclInstrm> -->
+            </PmtTpInf>
+            
+            <ReqdExctnDt>2025-10-28</ReqdExctnDt>
+            
+            <!-- Debtor Information -->
+            <Dbtr>
+                <Nm>GRU Institutional Client Corp</Nm>
+                <PstlAdr>
+                    <AdrLine>Level 3, Quantum House</AdrLine>
+                    <AdrLine>Abate Rigord Street</AdrLine>
+                    <TwnNm>Ta' Xbiex</TwnNm>
+                    <PstCd>XBX 1120</PstCd>
+                    <Ctry>MT</Ctry>
+                </PstlAdr>
+            </Dbtr>
+            
+            <!-- Debtor Account -->
+            <DbtrAcct>
+                <Id>
+                    <IBAN>MT84MALT012000000000000000123</IBAN>
+                </Id>
+                <Ccy>EUR</Ccy>
+            </DbtrAcct>
+            
+            <!-- Debtor Agent (Ordering Bank) -->
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>GRUUMTMT</BIC>
+                    <Nm>GRU Digital Bank</Nm>
+                    <PstlAdr>
+                        <Ctry>MT</Ctry>
+                    </PstlAdr>
+                </FinInstnId>
+            </DbtrAgt>
+            
+            <!-- Ultimate Debtor (if different) -->
+            <UltmtDbtr>
+                <Nm>GRU Investment Holdings Ltd</Nm>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>MT-C-12345</Id>
+                            <SchmeNm>
+                                <Cd>TXID</Cd>
+                            </SchmeNm>
+                        </Othr>
+                    </OrgId>
+                </Id>
+            </UltmtDbtr>
+            
+            <!-- Credit Transfer Transaction Information -->
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>GRU-E2E-20251028-141530-001</EndToEndId>
+                    <TxId>GRU-TXN-20251028-001</TxId>
+                </PmtId>
+                
+                <!-- Instructed Amount -->
+                <Amt>
+                    <InstdAmt Ccy="EUR">1000.00</InstdAmt>
+                </Amt>
+                
+                <!-- Creditor Agent (Beneficiary Bank) -->
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>DEUTDEFF</BIC>
+                        <Nm>Deutsche Bank AG</Nm>
+                        <PstlAdr>
+                            <Ctry>DE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </CdtrAgt>
+                
+                <!-- Creditor (Beneficiary) -->
+                <Cdtr>
+                    <Nm>European Industrial Partners GmbH</Nm>
+                    <PstlAdr>
+                        <AdrLine>Taunusanlage 12</AdrLine>
+                        <TwnNm>Frankfurt am Main</TwnNm>
+                        <PstCd>60325</PstCd>
+                        <Ctry>DE</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                
+                <!-- Creditor Account -->
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>DE89370400440532013000</IBAN>
+                    </Id>
+                    <Nm>EUR Operating Account</Nm>
+                </CdtrAcct>
+                
+                <!-- Ultimate Creditor (if different) -->
+                <UltmtCdtr>
+                    <Nm>EIP Holdings Sarl</Nm>
+                    <Id>
+                        <OrgId>
+                            <Othr>
+                                <Id>LU-B-123456</Id>
+                                <SchmeNm>
+                                    <Cd>TXID</Cd>
+                                </SchmeNm>
+                            </Othr>
+                        </OrgId>
+                    </Id>
+                </UltmtCdtr>
+                
+                <!-- Purpose Code -->
+                <Purp>
+                    <Cd>CBFF</Cd> <!-- Capital Building Finance Facility -->
+                </Purp>
+                
+                <!-- Remittance Information -->
+                <RmtInf>
+                    <Ustrd>Payment for Q4 2024 advisory services - Invoice INV-2024-Q4-001</Ustrd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd> <!-- Commercial Invoice -->
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>INV-2024-Q4-001</Nb>
+                            <RltdDt>2024-12-15</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="EUR">1000.00</DuePyblAmt>
+                        </RfrdDocAmt>
+                    </Strd>
+                </RmtInf>
+                
+                <!-- Regulatory Reporting Information -->
+                <RgltryRptg>
+                    <DbtCdtRptgInd>CRED</DbtCdtRptgInd>
+                    <Authrty>
+                        <Nm>European Central Bank</Nm>
+                        <Ctry>DE</Ctry>
+                    </Authrty>
+                    <Dtls>
+                        <Tp>BALANCE OF PAYMENTS</Tp>
+                        <Cd>100</Cd> <!-- Services -->
+                        <Amt Ccy="EUR">1000.00</Amt>
+                        <Inf>Professional services - Financial advisory</Inf>
+                    </Dtls>
+                </RgltryRptg>
+                
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>
