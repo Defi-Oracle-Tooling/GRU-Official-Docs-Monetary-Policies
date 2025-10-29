@@ -107,6 +107,49 @@ graph LR
 │   ├── 🌐 05_Digital_Bank_for_International_Settlements_Charter.md
 │   └── 🚀 06_GRU_Enhancement_Expansion_Roadmap.md
 │
+├── 🏛️ compliance/              # EU/ECB regulatory compliance
+│   ├── 📋 sepa/               # SEPA payments compliance
+│   │   ├── SEPA_Compliance_Matrix.md
+│   │   └── IPR_Compliance_Memo.md
+│   ├── ⚖️ mica/               # Markets in Crypto-Assets regulation
+│   │   ├── Legal_Position_GRU_vs_MiCA.md
+│   │   └── Issuer_Obligations_Readiness.md
+│   ├── 🛡️ dora/               # Digital Operational Resilience Act
+│   │   ├── ICT_Risk_Policy.md
+│   │   ├── Incident_Response_Runbook.md
+│   │   ├── Third_Party_Risk_Policy.md
+│   │   ├── BCP_DR_Plan.md
+│   │   └── Annual_Test_Plan.md
+│   ├── 🔍 aml/                # Anti-Money Laundering & CFT
+│   │   ├── Enterprise_Wide_Risk_Assessment.md
+│   │   ├── KYC_SOP.md
+│   │   ├── Sanctions_Screening_SOP.md
+│   │   ├── TM_Scenarios.md
+│   │   ├── SAR_Playbook.md
+│   │   └── Training_Log.md
+│   └── 🔐 gdpr/               # Data protection compliance
+│       ├── DPIA_GRU.pdf
+│       └── Record_of_Processing_Activities.md
+│
+├── 🔗 integration/             # Technical integration documentation
+│   └── iso20022/              # ISO 20022 message standards
+│       ├── pain.001.sample.xml
+│       ├── pacs.008.sample.xml
+│       └── Mapping_Table.md
+│
+├── 📊 disclosures/             # Transparency and public disclosures
+│   └── PoR_Methodology.md     # Proof-of-Reserves framework
+│
+├── 🔒 security/                # Security and risk management
+│   └── Oracle_Governance_Standard.md
+│
+├── 💼 finance/                 # Financial controls and accounting
+│   ├── Accounting_Policy_IFRS.md
+│   └── Monthly_Close_Checklist.md
+│
+├── ⚖️ legal/                   # Legal and documentary controls
+│   └── Documentary_Controls_ICC_Style.md
+│
 ├── 📖 meta/                    # Supporting references & annexes
 │   ├── 🧮 GRU_Formulas.md
 │   ├── 📚 Glossary.md
@@ -684,11 +727,21 @@ gpg --verify dist/metadata/GRU_Checksum_Verification_Log.txt.asc \
 ---
 
 ### 🔗 **Quick Links**
-| 📖 **Documentation** | 💎 **Smart Contracts** | 🛠️ **Development** | 🌐 **Community** |
-|---------------------|------------------------|-------------------|------------------|
-| [Executive Summary](docs/core/00_GRU_Executive_Summary.md) | [Diamond Architecture](contracts/GrcDiamond.sol) | [Build System](scripts/build.sh) | [Discussions](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/discussions) |
-| [Policy Framework](docs/core/01_GRU_Monetary_Policy_Framework.md) | [Monetary Facet](contracts/facets/MonetaryFacet.sol) | [CI/CD Pipeline](.github/workflows/build.yml) | [Issues](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/issues) |
-| [Formula Reference](docs/meta/GRU_Formulas.md) | [Graph Protocol](subgraph/schema.graphql) | [Contribution Guide](#-contribution-guidelines) | [Pull Requests](https://github.com/Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies/pulls) |
+| 📖 **Core Documentation** | 🏛️ **Regulatory Compliance** | 💎 **Smart Contracts** | 🛠️ **Development** |
+|---------------------------|----------------------------|------------------------|-------------------|
+| [Executive Summary](docs/core/00_GRU_Executive_Summary.md) | [SEPA Compliance Matrix](docs/compliance/sepa/SEPA_Compliance_Matrix.md) | [Diamond Architecture](contracts/GrcDiamond.sol) | [Build System](scripts/build.sh) |
+| [Policy Framework](docs/core/01_GRU_Monetary_Policy_Framework.md) | [MiCA Legal Position](docs/compliance/mica/Legal_Position_GRU_vs_MiCA.md) | [Monetary Facet](contracts/facets/MonetaryFacet.sol) | [CI/CD Pipeline](.github/workflows/build.yml) |
+| [Governance & Oversight](docs/core/04_GRU_Governance_Regulatory_Oversight.md) | [DORA ICT Risk Policy](docs/compliance/dora/ICT_Risk_Policy.md) | [Graph Protocol](subgraph/schema.graphql) | [Contribution Guide](#-contribution-guidelines) |
+| [Formula Reference](docs/meta/GRU_Formulas.md) | [AML Risk Assessment](docs/compliance/aml/Enterprise_Wide_Risk_Assessment.md) | [Oracle Governance](docs/security/Oracle_Governance_Standard.md) | [Compliance Artifacts](docs/compliance/) |
+
+### 🏛️ **EU/ECB Compliance Dashboard**
+| **Regulation** | **Status** | **Key Documents** | **Next Review** |
+|----------------|------------|-------------------|-----------------|
+| **SEPA/IPR** | ✅ Compliant | [Compliance Matrix](docs/compliance/sepa/SEPA_Compliance_Matrix.md) • [IPR Memo](docs/compliance/sepa/IPR_Compliance_Memo.md) | Q2 2025 |
+| **MiCA** | ✅ Ready | [Legal Position](docs/compliance/mica/Legal_Position_GRU_vs_MiCA.md) • [Issuer Readiness](docs/compliance/mica/Issuer_Obligations_Readiness.md) | Q1 2025 |
+| **DORA** | ✅ Implemented | [ICT Risk Policy](docs/compliance/dora/ICT_Risk_Policy.md) • [Incident Response](docs/compliance/dora/Incident_Response_Runbook.md) | Q2 2025 |
+| **AML/CFT** | ✅ Compliant | [Enterprise Risk Assessment](docs/compliance/aml/Enterprise_Wide_Risk_Assessment.md) | Annual |
+| **ISO 20022** | ✅ Implemented | [Message Mapping](docs/integration/iso20022/Mapping_Table.md) • [Sample Messages](docs/integration/iso20022/) | Q3 2025 |
 
 ---
 
