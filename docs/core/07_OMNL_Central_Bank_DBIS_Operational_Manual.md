@@ -45,8 +45,8 @@ Face value is always 1 XAU per GRU.
 
 | Account Type | Currency | Institution | Purpose |
 |---------------|-----------|--------------|----------|
-| **M00 Reserve** | XXX | OMNL Reserve Ledger | Core gold-backed reserves |
-| **M0 Treasury** | XXX | OMNL Treasury Division | Intermediate liquidity |
+| **M00 Reserve** | GRU | OMNL Reserve Ledger | Core gold-backed reserves |
+| **M0 Treasury** | GRU | OMNL Treasury Division | Intermediate liquidity |
 | **M1 Settlement** | EUR | DBIS / SEPA Partner Bank | External payments |
 | **Collateral Vault** | XAU | LBMA-accredited Vault | Physical gold custody |
 | **Compliance Escrow** | EUR | DBIS Compliance Node | AML / Sanctions clearing |
@@ -79,7 +79,7 @@ All accounts are subject to PoR (Proof of Reserves) audits and daily reconciliat
 3. Contract & coverage verified by OMNL Compliance.
 
 ### 5.2 Execution
-1. Internal entry: `<InstdAmt Ccy="XXX">N M1 GRU</InstdAmt>`  
+1. Internal entry: `<InstdAmt Ccy="GRU">N M1 GRU</InstdAmt>`  
 2. SEPA instruction: `Debit EUR IBAN for N × Pₑ (EUR/XAU)`  
 3. Settlement method: SCT or SCT Inst via DBIS PSP.  
 4. Parallel ledger posting M1 GRU @ face parity.  
@@ -119,7 +119,7 @@ All audit files retained for 10 years per EU Recordkeeping Reg. (EU 2022/2554).
 ## 8 — Annexes (Reference Summaries)
 
 **Annex A — ISO 20022 Samples**  
-`pain.001`, `pacs.008`, `camt.053` message templates with Ccy fields (XXX and EUR).
+`pain.001`, `pacs.008`, `camt.053` message templates with Ccy fields (GRU and EUR).
 
 **Annex B — SEPA Compliance Matrix**  
 Mapping to EPC SCT Rulebook v1.1 and IPR 2024/886.
@@ -137,8 +137,8 @@ Key risks: FX rate volatility, oracle deviation, counterparty compliance.
 | Txn ID | GRU-SEPA-2025-0003 |
 | Tier | M1 |
 | Amount | 100 M1 GRU |
-| Parity Rate | €2 200 / XAU |
-| EUR Debit | €220 000 |
+| Parity Rate | €2,200 / XAU |
+| EUR Debit | €220,000 |
 | Coverage | 0.24 XAU/GRU → 24 XAU total |
 | Logs | ISO 20022 pain.001 / camt.053 |
 | Compliance | Instant sanctions cleared |
