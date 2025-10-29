@@ -30,6 +30,7 @@ The GRU (Global Reserve Unit) monetary policy framework establishes a discipline
 | 04_GRU_Governance_Regulatory_Oversight | Chambers, audit cadence, compliance standards |
 | 05_Digital_Bank_for_International_Settlements_Charter | Charter integration, DRB composition, interoperability |
 | 06_GRU_Enhancement_Expansion_Roadmap | Phased evolution, metrics, technical enhancements |
+| 07_OMNL_Central_Bank_DBIS_Operational_Manual | OMNL/DBIS operational policy, monetary structure, transaction flows |
 | GRU_Formulas (meta) | Canonical formula inventory |
 | Glossary (meta) | Terminology normalization |
 | Risk_Annex (meta) | Risk catalog & mitigation matrix |
