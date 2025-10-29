@@ -105,7 +105,8 @@ graph LR
 │   ├── 💰 03_GRU_Bond_System_Liquidity_Management.md
 │   ├── ⚖️ 04_GRU_Governance_Regulatory_Oversight.md
 │   ├── 🌐 05_Digital_Bank_for_International_Settlements_Charter.md
-│   └── 🚀 06_GRU_Enhancement_Expansion_Roadmap.md
+│   ├── 🚀 06_GRU_Enhancement_Expansion_Roadmap.md
+│   └── 🏛️ 07_OMNL_Central_Bank_DBIS_Operational_Manual.md
 │
 ├── 🏛️ compliance/              # EU/ECB regulatory compliance
 │   ├── 📋 sepa/               # SEPA payments compliance
@@ -187,6 +188,7 @@ graph LR
 | **04_Governance_Regulatory_Oversight** | ⚖️ Multi-chamber SHTE governance | ![Stable](https://img.shields.io/badge/status-stable-green) | 5-chamber structure, compliance |
 | **05_Digital_Bank_International_Settlements** | 🌐 DBIS treaty-style charter | ![Stable](https://img.shields.io/badge/status-stable-green) | Cross-border integration |
 | **06_Enhancement_Expansion_Roadmap** | 🚀 Phase rollout & future evolution | ![Stable](https://img.shields.io/badge/status-stable-green) | M2/M3 aggregates, enhancements |
+| **07_OMNL_Central_Bank_DBIS_Operational_Manual** | 🏛️ Operational policy & transaction flows | ![Stable](https://img.shields.io/badge/status-stable-green) | Monetary structure, compliance matrix, transaction processes |
 
 </div>
 
