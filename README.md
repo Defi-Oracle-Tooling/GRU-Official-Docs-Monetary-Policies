@@ -54,6 +54,18 @@ This repository contains the **comprehensive institutional documentation** for t
 - 📈 **Bond System Management** - Li99-series liquidity instruments and cycles
 - 🚀 **Expansion Roadmap** - Phased rollout and future enhancements
 
+### 🌍 **Multilingual Documentation**
+
+The GRU documentation is available in multiple languages to ensure global accessibility:
+
+- 🇬🇧 **English** - Primary documentation (this repository root: `docs/`)
+- 🇮🇩 **Bahasa Indonesia** - [Indonesian Translation](docs/lang/id/README.md)
+- 🇧🇷 **Português** - [Portuguese Translation](docs/lang/pt/README.md)
+- 🇸🇦 **العربية** - [Arabic Translation](docs/lang/ar/README.md)
+- 🇫🇷 **Français** - [French Translation](docs/lang/fr/README.md)
+
+All translations maintain the same structure and technical accuracy as the English version. Core monetary policy documents are prioritized for translation.
+
 </div>
 
 ## 📁 Repository Architecture
