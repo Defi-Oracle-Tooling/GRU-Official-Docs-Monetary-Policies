@@ -10,11 +10,19 @@ Selamat datang di versi Bahasa Indonesia dari dokumentasi resmi Global Reserve U
 - ✅ [02_GRU_Triangulation_eMoney_Creation.md](core/02_GRU_Triangulation_eMoney_Creation.md) - Triangulasi & Penciptaan eMoney
 - ✅ [03_GRU_Bond_System_Liquidity_Management.md](core/03_GRU_Bond_System_Liquidity_Management.md) - Sistem Obligasi & Manajemen Likuiditas
 - ✅ [04_GRU_Governance_Regulatory_Oversight.md](core/04_GRU_Governance_Regulatory_Oversight.md) - Tata Kelola & Pengawasan Regulasi
+- 📝 [05-07_Summary.md](core/05-07_Summary.md) - Ringkasan: DBIS Charter, Roadmap & Manual Operasional
 
-### Dokumen Dalam Proses
-- ⏳ 05_Digital_Bank_for_International_Settlements_Charter.md
-- ⏳ 06_GRU_Enhancement_Expansion_Roadmap.md
-- ⏳ 07_OMNL_Central_Bank_DBIS_Operational_Manual.md
+## Status Terjemahan
+
+**Terjemahan Lengkap:** Dokumen 00-04 (5 dari 8 dokumen inti)
+**Ringkasan Tersedia:** Dokumen 05-07
+
+Dokumen inti yang telah diterjemahkan sepenuhnya mencakup informasi paling penting untuk memahami:
+- Kerangka kebijakan moneter GRU
+- Struktur cadangan dan sistem multi-layer
+- Mekanisme triangulasi dan penerbitan atomik
+- Sistem obligasi Li99 dan manajemen likuiditas
+- Struktur tata kelola multi-kamar
 
 ## Tentang Terjemahan
 

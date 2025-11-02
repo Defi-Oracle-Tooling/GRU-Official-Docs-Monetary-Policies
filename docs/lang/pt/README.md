@@ -10,11 +10,19 @@ Bem-vindo à versão em Português da documentação oficial da Global Reserve U
 - ✅ [02_GRU_Triangulation_eMoney_Creation.md](core/02_GRU_Triangulation_eMoney_Creation.md) - Triangulação e Criação de eMoney
 - ✅ [03_GRU_Bond_System_Liquidity_Management.md](core/03_GRU_Bond_System_Liquidity_Management.md) - Sistema de Títulos e Gestão de Liquidez
 - ✅ [04_GRU_Governance_Regulatory_Oversight.md](core/04_GRU_Governance_Regulatory_Oversight.md) - Governança e Supervisão Regulatória
+- 📝 [05-07_Summary.md](core/05-07_Summary.md) - Resumo: Carta DBIS, Roteiro e Manual Operacional
 
-### Documentos Em Progresso
-- ⏳ 05_Digital_Bank_for_International_Settlements_Charter.md
-- ⏳ 06_GRU_Enhancement_Expansion_Roadmap.md
-- ⏳ 07_OMNL_Central_Bank_DBIS_Operational_Manual.md
+## Status de Tradução
+
+**Tradução Completa:** Documentos 00-04 (5 de 8 documentos principais)
+**Resumo Disponível:** Documentos 05-07
+
+Os documentos principais totalmente traduzidos cobrem as informações mais críticas para entender:
+- Quadro de política monetária GRU
+- Estrutura de reserva e sistema multi-camadas
+- Mecanismos de triangulação e emissão atômica
+- Sistema de títulos Li99 e gestão de liquidez
+- Estrutura de governança multi-câmara
 
 ## Sobre a Tradução
 

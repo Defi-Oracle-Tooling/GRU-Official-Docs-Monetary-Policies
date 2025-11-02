@@ -10,11 +10,19 @@ Bienvenue dans la version française de la documentation officielle de la Global
 - ✅ [02_GRU_Triangulation_eMoney_Creation.md](core/02_GRU_Triangulation_eMoney_Creation.md) - Triangulation et Création d'eMoney
 - ✅ [03_GRU_Bond_System_Liquidity_Management.md](core/03_GRU_Bond_System_Liquidity_Management.md) - Système d'Obligations et Gestion de la Liquidité
 - ✅ [04_GRU_Governance_Regulatory_Oversight.md](core/04_GRU_Governance_Regulatory_Oversight.md) - Gouvernance et Surveillance Réglementaire
+- 📝 [05-07_Summary.md](core/05-07_Summary.md) - Résumé : Charte DBIS, Feuille de Route et Manuel Opérationnel
 
-### Documents En Cours
-- ⏳ 05_Digital_Bank_for_International_Settlements_Charter.md
-- ⏳ 06_GRU_Enhancement_Expansion_Roadmap.md
-- ⏳ 07_OMNL_Central_Bank_DBIS_Operational_Manual.md
+## Statut de Traduction
+
+**Traduction Complète:** Documents 00-04 (5 sur 8 documents principaux)
+**Résumé Disponible:** Documents 05-07
+
+Les documents principaux entièrement traduits couvrent les informations les plus critiques pour comprendre :
+- Le cadre de politique monétaire GRU
+- La structure de réserve et le système multi-couches
+- Les mécanismes de triangulation et d'émission atomique
+- Le système d'obligations Li99 et la gestion de la liquidité
+- La structure de gouvernance multi-chambres
 
 ## À Propos de la Traduction
 
