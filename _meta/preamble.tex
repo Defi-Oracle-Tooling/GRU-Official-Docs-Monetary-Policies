@@ -1,0 +1,43 @@
+% GRU Documentation LaTeX Preamble
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{svg}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+% Title formatting
+\titleformat{\section}[block]{\large\bfseries\color{black}}{\thesection}{0.75em}{}
+\titleformat{\subsection}[block]{\normalsize\bfseries\color{black}}{\thesubsection}{0.75em}{}
+
+% Custom colors
+\definecolor{gruPrimary}{HTML}{0044AA}
+\definecolor{gruAccent}{HTML}{FF8800}
+\definecolor{gruNeutral}{HTML}{333333}
+
+% Simple boxed environment for key formulas
+\usepackage{mdframed}
+\newmdenv[backgroundcolor=gruPrimary!3,linecolor=gruPrimary,roundcorner=4pt,skipabove=10pt,skipbelow=10pt]{formulaBox}
+
+% Macro for inline ratio display
+\newcommand{\ratio}[2]{\ensuremath{#1:#2}}
+
+% Better handling of unicode arrows & symbols (xelatex/lualatex already handle)
+% Fallback definitions if needed
+\providecommand{\geqSymbol}{\ensuremath{\geq}}
+\providecommand{\leqSymbol}{\ensuremath{\leq}}
+\providecommand{\approxSymbol}{\ensuremath{\approx}}
+
+% Header footer (simple)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{GRU Monetary Policy Documentation}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% End preamble

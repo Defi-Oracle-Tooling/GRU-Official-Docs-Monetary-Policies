@@ -39,21 +39,26 @@ exclude:
   - hardhat.config.js
   - LICENSE
   - README.md
+  - docs/core
+  - docs/compliance
+  - docs/meta
+  - docs/lang
 
 # Collections for better organization
+# Jekyll collections require directories prefixed with underscores
 collections:
   core:
     output: true
-    permalink: /:collection/:name/
+    permalink: /core/:name/
   compliance:
     output: true
-    permalink: /:collection/:name/
+    permalink: /compliance/:name/
   meta:
     output: true
-    permalink: /:collection/:name/
+    permalink: /meta/:name/
   lang:
     output: true
-    permalink: /:collection/:name/
+    permalink: /lang/:name/
 
 # Defaults
 defaults:
@@ -67,19 +72,19 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "docs/core"
+      path: "_core"
       type: "core"
     values:
       layout: "document"
       category: "core"
   - scope:
-      path: "docs/compliance"
+      path: "_compliance"
       type: "compliance"
     values:
       layout: "document"
       category: "compliance"
   - scope:
-      path: "docs/meta"
+      path: "_meta"
       type: "meta"
     values:
       layout: "document"
@@ -89,13 +94,14 @@ defaults:
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  hard_wrap: false
   syntax_highlighter_opts:
     block:
-      line_numbers: true
+      line_numbers: false
 
-# SASS settings
-sass:
-  style: compressed
+# SASS settings (commented out if not using SASS)
+# sass:
+#   style: compressed
 
 # Navigation
 navigation:
