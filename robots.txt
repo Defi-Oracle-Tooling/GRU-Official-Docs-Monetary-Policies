@@ -1,0 +1,23 @@
+# robots.txt for GRU Monetary Policies Documentation
+# https://monetary-policies.d-bis.org/
+
+User-agent: *
+Allow: /
+
+# Disallow admin and build artifacts
+Disallow: /_site/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+
+# Allow important paths
+Allow: /core/
+Allow: /compliance/
+Allow: /meta/
+Allow: /lang/
+Allow: /assets/
+
+# Sitemap location
+Sitemap: https://monetary-policies.d-bis.org/sitemap.xml
+

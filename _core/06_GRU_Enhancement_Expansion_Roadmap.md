@@ -86,7 +86,7 @@ Add GRU Monetary Authority (GMA) as permanent secretariat coordinating:
 ### Velocity Metrics Diagram
 The composite velocity index (V_GRU) integrates adjusted transaction cadence, coverage weighting, and stability filtering:
 
-![Velocity Metrics (V_GRU)](/assets/media/velocity_metrics.png)
+![Velocity Metrics (V_GRU)](/assets/media/velocity_metrics.png){: loading="lazy" }
 
 Where:
 - v_raw = Tx_count / Interval

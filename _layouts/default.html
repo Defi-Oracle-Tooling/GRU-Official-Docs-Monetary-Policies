@@ -5,6 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <!-- Preload critical resources -->
+  <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style">
+  <link rel="preload" href="{{ '/assets/css/custom.css' | relative_url }}" as="style">
+  
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://github.com">
+  <link rel="dns-prefetch" href="https://creativecommons.org">
+  
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   
   {% seo %}
@@ -12,6 +20,7 @@
   
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print">
   
   {% if page.math %}
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -20,6 +29,7 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   {% include header.html %}
   
   <div class="container">
@@ -27,7 +37,7 @@
       {% include navigation.html %}
     </div>
     
-    <main class="content">
+    <main class="content" id="main-content">
       <article>
         {% if page.title %}
         <header>
@@ -48,6 +58,10 @@
       {% include footer.html %}
     </main>
   </div>
+  
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    ↑
+  </button>
   
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>

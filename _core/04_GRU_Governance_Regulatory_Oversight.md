@@ -21,7 +21,7 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 | ECC (Ethics & Compliance) | AML/KYC, legal neutrality, conduct | Compliance certifications |
 
 ### Governance Structure Diagram
-![Governance Chambers](/assets/media/governance_chambers.png)
+![Governance Chambers](/assets/media/governance_chambers.png){: loading="lazy" }
 *Figure: Multi-chamber model with external audit / DBIS council integration.*
 
 ## 3. Oversight Principles

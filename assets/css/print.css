@@ -1,0 +1,135 @@
+/* Print Stylesheet for GRU Documentation */
+
+@media print {
+  /* Hide non-essential elements */
+  .site-header,
+  .sidebar,
+  .site-footer,
+  .site-nav,
+  .sidebar-nav,
+  .back-to-top,
+  .document-meta,
+  .document-footer {
+    display: none !important;
+  }
+  
+  /* Full width for content */
+  .container {
+    display: block !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Typography */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: #000;
+  }
+  
+  h1 {
+    font-size: 24pt;
+    margin-top: 0;
+  }
+  
+  h2 {
+    font-size: 18pt;
+    page-break-before: auto;
+  }
+  
+  h3 {
+    font-size: 14pt;
+  }
+  
+  /* Links */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Tables */
+  table {
+    page-break-inside: avoid;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #000;
+    padding: 0.5em;
+  }
+  
+  /* Code blocks */
+  pre, code {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+  
+  /* Page breaks */
+  .page-break {
+    page-break-before: always;
+  }
+  
+  /* Avoid breaking */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Document header */
+  .document-header {
+    border-bottom: 2px solid #000;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+  }
+  
+  .document-header h1 {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Footer for each page */
+  @page {
+    margin: 2cm;
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 10pt;
+      color: #666;
+    }
+    @top-center {
+      content: "GRU Monetary Policy Documentation";
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+  
+  /* First page */
+  @page:first {
+    @top-center {
+      content: "";
+    }
+  }
+}
+

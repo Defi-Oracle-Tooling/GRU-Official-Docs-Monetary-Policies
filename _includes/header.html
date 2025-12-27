@@ -5,12 +5,18 @@
       <span class="site-name">{{ site.title }}</span>
     </a>
     
-    <nav class="site-nav">
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav class="site-nav" id="main-nav">
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/core/' | relative_url }}">Core Documents</a>
       <a href="{{ '/compliance/' | relative_url }}">Compliance</a>
       <a href="{{ '/meta/' | relative_url }}">References</a>
+      <a href="{{ '/search/' | relative_url }}">🔍 Search</a>
     </nav>
   </div>
 </header>
-

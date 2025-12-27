@@ -1,0 +1,183 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<div class="search-page">
+  <h1>Search Documentation</h1>
+  
+  <div class="search-container">
+    <input 
+      type="search" 
+      id="search-input" 
+      placeholder="Search documentation..." 
+      aria-label="Search documentation"
+      autofocus
+    />
+    <div id="search-results" class="search-results"></div>
+  </div>
+  
+  <div id="search-index" style="display: none;">
+    {% assign all_docs = site.core | concat: site.compliance | concat: site.meta %}
+    {% for doc in all_docs %}
+    <div class="search-item" 
+         data-title="{{ doc.title | escape }}" 
+         data-url="{{ doc.url | relative_url }}"
+         data-content="{{ doc.content | strip_html | escape }}">
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.search-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.search-container {
+  margin: 2rem 0;
+}
+
+#search-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--gru-border);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--gru-primary);
+}
+
+.search-results {
+  margin-top: 1rem;
+}
+
+.search-result-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gru-border);
+  border-radius: 4px;
+  background: #f8f9fa;
+}
+
+.search-result-item:hover {
+  background: #e9ecef;
+  border-color: var(--gru-primary);
+}
+
+.search-result-item h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--gru-primary);
+}
+
+.search-result-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-result-item .excerpt {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.search-result-item .highlight {
+  background: yellow;
+  font-weight: bold;
+}
+
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+</style>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchIndex = document.getElementById('search-index');
+  const searchItems = Array.from(searchIndex.querySelectorAll('.search-item'));
+  
+  function search(query) {
+    if (!query || query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const lowerQuery = query.toLowerCase();
+    const results = searchItems
+      .map(item => ({
+        title: item.dataset.title,
+        url: item.dataset.url,
+        content: item.dataset.content
+      }))
+      .filter(item => {
+        const titleMatch = item.title.toLowerCase().includes(lowerQuery);
+        const contentMatch = item.content.toLowerCase().includes(lowerQuery);
+        return titleMatch || contentMatch;
+      })
+      .map(item => {
+        const titleIndex = item.title.toLowerCase().indexOf(lowerQuery);
+        const contentIndex = item.content.toLowerCase().indexOf(lowerQuery);
+        
+        let excerpt = '';
+        if (contentIndex !== -1) {
+          const start = Math.max(0, contentIndex - 50);
+          const end = Math.min(item.content.length, contentIndex + query.length + 50);
+          excerpt = '...' + item.content.substring(start, end) + '...';
+          
+          // Highlight query in excerpt
+          const regex = new RegExp(`(${query})`, 'gi');
+          excerpt = excerpt.replace(regex, '<span class="highlight">$1</span>');
+        }
+        
+        return {
+          title: item.title,
+          url: item.url,
+          excerpt: excerpt
+        };
+      })
+      .slice(0, 10); // Limit to 10 results
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+      return;
+    }
+    
+    searchResults.innerHTML = results.map(result => `
+      <div class="search-result-item">
+        <a href="${result.url}">
+          <h3>${result.title}</h3>
+          ${result.excerpt ? `<div class="excerpt">${result.excerpt}</div>` : ''}
+        </a>
+      </div>
+    `).join('');
+  }
+  
+  let searchTimeout;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      search(e.target.value);
+    }, 300);
+  });
+  
+  // Search on page load if URL has query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryParam = urlParams.get('q');
+  if (queryParam) {
+    searchInput.value = queryParam;
+    search(queryParam);
+  }
+})();
+</script>
+

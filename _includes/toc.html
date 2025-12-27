@@ -1,0 +1,10 @@
+{% if page.toc != false %}
+{% assign toc_content = content | tocify %}
+{% if toc_content != '' %}
+<div class="table-of-contents">
+  <h3>Table of Contents</h3>
+  {{ toc_content }}
+</div>
+{% endif %}
+{% endif %}
+

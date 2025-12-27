@@ -1,0 +1,39 @@
+{% if page.related_docs or page.category %}
+<div class="related-documents">
+  <h3>Related Documents</h3>
+  <ul>
+    {% if page.related_docs %}
+      {% for related in page.related_docs %}
+        {% assign doc = site.core | where: "path", related | first %}
+        {% unless doc %}
+          {% assign doc = site.compliance | where: "path", related | first %}
+        {% endunless %}
+        {% unless doc %}
+          {% assign doc = site.meta | where: "path", related | first %}
+        {% endunless %}
+        {% if doc %}
+          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+    {% if page.category == "core" %}
+      {% assign same_category = site.core | where_exp: "doc", "doc.path != page.path" | sort: "path" | limit: 3 %}
+      {% for doc in same_category %}
+        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+      {% endfor %}
+    {% elsif page.category == "compliance" %}
+      {% assign same_category = site.compliance | where_exp: "doc", "doc.path != page.path" | sort: "path" | limit: 3 %}
+      {% for doc in same_category %}
+        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+      {% endfor %}
+    {% elsif page.category == "meta" %}
+      {% assign same_category = site.meta | where_exp: "doc", "doc.path != page.path" | sort: "path" | limit: 3 %}
+      {% for doc in same_category %}
+        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+

@@ -29,10 +29,12 @@ layout: default
   {% endif %}
   
   <div class="document-content">
+    {% include toc.html %}
     {{ content }}
   </div>
   
   <footer class="document-footer">
+    {% include related-documents.html %}
     <hr>
     <p class="document-footer-text">
       <small>
