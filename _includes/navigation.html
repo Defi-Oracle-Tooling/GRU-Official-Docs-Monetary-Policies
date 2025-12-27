@@ -1,0 +1,46 @@
+<nav class="sidebar-nav">
+  <ul class="nav-list">
+    <li><a href="{{ '/' | relative_url }}">🏠 Home</a></li>
+    
+    <li class="nav-section">
+      <strong>📋 Core Documents</strong>
+      <ul>
+        {% assign core_docs = site.core | sort: 'path' %}
+        {% for doc in core_docs %}
+        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    
+    <li class="nav-section">
+      <strong>🏛️ Compliance</strong>
+      <ul>
+        <li><a href="{{ '/compliance/sepa/' | relative_url }}">SEPA</a></li>
+        <li><a href="{{ '/compliance/mica/' | relative_url }}">MiCA</a></li>
+        <li><a href="{{ '/compliance/dora/' | relative_url }}">DORA</a></li>
+        <li><a href="{{ '/compliance/aml/' | relative_url }}">AML/CFT</a></li>
+      </ul>
+    </li>
+    
+    <li class="nav-section">
+      <strong>📚 References</strong>
+      <ul>
+        {% assign meta_docs = site.meta | sort: 'title' %}
+        {% for doc in meta_docs %}
+        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    
+    <li class="nav-section">
+      <strong>🌍 Languages</strong>
+      <ul>
+        <li><a href="{{ '/lang/id/' | relative_url }}">🇮🇩 Bahasa Indonesia</a></li>
+        <li><a href="{{ '/lang/pt/' | relative_url }}">🇧🇷 Português</a></li>
+        <li><a href="{{ '/lang/ar/' | relative_url }}">🇸🇦 العربية</a></li>
+        <li><a href="{{ '/lang/fr/' | relative_url }}">🇫🇷 Français</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+

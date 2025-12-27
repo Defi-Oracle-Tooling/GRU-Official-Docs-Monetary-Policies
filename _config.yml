@@ -1,0 +1,140 @@
+# Site settings
+title: GRU Official Monetary Policy Documentation
+description: Global Reserve Unit (GRU) monetary architecture and Digital Bank for International Settlements (DBIS) charter
+baseurl: "/GRU-Official-Docs-Monetary-Policies"
+url: "https://defi-oracle-tooling.github.io"
+repository: Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Theme (using custom layout)
+theme: null
+
+# Exclude from processing
+exclude:
+  - node_modules
+  - dist
+  - cache
+  - artifacts
+  - contracts
+  - scripts
+  - subgraph
+  - test
+  - gas
+  - .git
+  - .github
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - hardhat.config.js
+  - LICENSE
+  - README.md
+
+# Collections for better organization
+collections:
+  core:
+    output: true
+    permalink: /:collection/:name/
+  compliance:
+    output: true
+    permalink: /:collection/:name/
+  meta:
+    output: true
+    permalink: /:collection/:name/
+  lang:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "index.md"
+    values:
+      layout: "default"
+  - scope:
+      path: "docs/core"
+      type: "core"
+    values:
+      layout: "document"
+      category: "core"
+  - scope:
+      path: "docs/compliance"
+      type: "compliance"
+    values:
+      layout: "document"
+      category: "compliance"
+  - scope:
+      path: "docs/meta"
+      type: "meta"
+    values:
+      layout: "document"
+      category: "meta"
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# SASS settings
+sass:
+  style: compressed
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Executive Summary
+    url: /core/00_gru_executive_summary/
+  - title: Core Documents
+    children:
+      - title: Monetary Policy Framework
+        url: /core/01_gru_monetary_policy_framework/
+      - title: Triangulation & eMoney Creation
+        url: /core/02_gru_triangulation_emoney_creation/
+      - title: Bond System & Liquidity
+        url: /core/03_gru_bond_system_liquidity_management/
+      - title: Governance & Oversight
+        url: /core/04_gru_governance_regulatory_oversight/
+      - title: DBIS Charter
+        url: /core/05_digital_bank_for_international_settlements_charter/
+      - title: Enhancement Roadmap
+        url: /core/06_gru_enhancement_expansion_roadmap/
+      - title: OMNL Operational Manual
+        url: /core/07_omnl_central_bank_dbis_operational_manual/
+  - title: Compliance
+    children:
+      - title: SEPA Compliance
+        url: /compliance/sepa/
+      - title: MiCA Legal Position
+        url: /compliance/mica/
+      - title: DORA ICT Risk
+        url: /compliance/dora/
+      - title: AML Risk Assessment
+        url: /compliance/aml/
+  - title: References
+    children:
+      - title: Formulas
+        url: /meta/gru_formulas/
+      - title: Glossary
+        url: /meta/glossary/
+      - title: Risk Annex
+        url: /meta/risk_annex/
+

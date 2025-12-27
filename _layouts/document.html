@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<article class="document">
+  {% if page.title %}
+  <header class="document-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.version or page.status or page.last_updated %}
+    <div class="document-meta">
+      {% if page.version %}
+      <span class="meta-item">
+        <strong>Version:</strong> {{ page.version }}
+      </span>
+      {% endif %}
+      {% if page.status %}
+      <span class="meta-item status-{{ page.status | downcase }}">
+        <strong>Status:</strong> {{ page.status }}
+      </span>
+      {% endif %}
+      {% if page.last_updated %}
+      <span class="meta-item">
+        <strong>Last Updated:</strong> {{ page.last_updated }}
+      </span>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+  {% endif %}
+  
+  <div class="document-content">
+    {{ content }}
+  </div>
+  
+  <footer class="document-footer">
+    <hr>
+    <p class="document-footer-text">
+      <small>
+        This document is part of the <a href="{{ '/' | relative_url }}">GRU Monetary Policy Documentation</a>.
+        {% if page.checksum %}
+        <br>Checksum: <code>{{ page.checksum }}</code>
+        {% endif %}
+      </small>
+    </p>
+  </footer>
+</article>
+

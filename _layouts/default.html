@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  
+  {% seo %}
+  {% feed_meta %}
+  
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  
+  {% if page.math %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {% endif %}
+</head>
+
+<body>
+  {% include header.html %}
+  
+  <div class="container">
+    <div class="sidebar">
+      {% include navigation.html %}
+    </div>
+    
+    <main class="content">
+      <article>
+        {% if page.title %}
+        <header>
+          <h1>{{ page.title }}</h1>
+          {% if page.version or page.status or page.last_updated %}
+          <div class="document-meta">
+            {% if page.version %}<span class="version">Version: {{ page.version }}</span>{% endif %}
+            {% if page.status %}<span class="status status-{{ page.status | downcase }}">Status: {{ page.status }}</span>{% endif %}
+            {% if page.last_updated %}<span class="updated">Last Updated: {{ page.last_updated }}</span>{% endif %}
+          </div>
+          {% endif %}
+        </header>
+        {% endif %}
+        
+        {{ content }}
+      </article>
+      
+      {% include footer.html %}
+    </main>
+  </div>
+  
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
+
