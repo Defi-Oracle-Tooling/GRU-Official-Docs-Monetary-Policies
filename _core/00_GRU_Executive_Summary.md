@@ -3,6 +3,7 @@ title: GRU Executive Summary
 version: 1.1.0
 status: stable
 last_updated: 2025-10-24
+lang: en
 ---
 
 # Executive Summary

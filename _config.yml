@@ -4,6 +4,8 @@ description: Global Reserve Unit (GRU) monetary architecture and Digital Bank fo
 baseurl: "/GRU-Official-Docs-Monetary-Policies"
 url: "https://defi-oracle-tooling.github.io"
 repository: Defi-Oracle-Tooling/GRU-Official-Docs-Monetary-Policies
+lang: "en"
+locale: "en_US"
 
 # Build settings
 markdown: kramdown
@@ -67,28 +69,33 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+      lang: "en"
   - scope:
       path: "index.md"
     values:
       layout: "default"
+      lang: "en"
   - scope:
       path: "_core"
       type: "core"
     values:
       layout: "document"
       category: "core"
+      lang: "en"
   - scope:
       path: "_compliance"
       type: "compliance"
     values:
       layout: "document"
       category: "compliance"
+      lang: "en"
   - scope:
       path: "_meta"
       type: "meta"
     values:
       layout: "document"
       category: "meta"
+      lang: "en"
 
 # Kramdown settings
 kramdown:

@@ -2,6 +2,7 @@
 layout: default
 title: GRU Monetary Policy Documentation
 permalink: /
+lang: en
 ---
 
 <div align="center">
