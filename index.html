@@ -23,8 +23,7 @@ This repository contains the **comprehensive institutional documentation** for t
 
 {% assign core_docs = site.core | sort: 'path' %}
 {% for doc in core_docs %}
-- **[{{ doc.title }}]({{ doc.url }})**  
-  {% if doc.description %}{{ doc.description }}{% endif %}
+- **[{{ doc.title }}]({{ doc.url }})**
 {% endfor %}
 
 ## 🏛️ Compliance & Regulatory

@@ -71,7 +71,7 @@ defaults:
       layout: "default"
       lang: "en"
   - scope:
-      path: "index.md"
+      path: "index.html"
     values:
       layout: "default"
       lang: "en"
