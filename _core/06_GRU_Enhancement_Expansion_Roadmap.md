@@ -5,6 +5,7 @@ status: stable
 last_updated: 2025-10-24
 layer: roadmap
 checksum: pending
+lang: en
 ---
 # GRU Enhancement & Expansion Roadmap
 
@@ -86,7 +87,7 @@ Add GRU Monetary Authority (GMA) as permanent secretariat coordinating:
 ### Velocity Metrics Diagram
 The composite velocity index (V_GRU) integrates adjusted transaction cadence, coverage weighting, and stability filtering:
 
-![Velocity Metrics (V_GRU)](/assets/media/velocity_metrics.png){: loading="lazy" }
+![Velocity Metrics (V_GRU)](../assets/media/velocity_metrics.png){: loading="lazy" }
 
 Where:
 - v_raw = Tx_count / Interval

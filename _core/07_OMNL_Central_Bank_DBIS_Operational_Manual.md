@@ -7,6 +7,7 @@ layer: operational-policy
 document_ref: OMNL/DBIS-GRU-2025-POL01
 effective_date: October 2025
 checksum: pending
+lang: en
 ---
 
 # OMNL Central Bank | Digital Bank of International Settlements  

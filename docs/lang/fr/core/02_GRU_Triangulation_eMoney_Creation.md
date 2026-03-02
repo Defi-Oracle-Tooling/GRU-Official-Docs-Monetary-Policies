@@ -20,7 +20,7 @@ La triangulation convertit n'importe quel actif source → XAU → GRU → actif
 Toutes les triangulations GRU passent par XAU indépendamment de la classe de destination (commodity, devise, titre, autre).
 
 ### Diagramme de Flux de Triangulation
-![Flux de Triangulation](../../media/triangulation_flow.pdf)
+![Flux de Triangulation](../../../assets/media/triangulation_flow.png)
 *Figure : Réserve (M0) → Émission (M1) → Distribution (M2+) avec chemin de rétroaction de l'instrument de contrôle.*
 
 ## 3. Logique d'Émission Atomique (Protocole 7:10)

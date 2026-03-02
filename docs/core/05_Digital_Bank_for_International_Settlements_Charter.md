@@ -98,6 +98,14 @@ DRB = 0.40 XAU + 0.25 EUR + 0.15 USD + 0.10 BTC + 0.10 LiXAU
 - Annex IV: PoR Attestation Template
 - Annex V: Legal Reference Index
 
+## XVI. Participation Framework
+DBIS operates under an **Irrevocable Right of Use (IRU)** participation framework, not an equity-based model. All participation is through IRUs, which are non-equity, non-share infrastructure access rights.
+
+**Related Documentation**:
+- [IRU Participation Agreement](../../../dbis_core/docs/legal/IRU_Participation_Agreement.md) - Master IRU Participation Agreement
+- [Foundational Charter IRU Excerpt](../../../dbis_core/docs/legal/Foundational_Charter_IRU_Excerpt.md) - Constitutional foundation for IRU model
+- [Regulatory Positioning Memo](../../../dbis_core/docs/legal/Regulatory_Positioning_Memo_CBs_DFIs.md) - Regulatory guidance for central banks and DFIs
+
 ---
 
 ## Commodity Index Registry & Dashboard Integration

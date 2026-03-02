@@ -36,7 +36,7 @@ Service d'obligations intégré à l'émission atomique et aux cycles 40/40/20 :
 ### Diagramme du Cycle d'Obligations
 Le diagramme suivant illustre le chemin de liquidité en boucle fermée pour les obligations de la série Li99 sur l'horizon de coupon et de rachat de 10 ans :
 
-![Boucle de Liquidité du Cycle d'Obligations](../../media/bond_cycle.pdf)
+![Boucle de Liquidité du Cycle d'Obligations](../../../assets/media/bond_cycle.png)
 
 ## 5. Flux de Coupon
 | Étape | Action | Impact |

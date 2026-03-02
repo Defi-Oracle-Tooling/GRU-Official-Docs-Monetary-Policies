@@ -36,7 +36,7 @@ Serviço de títulos integrado com emissão atômica e ciclos 40/40/20:
 ### Diagrama do Ciclo de Títulos
 O diagrama a seguir ilustra o caminho de liquidez de ciclo fechado para títulos da série Li99 ao longo do horizonte de cupom e recompra de 10 anos:
 
-![Loop de Liquidez do Ciclo de Títulos](../../media/bond_cycle.pdf)
+![Loop de Liquidez do Ciclo de Títulos](../../../assets/media/bond_cycle.png)
 
 ## 5. Fluxo de Cupom
 | Estágio | Ação | Impacto |

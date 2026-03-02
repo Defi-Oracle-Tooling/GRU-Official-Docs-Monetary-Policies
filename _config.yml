@@ -116,23 +116,23 @@ navigation:
   - title: Home
     url: /
   - title: Executive Summary
-    url: /core/00_gru_executive_summary/
+    url: /core/00-gru-executive-summary/
   - title: Core Documents
     children:
       - title: Monetary Policy Framework
-        url: /core/01_gru_monetary_policy_framework/
+        url: /core/01-gru-monetary-policy-framework/
       - title: Triangulation & eMoney Creation
-        url: /core/02_gru_triangulation_emoney_creation/
+        url: /core/02-gru-triangulation-emoney-creation/
       - title: Bond System & Liquidity
-        url: /core/03_gru_bond_system_liquidity_management/
+        url: /core/03-gru-bond-system-liquidity-management/
       - title: Governance & Oversight
-        url: /core/04_gru_governance_regulatory_oversight/
+        url: /core/04-gru-governance-regulatory-oversight/
       - title: DBIS Charter
-        url: /core/05_digital_bank_for_international_settlements_charter/
+        url: /core/05-digital-bank-for-international-settlements-charter/
       - title: Enhancement Roadmap
-        url: /core/06_gru_enhancement_expansion_roadmap/
+        url: /core/06-gru-enhancement-expansion-roadmap/
       - title: OMNL Operational Manual
-        url: /core/07_omnl_central_bank_dbis_operational_manual/
+        url: /core/07-omnl-central-bank-dbis-operational-manual/
   - title: Compliance
     children:
       - title: SEPA Compliance
@@ -146,9 +146,9 @@ navigation:
   - title: References
     children:
       - title: Formulas
-        url: /meta/gru_formulas/
+        url: /meta/gru-formulas/
       - title: Glossary
         url: /meta/glossary/
       - title: Risk Annex
-        url: /meta/risk_annex/
+        url: /meta/risk-annex/
 

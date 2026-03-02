@@ -13,7 +13,7 @@ language: Bahasa Indonesia
 Global Reserve Unit (GRU) menetapkan sistem moneter multi-tingkat yang didukung aset, menambatkan semua likuiditas melalui XAU (emas) untuk memastikan nilai intrinsik, paritas yang dapat diaudit, dan konvertibilitas lintas domain.
 
 ### Diagram Siklus Penerbitan
-![Siklus Penerbitan GRU](../../media/issuance_cycle.pdf)
+![Siklus Penerbitan GRU](../../../assets/media/issuance_cycle.png)
 *Gambar: Cadangan → Penerbitan → Sirkulasi dengan loop daur ulang likuiditas dan pemeliharaan cakupan.*
 
 ## Rasio Inti

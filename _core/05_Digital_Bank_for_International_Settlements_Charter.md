@@ -5,6 +5,7 @@ status: stable
 last_updated: 2025-10-24
 layer: charter
 checksum: pending
+lang: en
 ---
 # Digital Bank for International Settlements (DBIS) — Concept Charter
 

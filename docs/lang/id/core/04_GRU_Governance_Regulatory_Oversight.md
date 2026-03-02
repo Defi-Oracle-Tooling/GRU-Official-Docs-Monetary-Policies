@@ -22,7 +22,7 @@ GRU beroperasi di bawah Sovereign Hybrid Trust Entity (SHTE) yang menggabungkan 
 | ECC (Etika & Kepatuhan) | AML/KYC, netralitas hukum, perilaku | Sertifikasi kepatuhan |
 
 ### Diagram Struktur Tata Kelola
-![Kamar Tata Kelola](../../media/governance_chambers.pdf)
+![Kamar Tata Kelola](../../../assets/media/governance_chambers.png)
 *Gambar: Model multi-kamar dengan integrasi audit eksternal / dewan DBIS.*
 
 ## 3. Prinsip Pengawasan

@@ -73,8 +73,8 @@
 **Example Implementation:**
 ```markdown
 ## Related Documents
-- [Monetary Policy Framework](/core/01-gru-monetary-policy-framework/)
-- [Bond System Overview](/core/03-gru-bond-system-liquidity-management/)
+- [Monetary Policy Framework](_core/01_GRU_Monetary_Policy_Framework.md)
+- [Bond System Overview](_core/03_GRU_Bond_System_Liquidity_Management.md)
 ```
 
 ---

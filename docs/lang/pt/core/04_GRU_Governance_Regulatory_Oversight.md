@@ -22,7 +22,7 @@ O GRU opera sob uma Sovereign Hybrid Trust Entity (SHTE) combinando neutralidade
 | ECC (Ética & Conformidade) | AML/KYC, neutralidade legal, conduta | Certificações de conformidade |
 
 ### Diagrama de Estrutura de Governança
-![Câmaras de Governança](../../media/governance_chambers.pdf)
+![Câmaras de Governança](../../../assets/media/governance_chambers.png)
 *Figura: Modelo multi-câmara com integração de auditoria externa / conselho DBIS.*
 
 ## 3. Princípios de Supervisão

@@ -20,7 +20,7 @@ Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, men
 Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya).
 
 ### Diagram Aliran Triangulasi
-![Aliran Triangulasi](../../media/triangulation_flow.pdf)
+![Aliran Triangulasi](../../../assets/media/triangulation_flow.png)
 *Gambar: Cadangan (M0) → Penerbitan (M1) → Distribusi (M2+) dengan jalur umpan balik instrumen kontrol.*
 
 ## 3. Logika Penerbitan Atomik (Protokol 7:10)

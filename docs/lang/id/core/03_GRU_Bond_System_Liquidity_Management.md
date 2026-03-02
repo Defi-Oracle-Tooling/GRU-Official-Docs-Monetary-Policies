@@ -36,7 +36,7 @@ Layanan obligasi terintegrasi dengan penerbitan atomik & siklus 40/40/20:
 ### Diagram Siklus Obligasi
 Diagram berikut mengilustrasikan jalur likuiditas loop tertutup untuk obligasi seri Li99 selama horizon kupon dan pembelian kembali 10 tahun:
 
-![Loop Likuiditas Siklus Obligasi](../../media/bond_cycle.pdf)
+![Loop Likuiditas Siklus Obligasi](../../../assets/media/bond_cycle.png)
 
 ## 5. Aliran Kupon
 | Tahap | Tindakan | Dampak |

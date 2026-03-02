@@ -5,6 +5,7 @@ status: stable
 last_updated: 2025-10-24
 layer: governance
 checksum: pending
+lang: en
 ---
 # GRU Governance & Regulatory Oversight Framework
 
@@ -21,7 +22,7 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 | ECC (Ethics & Compliance) | AML/KYC, legal neutrality, conduct | Compliance certifications |
 
 ### Governance Structure Diagram
-![Governance Chambers](/assets/media/governance_chambers.png){: loading="lazy" }
+![Governance Chambers](../assets/media/governance_chambers.png){: loading="lazy" }
 *Figure: Multi-chamber model with external audit / DBIS council integration.*
 
 ## 3. Oversight Principles

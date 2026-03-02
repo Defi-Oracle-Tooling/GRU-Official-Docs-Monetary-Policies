@@ -13,7 +13,7 @@ language: Français
 La Global Reserve Unit (GRU) établit un système monétaire multi-niveaux adossé à des actifs, ancrant toute la liquidité via XAU (or) pour garantir une valeur intrinsèque, une parité auditable et une convertibilité inter-domaines.
 
 ### Diagramme du Cycle d'Émission
-![Cycle d'Émission GRU](../../media/issuance_cycle.pdf)
+![Cycle d'Émission GRU](../../../assets/media/issuance_cycle.png)
 *Figure : Réserve → Émission → Circulation avec boucle de recyclage de liquidité et maintien de la couverture.*
 
 ## Ratios Fondamentaux
