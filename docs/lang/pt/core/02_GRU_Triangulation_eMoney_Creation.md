@@ -5,7 +5,7 @@ status: estável
 last_updated: 2025-10-24
 layer: mecânica
 checksum: pendente
-language: Português
+lang: pt
 ---
 # Quadro de Triangulação GRU e Criação de eMoney
 
@@ -20,7 +20,7 @@ A triangulação converte qualquer ativo de origem → XAU → GRU → ativo de 
 Todas as triangulações GRU passam por XAU independentemente da classe de destino (commodity, moeda, título, outro).
 
 ### Diagrama de Fluxo de Triangulação
-![Fluxo de Triangulação](../../../assets/media/triangulation_flow.png)
+![Fluxo de Triangulação](/assets/media/triangulation_flow.png)
 *Figura: Reserva (M0) → Emissão (M1) → Distribuição (M2+) com caminho de feedback de instrumento de controle.*
 
 ## 3. Lógica de Emissão Atômica (Protocolo 7:10)

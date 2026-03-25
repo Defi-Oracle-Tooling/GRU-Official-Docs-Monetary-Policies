@@ -5,7 +5,7 @@ status: stabil
 last_updated: 2025-10-24
 layer: instrumen
 checksum: tertunda
-language: Bahasa Indonesia
+lang: id
 ---
 # Sistem Obligasi GRU & Manajemen Likuiditas
 
@@ -36,7 +36,7 @@ Layanan obligasi terintegrasi dengan penerbitan atomik & siklus 40/40/20:
 ### Diagram Siklus Obligasi
 Diagram berikut mengilustrasikan jalur likuiditas loop tertutup untuk obligasi seri Li99 selama horizon kupon dan pembelian kembali 10 tahun:
 
-![Loop Likuiditas Siklus Obligasi](../../../assets/media/bond_cycle.png)
+![Loop Likuiditas Siklus Obligasi](/assets/media/bond_cycle.png)
 
 ## 5. Aliran Kupon
 | Tahap | Tindakan | Dampak |

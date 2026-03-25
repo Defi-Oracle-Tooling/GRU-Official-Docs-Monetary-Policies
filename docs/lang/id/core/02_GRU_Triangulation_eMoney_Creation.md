@@ -5,7 +5,7 @@ status: stabil
 last_updated: 2025-10-24
 layer: mekanik
 checksum: tertunda
-language: Bahasa Indonesia
+lang: id
 ---
 # Kerangka Triangulasi GRU & Penciptaan eMoney
 
@@ -20,7 +20,7 @@ Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, men
 Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya).
 
 ### Diagram Aliran Triangulasi
-![Aliran Triangulasi](../../../assets/media/triangulation_flow.png)
+![Aliran Triangulasi](/assets/media/triangulation_flow.png)
 *Gambar: Cadangan (M0) → Penerbitan (M1) → Distribusi (M2+) dengan jalur umpan balik instrumen kontrol.*
 
 ## 3. Logika Penerbitan Atomik (Protokol 7:10)

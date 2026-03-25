@@ -1,9 +1,9 @@
 ---
-Title: Ringkasan Eksekutif GRU
-Version: 1.1.0
-Status: Stabil
-Last-Updated: 2025-10-24
-Language: Bahasa Indonesia
+title: Ringkasan Eksekutif GRU
+version: 1.1.0
+status: Stabil
+last_updated: 2025-10-24
+lang: id
 ---
 
 # Ringkasan Eksekutif

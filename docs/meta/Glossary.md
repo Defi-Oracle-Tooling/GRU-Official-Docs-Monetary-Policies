@@ -170,7 +170,7 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
 flowchart TD
   A[Source Assets / Currencies / Securities] -->|Triangulate| B[XAU (Gold) Anchor]
   B -->|Mint/Settle via Parity| C[GRU (Global Reserve Unit)]
-  C --> D{{Li-Based Commodity Indices}}
+  C --> D[Li-Based Commodity Indices]
   D --> D1[LiXAU\n(Core Gold-Linked Index)]
   D --> D2[LiPMG\n(Precious Metals Group)]
   D --> D3[LiBMG1\n(Base Metals Group)]

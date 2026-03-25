@@ -5,7 +5,7 @@ status: stable
 last_updated: 2025-10-24
 layer: instruments
 checksum: en attente
-language: Français
+lang: fr
 ---
 # Système d'Obligations GRU et Gestion de la Liquidité
 
@@ -36,7 +36,7 @@ Service d'obligations intégré à l'émission atomique et aux cycles 40/40/20 :
 ### Diagramme du Cycle d'Obligations
 Le diagramme suivant illustre le chemin de liquidité en boucle fermée pour les obligations de la série Li99 sur l'horizon de coupon et de rachat de 10 ans :
 
-![Boucle de Liquidité du Cycle d'Obligations](../../../assets/media/bond_cycle.png)
+![Boucle de Liquidité du Cycle d'Obligations](/assets/media/bond_cycle.png)
 
 ## 5. Flux de Coupon
 | Étape | Action | Impact |

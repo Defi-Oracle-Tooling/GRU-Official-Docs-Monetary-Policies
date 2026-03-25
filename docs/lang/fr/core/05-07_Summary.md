@@ -3,7 +3,7 @@ title: Résumé des Documents Principaux Supplémentaires
 version: 1.0.0
 status: résumé
 last_updated: 2025-11-02
-language: Français
+lang: fr
 ---
 # Résumé : Charte DBIS, Feuille de Route et Manuel Opérationnel
 

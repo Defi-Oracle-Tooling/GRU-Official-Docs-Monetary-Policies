@@ -5,7 +5,7 @@ status: stabil
 last_updated: 2025-10-24
 layer: tata kelola
 checksum: tertunda
-language: Bahasa Indonesia
+lang: id
 ---
 # Kerangka Tata Kelola GRU & Pengawasan Regulasi
 
@@ -22,7 +22,7 @@ GRU beroperasi di bawah Sovereign Hybrid Trust Entity (SHTE) yang menggabungkan 
 | ECC (Etika & Kepatuhan) | AML/KYC, netralitas hukum, perilaku | Sertifikasi kepatuhan |
 
 ### Diagram Struktur Tata Kelola
-![Kamar Tata Kelola](../../../assets/media/governance_chambers.png)
+![Kamar Tata Kelola](/assets/media/governance_chambers.png)
 *Gambar: Model multi-kamar dengan integrasi audit eksternal / dewan DBIS.*
 
 ## 3. Prinsip Pengawasan

@@ -136,13 +136,13 @@ navigation:
   - title: Compliance
     children:
       - title: SEPA Compliance
-        url: /compliance/sepa/
+        url: /compliance/#sepa
       - title: MiCA Legal Position
-        url: /compliance/mica/
+        url: /compliance/#mica
       - title: DORA ICT Risk
-        url: /compliance/dora/
+        url: /compliance/#dora
       - title: AML Risk Assessment
-        url: /compliance/aml/
+        url: /compliance/#amlcft
   - title: References
     children:
       - title: Formulas
@@ -151,4 +151,3 @@ navigation:
         url: /meta/glossary/
       - title: Risk Annex
         url: /meta/risk-annex/
-

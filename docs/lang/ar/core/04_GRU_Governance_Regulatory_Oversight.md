@@ -5,7 +5,7 @@ status: مستقر
 last_updated: 2025-10-24
 layer: حوكمة
 checksum: معلق
-language: العربية
+lang: ar
 ---
 # إطار حوكمة GRU والرقابة التنظيمية
 
@@ -22,7 +22,7 @@ language: العربية
 | ECC (الأخلاقيات والامتثال) | AML/KYC، الحياد القانوني، السلوك | شهادات الامتثال |
 
 ### رسم تخطيطي لهيكل الحوكمة
-![غرف الحوكمة](../../../assets/media/governance_chambers.png)
+![غرف الحوكمة](/assets/media/governance_chambers.png)
 *الشكل: نموذج متعدد الغرف مع تكامل التدقيق الخارجي / مجلس DBIS.*
 
 ## 3. مبادئ الرقابة

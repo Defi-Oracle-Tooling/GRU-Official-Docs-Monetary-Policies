@@ -36,7 +36,7 @@ Bond servicing integrated with atomic issuance & 40/40/20 cycles:
 ### Bond Cycle Diagram
 The following diagram illustrates the closed-loop liquidity path for Li99-series bonds over the 10-year coupon and buy-back horizon:
 
-![Bond Cycle Liquidity Loop](../assets/media/bond_cycle.png){: loading="lazy" }
+![Bond Cycle Liquidity Loop](/assets/media/bond_cycle.png){: loading="lazy" }
 
 ## 5. Coupon Flow
 | Stage | Action | Impact |

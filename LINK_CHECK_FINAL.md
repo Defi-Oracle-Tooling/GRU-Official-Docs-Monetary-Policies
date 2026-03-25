@@ -3,6 +3,7 @@
 
 **Date:** 2025-01-26  
 **Site URL:** https://monetary-policies.d-bis.org
+**Status:** Historical report. It reflects a previous generation of the site before the current landing-page cleanup.
 
 ---
 
@@ -118,4 +119,3 @@ All internal links on the site are functional and returning valid content.
 
 **Report Generated:** 2025-01-26  
 **All Links:** ✅ Verified Working
-

@@ -1,9 +1,9 @@
 ---
-Title: Resumo Executivo GRU
-Version: 1.1.0
-Status: Estável
-Last-Updated: 2025-10-24
-Language: Português
+title: Resumo Executivo GRU
+version: 1.1.0
+status: Estável
+last_updated: 2025-10-24
+lang: pt
 ---
 
 # Resumo Executivo

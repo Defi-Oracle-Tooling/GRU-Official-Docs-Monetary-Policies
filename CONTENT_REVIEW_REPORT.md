@@ -3,6 +3,7 @@
 
 **Date:** 2025-01-26  
 **Reviewer:** Automated Content Analysis
+**Status:** Historical report. Several findings below have since been corrected in the working tree.
 
 ---
 
@@ -182,4 +183,3 @@
 2. Document standards
 3. Create front matter template
 4. Update language files
-

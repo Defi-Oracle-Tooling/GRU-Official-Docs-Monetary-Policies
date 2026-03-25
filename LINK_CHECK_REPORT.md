@@ -3,6 +3,7 @@
 
 **Date:** 2025-01-26  
 **Site URL:** https://monetary-policies.d-bis.org
+**Status:** Historical report. The current source tree now includes additional landing pages and language hubs.
 
 ---
 
@@ -130,4 +131,3 @@ Automated link checking script that:
 ---
 
 **Report Generated:** 2025-01-26
-

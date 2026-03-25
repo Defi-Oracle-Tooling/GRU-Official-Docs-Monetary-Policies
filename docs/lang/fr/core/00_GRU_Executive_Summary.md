@@ -1,9 +1,9 @@
 ---
-Title: Résumé Exécutif GRU
-Version: 1.1.0
-Status: Stable
-Last-Updated: 2025-10-24
-Language: Français
+title: Résumé Exécutif GRU
+version: 1.1.0
+status: Stable
+last_updated: 2025-10-24
+lang: fr
 ---
 
 # Résumé Exécutif

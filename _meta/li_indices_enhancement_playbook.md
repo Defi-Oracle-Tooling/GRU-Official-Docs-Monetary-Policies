@@ -198,7 +198,7 @@ Get-ChildItem *.mmd | ForEach-Object {
 flowchart TD
   A[Source Assets] -->|Triangulate| B[XAU (Gold) Anchor]
   B -->|Parity Mint/Settle| C[GRU Unit]
-  C --> D{{Li Commodity Indices}}
+  C --> D[Li Commodity Indices]
   D --> D1[LiXAU]
   D --> D2[LiPMG]
   D --> D3[LiBMG1]

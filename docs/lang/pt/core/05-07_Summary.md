@@ -3,7 +3,7 @@ title: Resumo de Documentos Principais Adicionais
 version: 1.0.0
 status: resumo
 last_updated: 2025-11-02
-language: Português
+lang: pt
 ---
 # Resumo: Carta DBIS, Roteiro e Manual Operacional
 

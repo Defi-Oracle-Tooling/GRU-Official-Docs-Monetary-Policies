@@ -5,7 +5,7 @@ status: stable
 last_updated: 2025-10-24
 layer: gouvernance
 checksum: en attente
-language: Français
+lang: fr
 ---
 # Cadre de Gouvernance GRU et Surveillance Réglementaire
 
@@ -22,7 +22,7 @@ Le GRU fonctionne sous une Sovereign Hybrid Trust Entity (SHTE) combinant la neu
 | ECC (Éthique & Conformité) | AML/KYC, neutralité légale, conduite | Certifications de conformité |
 
 ### Diagramme de Structure de Gouvernance
-![Chambres de Gouvernance](../../../assets/media/governance_chambers.png)
+![Chambres de Gouvernance](/assets/media/governance_chambers.png)
 *Figure : Modèle multi-chambres avec intégration d'audit externe / conseil DBIS.*
 
 ## 3. Principes de Surveillance

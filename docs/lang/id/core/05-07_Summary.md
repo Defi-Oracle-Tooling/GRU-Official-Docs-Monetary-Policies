@@ -3,7 +3,7 @@ title: Ringkasan Dokumen Inti Tambahan
 version: 1.0.0
 status: ringkasan
 last_updated: 2025-11-02
-language: Bahasa Indonesia
+lang: id
 ---
 # Ringkasan: DBIS Charter, Roadmap & Manual Operasional
 
