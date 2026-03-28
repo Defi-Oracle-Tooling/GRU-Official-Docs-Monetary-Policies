@@ -12,6 +12,8 @@ lang: id
 ## 1. Ikhtisar
 Obligasi hibrida perpetual loop tertutup (seri Li99) menyediakan likuiditas elastis sambil mempertahankan solvabilitas yang didukung cadangan.
 
+Model ini berjalan di atas arsitektur GRU berbasis ERC-2535 Diamond, sehingga layanan obligasi, kepatuhan, indeks, dan jalur aset dapat berevolusi secara modular tanpa mengubah permukaan tata kelola inti. Jalur pendanaan dan reinvestasi tetap sejajar dengan kerangka XAU yang dirutekan melalui `cXAUC/cXAUT`.
+
 ## 2. Instrumen
 | Kode | Nama | Tujuan | Jangka Waktu | Pembelian Kembali |
 |------|------|---------|------|----------|

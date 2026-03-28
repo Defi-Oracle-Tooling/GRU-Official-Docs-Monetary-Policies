@@ -11,12 +11,12 @@ Ce document fournit un résumé de trois documents principaux supplémentaires d
 
 ## 05. Charte du Digital Bank for International Settlements (DBIS)
 
-Le DBIS est fondé pour fournir une couche de coordination neutre-souveraine, transparente et adossée à des actifs pour la stabilité monétaire mondiale utilisant le GRU.
+Le DBIS est fondé pour fournir une couche de coordination neutre-souveraine, transparente et adossée à des actifs pour la stabilité monétaire mondiale utilisant le GRU. Au niveau d'implémentation, la structure utilise ERC-2535 Diamond pour les modules d'émission, de conformité, d'indice et d'actifs spécifiques.
 
 **Principes Fondamentaux :**
 - Neutralité souveraine
 - Transparence algorithmique
-- Intégrité adossée aux actifs (ancrage XAU)
+- Intégrité adossée aux actifs (ancrage XAU via `cXAUC/cXAUT`)
 - Interopérabilité inclusive (CBDCs, commodités, titres)
 - Gouvernance basée sur l'audit
 
@@ -38,7 +38,7 @@ La feuille de route décrit l'évolution progressive du GRU d'un système de ré
 
 **Phase 1 : Fondation (Maintenant - 12 mois)**
 - Finalisation des documents de politique centrale
-- Implémentation des contrats intelligents Diamond Standard
+- Implémentation des contrats intelligents Diamond Standard pour les modules d'émission, de conformité, d'indice et d'actifs spécifiques
 - Lancement des PoR trimestriels
 
 **Phase 2 : Expansion (12-24 mois)**
@@ -48,7 +48,7 @@ La feuille de route décrit l'évolution progressive du GRU d'un système de ré
 
 **Phase 3 : Évolutivité Mondiale (24-48 mois)**
 - Intégration CBDC multi-juridictionnelle
-- Triangulation multi-ancre
+- Triangulation multi-ancre avec FX principal via XAU (`cXAUC/cXAUT`)
 - Canaux d'obligations liés à l'ESG
 
 ## 07. Manuel Opérationnel OMNL Banque Centrale / DBIS
@@ -61,7 +61,7 @@ Ce manuel fournit des orientations opérationnelles complètes pour exécuter l'
 - **Couche M1** : Circulation Commerciale (eMoney de marché)
 
 **Processus de Transaction :**
-- Processus d'émission (vérification de collatéral, triangulation atomique)
+- Processus d'émission (vérification de collatéral, triangulation atomique via XAU)
 - Processus de rachat (validation et triangulation inverse)
 
 **Gestion de la Conformité :**

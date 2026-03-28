@@ -9,12 +9,12 @@ checksum: pending
 # Digital Bank for International Settlements (DBIS) — Concept Charter
 
 ## I. Preamble
-The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed coordination layer for global monetary stability using the GRU.
+The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed coordination layer for global monetary stability using the GRU. At the implementation layer, GRU uses ERC-2535 Diamond so issuance modules, compliance logic, index mechanics, and asset-specific behaviors can evolve without breaking governance coherence.
 
 ## II. Principles
 1. Sovereign neutrality
 2. Algorithmic transparency
-3. Asset-backed integrity (XAU anchoring)
+3. Asset-backed integrity (XAU anchoring via `cXAUC/cXAUT`)
 4. Inclusive interoperability (CBDCs, commodities, securities)
 5. Audit-first governance
 
@@ -37,10 +37,10 @@ The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed co
 1 M00 GRU = 25 M1 GRU
 1 XAU GRU = 1.2 XAU
 ```
-Minimum reserve coverage: ≥ 120% verified.
+Minimum reserve coverage: ≥ 120% verified. The Li basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
 ## VI. Triangulation & Issuance
-- All issuance atomic: Source → XAU → GRU → Destination
+- All issuance atomic: Source → XAU → GRU → Destination, with FX routed through `cXAUC/cXAUT`
 - Expansion function: E = I × (10/7) × (1 - f)^n
 - 40/40/20 application binding for standardized liquidity alignment
 

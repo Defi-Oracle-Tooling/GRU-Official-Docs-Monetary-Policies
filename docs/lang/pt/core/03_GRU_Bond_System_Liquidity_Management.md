@@ -12,6 +12,8 @@ lang: pt
 ## 1. Visão Geral
 Títulos híbridos perpétuos de ciclo fechado (série Li99) fornecem liquidez elástica enquanto preservam a solvência apoiada por reservas.
 
+Este modelo opera sobre a arquitetura GRU baseada em ERC-2535 Diamond, permitindo que serviços de títulos, conformidade, índices e caminhos de ativos evoluam modularmente. Os fluxos de financiamento e reinvestimento permanecem alinhados ao enquadramento XAU roteado por `cXAUC/cXAUT`.
+
 ## 2. Instrumentos
 | Código | Nome | Propósito | Prazo | Recompra |
 |------|------|---------|------|----------|

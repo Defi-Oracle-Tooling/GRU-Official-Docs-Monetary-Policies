@@ -10,7 +10,7 @@ lang: id
 # Kerangka Tata Kelola GRU & Pengawasan Regulasi
 
 ## 1. Model Entitas
-GRU beroperasi di bawah Sovereign Hybrid Trust Entity (SHTE) yang menggabungkan netralitas hukum trust dengan pengawasan institusional multi-kamar.
+GRU beroperasi di bawah Sovereign Hybrid Trust Entity (SHTE) yang menggabungkan netralitas hukum trust dengan pengawasan institusional multi-kamar. Pada lapisan implementasi, GRU memakai ERC-2535 Diamond agar modul penerbitan, kepatuhan, indeks, dan aset spesifik dapat berkembang secara independen namun tetap berada di bawah satu permukaan tata kelola.
 
 ## 2. Kamar
 | Kamar | Cakupan | Output Inti |
@@ -28,7 +28,7 @@ GRU beroperasi di bawah Sovereign Hybrid Trust Entity (SHTE) yang menggabungkan 
 ## 3. Prinsip Pengawasan
 - Transparansi: Statistik cadangan + siklus obligasi real-time
 - Akuntabilitas: Otoritas kamar terpisah dengan persetujuan multi-sig
-- Integritas: Penambatan kriptografis dari peristiwa penerbitan & penebusan
+- Integritas: Penambatan kriptografis dari peristiwa penerbitan & penebusan, dengan seluruh FX dirutekan melalui XAU dan referensi operasional `cXAUC/cXAUT`
 - Ketahanan: Redundansi geografis dan operasional (kustodian multi-region)
 
 ## 4. Pengakuan Hukum

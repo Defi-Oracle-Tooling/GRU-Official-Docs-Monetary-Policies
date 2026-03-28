@@ -12,6 +12,8 @@ lang: en
 ## 1. Strategic Objectives
 Transition GRU from architectural foundation to globally recognized, multi-asset settlement layer integrated with DBIS.
 
+The GRU implementation remains Diamond-based so the system can add or adjust reserve facets, compliance modules, token standards, and asset-specific logic without collapsing everything into a single contract shape.
+
 ## 2. Policy Enhancements
 | Objective | Target | Description |
 |-----------|--------|-------------|
@@ -27,7 +29,7 @@ Transition GRU from architectural foundation to globally recognized, multi-asset
 
 ## 4. Technical Enhancements
 - Adaptive atomic cycle orchestration based on velocity thresholds
-- Multi-anchor reserve matrix (XAU/XAG/XPT + LiXAU composite)
+- Multi-anchor reserve matrix (XAU/XAG/XPT + LiXAU composite basket: LiXAU, LiPMG, LiBMG1, LiBMG2, LiBMG3)
 - Ledger resiliency: multi-region replication + threshold signatures
 
 ## 5. Governance Evolution
@@ -104,13 +106,16 @@ Where:
   ```
   LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   ```
-  Used for monthly dashboard and reporting.
+  Used for monthly dashboard and reporting. This is the equal-value Li basket average.
 
 - **M00 Composite (Asset-Backed Collateral):**
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral.
+  Used for reserve magnitude and issuance collateral. This is the operational basket relation used by the GRU collateral logic.
+
+- **Diamond implementation note:**
+  ERC-2535 Diamond facets are the intended mechanism for evolving GRU policy, issuance, compliance, and asset-specific modules while keeping a single governance surface.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
 

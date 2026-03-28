@@ -10,14 +10,14 @@ lang: pt
 # Quadro de Triangulação GRU e Criação de eMoney
 
 ## 1. Conceito
-A triangulação converte qualquer ativo de origem → XAU → GRU → ativo de destino, impondo integridade e paridade apoiadas por ativos.
+A triangulação converte qualquer ativo de origem → XAU → GRU → ativo de destino, impondo integridade e paridade apoiadas por ativos. Todo FX é roteado via XAU, com âncora operacional em `cXAUC/cXAUT`.
 
 ## 2. Caminho de Triangulação
-1. Ativo de Origem → avaliação XAU (paridade spot)
+1. Ativo de Origem → avaliação XAU (paridade spot; referência de ativo `cXAUC/cXAUT`)
 2. XAU → conversão GRU (razão de paridade 1 XAU GRU = 1.2 XAU)
 3. GRU → Ativo de Destino (triangulação reversa)
 
-Todas as triangulações GRU passam por XAU independentemente da classe de destino (commodity, moeda, título, outro).
+Todas as triangulações GRU passam por XAU independentemente da classe de destino (commodity, moeda, título, outro). Isso mantém o roteamento FX preso à mesma âncora de ouro antes da conversão para GRU ou de volta ao ativo de destino.
 
 ### Diagrama de Fluxo de Triangulação
 ![Fluxo de Triangulação](/assets/media/triangulation_flow.png)
@@ -77,7 +77,7 @@ Cobertura Alvo ≈ 2.5 × Reserva Base
 
 ## 8. Aprimoramentos Futuros (Planejado)
 - Contagem de ciclo atômico adaptativa baseada na velocidade de reserva
-- Triangulação multi-âncora (cesta XAU/XAG/XPT) com contingências de fallback
+- Triangulação multi-âncora (cesta XAU/XAG/XPT) com contingências de fallback, mantendo XAU como a âncora principal de FX
 - Rede de redundância de oráculo on-chain
 
 ## Resumo

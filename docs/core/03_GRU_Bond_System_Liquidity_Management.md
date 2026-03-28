@@ -11,6 +11,8 @@ checksum: pending
 ## 1. Overview
 Closed-loop perpetual hybrid bonds (Li99-series) provide elastic liquidity while preserving reserve-backed solvency.
 
+This model runs on the ERC-2535 Diamond-based GRU architecture, so bond servicing, compliance, index logic, and asset-specific paths can evolve modularly. Funding and reinvestment flows remain aligned to the XAU framework routed through `cXAUC/cXAUT`.
+
 ## 2. Instruments
 | Code | Name | Purpose | Term | Buy-back |
 |------|------|---------|------|----------|

@@ -52,6 +52,13 @@ All image references in core documents have been updated from `../media/` to `/a
    ```
    Visit `http://localhost:4000/GRU-Official-Docs-Monetary-Policies/`
 
+   If you prefer not to install Ruby or Bundler locally, use the Docker wrapper instead:
+   ```bash
+   cd gru-docs
+   ./scripts/jekyll-build-docker.sh
+   ```
+   This regenerates `_site/` while keeping the host-side files owned by your current user.
+
 3. **Verify Deployment**:
    - After pushing to main, check Actions tab for deployment status
    - Site will be available at: `https://defi-oracle-tooling.github.io/GRU-Official-Docs-Monetary-Policies/`
@@ -81,4 +88,3 @@ The site will automatically generate pages for:
 - Multilingual content (if present in `docs/lang/`)
 
 All documents use the `document` layout which displays metadata and provides consistent styling.
-

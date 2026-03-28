@@ -9,7 +9,7 @@ checksum: pending
 # GRU Monetary Policy Framework
 
 ## Overview
-The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility.
+The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility. In operational terms, all FX is triangulated through XAU with `cXAUC/cXAUT` as the on-chain asset reference.
 
 ### Issuance Cycle Diagram
 ![GRU Issuance Cycle](/assets/media/issuance_cycle.png)
@@ -29,7 +29,12 @@ Dynamic coefficients (x, y) are policy-adjusted distribution weights between M0 
 1 M0 GRU = 1.2 XAU GRU
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-LiXAU is a composite hybrid reserve index used for diversification and ESG alignment.
+LiXAU is the gold reserve index. Within the Li framework, five equal-value components form the operational composite:
+- `LiXAU` = gold reserve index
+- `LiPMG` = Precious Metals Group index
+- `LiBMG1` = Base Metals Group index
+- `LiBMG2` = Battery Materials Group index
+- `LiBMG3` = Building Metals Group index
 
 ## Layer Structure
 | Layer | Function | Description |
@@ -40,7 +45,7 @@ LiXAU is a composite hybrid reserve index used for diversification and ESG align
 
 ## Reserve Policy
 - Minimum coverage: ≥ 120% of circulating GRU value.
-- Asset tiers: Primary (XAU), secondary (Li, Pt, REE, sovereign ETFs), dynamic (tokenized verified assets).
+- Asset tiers: Primary (XAU via `cXAUC/cXAUT`), secondary (Li, Pt, REE, sovereign ETFs), dynamic (tokenized verified assets).
 - Parity deviation threshold: ±2.5% triggers MPAP (Monetary Parity Adjustment Protocol).
 
 ## Governance
@@ -84,5 +89,7 @@ The framework combines mathematically disciplined issuance, gold parity, and mul
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
   Used for reserve magnitude and issuance collateral.
+
+The GRU monetary architecture uses ERC-2535 Diamond because reserve policy, compliance hooks, index logic, and asset-specific modules must evolve independently while sharing one governance surface.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*

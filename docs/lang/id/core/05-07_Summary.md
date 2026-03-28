@@ -12,12 +12,12 @@ Dokumen ini memberikan ringkasan dari tiga dokumen inti tambahan GRU yang akan d
 ## 05. Digital Bank for International Settlements (DBIS) Charter
 
 ### Tujuan Utama
-DBIS didirikan untuk menyediakan lapisan koordinasi netral-berdaulat, transparan, dan didukung aset untuk stabilitas moneter global menggunakan GRU.
+DBIS didirikan untuk menyediakan lapisan koordinasi netral-berdaulat, transparan, dan didukung aset untuk stabilitas moneter global menggunakan GRU. Pada lapisan implementasi, kerangka ini mengikuti ERC-2535 Diamond agar modul penerbitan, kepatuhan, indeks, dan aset spesifik dapat berkembang tanpa memecah satu permukaan tata kelola.
 
 ### Prinsip Inti
 1. Netralitas berdaulat
 2. Transparansi algoritmik  
-3. Integritas didukung aset (penambatan XAU)
+3. Integritas didukung aset (penambatan XAU via `cXAUC/cXAUT`)
 4. Interoperabilitas inklusif (CBDC, komoditas, sekuritas)
 5. Tata kelola berbasis audit
 
@@ -38,7 +38,7 @@ DBIS didirikan untuk menyediakan lapisan koordinasi netral-berdaulat, transparan
 1 M00 GRU = 25 M1 GRU  
 1 XAU GRU = 1.2 XAU
 ```
-Cakupan cadangan minimum: ≥ 120% terverifikasi.
+Cakupan cadangan minimum: ≥ 120% terverifikasi. Keranjang Li dibagi menjadi lima indeks bernilai sama: LiXAU, LiPMG, LiBMG1, LiBMG2, dan LiBMG3.
 
 ### Mandat Interoperabilitas
 - Pemetaan acara ISO 20022
@@ -59,7 +59,7 @@ Roadmap menguraikan evolusi bertahap GRU dari sistem cadangan dasar menjadi plat
 
 #### Fase 1: Fondasi (Sekarang - 12 bulan)
 - Finalisasi dokumen kebijakan inti
-- Implementasi kontrak pintar Diamond Standard
+- Implementasi kontrak pintar Diamond Standard untuk modul penerbitan, kepatuhan, indeks, dan aset spesifik
 - Peluncuran PoR triwulanan
 - Integrasi dengan sistem DSL
 
@@ -71,7 +71,7 @@ Roadmap menguraikan evolusi bertahap GRU dari sistem cadangan dasar menjadi plat
 
 #### Fase 3: Skalabilitas Global (24-48 bulan)
 - Integrasi CBDC multi-yurisdiksi
-- Triangulasi multi-jangkar (XAU/XAG/XPT)
+- Triangulasi multi-jangkar (XAU/XAG/XPT) dengan FX utama tetap melalui XAU (`cXAUC/cXAUT`)
 - Saluran obligasi terkait ESG
 - Sistem voting tertoken untuk tata kelola
 
@@ -113,7 +113,7 @@ Manual ini menyediakan panduan operasional komprehensif untuk menjalankan infras
 
 #### Proses Penerbitan
 1. Verifikasi setoran kolateral
-2. Validasi penilaian XAU
+2. Validasi penilaian XAU via `cXAUC/cXAUT`
 3. Eksekusi loop triangulasi atomik (n=3)
 4. Alokasi 40/40/20 (cadangan/ekspansi/stabilisasi)
 5. Pencatatan pada DSL

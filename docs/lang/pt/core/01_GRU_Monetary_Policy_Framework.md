@@ -10,7 +10,7 @@ lang: pt
 # Quadro de Política Monetária GRU
 
 ## Visão Geral
-A Global Reserve Unit (GRU) estabelece um sistema monetário multi-níveis apoiado por ativos, ancorando toda a liquidez via XAU (ouro) para garantir valor intrínseco, paridade auditável e convertibilidade entre domínios.
+A Global Reserve Unit (GRU) estabelece um sistema monetário multi-níveis apoiado por ativos, ancorando toda a liquidez via XAU (ouro) para garantir valor intrínseco, paridade auditável e convertibilidade entre domínios. Na prática operacional, todo FX é triangulado via XAU com referência on-chain em `cXAUC/cXAUT`.
 
 ### Diagrama do Ciclo de Emissão
 ![Ciclo de Emissão GRU](/assets/media/issuance_cycle.png)
@@ -30,7 +30,12 @@ Coeficientes dinâmicos (x, y) são pesos de distribuição ajustados pela polí
 1 M0 GRU = 1.2 XAU GRU
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-LiXAU é um índice de reserva híbrido composto usado para diversificação e alinhamento ESG.
+LiXAU é um índice de reserva de ouro. No quadro Li, há cinco componentes de valor equivalente que formam o composto operacional:
+- `LiXAU` = índice de reserva de ouro
+- `LiPMG` = índice do Precious Metals Group
+- `LiBMG1` = índice do Base Metals Group
+- `LiBMG2` = índice do Battery Materials Group
+- `LiBMG3` = índice do Building Metals Group
 
 ## Estrutura de Camadas
 | Camada | Função | Descrição |
@@ -41,7 +46,7 @@ LiXAU é um índice de reserva híbrido composto usado para diversificação e a
 
 ## Política de Reservas
 - Cobertura mínima: ≥ 120% do valor GRU em circulação.
-- Níveis de ativos: Primário (XAU), secundário (Li, Pt, REE, ETFs soberanos), dinâmico (ativos verificados tokenizados).
+- Níveis de ativos: Primário (XAU via `cXAUC/cXAUT`), secundário (Li, Pt, REE, ETFs soberanos), dinâmico (ativos verificados tokenizados).
 - Limite de desvio de paridade: ±2.5% aciona MPAP (Protocolo de Ajuste de Paridade Monetária).
 
 ## Governança
@@ -85,5 +90,7 @@ O quadro combina emissão matematicamente disciplinada, paridade de ouro e rotea
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
   Usado para magnitude de reserva e colateral de emissão.
+
+Este quadro usa Diamond deliberadamente para que as camadas monetárias, de conformidade, de índice e de ativos evoluam separadamente sem quebrar uma única superfície de governança.
 
 *Veja Glossary e GRU_Formulas para especificação completa e campos de auditoria.*

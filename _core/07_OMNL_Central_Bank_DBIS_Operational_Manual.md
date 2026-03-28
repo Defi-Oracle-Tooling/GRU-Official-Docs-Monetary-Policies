@@ -18,14 +18,16 @@ lang: en
 ---
 
 ## 1 — Executive Overview
-The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture.
+The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture. At the implementation layer, GRU uses ERC-2535 Diamond so reserve policy, compliance, index mechanics, and asset-specific behavior can evolve without fragmenting governance.
+
+The GRU implementation uses the ERC-2535 Diamond standard because the system is intentionally modular: reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors need to coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve without breaking the shared governance surface.
 
 - **Parity:** 1 GRU = 1 XAU (troy ounce of gold)  
 - **Governance:** OMNL Central Bank (ARIN code OMNL-DBIS)  
 - **Oversight Partner:** Digital Bank of International Settlements (DBIS)  
 - **Regulatory Alignment:** ECB / ICC / MiCA / DORA / SEPA / AML-CFT / GDPR  
 
-The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities.
+The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities. Operationally, all FX is triangulated through XAU using `cXAUC/cXAUT`, and the M00 basket references the five equal-value Li indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
 ---
 
@@ -36,6 +38,20 @@ The manual defines monetary structure, account architecture, transaction flow, a
 | **M00** | Sovereign Reserve | 6 XAU : 1 M00 GRU (6.00 XAU/GRU) | Base Reserve | Long-term collateral |
 | **M0** | Institutional Reserve | 6 XAU : 5 M0 GRU (1.20 XAU/GRU) | 1 M00 = 5 M0 | Monetary Base |
 | **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat Interface |
+
+The M00 reserve basket is composed of five equal-value Li indices:
+
+- LiXAU = gold reserve index
+- LiPMG = Precious Metals Group index
+- LiBMG1 = Base Metals Group index
+- LiBMG2 = Battery Materials Group index
+- LiBMG3 = Building Metals Group index
+
+Operationally:
+
+```text
+1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+```
 
 **Cross-Formula:** 1 M00 = 5 M0 = 25 M1 GRU.  
 Face value is always 1 XAU per GRU.

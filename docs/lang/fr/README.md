@@ -20,9 +20,14 @@ Bienvenue dans la version française de la documentation officielle de la Global
 Les documents principaux entièrement traduits couvrent les informations les plus critiques pour comprendre :
 - Le cadre de politique monétaire GRU
 - La structure de réserve et le système multi-couches
-- Les mécanismes de triangulation et d'émission atomique
+- Les mécanismes de triangulation et d'émission atomique routés via XAU
 - Le système d'obligations Li99 et la gestion de la liquidité
 - La structure de gouvernance multi-chambres
+
+Cette documentation reprend la même terminologie que la version anglaise :
+- le GRU est implémenté avec ERC-2535 Diamond pour les modules d'émission, de conformité, d'indice et d'actifs spécifiques
+- le panier Li est composé de cinq indices de valeur équivalente : LiXAU, LiPMG, LiBMG1, LiBMG2 et LiBMG3
+- tout le FX est triangulé via XAU, avec une référence opérationnelle à `cXAUC/cXAUT`
 
 ## À Propos de la Traduction
 

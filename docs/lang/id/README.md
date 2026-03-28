@@ -20,9 +20,14 @@ Selamat datang di versi Bahasa Indonesia dari dokumentasi resmi Global Reserve U
 Dokumen inti yang telah diterjemahkan sepenuhnya mencakup informasi paling penting untuk memahami:
 - Kerangka kebijakan moneter GRU
 - Struktur cadangan dan sistem multi-layer
-- Mekanisme triangulasi dan penerbitan atomik
+- Mekanisme triangulasi dan penerbitan atomik yang selalu dirutekan melalui XAU
 - Sistem obligasi Li99 dan manajemen likuiditas
 - Struktur tata kelola multi-kamar
+
+Dokumentasi ini menggunakan istilah yang sama dengan versi Inggris:
+- GRU dibangun dengan ERC-2535 Diamond untuk modul penerbitan, kepatuhan, indeks, dan aset spesifik
+- Keranjang Li terdiri dari lima indeks bernilai sama: LiXAU, LiPMG, LiBMG1, LiBMG2, dan LiBMG3
+- Seluruh FX ditriangulasi melalui XAU, dengan referensi operasional `cXAUC/cXAUT`
 
 ## Tentang Terjemahan
 

@@ -12,10 +12,12 @@ lang: en
 ## I. Preamble
 The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed coordination layer for global monetary stability using the GRU.
 
+At the implementation layer, GRU uses the ERC-2535 Diamond standard because its reserve architecture is intentionally modular: multiple issuance layers, compliance controls, token standards, and asset-specific behaviors must coexist without forcing a single monolithic contract. Diamond facets let the GRU evolve policy-by-policy while preserving one coherent governance surface.
+
 ## II. Principles
 1. Sovereign neutrality
 2. Algorithmic transparency
-3. Asset-backed integrity (XAU anchoring)
+3. Asset-backed integrity (XAU anchoring via `cXAUC/cXAUT`)
 4. Inclusive interoperability (CBDCs, commodities, securities)
 5. Audit-first governance
 
@@ -39,6 +41,20 @@ The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed co
 1 XAU GRU = 1.2 XAU
 ```
 Minimum reserve coverage: ≥ 120% verified.
+
+The M00 reserve basket is built from five equal-value Li indices:
+
+- LiXAU = gold reserve index
+- LiPMG = Precious Metals Group index
+- LiBMG1 = Base Metals Group index
+- LiBMG2 = Battery Materials Group index
+- LiBMG3 = Building Metals Group index
+
+Accordingly:
+
+```text
+1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+```
 
 ## VI. Triangulation & Issuance
 - All issuance atomic: Source → XAU → GRU → Destination

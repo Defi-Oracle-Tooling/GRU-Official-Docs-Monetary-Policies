@@ -8,13 +8,13 @@ lang: pt
 
 # Resumo Executivo
 
-O quadro de política monetária GRU (Global Reserve Unit) estabelece um sistema de moeda apoiado por reservas disciplinado, transparente e adaptável, projetado para manter a estabilidade de paridade, garantia de liquidez e supervisão de governança multi-jurisdicional.
+O quadro de política monetária GRU (Global Reserve Unit) estabelece um sistema de moeda apoiado por reservas disciplinado, transparente e adaptável, projetado para manter a estabilidade de paridade, garantia de liquidez e supervisão de governança multi-jurisdicional. No nível de implementação, o GRU usa o padrão ERC-2535 Diamond porque suas camadas de reserva, conformidade, índices e comportamento específico por ativo precisam evoluir de forma modular.
 
 ## Pilares Fundamentais
-1. Paridade e Estabilidade: Emissão controlada via triangulação atômica (reserva -> GRU -> unidades distribuídas) com taxas de expansão previsíveis e um teto rígido de disciplina inflacionária.
+1. Paridade e Estabilidade: Emissão controlada via triangulação atômica (reserva -> XAU -> GRU -> unidades distribuídas) com taxas de expansão previsíveis e um teto rígido de disciplina inflacionária. Todo FX é roteado via XAU, com referência operacional em `cXAUC/cXAUT`.
 2. Gestão de Liquidez: Reciclagem baseada em títulos (Li99), lógica de alocação 40/40/20 (reservas / instrumentos de liquidez / programas estratégicos) garantindo equilíbrio estrutural.
 3. Governança e Supervisão: Separação multi-câmara (Política, Risco, Conformidade, Técnica) além de auditorias externas e verificação aberta.
-4. Expansão Programável: Fórmulas de emissão (E = I × (10/7) × (1 - f)^n) e ciclos macro/micro estruturados permitindo modelagem de cenários.
+4. Expansão Programável: Fórmulas de emissão (E = I × (10/7) × (1 - f)^n) e ciclos macro/micro estruturados permitindo modelagem de cenários. A estrutura Li é dividida em cinco componentes de valor equivalente: LiXAU, LiPMG, LiBMG1, LiBMG2 e LiBMG3.
 5. Carta Interoperável: Caminho de integração DBIS (Digital Bank for International Settlements) facilitando a padronização de liquidação transfronteiriça.
 
 ## Objetivos Estratégicos

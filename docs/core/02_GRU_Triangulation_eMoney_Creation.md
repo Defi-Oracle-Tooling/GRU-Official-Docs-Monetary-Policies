@@ -9,14 +9,14 @@ checksum: pending
 # GRU Triangulation & eMoney Creation Framework
 
 ## 1. Concept
-Triangulation converts any source asset → XAU → GRU → target asset, enforcing asset-backed integrity and parity.
+Triangulation converts any source asset → XAU → GRU → target asset, enforcing asset-backed integrity and parity. All FX is routed through XAU, with `cXAUC/cXAUT` as the operational anchor asset.
 
 ## 2. Triangulation Path
-1. Source Asset → XAU valuation (spot parity)
+1. Source Asset → XAU valuation (spot parity; asset reference `cXAUC/cXAUT`)
 2. XAU → GRU conversion (peg ratio 1 XAU GRU = 1.2 XAU)
 3. GRU → Target Asset (reverse triangulation)
 
-All GRU triangulations pass through XAU irrespective of destination class (commodity, currency, security, other).
+All GRU triangulations pass through XAU irrespective of destination class (commodity, currency, security, other). This keeps every FX route tied to the same gold anchor before converting into GRU or back out to the target asset.
 
 ### Triangulation Flow Diagram
 ![Triangulation Flow](/assets/media/triangulation_flow.png)
@@ -76,7 +76,7 @@ Target Coverage ≈ 2.5 × Base Reserve
 
 ## 8. Future Enhancements (Planned)
 - Adaptive atomic cycle count based on reserve velocity
-- Multi-anchor triangulation (XAU/XAG/XPT basket) with fallback contingencies
+- Multi-anchor triangulation (XAU/XAG/XPT basket) with fallback contingencies, while preserving XAU as the primary FX anchor
 - On-chain oracle redundancy network
 
 ## Summary

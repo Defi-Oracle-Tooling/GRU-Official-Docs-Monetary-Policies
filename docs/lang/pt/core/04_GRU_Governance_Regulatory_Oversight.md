@@ -10,7 +10,7 @@ lang: pt
 # Quadro de Governança GRU e Supervisão Regulatória
 
 ## 1. Modelo de Entidade
-O GRU opera sob uma Sovereign Hybrid Trust Entity (SHTE) combinando neutralidade de lei de trust com supervisão institucional multi-câmara.
+O GRU opera sob uma Sovereign Hybrid Trust Entity (SHTE) combinando neutralidade de lei de trust com supervisão institucional multi-câmara. No nível de implementação, o GRU usa ERC-2535 Diamond para que módulos de emissão, conformidade, índices e ativos específicos evoluam independentemente sob uma única superfície de governança.
 
 ## 2. Câmaras
 | Câmara | Âmbito | Resultados Principais |
@@ -28,7 +28,7 @@ O GRU opera sob uma Sovereign Hybrid Trust Entity (SHTE) combinando neutralidade
 ## 3. Princípios de Supervisão
 - Transparência: Estatísticas de reserva + ciclo de títulos em tempo real
 - Responsabilidade: Autoridade de câmara segregada com aprovações multi-assinatura
-- Integridade: Ancoragem criptográfica de eventos de emissão e resgate
+- Integridade: Ancoragem criptográfica de eventos de emissão e resgate, com todo FX roteado via XAU e referência operacional em `cXAUC/cXAUT`
 - Resiliência: Redundância geográfica e operacional (custódia multi-região)
 
 ## 4. Reconhecimento Legal

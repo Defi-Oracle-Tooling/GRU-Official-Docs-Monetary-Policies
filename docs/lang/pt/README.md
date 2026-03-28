@@ -20,9 +20,14 @@ Bem-vindo à versão em Português da documentação oficial da Global Reserve U
 Os documentos principais totalmente traduzidos cobrem as informações mais críticas para entender:
 - Quadro de política monetária GRU
 - Estrutura de reserva e sistema multi-camadas
-- Mecanismos de triangulação e emissão atômica
+- Mecanismos de triangulação e emissão atômica roteados via XAU
 - Sistema de títulos Li99 e gestão de liquidez
 - Estrutura de governança multi-câmara
+
+Esta documentação usa a mesma terminologia da versão em inglês:
+- GRU é implementado com ERC-2535 Diamond para módulos de emissão, conformidade, índices e ativos específicos
+- A cesta Li é composta por cinco índices de valor equivalente: LiXAU, LiPMG, LiBMG1, LiBMG2 e LiBMG3
+- Todo FX é triangulado via XAU, com referência operacional em `cXAUC/cXAUT`
 
 ## Sobre a Tradução
 

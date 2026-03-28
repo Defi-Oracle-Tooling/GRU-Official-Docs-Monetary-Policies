@@ -7,13 +7,13 @@ Last-Updated: 2025-10-24
 
 # Executive Summary
 
-The GRU (Global Reserve Unit) monetary policy framework establishes a disciplined, transparent, and adaptive reserve-backed currency system designed to maintain parity stability, liquidity assurance, and multi-jurisdictional governance oversight.
+The GRU (Global Reserve Unit) monetary policy framework establishes a disciplined, transparent, and adaptive reserve-backed currency system designed to maintain parity stability, liquidity assurance, and multi-jurisdictional governance oversight. At the implementation level, GRU uses the ERC-2535 Diamond standard because reserve layers, compliance logic, index mechanics, and asset-specific behaviors must evolve modularly without fragmenting governance.
 
 ## Core Pillars
-1. Parity & Stability: Controlled issuance via atomic triangulation (reserve -> GRU -> distributed units) with predictable expansion ratios and a hard inflation discipline ceiling.
+1. Parity & Stability: Controlled issuance via atomic triangulation (reserve -> XAU -> GRU -> distributed units) with predictable expansion ratios and a hard inflation discipline ceiling. All FX is routed through XAU, with `cXAUC/cXAUT` as the operational asset reference.
 2. Liquidity Management: Bond-driven (Li99) recycling, 40/40/20 allocation logic (reserves / liquidity instruments / strategic programs) ensuring structural balance.
 3. Governance & Oversight: Multi-chamber separation (Policy, Risk, Compliance, Technical) plus external audits and open verification.
-4. Programmable Expansion: Issuance formulas (E = I × (10/7) × (1 - f)^n) and structured macro/micro cycles enabling scenario modeling.
+4. Programmable Expansion: Issuance formulas (E = I × (10/7) × (1 - f)^n) and structured macro/micro cycles enabling scenario modeling. The Li reserve basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 5. Interoperable Charter: DBIS (Digital Bank for International Settlements) integration path facilitating cross-border settlement standardization.
 
 ## Strategic Objectives

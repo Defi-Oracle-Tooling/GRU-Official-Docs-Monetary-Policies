@@ -30,7 +30,9 @@ Where:
 ```
 Interpretation:
 - XAU GRU denotes the gold-pegged denomination unit.
-- LiXAU represents the composite lithium-gold hybrid reserve index; the decay exponent (0.9475^4) reflects multi-stage efficiency or adjustment factors applied in reserve weighting.
+- LiXAU represents the gold reserve index used inside the equal-weight Li basket.
+- LiPMG, LiBMG1, LiBMG2, and LiBMG3 are the other equal-weight Li basket indices for Precious Metals, Base Metals, Battery Materials, and Building Metals.
+- The decay exponent (0.9475^4) reflects multi-stage efficiency or adjustment factors applied in reserve weighting.
 
 ## 3. Atomic Issuance (Triangulation / eMoney Creation)
 Standard atomic expansion ratio:
@@ -131,7 +133,12 @@ Where f(V_GRU) is a piecewise stabilizer reducing expansion when V_GRU < lower_t
 | M0 | Institutional reserve circulation layer |
 | M1 | Commercial / eMoney public layer |
 | XAU GRU | Gold-pegged GRU denomination unit |
-| LiXAU | Composite lithium-gold hybrid reserve index |
+| LiXAU | Gold reserve index (Li basket component) |
+| LiPMG | Precious Metals Group index |
+| LiBMG1 | Base Metals Group index |
+| LiBMG2 | Battery Materials Group index |
+| LiBMG3 | Building Metals Group index |
+| ERC-2535 Diamond | Modular contract standard used for GRU facets |
 | Atomic Cycle | One 7→10 issuance + fee-adjusted re-entry loop |
 | 40/40/20 | Capital allocation rule: reserve / expansion / stabilization |
 | MPAP | Monetary Parity Adjustment Protocol |
@@ -156,31 +163,37 @@ All Li-based commodity indices are defined by:
 ```
 1 LiXAU = 1.2 / (0.9475 ^ 4) XAU
 ```
+LiXAU is one component of the GRU Li basket; the other equal-value components are LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
 ## 2. LiPMG — Precious Metals Group
 ```
 1 LiPMG = 1.2 / (0.9475 ^ 4) XAU × (Weighted basket of [Au, Ag, Pt, Pd, Rh])
 ```
+LiPMG represents the Precious Metals Group index component in the GRU basket.
 
 ## 3. LiBMG1 — Base Metals Group
 ```
 1 LiBMG1 = 1.2 / (0.9475 ^ 4) XAU × (Industrial metals weighted index)
 ```
+LiBMG1 represents the Base Metals Group index component in the GRU basket.
 
 ## 4. LiBMG2 — Battery Materials Group
 ```
 1 LiBMG2 = 1.2 / (0.9475 ^ 4) XAU × (Energy metals weighted index)
 ```
+LiBMG2 represents the Battery Materials Group index component in the GRU basket.
 
 ## 5. LiBMG3 — Building Materials Group
 ```
 1 LiBMG3 = 1.2 / (0.9475 ^ 4) XAU × (Construction commodity weighted index)
 ```
+LiBMG3 represents the Building Metals Group index component in the GRU basket.
 
 ## Composite Reserve Index
 ```
 LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
 ```
+This is the face-value average of the five equal-value Li indices.
 
 ---
 
@@ -198,6 +211,9 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
   Used for reserve magnitude and issuance collateral.
+
+- **M00 / Diamond implementation note:**
+  The GRU smart-contract architecture uses ERC-2535 Diamond facets so reserve policy, token standards, compliance hooks, and asset-specific behaviors can evolve independently while sharing one governance surface.
 
 ## Consistency Notes
 - Scalar parity S = 1.2/(0.9475^4) applies to all Li indices.

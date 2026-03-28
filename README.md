@@ -49,7 +49,7 @@ graph TB
 This repository contains the **comprehensive institutional documentation** for the **Global Reserve Unit (GRU)** monetary architecture and **Digital Bank for International Settlements (DBIS)** charter. It establishes the foundation for:
 
 - 📋 **Core Policy Framework** - Structural ratios, reserve policies, governance layers
-- ⚙️ **Mechanical Issuance Logic** - Atomic triangulation, 7:10 protocol, 40/40/20 allocation
+- ⚙️ **Mechanical Issuance Logic** - Atomic triangulation through XAU, 7:10 protocol, 40/40/20 allocation
 - 🏛️ **Governance Infrastructure** - Multi-chamber SHTE oversight and compliance
 - 📈 **Bond System Management** - Li99-series liquidity instruments and cycles
 - 🚀 **Expansion Roadmap** - Phased rollout and future enhancements
@@ -64,7 +64,7 @@ The GRU documentation is available in multiple languages to ensure global access
 - 🇸🇦 **العربية** - [Arabic Translation](docs/lang/ar/README.md)
 - 🇫🇷 **Français** - [French Translation](docs/lang/fr/README.md)
 
-All translations maintain the same structure and technical accuracy as the English version. Core monetary policy documents are prioritized for translation.
+All translations maintain the same structure and technical accuracy as the English version. Core monetary policy documents are prioritized for translation, including the same ERC-2535 Diamond rationale, the five-part Li basket, and XAU-routed FX using `cXAUC/cXAUT`.
 
 </div>
 
@@ -301,6 +301,14 @@ sha256sum           # Integrity verification
 # Make build script executable and run
 chmod +x scripts/build.sh && ./scripts/build.sh
 ```
+
+### 🌐 **Jekyll Site Build Without Root-Owned Files**
+```bash
+# Rebuild the static Jekyll site in _site/ using Docker
+chmod +x scripts/jekyll-build-docker.sh && ./scripts/jekyll-build-docker.sh
+```
+
+> 💡 **Containerized Jekyll**: This wrapper builds the site in an isolated Docker workspace and streams only the generated `_site/` output back to the repo, so future rebuilds stay host-owned instead of leaving root-owned artifacts behind.
 
 ### 📦 **Generated Artifacts**
 ```

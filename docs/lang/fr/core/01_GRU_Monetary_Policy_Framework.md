@@ -10,7 +10,7 @@ lang: fr
 # Cadre de Politique Monétaire GRU
 
 ## Aperçu
-La Global Reserve Unit (GRU) établit un système monétaire multi-niveaux adossé à des actifs, ancrant toute la liquidité via XAU (or) pour garantir une valeur intrinsèque, une parité auditable et une convertibilité inter-domaines.
+La Global Reserve Unit (GRU) établit un système monétaire multi-niveaux adossé à des actifs, ancrant toute la liquidité via XAU (or) pour garantir une valeur intrinsèque, une parité auditable et une convertibilité inter-domaines. En pratique opérationnelle, tout le FX est triangulé via XAU avec une référence on-chain à `cXAUC/cXAUT`.
 
 ### Diagramme du Cycle d'Émission
 ![Cycle d'Émission GRU](/assets/media/issuance_cycle.png)
@@ -30,7 +30,12 @@ Les coefficients dynamiques (x, y) sont des poids de distribution ajustés par l
 1 M0 GRU = 1.2 XAU GRU
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-LiXAU est un indice de réserve hybride composite utilisé pour la diversification et l'alignement ESG.
+LiXAU est un indice de réserve or. Dans le cadre Li, cinq composantes de valeur équivalente forment le composite opérationnel :
+- `LiXAU` = indice de réserve or
+- `LiPMG` = indice Precious Metals Group
+- `LiBMG1` = indice Base Metals Group
+- `LiBMG2` = indice Battery Materials Group
+- `LiBMG3` = indice Building Metals Group
 
 ## Structure des Couches
 | Couche | Fonction | Description |
@@ -41,7 +46,7 @@ LiXAU est un indice de réserve hybride composite utilisé pour la diversificati
 
 ## Politique de Réserves
 - Couverture minimale : ≥ 120% de la valeur GRU en circulation.
-- Niveaux d'actifs : Primaire (XAU), secondaire (Li, Pt, REE, ETF souverains), dynamique (actifs vérifiés tokenisés).
+- Niveaux d'actifs : Primaire (XAU via `cXAUC/cXAUT`), secondaire (Li, Pt, REE, ETF souverains), dynamique (actifs vérifiés tokenisés).
 - Seuil de déviation de parité : ±2.5% déclenche MPAP (Protocole d'Ajustement de Parité Monétaire).
 
 ## Gouvernance
@@ -85,5 +90,7 @@ Le cadre combine émission mathématiquement disciplinée, parité or et routage
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
   Utilisé pour l'ampleur des réserves et le collatéral d'émission.
+
+Ce cadre utilise volontairement Diamond afin que les couches monétaires, de conformité, d'indice et d'actifs puissent évoluer séparément sans casser une surface de gouvernance unique.
 
 *Voir Glossary et GRU_Formulas pour la spécification complète et les champs d'audit.*

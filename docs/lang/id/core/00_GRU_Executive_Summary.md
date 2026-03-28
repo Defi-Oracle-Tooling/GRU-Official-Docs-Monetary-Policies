@@ -8,13 +8,13 @@ lang: id
 
 # Ringkasan Eksekutif
 
-Kerangka kebijakan moneter GRU (Global Reserve Unit) menetapkan sistem mata uang yang didukung cadangan yang disiplin, transparan, dan adaptif yang dirancang untuk mempertahankan stabilitas paritas, jaminan likuiditas, dan pengawasan tata kelola multi-yurisdiksi.
+Kerangka kebijakan moneter GRU (Global Reserve Unit) menetapkan sistem mata uang yang didukung cadangan yang disiplin, transparan, dan adaptif yang dirancang untuk mempertahankan stabilitas paritas, jaminan likuiditas, dan pengawasan tata kelola multi-yurisdiksi. Pada lapisan implementasi, GRU menggunakan standar ERC-2535 Diamond karena struktur cadangannya bersifat modular: lapisan penerbitan, kontrol kepatuhan, keranjang multi-token, dan perilaku khusus aset harus dapat hidup berdampingan tanpa memaksa satu bentuk kontrak monolitik.
 
 ## Pilar Inti
-1. Paritas & Stabilitas: Penerbitan terkontrol melalui triangulasi atomik (cadangan -> GRU -> unit terdistribusi) dengan rasio ekspansi yang dapat diprediksi dan batas disiplin inflasi yang ketat.
+1. Paritas & Stabilitas: Penerbitan terkontrol melalui triangulasi atomik (cadangan -> XAU -> GRU -> unit terdistribusi) dengan rasio ekspansi yang dapat diprediksi dan batas disiplin inflasi yang ketat. Seluruh FX dirutekan melalui jangkar XAU, dengan representasi operasional `cXAUC/cXAUT`.
 2. Manajemen Likuiditas: Daur ulang berbasis obligasi (Li99), logika alokasi 40/40/20 (cadangan / instrumen likuiditas / program strategis) memastikan keseimbangan struktural.
 3. Tata Kelola & Pengawasan: Pemisahan multi-kamar (Kebijakan, Risiko, Kepatuhan, Teknis) ditambah audit eksternal dan verifikasi terbuka.
-4. Ekspansi Terprogram: Formula penerbitan (E = I × (10/7) × (1 - f)^n) dan siklus makro/mikro terstruktur memungkinkan pemodelan skenario.
+4. Ekspansi Terprogram: Formula penerbitan (E = I × (10/7) × (1 - f)^n) dan siklus makro/mikro terstruktur memungkinkan pemodelan skenario. Di atas itu, indeks likuiditas Li dibagi ke lima komponen bernilai sama: LiXAU, LiPMG, LiBMG1, LiBMG2, dan LiBMG3.
 5. Piagam Interoperabel: Jalur integrasi DBIS (Digital Bank for International Settlements) memfasilitasi standardisasi penyelesaian lintas batas.
 
 ## Tujuan Strategis

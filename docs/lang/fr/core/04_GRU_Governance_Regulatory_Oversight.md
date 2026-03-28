@@ -10,7 +10,7 @@ lang: fr
 # Cadre de Gouvernance GRU et Surveillance Réglementaire
 
 ## 1. Modèle d'Entité
-Le GRU fonctionne sous une Sovereign Hybrid Trust Entity (SHTE) combinant la neutralité du droit des trusts avec une surveillance institutionnelle multi-chambres.
+Le GRU fonctionne sous une Sovereign Hybrid Trust Entity (SHTE) combinant la neutralité du droit des trusts avec une surveillance institutionnelle multi-chambres. Au niveau d'implémentation, le GRU utilise ERC-2535 Diamond afin que les modules d'émission, de conformité, d'indice et d'actifs spécifiques puissent évoluer indépendamment sous une seule surface de gouvernance.
 
 ## 2. Chambres
 | Chambre | Portée | Résultats Principaux |
@@ -28,7 +28,7 @@ Le GRU fonctionne sous une Sovereign Hybrid Trust Entity (SHTE) combinant la neu
 ## 3. Principes de Surveillance
 - Transparence : Statistiques de réserve + cycle d'obligations en temps réel
 - Responsabilité : Autorité de chambre séparée avec approbations multi-signatures
-- Intégrité : Ancrage cryptographique des événements d'émission et de rachat
+- Intégrité : Ancrage cryptographique des événements d'émission et de rachat, avec tout le FX routé via XAU et une référence opérationnelle à `cXAUC/cXAUT`
 - Résilience : Redondance géographique et opérationnelle (custody multi-régions)
 
 ## 4. Reconnaissance Légale

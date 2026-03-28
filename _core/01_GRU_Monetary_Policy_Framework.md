@@ -12,6 +12,8 @@ lang: en
 ## Overview
 The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility.
 
+The GRU monetary architecture uses the ERC-2535 Diamond standard because the system is intentionally modular: different reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors must coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve token-by-token and policy-by-policy while preserving a single coherent governance surface.
+
 ### Issuance Cycle Diagram
 ![GRU Issuance Cycle](/assets/media/issuance_cycle.png){: loading="lazy" }
 *Figure: Reserve → Issuance → Circulation with liquidity recycling loop and coverage maintenance.*
@@ -30,7 +32,29 @@ Dynamic coefficients (x, y) are policy-adjusted distribution weights between M0 
 1 M0 GRU = 1.2 XAU GRU
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-LiXAU is a composite hybrid reserve index used for diversification and ESG alignment.
+LiXAU is the gold reserve index. Within the Li framework, five equal-value components form the operational composite:
+- `LiXAU` = gold reserve index
+- `LiPMG` = Precious Metals Group index
+- `LiBMG1` = Base Metals Group index
+- `LiBMG2` = Battery Materials Group index
+- `LiBMG3` = Building Metals Group index
+
+## Li Composite Basket
+The GRU reserve basket is built from five equal-value index components:
+
+- `LiXAU` = gold reserve index
+- `LiPMG` = Precious Metals Group index
+- `LiBMG1` = Base Metals Group index
+- `LiBMG2` = Battery Materials Group index
+- `LiBMG3` = Building Metals Group index
+
+Each component contributes equally at the Li index layer. The M00 reserve formulation is:
+
+```text
+1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+```
+
+Equivalently, each GRU reserve basket unit is composed of five equal-value Li indices, scaled by the 1.2 issuance factor.
 
 ## Layer Structure
 | Layer | Function | Description |
@@ -78,12 +102,12 @@ The framework combines mathematically disciplined issuance, gold parity, and mul
   ```
   LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   ```
-  Used for reporting, benchmarking, and dashboards.
+  Used for reporting, benchmarking, and dashboards. This is the face-value average of the five equal-weight Li reserve indices.
 
 - **M00 Composite (Asset-Backed Collateral):**
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral.
+  Used for reserve magnitude and issuance collateral. This is the operational basket used for the GRU’s M00 collateral logic.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*

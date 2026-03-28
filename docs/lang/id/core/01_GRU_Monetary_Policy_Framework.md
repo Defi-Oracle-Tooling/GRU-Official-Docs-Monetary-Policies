@@ -10,7 +10,7 @@ lang: id
 # Kerangka Kebijakan Moneter GRU
 
 ## Ikhtisar
-Global Reserve Unit (GRU) menetapkan sistem moneter multi-tingkat yang didukung aset, menambatkan semua likuiditas melalui XAU (emas) untuk memastikan nilai intrinsik, paritas yang dapat diaudit, dan konvertibilitas lintas domain.
+Global Reserve Unit (GRU) menetapkan sistem moneter multi-tingkat yang didukung aset, menambatkan semua likuiditas melalui XAU (emas) untuk memastikan nilai intrinsik, paritas yang dapat diaudit, dan konvertibilitas lintas domain. Dalam praktik operasional, semua FX ditriangulasi melalui XAU dengan representasi on-chain `cXAUC/cXAUT`.
 
 ### Diagram Siklus Penerbitan
 ![Siklus Penerbitan GRU](/assets/media/issuance_cycle.png)
@@ -30,7 +30,12 @@ Koefisien dinamis (x, y) adalah bobot distribusi yang disesuaikan kebijakan anta
 1 M0 GRU = 1.2 XAU GRU
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-LiXAU adalah indeks cadangan hibrida komposit yang digunakan untuk diversifikasi dan penyelarasan ESG.
+LiXAU adalah indeks cadangan emas. Di dalam kerangka Li, ada lima komponen bernilai sama yang membentuk komposit operasional:
+- `LiXAU` = indeks cadangan emas
+- `LiPMG` = Precious Metals Group index
+- `LiBMG1` = Base Metals Group index
+- `LiBMG2` = Battery Materials Group index
+- `LiBMG3` = Building Metals Group index
 
 ## Struktur Lapisan
 | Lapisan | Fungsi | Deskripsi |
@@ -41,7 +46,7 @@ LiXAU adalah indeks cadangan hibrida komposit yang digunakan untuk diversifikasi
 
 ## Kebijakan Cadangan
 - Cakupan minimum: ≥ 120% dari nilai GRU yang beredar.
-- Tingkatan aset: Primer (XAU), sekunder (Li, Pt, REE, ETF sovereign), dinamis (aset terverifikasi yang ditokenisasi).
+- Tingkatan aset: Primer (XAU via `cXAUC/cXAUT`), sekunder (Li, Pt, REE, ETF sovereign), dinamis (aset terverifikasi yang ditokenisasi).
 - Ambang deviasi paritas: ±2.5% memicu MPAP (Protokol Penyesuaian Paritas Moneter).
 
 ## Tata Kelola
@@ -85,5 +90,7 @@ Kerangka kerja menggabungkan penerbitan yang didisiplinkan secara matematis, par
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
   Digunakan untuk magnitudo cadangan dan kolateral penerbitan.
+
+Kerangka ini sengaja menggunakan Diamond karena lapisan moneter, kepatuhan, indeks, dan jalur aset harus bisa berevolusi secara terpisah tanpa memecah satu permukaan tata kelola.
 
 *Lihat Glossary dan GRU_Formulas untuk spesifikasi lengkap dan bidang audit.*

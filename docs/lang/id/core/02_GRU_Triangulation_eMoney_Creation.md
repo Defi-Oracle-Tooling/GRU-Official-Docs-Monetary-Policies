@@ -10,14 +10,14 @@ lang: id
 # Kerangka Triangulasi GRU & Penciptaan eMoney
 
 ## 1. Konsep
-Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, menegakkan integritas dan paritas yang didukung aset.
+Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, menegakkan integritas dan paritas yang didukung aset. Seluruh FX dirutekan melalui XAU, dengan jangkar operasional `cXAUC/cXAUT` pada lapisan aset.
 
 ## 2. Jalur Triangulasi
-1. Aset Sumber → penilaian XAU (paritas spot)
+1. Aset Sumber → penilaian XAU (paritas spot; referensi aset `cXAUC/cXAUT`)
 2. XAU → konversi GRU (rasio peg 1 XAU GRU = 1.2 XAU)
 3. GRU → Aset Target (triangulasi terbalik)
 
-Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya).
+Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya). Ini menjaga agar seluruh jalur FX tetap berangkat dari jangkar emas yang sama sebelum dikonversi ke GRU atau kembali ke aset target.
 
 ### Diagram Aliran Triangulasi
 ![Aliran Triangulasi](/assets/media/triangulation_flow.png)
@@ -77,7 +77,7 @@ Cakupan Target ≈ 2.5 × Cadangan Dasar
 
 ## 8. Peningkatan Masa Depan (Direncanakan)
 - Jumlah siklus atomik adaptif berdasarkan kecepatan cadangan
-- Triangulasi multi-jangkar (keranjang XAU/XAG/XPT) dengan kontingensi fallback
+- Triangulasi multi-jangkar (keranjang XAU/XAG/XPT) dengan kontingensi fallback, sambil mempertahankan XAU sebagai jangkar FX utama
 - Jaringan redundansi oracle on-chain
 
 ## Ringkasan

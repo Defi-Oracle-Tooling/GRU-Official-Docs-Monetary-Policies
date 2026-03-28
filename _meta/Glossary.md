@@ -14,7 +14,13 @@ checksum: pending
 | M0 | Institutional circulation layer — bank & authority operations |
 | M1 | Commercial / eMoney circulation layer — public settlement |
 | XAU GRU | Gold-pegged denomination unit (1 XAU GRU = 1.2 XAU) |
-| LiXAU | Lithium-gold hybrid composite reserve index for diversification |
+| LiXAU | Gold reserve index used as one of the five equal-value Li basket components |
+| LiPMG | Precious Metals Group index (basket component) |
+| LiBMG1 | Base Metals Group index (basket component) |
+| LiBMG2 | Battery Materials Group index (basket component) |
+| LiBMG3 | Building Metals Group index (basket component) |
+| ERC-2535 Diamond | Modular smart contract standard used to separate GRU policy, issuance, compliance, and asset-specific facets |
+| Diamond Facet | One modular GRU contract module (e.g. policy, registry, token, compliance, or asset-specific behavior) |
 | SHTE | Sovereign Hybrid Trust Entity — governance wrapper for GRU operations |
 | MPC | Monetary Policy Chamber — sets issuance, parity, expansion controls |
 | RAC | Reserve Audit Chamber — validates Proof-of-Reserves & custody |

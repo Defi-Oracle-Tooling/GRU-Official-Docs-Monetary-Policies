@@ -9,7 +9,7 @@ checksum: pending
 # GRU Governance & Regulatory Oversight Framework
 
 ## 1. Entity Model
-The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust law neutrality with multi-chamber institutional oversight.
+The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust law neutrality with multi-chamber institutional oversight. At the implementation layer, GRU uses ERC-2535 Diamond so issuance, compliance, index, and asset-specific modules can evolve independently under a single governance surface.
 
 ## 2. Chambers
 | Chamber | Scope | Core Outputs |
@@ -27,7 +27,7 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 ## 3. Oversight Principles
 - Transparency: Real-time reserve + bond cycle stats
 - Accountability: Segregated chamber authority w/ multi-sig approvals
-- Integrity: Cryptographic anchoring of issuance & redemption events
+- Integrity: Cryptographic anchoring of issuance & redemption events, with all FX routed through XAU and operationally referenced by `cXAUC/cXAUT`
 - Resilience: Geographic and operational redundancy (multi-region custody)
 
 ## 4. Legal Recognition

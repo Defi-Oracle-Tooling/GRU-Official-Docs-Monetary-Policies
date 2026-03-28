@@ -12,6 +12,8 @@ lang: fr
 ## 1. Aperçu
 Les obligations hybrides perpétuelles en boucle fermée (série Li99) fournissent une liquidité élastique tout en préservant la solvabilité adossée aux réserves.
 
+Ce modèle repose sur l'architecture GRU fondée sur ERC-2535 Diamond, afin que les services obligataires, la conformité, les indices et les chemins d'actifs puissent évoluer de façon modulaire. Les flux de financement et de réinvestissement restent alignés sur le cadre XAU routé via `cXAUC/cXAUT`.
+
 ## 2. Instruments
 | Code | Nom | Objectif | Durée | Rachat |
 |------|------|---------|------|----------|

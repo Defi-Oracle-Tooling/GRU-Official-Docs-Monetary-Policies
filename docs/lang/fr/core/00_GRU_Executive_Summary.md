@@ -8,13 +8,13 @@ lang: fr
 
 # Résumé Exécutif
 
-Le cadre de politique monétaire GRU (Global Reserve Unit) établit un système de monnaie adossé à des réserves discipliné, transparent et adaptatif conçu pour maintenir la stabilité de la parité, l'assurance de liquidité et la surveillance de la gouvernance multijuridictionnelle.
+Le cadre de politique monétaire GRU (Global Reserve Unit) établit un système de monnaie adossé à des réserves discipliné, transparent et adaptatif conçu pour maintenir la stabilité de la parité, l'assurance de liquidité et la surveillance de la gouvernance multijuridictionnelle. Au niveau d'implémentation, le GRU utilise la norme ERC-2535 Diamond parce que ses couches de réserve, de conformité, d'indice et de comportement spécifique par actif doivent évoluer de manière modulaire.
 
 ## Piliers Fondamentaux
-1. Parité et Stabilité : Émission contrôlée via triangulation atomique (réserve -> GRU -> unités distribuées) avec des ratios d'expansion prévisibles et un plafond strict de discipline inflationniste.
+1. Parité et Stabilité : Émission contrôlée via triangulation atomique (réserve -> XAU -> GRU -> unités distribuées) avec des ratios d'expansion prévisibles et un plafond strict de discipline inflationniste. Tout le FX est routé via XAU, avec une référence opérationnelle à `cXAUC/cXAUT`.
 2. Gestion de la Liquidité : Recyclage basé sur les obligations (Li99), logique d'allocation 40/40/20 (réserves / instruments de liquidité / programmes stratégiques) assurant un équilibre structurel.
 3. Gouvernance et Surveillance : Séparation multi-chambres (Politique, Risque, Conformité, Technique) plus audits externes et vérification ouverte.
-4. Expansion Programmable : Formules d'émission (E = I × (10/7) × (1 - f)^n) et cycles macro/micro structurés permettant la modélisation de scénarios.
+4. Expansion Programmable : Formules d'émission (E = I × (10/7) × (1 - f)^n) et cycles macro/micro structurés permettant la modélisation de scénarios. La structure Li est divisée en cinq composantes de valeur équivalente : LiXAU, LiPMG, LiBMG1, LiBMG2 et LiBMG3.
 5. Charte Interopérable : Chemin d'intégration DBIS (Digital Bank for International Settlements) facilitant la normalisation du règlement transfrontalier.
 
 ## Objectifs Stratégiques

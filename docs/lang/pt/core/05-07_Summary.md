@@ -11,12 +11,12 @@ Este documento fornece um resumo de três documentos principais adicionais do GR
 
 ## 05. Carta do Digital Bank for International Settlements (DBIS)
 
-O DBIS é fundado para fornecer uma camada de coordenação neutra-soberana, transparente e apoiada por ativos para estabilidade monetária global usando o GRU.
+O DBIS é fundado para fornecer uma camada de coordenação neutra-soberana, transparente e apoiada por ativos para estabilidade monetária global usando o GRU. No nível de implementação, a estrutura usa ERC-2535 Diamond para módulos de emissão, conformidade, índices e ativos específicos.
 
 **Princípios Fundamentais:**
 - Neutralidade soberana
 - Transparência algorítmica
-- Integridade apoiada por ativos (ancoragem XAU)
+- Integridade apoiada por ativos (ancoragem XAU via `cXAUC/cXAUT`)
 - Interoperabilidade inclusiva (CBDCs, commodities, títulos)
 - Governança baseada em auditoria
 
@@ -38,7 +38,7 @@ O roteiro delineia a evolução faseada do GRU de um sistema de reserva básico 
 
 **Fase 1: Fundação (Agora - 12 meses)**
 - Finalização de documentos de política central
-- Implementação de contratos inteligentes Diamond Standard
+- Implementação de contratos inteligentes Diamond Standard para módulos de emissão, conformidade, índices e ativos específicos
 - Lançamento de PoR trimestrais
 
 **Fase 2: Expansão (12-24 meses)**
@@ -48,7 +48,7 @@ O roteiro delineia a evolução faseada do GRU de um sistema de reserva básico 
 
 **Fase 3: Escalabilidade Global (24-48 meses)**
 - Integração CBDC multi-jurisdicional
-- Triangulação multi-âncora
+- Triangulação multi-âncora com FX principal via XAU (`cXAUC/cXAUT`)
 - Canais de títulos vinculados a ESG
 
 ## 07. Manual Operacional OMNL Central Bank / DBIS
@@ -61,7 +61,7 @@ Este manual fornece orientação operacional abrangente para executar a infraest
 - **Camada M1**: Circulação Comercial (eMoney de mercado)
 
 **Processos de Transação:**
-- Processo de emissão (verificação de colateral, triangulação atômica)
+- Processo de emissão (verificação de colateral, triangulação atômica via XAU)
 - Processo de resgate (validação e triangulação reversa)
 
 **Gestão de Conformidade:**

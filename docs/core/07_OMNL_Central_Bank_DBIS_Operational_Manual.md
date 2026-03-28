@@ -17,14 +17,14 @@ checksum: pending
 ---
 
 ## 1 — Executive Overview
-The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture.
+The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture. At the implementation layer, GRU uses ERC-2535 Diamond so reserve policy, compliance, index mechanics, and asset-specific behavior can evolve without fragmenting governance.
 
 - **Parity:** 1 GRU = 1 XAU (troy ounce of gold)  
 - **Governance:** OMNL Central Bank (ARIN code OMNL-DBIS)  
 - **Oversight Partner:** Digital Bank of International Settlements (DBIS)  
 - **Regulatory Alignment:** ECB / ICC / MiCA / DORA / SEPA / AML-CFT / GDPR  
 
-The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities.
+The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities. Operationally, all FX is triangulated through XAU using `cXAUC/cXAUT`, and the M00 basket references the five equal-value Li indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
 ---
 
