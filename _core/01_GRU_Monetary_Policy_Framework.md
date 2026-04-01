@@ -1,8 +1,8 @@
 ---
 title: GRU Monetary Policy Framework
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: policy
 checksum: pending
 lang: en
@@ -26,12 +26,20 @@ The GRU monetary architecture uses the ERC-2535 Diamond standard because the sys
 ```
 Dynamic coefficients (x, y) are policy-adjusted distribution weights between M0 (institutional) and M1 (commercial) layers.
 
-## Face & Asset Values
-```
-1 XAU GRU = 1.2 XAU
-1 M0 GRU = 1.2 XAU GRU
+## Assigned / Face Value vs Supporting Asset Value
+```text
+Assigned / face value (parity, accounting, settlement):
+1 GRU = 1 XAU
+1 M0 GRU = 1 XAU
+1 M1 GRU = 1 XAU
+
+Supporting asset value (reserve-side coverage):
+1 M0 GRU = 1.2 XAU of supporting assets
+1 M00 GRU = 6.0 XAU of supporting assets
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
+For avoidance of doubt, assigned value and supporting asset value are different measures. Assigned value is the unit used for parity, booking, settlement, and policy control. Supporting asset value is the quantity of reserve assets required to support that unit at a given layer. Earlier shorthand such as `1 XAU GRU = 1.2 XAU` refers to supporting asset value and must not be read as changing the assigned parity of `1 GRU = 1 XAU`.
+
 LiXAU is the gold reserve index. Within the Li framework, five equal-value components form the operational composite:
 - `LiXAU` = gold reserve index
 - `LiPMG` = Precious Metals Group index
@@ -48,7 +56,7 @@ The GRU reserve basket is built from five equal-value index components:
 - `LiBMG2` = Battery Materials Group index
 - `LiBMG3` = Building Metals Group index
 
-Each component contributes equally at the Li index layer. The M00 reserve formulation is:
+Each component contributes equally at the Li index layer. Each Li component contributes `1.2 XAU` of supporting asset value, so the five-class M00 basket contributes `6.0 XAU` of supporting asset value per `1 M00 GRU`. The M00 reserve formulation is:
 
 ```text
 1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
@@ -62,6 +70,8 @@ Equivalently, each GRU reserve basket unit is composed of five equal-value Li in
 | M00 | Sovereign Issuance | Base creation tied 1:1 to audited reserves |
 | M0  | Institutional Reserve | Interbank & authority level liquidity instrument |
 | M1  | Commercial Circulation | Market & settlement eMoney layer |
+
+Current implementation mapping: canonical Chain 138 `c*` assets are GRU M1 instruments. Public-network `cW*` assets are mirrored transport representations of that same GRU M1 layer and are not a separate monetary class.
 
 ## Reserve Policy
 - Minimum coverage: ≥ 120% of circulating GRU value.

@@ -1,8 +1,8 @@
 ---
 title: Triangulasi GRU & Penciptaan eMoney
-version: 1.0.0
+version: 1.0.1
 status: stabil
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: mekanik
 checksum: tertunda
 lang: id
@@ -14,7 +14,7 @@ Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, men
 
 ## 2. Jalur Triangulasi
 1. Aset Sumber → penilaian XAU (paritas spot; referensi aset `cXAUC/cXAUT`)
-2. XAU → konversi GRU (rasio peg 1 XAU GRU = 1.2 XAU)
+2. XAU → konversi GRU (paritas yang ditetapkan `1 GRU = 1 XAU`; nilai aset pendukung M0 `= 1.2 XAU`)
 3. GRU → Aset Target (triangulasi terbalik)
 
 Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya). Ini menjaga agar seluruh jalur FX tetap berangkat dari jangkar emas yang sama sebelum dikonversi ke GRU atau kembali ke aset target.

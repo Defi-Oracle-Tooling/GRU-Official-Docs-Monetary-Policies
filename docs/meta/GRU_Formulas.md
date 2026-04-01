@@ -1,8 +1,8 @@
 ---
 title: GRU Core Formulas Reference
-version: 1.0.0
+version: 1.0.1
 status: provisional
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 checksum: pending
 ---
 
@@ -22,15 +22,26 @@ Where:
 - M1 = Commercial / eMoney circulation layer
 - x, y are dynamic allocation coefficients determined by monetary policy (MPC) based on target liquidity profile.
 
-## 2. Face Values vs Asset Values
-```
-1 XAU GRU = 1.2 XAU
-1 M0 GRU = 1.2 XAU GRU
+## 2. Assigned / Face Value vs Supporting Asset Value
+```text
+Assigned / face value (booking, parity, settlement):
+1 GRU = 1 XAU
+1 M0 GRU = 1 XAU
+1 M1 GRU = 1 XAU
+
+Supporting asset value (reserve-side coverage):
+1 M0 GRU = 1.2 XAU of supporting assets
+1 M00 GRU = 6.0 XAU of supporting assets
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
 Interpretation:
-- XAU GRU denotes the gold-pegged denomination unit.
-- LiXAU represents the composite lithium-gold hybrid reserve index; the decay exponent (0.9475^4) reflects multi-stage efficiency or adjustment factors applied in reserve weighting.
+- Assigned / face value is the booked unit of account and parity reference.
+- Supporting asset value is the reserve quantity required to support that unit at the relevant layer.
+- Earlier shorthand such as `1 XAU GRU = 1.2 XAU` refers to supporting asset value and must not be read as changing the assigned parity of `1 GRU = 1 XAU`.
+- `1 M00 GRU = 6.0 XAU` of supporting asset value because the M00 basket contains five equal-value Li classes, each contributing `1.2 XAU` of support.
+- LiXAU represents the gold reserve index used inside the equal-weight Li basket.
+- LiPMG, LiBMG1, LiBMG2, and LiBMG3 are the other equal-weight Li basket indices for Precious Metals, Base Metals, Battery Materials, and Building Metals.
+- The decay exponent (0.9475^4) reflects multi-stage efficiency or adjustment factors applied in reserve weighting.
 
 ## 3. Atomic Issuance (Triangulation / eMoney Creation)
 Standard atomic expansion ratio:
@@ -131,7 +142,13 @@ Where f(V_GRU) is a piecewise stabilizer reducing expansion when V_GRU < lower_t
 | M0 | Institutional reserve circulation layer |
 | M1 | Commercial / eMoney public layer |
 | XAU GRU | Gold-pegged GRU denomination unit |
-| LiXAU | Composite lithium-gold hybrid reserve index |
+| Chain 138 `c*` | Canonical GRU M1 implementation surface |
+| Public-network `cW*` | Mirrored transport representation of canonical GRU M1 |
+| LiXAU | Gold reserve index (Li basket component) |
+| LiPMG | Precious Metals Group index |
+| LiBMG1 | Base Metals Group index |
+| LiBMG2 | Battery Materials Group index |
+| LiBMG3 | Building Metals Group index |
 | Atomic Cycle | One 7→10 issuance + fee-adjusted re-entry loop |
 | 40/40/20 | Capital allocation rule: reserve / expansion / stabilization |
 | MPAP | Monetary Parity Adjustment Protocol |
@@ -156,6 +173,7 @@ All Li-based commodity indices are defined by:
 ```
 1 LiXAU = 1.2 / (0.9475 ^ 4) XAU
 ```
+LiXAU is one component of the GRU Li basket; the other equal-value components are LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
 ## 2. LiPMG — Precious Metals Group
 ```

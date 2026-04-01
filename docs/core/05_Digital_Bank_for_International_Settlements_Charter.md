@@ -1,8 +1,8 @@
 ---
 title: Digital Bank for International Settlements (DBIS) Concept Charter
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: charter
 checksum: pending
 ---
@@ -32,12 +32,14 @@ The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed co
 - Treaty-level immunity for registered reserve operations
 
 ## V. GRU Integration Clause
-```
+```text
 1 M00 GRU = 5 M0 GRU
 1 M00 GRU = 25 M1 GRU
-1 XAU GRU = 1.2 XAU
+Assigned / face parity: 1 GRU = 1 XAU
+Supporting asset value: 1 M0 GRU = 1.2 XAU
+Supporting asset value: 1 M00 GRU = 6.0 XAU
 ```
-Minimum reserve coverage: ≥ 120% verified. The Li basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
+Minimum reserve coverage: ≥ 120% verified. Assigned / face parity remains `1 XAU` per GRU. The Li basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3, so `1 M00 GRU` carries `6.0 XAU` of supporting asset value.
 
 ## VI. Triangulation & Issuance
 - All issuance atomic: Source → XAU → GRU → Destination, with FX routed through `cXAUC/cXAUT`

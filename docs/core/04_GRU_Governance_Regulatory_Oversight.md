@@ -2,7 +2,7 @@
 title: GRU Governance & Regulatory Oversight
 version: 1.0.0
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: governance
 checksum: pending
 ---
@@ -29,6 +29,8 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 - Accountability: Segregated chamber authority w/ multi-sig approvals
 - Integrity: Cryptographic anchoring of issuance & redemption events, with all FX routed through XAU and operationally referenced by `cXAUC/cXAUT`
 - Resilience: Geographic and operational redundancy (multi-region custody)
+- Jurisdictional supervision: upgrade-sensitive asset changes should be proposed per asset, derive jurisdiction and notice periods from registry state, and collect explicit authority approval before queue or execution when required
+- Governance execution boundary: normal token and registry metadata changes execute only through the governance controller, while emergency/manual admin paths remain available for incident response and regulator-directed intervention
 
 ## 4. Legal Recognition
 - UNCITRAL framework alignment
@@ -155,6 +157,7 @@ Audit_Schedule:
 | Compliance failure | Real-time rule engines, AML pattern detection | ECC remediation directive | Automated regulatory reporting |
 | Oracle manipulation | Multi-source validation, circuit breakers | Price committee activation | BIS-aligned controls |
 | Reserve shortfall | Automated monitoring, coverage alerts | Emergency reserve injection | 120% minimum enforcement |
+| Unauthorized upgrade | Asset-scoped proposal review derived from registry jurisdiction, minimum notice period, authority approval records, controller-only metadata execution | Delay or reject queue/execution | Registry-backed supervision metadata plus emergency/manual admin fallback |
 
 ## 12. Integration with Compliance Infrastructure
 

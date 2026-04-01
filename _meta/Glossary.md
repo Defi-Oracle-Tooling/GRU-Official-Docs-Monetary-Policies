@@ -1,8 +1,8 @@
 ---
 title: GRU Glossary
-version: 1.1.0
+version: 1.1.1
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 checksum: pending
 ---
 # GRU Glossary
@@ -13,7 +13,9 @@ checksum: pending
 | M00 | Sovereign issuance layer — directly tied to audited reserves |
 | M0 | Institutional circulation layer — bank & authority operations |
 | M1 | Commercial / eMoney circulation layer — public settlement |
-| XAU GRU | Gold-pegged denomination unit (1 XAU GRU = 1.2 XAU) |
+| XAU GRU | Gold-pegged denomination unit; assigned parity is `1 GRU = 1 XAU`, while M0 carries `1.2 XAU` of supporting asset value |
+| Chain 138 `c*` | Canonical GRU M1 implementation surface |
+| Public-network `cW*` | Mirrored transport representation of canonical GRU M1 on compatible public chains |
 | LiXAU | Gold reserve index used as one of the five equal-value Li basket components |
 | LiPMG | Precious Metals Group index (basket component) |
 | LiBMG1 | Base Metals Group index (basket component) |

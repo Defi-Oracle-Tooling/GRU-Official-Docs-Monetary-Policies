@@ -1,8 +1,8 @@
 ---
 title: GRU Triangulation & eMoney Creation
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: mechanics
 checksum: pending
 lang: en
@@ -14,10 +14,12 @@ Triangulation converts any source asset → XAU → GRU → target asset, enforc
 
 ## 2. Triangulation Path
 1. Source Asset → XAU valuation (spot parity; asset reference `cXAUC/cXAUT`)
-2. XAU → GRU conversion (peg ratio 1 XAU GRU = 1.2 XAU)
+2. XAU → GRU conversion (assigned parity `1 GRU = 1 XAU`; M0 supporting asset value `= 1.2 XAU`)
 3. GRU → Target Asset (reverse triangulation)
 
 All GRU triangulations pass through XAU irrespective of destination class (commodity, currency, security, other). This keeps every FX route tied to the same gold anchor before converting into GRU or back out to the target asset.
+
+Current implementation surface for GRU M1: canonical Chain 138 `c*` assets with mirrored public-network `cW*` transport assets.
 
 ### Triangulation Flow Diagram
 ![Triangulation Flow](/assets/media/triangulation_flow.png){: loading="lazy" }

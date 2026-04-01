@@ -1,8 +1,8 @@
 ---
 title: Triangulation GRU et Création d'eMoney
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: mécanique
 checksum: en attente
 lang: fr
@@ -14,7 +14,7 @@ La triangulation convertit n'importe quel actif source → XAU → GRU → actif
 
 ## 2. Chemin de Triangulation
 1. Actif Source → évaluation XAU (parité spot ; référence d'actif `cXAUC/cXAUT`)
-2. XAU → conversion GRU (ratio d'ancrage 1 XAU GRU = 1.2 XAU)
+2. XAU → conversion GRU (parite assignee `1 GRU = 1 XAU` ; valeur d'actifs de soutien M0 `= 1.2 XAU`)
 3. GRU → Actif Cible (triangulation inverse)
 
 Toutes les triangulations GRU passent par XAU indépendamment de la classe de destination (commodity, devise, titre, autre). Cela maintient le routage FX sur la même ancre or avant la conversion en GRU ou le retour à l'actif cible.

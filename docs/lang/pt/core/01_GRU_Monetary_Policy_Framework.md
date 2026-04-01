@@ -1,8 +1,8 @@
 ---
 title: Quadro de Política Monetária GRU
-version: 1.0.0
+version: 1.0.1
 status: estável
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: política
 checksum: pendente
 lang: pt
@@ -24,12 +24,18 @@ A Global Reserve Unit (GRU) estabelece um sistema monetário multi-níveis apoia
 ```
 Coeficientes dinâmicos (x, y) são pesos de distribuição ajustados pela política entre as camadas M0 (institucional) e M1 (comercial).
 
-## Valores Nominais e de Ativos
-```
-1 XAU GRU = 1.2 XAU
-1 M0 GRU = 1.2 XAU GRU
+## Valor Nominal Atribuido vs Valor de Ativo de Suporte
+```text
+Valor nominal / paridade:
+1 GRU = 1 XAU
+1 M0 GRU = 1 XAU
+
+Valor de ativo de suporte:
+1 M0 GRU = 1.2 XAU de ativos de suporte
+1 M00 GRU = 6.0 XAU de ativos de suporte
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
+O valor nominal atribuido e a unidade de paridade e contabilizacao. O valor de ativo de suporte e a quantidade de ativos de reserva que sustenta essa unidade na camada correspondente.
 LiXAU é um índice de reserva de ouro. No quadro Li, há cinco componentes de valor equivalente que formam o composto operacional:
 - `LiXAU` = índice de reserva de ouro
 - `LiPMG` = índice do Precious Metals Group

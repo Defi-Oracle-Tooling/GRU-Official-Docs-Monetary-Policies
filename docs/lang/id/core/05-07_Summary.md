@@ -1,8 +1,8 @@
 ---
 title: Ringkasan Dokumen Inti Tambahan
-version: 1.0.0
+version: 1.0.1
 status: ringkasan
-last_updated: 2025-11-02
+last_updated: 2026-03-31
 lang: id
 ---
 # Ringkasan: DBIS Charter, Roadmap & Manual Operasional
@@ -33,12 +33,13 @@ DBIS didirikan untuk menyediakan lapisan koordinasi netral-berdaulat, transparan
 - Imunitas tingkat perjanjian untuk operasi cadangan terdaftar
 
 ### Integrasi GRU
-```
+```text
 1 M00 GRU = 5 M0 GRU
 1 M00 GRU = 25 M1 GRU  
-1 XAU GRU = 1.2 XAU
+Nilai nominal / paritas: 1 GRU = 1 XAU
+Nilai aset pendukung M0: 1.2 XAU
 ```
-Cakupan cadangan minimum: ≥ 120% terverifikasi. Keranjang Li dibagi menjadi lima indeks bernilai sama: LiXAU, LiPMG, LiBMG1, LiBMG2, dan LiBMG3.
+Cakupan cadangan minimum: ≥ 120% terverifikasi. Keranjang Li dibagi menjadi lima indeks bernilai sama: LiXAU, LiPMG, LiBMG1, LiBMG2, dan LiBMG3, sehingga `1 M00 GRU` membawa `6.0 XAU` nilai aset pendukung.
 
 ### Mandat Interoperabilitas
 - Pemetaan acara ISO 20022

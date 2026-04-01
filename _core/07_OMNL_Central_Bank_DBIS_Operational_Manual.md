@@ -1,8 +1,8 @@
 ---
 title: OMNL Central Bank | Digital Bank of International Settlements - Operational Policy & Transaction Flow Manual
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-29
+last_updated: 2026-03-31
 layer: operational-policy
 document_ref: OMNL/DBIS-GRU-2025-POL01
 effective_date: October 2025
@@ -22,19 +22,21 @@ The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrumen
 
 The GRU implementation uses the ERC-2535 Diamond standard because the system is intentionally modular: reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors need to coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve without breaking the shared governance surface.
 
-- **Parity:** 1 GRU = 1 XAU (troy ounce of gold)  
+- **Assigned / face parity:** 1 GRU = 1 XAU (troy ounce of gold)  
 - **Governance:** OMNL Central Bank (ARIN code OMNL-DBIS)  
 - **Oversight Partner:** Digital Bank of International Settlements (DBIS)  
 - **Regulatory Alignment:** ECB / ICC / MiCA / DORA / SEPA / AML-CFT / GDPR  
 
 The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities. Operationally, all FX is triangulated through XAU using `cXAUC/cXAUT`, and the M00 basket references the five equal-value Li indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
+For audit clarity, this manual distinguishes assigned value from supporting asset value. Assigned value is the accounting and settlement parity of the GRU unit (`1 GRU = 1 XAU`). Supporting asset value is the reserve quantity carried by the layer that supports that unit.
+
 ---
 
 ## 2 — Monetary Structure
 
-| Tier | Function | Asset Coverage | Money Multiplier | Purpose |
-|------|-----------|----------------|------------------|----------|
+| Tier | Function | Supporting Asset Coverage | Money Multiplier | Purpose |
+|------|-----------|---------------------------|------------------|----------|
 | **M00** | Sovereign Reserve | 6 XAU : 1 M00 GRU (6.00 XAU/GRU) | Base Reserve | Long-term collateral |
 | **M0** | Institutional Reserve | 6 XAU : 5 M0 GRU (1.20 XAU/GRU) | 1 M00 = 5 M0 | Monetary Base |
 | **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat Interface |
@@ -54,7 +56,9 @@ Operationally:
 ```
 
 **Cross-Formula:** 1 M00 = 5 M0 = 25 M1 GRU.  
-Face value is always 1 XAU per GRU.
+Assigned / face value is always `1 XAU` per GRU. Supporting asset value is `1.2 XAU` per `M0 GRU`; because M00 is composed of five equal-value Li classes, `1 M00 GRU` carries `6.0 XAU` of supporting asset value.
+
+Current implementation mapping: canonical Chain 138 `c*` instruments and public-network `cW*` mirrors are the current GRU M1 settlement surface. `cW*` denotes a mirrored transport representation of canonical GRU M1, not a separate monetary tier.
 
 ---
 

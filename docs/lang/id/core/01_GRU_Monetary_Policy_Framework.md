@@ -1,8 +1,8 @@
 ---
 title: Kerangka Kebijakan Moneter GRU
-version: 1.0.0
+version: 1.0.1
 status: stabil
-last_updated: 2025-10-24
+last_updated: 2026-03-31
 layer: kebijakan
 checksum: tertunda
 lang: id
@@ -24,12 +24,18 @@ Global Reserve Unit (GRU) menetapkan sistem moneter multi-tingkat yang didukung 
 ```
 Koefisien dinamis (x, y) adalah bobot distribusi yang disesuaikan kebijakan antara lapisan M0 (institusional) dan M1 (komersial).
 
-## Nilai Nominal & Aset
-```
-1 XAU GRU = 1.2 XAU
-1 M0 GRU = 1.2 XAU GRU
+## Nilai Nominal yang Ditetapkan vs Nilai Aset Pendukung
+```text
+Nilai nominal / paritas:
+1 GRU = 1 XAU
+1 M0 GRU = 1 XAU
+
+Nilai aset pendukung:
+1 M0 GRU = 1.2 XAU aset pendukung
+1 M00 GRU = 6.0 XAU aset pendukung
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
+Nilai nominal yang ditetapkan adalah unit paritas dan pembukuan. Nilai aset pendukung adalah jumlah aset cadangan yang menopang unit tersebut pada lapisan terkait.
 LiXAU adalah indeks cadangan emas. Di dalam kerangka Li, ada lima komponen bernilai sama yang membentuk komposit operasional:
 - `LiXAU` = indeks cadangan emas
 - `LiPMG` = Precious Metals Group index
