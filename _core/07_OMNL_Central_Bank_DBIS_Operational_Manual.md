@@ -17,6 +17,21 @@ lang: en
 
 ---
 
+## 0 — Document scope, authority, and alignment with the core corpus
+
+This manual is an **OMNL / DBIS implementation profile**: it describes **European-facing** operational flows (SEPA, EUR settlement, MiCA/DORA reporting labels, ISO 20022 samples) for a **specific deployment**. It does **not** supersede normative monetary definitions in **01_GRU_Monetary_Policy_Framework**, **GRU_Formulas**, or the **[canonical parity and unit definition specification](/meta/canonical-parity-and-unit-definition-specification/)**.
+
+| Topic | Core / canonical specs | This manual (profile) |
+|-------|-------------------------|------------------------|
+| One-page anti-confusion | [Canonical parity quick reference](/meta/canonical-parity-quick-reference/) | Same face vs supporting rules apply to this profile |
+| Face vs supporting XAU per tier | [Canonical parity](/meta/canonical-parity-and-unit-definition-specification/), [Collateral stack](/meta/collateral-stack-decomposition/) | Table in Section 2 = **supporting** ratios (`6`, `1.20`, `0.24` XAU per GRU) alongside **face** `1 GRU = 1 XAU` |
+| PoR / attestation **cadence** | Framework: **quarterly** composite emphasis; **PoR methodology**: MiCA-aligned **daily** composition reporting where applicable | **Monthly** operational attestation (Section 7) + **quarterly** ICT/AML reviews |
+| Governance labels | Five-chamber **SHTE** model | **MPC / RCC / Audit Board** naming for banking audiences — see [Governance decision matrix](/meta/governance-decision-matrix/) |
+
+Readers resolving an apparent conflict should treat **canonical parity / collateral stack** as controlling **meanings**, and this manual as controlling **this profile’s** operational cadence and rail-specific flows.
+
+---
+
 ## 1 — Executive Overview
 The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture. At the implementation layer, GRU uses ERC-2535 Diamond so reserve policy, compliance, index mechanics, and asset-specific behavior can evolve without fragmenting governance.
 
@@ -174,6 +189,14 @@ Coverage Ratio: 6 XAU per M00 GRU
 Audit Date: [YYYY-MM-DD]
 Auditor: DBIS Oversight Division
 ```
+
+---
+
+## 8.1 — Related specifications (canonical)
+
+- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
+- **Parity quick reference:** [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
+- **Acceptance checklist (branch):** [docs-review-fixes acceptance checklist](/meta/docs-review-fixes-acceptance-checklist/).
 
 ---
 

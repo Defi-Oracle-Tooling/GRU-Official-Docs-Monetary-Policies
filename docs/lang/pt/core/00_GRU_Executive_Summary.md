@@ -36,6 +36,11 @@ O quadro de política monetária GRU (Global Reserve Unit) estabelece um sistema
 | Glossary (meta) | Normalização de terminologia |
 | Risk_Annex (meta) | Catálogo de riscos & matriz de mitigação |
 | Checksums (meta) | Protocolo de integridade de artefatos |
+| Índice de especificações determinísticas (meta) | Paridade auditorável, linhagem, matriz de governação, esquemas |
+| Referência rápida de paridade canónica (meta) | Folha anti-confusão face versus suporte (1 página) |
+| Estado de implementação (meta) | **Mestre** `live` / `partial` / `placeholder` para código versus política |
+
+Onde a folha de fórmulas ou o PDF mestre mostrar `1 M00 GRU = 1.2 × (LiXAU + … + LiBMG3)`, interprete como **agregação de colateral de suporte**, não como alteração da paridade **nominal** (`1 GRU = 1 XAU`) — veja a [referência rápida](../../../meta/Canonical_Parity_Quick_Reference.md).
 
 ## Índices e Sinais Chave (Instantâneo)
 - Índice de Emissão Central: 7:10 linha de base de expansão reserva-para-circulação.

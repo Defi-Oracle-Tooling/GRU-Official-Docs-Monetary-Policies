@@ -112,12 +112,16 @@ Where:
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral. This is the operational basket relation used by the GRU collateral logic.
+  Used for reserve magnitude and issuance collateral (**supporting** definition; **face** parity remains `1 GRU = 1 XAU` — [quick reference](/meta/canonical-parity-quick-reference/)). This is the operational basket relation used by the GRU collateral logic.
 
 - **Diamond implementation note:**
   ERC-2535 Diamond facets are the intended mechanism for evolving GRU policy, issuance, compliance, and asset-specific modules while keeping a single governance surface.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
+
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
 
 ## Summary
 This roadmap operationalizes GRU as a transparent, adaptive, and globally interoperable monetary infrastructure, enabling resilient institutional adoption under the DBIS umbrella.

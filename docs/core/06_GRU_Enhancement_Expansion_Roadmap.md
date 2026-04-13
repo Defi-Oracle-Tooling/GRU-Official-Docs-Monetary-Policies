@@ -109,9 +109,13 @@ Where:
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral.
+  Used for reserve magnitude and issuance collateral (**supporting** collateral definition; **face** parity remains `1 GRU = 1 XAU` — see [quick reference](../meta/Canonical_Parity_Quick_Reference.md)).
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
+
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
 
 ## Summary
 This roadmap operationalizes GRU as a transparent, adaptive, and globally interoperable monetary infrastructure, enabling resilient institutional adoption under the DBIS umbrella.

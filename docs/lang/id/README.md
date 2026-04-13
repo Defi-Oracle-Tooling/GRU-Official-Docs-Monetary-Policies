@@ -2,6 +2,8 @@
 
 Selamat datang di versi Bahasa Indonesia dari dokumentasi resmi Global Reserve Unit (GRU).
 
+**Rujukan paritas (Inggris):** ringkasan *face* vs *supporting* dan rasio **6 / 1.2 / 0.24** ada di [Canonical_Parity_Quick_Reference.md](../../meta/Canonical_Parity_Quick_Reference.md).
+
 ## Dokumen yang Tersedia
 
 ### Dokumen Inti (docs/core/)

@@ -24,18 +24,20 @@ La Global Reserve Unit (GRU) établit un système monétaire multi-niveaux adoss
 ```
 Les coefficients dynamiques (x, y) sont des poids de distribution ajustés par la politique entre les couches M0 (institutionnelle) et M1 (commerciale).
 
-## Valeur Nominale Assignee vs Valeur d'Actifs de Soutien
+## Valeur nominale assignée vs valeur d'actifs de soutien
 ```text
-Valeur nominale / parite:
+Valeur nominale / parité (face, comptabilité, règlement) :
 1 GRU = 1 XAU
 1 M0 GRU = 1 XAU
+1 M1 GRU = 1 XAU
 
-Valeur d'actifs de soutien:
+Valeur d'actifs de soutien (couverture côté réserves) :
 1 M0 GRU = 1.2 XAU d'actifs de soutien
 1 M00 GRU = 6.0 XAU d'actifs de soutien
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-La valeur nominale assignee est l'unite de parite et de comptabilisation. La valeur d'actifs de soutien correspond a la quantite d'actifs de reserve qui soutient cette unite dans la couche concernee.
+Pour lever toute ambiguïté, la valeur nominale assignée et la valeur d'actifs de soutien sont des mesures distinctes. La valeur nominale est l'unité utilisée pour la parité, la comptabilité, le règlement et le pilotage de la politique. La valeur d'actifs de soutien est la quantité d'actifs de réserve requise pour soutenir cette unité à une couche donnée. Des formulations historiques telles que `1 XAU GRU = 1.2 XAU` désignent uniquement la valeur de soutien et ne modifient pas la parité de face `1 GRU = 1 XAU`.
+
 LiXAU est un indice de réserve or. Dans le cadre Li, cinq composantes de valeur équivalente forment le composite opérationnel :
 - `LiXAU` = indice de réserve or
 - `LiPMG` = indice Precious Metals Group
@@ -49,6 +51,8 @@ LiXAU est un indice de réserve or. Dans le cadre Li, cinq composantes de valeur
 | M00 | Émission Souveraine | Création de base liée 1:1 aux réserves auditées |
 | M0  | Réserve Institutionnelle | Instrument de liquidité au niveau interbancaire et des autorités |
 | M1  | Circulation Commerciale | Couche de monnaie électronique de marché et de règlement |
+
+Cartographie d'implémentation actuelle : les actifs canoniques `c*` sur la chaîne 138 sont des instruments GRU M1. Les actifs `cW*` sur les réseaux publics sont des représentations de transport en miroir de cette même couche GRU M1 et ne constituent pas une classe monétaire distincte.
 
 ## Politique de Réserves
 - Couverture minimale : ≥ 120% de la valeur GRU en circulation.
@@ -99,4 +103,4 @@ Le cadre combine émission mathématiquement disciplinée, parité or et routage
 
 Ce cadre utilise volontairement Diamond afin que les couches monétaires, de conformité, d'indice et d'actifs puissent évoluer séparément sans casser une surface de gouvernance unique.
 
-*Voir Glossary et GRU_Formulas pour la spécification complète et les champs d'audit.*
+*Voir également [l'index des spécifications déterministes](../../../meta/Deterministic_Specifications_Index.md), [la référence rapide de parité canonique](../../../meta/Canonical_Parity_Quick_Reference.md) et [l'état d'implémentation](../../../meta/Implementation_Status_and_Control_Disclosure.md) ; complété par Glossary et GRU_Formulas pour la spécification complète et les champs d'audit.*

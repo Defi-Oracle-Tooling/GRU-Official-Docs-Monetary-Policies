@@ -120,4 +120,4 @@ The framework combines mathematically disciplined issuance, gold parity, and mul
   ```
   Used for reserve magnitude and issuance collateral. This is the operational basket used for the GRU’s M00 collateral logic.
 
-*See Glossary and GRU_Formulas for full specification and audit fields.*
+*See Glossary and GRU_Formulas for full specification and audit fields. For auditor-grade definitions of face vs supporting value, layer fan-out, and triangulation proof targets, see the [deterministic specifications index](/meta/deterministic-specifications-index/). For **live vs placeholder** smart-contract and control disclosure, see [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).*

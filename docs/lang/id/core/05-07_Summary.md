@@ -162,3 +162,5 @@ Manual ini menyediakan panduan operasional komprehensif untuk menjalankan infras
 Dokumen 05, 06, dan 07 saat ini diringkas di sini. Terjemahan lengkap dari dokumen-dokumen ini akan tersedia dalam pembaruan dokumentasi mendatang. Untuk versi lengkap dalam bahasa Inggris, silakan lihat direktori `docs/core/` utama.
 
 Dokumen inti yang telah diterjemahkan sepenuhnya (00-04) mencakup informasi paling penting untuk memahami kerangka kebijakan moneter GRU, sistem cadangan, mekanisme penerbitan, sistem obligasi, dan struktur tata kelola.
+
+**Paritas nominal (wajah):** di seluruh inti kebijakan, `1 GRU = 1 XAU` pada M00/M0/M1; kelipatan `6` / `1.2` / `0.24` hanya merujuk pada **cakupan pendukung**. Lihat [referensi cepat](../../../meta/Canonical_Parity_Quick_Reference.md) (Bahasa Inggris) dan `docs/core/01`.

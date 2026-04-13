@@ -18,6 +18,8 @@ The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed co
 4. Inclusive interoperability (CBDCs, commodities, securities)
 5. Audit-first governance
 
+> **Legal posture:** Sections on **UNCITRAL**, **treaty-level immunity**, **non-seizure**, and **arbitration** describe **target institutional architecture**, not settled legal outcomes, until **jurisdiction schedules** and **filed instruments** exist. See the [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md).
+
 ## III. Governance Architecture
 | Body | Role | Decision Threshold |
 |------|-----|-------------------|
@@ -125,6 +127,11 @@ DBIS operates under an **Irrevocable Right of Use (IRU)** participation framewor
   Used for reserve magnitude and issuance collateral.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
+
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Legal enforceability (checklist):** [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md).
 
 ## Summary
 The DBIS Charter codifies a modern institutional reserve framework, delivering transparent, asset-backed global settlement capability through GRU integration.

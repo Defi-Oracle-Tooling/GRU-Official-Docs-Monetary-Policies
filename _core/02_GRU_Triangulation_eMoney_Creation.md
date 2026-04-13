@@ -82,5 +82,12 @@ Target Coverage ≈ 2.5 × Base Reserve
 - Multi-anchor triangulation (XAU/XAG/XPT basket) with fallback contingencies
 - On-chain oracle redundancy network
 
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/) (`live` / `partial` / `placeholder`).
+- **Parity (quick):** [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
+- **Normative events (target):** [Transaction state propagation](/meta/transaction-state-propagation-specification/).
+- **Index:** [Deterministic specifications index](/meta/deterministic-specifications-index/).
+
 ## Summary
 The triangulation and atomic issuance system produce controlled, asset-anchored liquidity expansion with built-in stability and auditability, forming the mechanical backbone of GRU circulation.

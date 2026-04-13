@@ -145,6 +145,8 @@ navigation:
         url: /compliance/#amlcft
   - title: References
     children:
+      - title: Deterministic specifications
+        url: /meta/deterministic-specifications-index/
       - title: Formulas
         url: /meta/gru-formulas/
       - title: Glossary

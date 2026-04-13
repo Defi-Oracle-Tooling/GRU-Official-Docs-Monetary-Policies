@@ -33,4 +33,5 @@
   <text x="60" y="20" class="caption">Triangulation Path: Reserve → Issuance → Circulation</text>
   <text x="300" y="20" class="caption">Parity Guard: dynamic fee window</text>
   <text x="560" y="20" class="caption">Macro cycles derive from M1 events</text>
+  <text x="40" y="288" class="caption" font-size="11">Face parity (policy): 1 GRU = 1 XAU at M00/M0/M1; diagram labels are operational flow (M0/M1/M2+), not supporting multiples.</text>
 </svg>

@@ -2,6 +2,8 @@
 
 Bem-vindo à versão em Português da documentação oficial da Global Reserve Unit (GRU).
 
+**Paridade canónica (inglês, referência):** a folha *face* vs *supporting* e os rácios **6 / 1.2 / 0.24** estão em [Canonical_Parity_Quick_Reference.md](../../meta/Canonical_Parity_Quick_Reference.md) (documento fonte em inglês).
+
 ## Documentos Disponíveis
 
 ### Documentos Principais (docs/core/)

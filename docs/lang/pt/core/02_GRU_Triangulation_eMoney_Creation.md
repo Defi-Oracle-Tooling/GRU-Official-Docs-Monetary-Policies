@@ -80,5 +80,12 @@ Cobertura Alvo ≈ 2.5 × Reserva Base
 - Triangulação multi-âncora (cesta XAU/XAG/XPT) com contingências de fallback, mantendo XAU como a âncora principal de FX
 - Rede de redundância de oráculo on-chain
 
+## Especificações relacionadas
+
+- **Verdade de implementação:** [Estado de implementação e divulgação de controle](../../../meta/Implementation_Status_and_Control_Disclosure.md) (`live` / `partial` / `placeholder`).
+- **Paridade (resumo):** [Referência rápida de paridade canónica](../../../meta/Canonical_Parity_Quick_Reference.md).
+- **Eventos normativos (alvo):** [Propagação do estado da transação](../../../meta/Transaction_State_Propagation_Specification.md).
+- **Índice:** [Índice de especificações determinísticas](../../../meta/Deterministic_Specifications_Index.md).
+
 ## Resumo
 O sistema de triangulação e emissão atômica produz expansão de liquidez controlada e ancorada em ativos com estabilidade e auditabilidade incorporadas, formando a espinha dorsal mecânica da circulação GRU.

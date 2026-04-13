@@ -204,6 +204,23 @@ graph LR
 
 </div>
 
+### Deterministic specifications (auditor-grade)
+
+Normative-style specs and annexes live under [`docs/meta/`](docs/meta/) (mirrored to [`_meta/`](_meta/) for the Jekyll site). Start at **[Deterministic specifications index](docs/meta/Deterministic_Specifications_Index.md)** (site: `/meta/deterministic-specifications-index/`). Highlights:
+
+| Document | Focus |
+|----------|--------|
+| [Canonical parity quick reference](docs/meta/Canonical_Parity_Quick_Reference.md) | **One-page** wrong vs right; **6 / 1.2 / 0.24**; “XAU GRU” deprecated |
+| [Canonical parity and unit definition](docs/meta/Canonical_Parity_and_Unit_Definition_Specification.md) | Face vs supporting value; retires incorrect `1.44` face stack |
+| [Claim structure and rights by layer](docs/meta/Claim_Structure_and_Rights_by_Layer.md) | M1/M0/M00 economic vs legal status; mediated claims; open items |
+| [Collateral stack decomposition](docs/meta/Collateral_Stack_Decomposition.md) | M00 / M0 / M1 math in one place |
+| [Transaction state propagation](docs/meta/Transaction_State_Propagation_Specification.md) | Event / lineage fields (target schema) |
+| [Solvency worked ledger examples (7:10)](docs/meta/Solvency_Worked_Ledger_Examples_7_10_Protocol.md) | Balance-sheet style issuance + 40/40/20 |
+| [Governance decision matrix](docs/meta/Governance_Decision_Matrix.md) | OMNL labels ↔ SHTE chambers |
+| [Implementation status and control disclosure](docs/meta/Implementation_Status_and_Control_Disclosure.md) | Conceptual vs live vs placeholder controls |
+
+**Verification (parity language):** `bash scripts/verify/check-stale-gru-parity-language.sh` (report-only) or `--strict` (same check as CI in `.github/workflows/build.yml`).
+
 ### 💎 **Smart Contract Architecture**
 
 The GRU system implements the **Diamond Standard (EIP-2535)** for maximum flexibility and upgradeability:

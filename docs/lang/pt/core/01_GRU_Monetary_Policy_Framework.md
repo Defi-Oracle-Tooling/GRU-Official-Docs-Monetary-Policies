@@ -24,18 +24,20 @@ A Global Reserve Unit (GRU) estabelece um sistema monetário multi-níveis apoia
 ```
 Coeficientes dinâmicos (x, y) são pesos de distribuição ajustados pela política entre as camadas M0 (institucional) e M1 (comercial).
 
-## Valor Nominal Atribuido vs Valor de Ativo de Suporte
+## Valor nominal atribuído vs valor de ativo de suporte
 ```text
-Valor nominal / paridade:
+Valor nominal / paridade (face, contabilidade, liquidação):
 1 GRU = 1 XAU
 1 M0 GRU = 1 XAU
+1 M1 GRU = 1 XAU
 
-Valor de ativo de suporte:
+Valor de ativo de suporte (cobertura no lado das reservas):
 1 M0 GRU = 1.2 XAU de ativos de suporte
 1 M00 GRU = 6.0 XAU de ativos de suporte
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-O valor nominal atribuido e a unidade de paridade e contabilizacao. O valor de ativo de suporte e a quantidade de ativos de reserva que sustenta essa unidade na camada correspondente.
+Para evitar dúvidas, valor nominal atribuído e valor de ativo de suporte são medidas diferentes. O valor nominal é a unidade usada para paridade, contabilização, liquidação e controle de política. O valor de ativo de suporte é a quantidade de ativos de reserva exigida para sustentar essa unidade em uma dada camada. Fórmulas antigas como `1 XAU GRU = 1.2 XAU` referem-se apenas ao valor de suporte e não alteram a paridade nominal de `1 GRU = 1 XAU`.
+
 LiXAU é um índice de reserva de ouro. No quadro Li, há cinco componentes de valor equivalente que formam o composto operacional:
 - `LiXAU` = índice de reserva de ouro
 - `LiPMG` = índice do Precious Metals Group
@@ -49,6 +51,8 @@ LiXAU é um índice de reserva de ouro. No quadro Li, há cinco componentes de v
 | M00 | Emissão Soberana | Criação base vinculada 1:1 às reservas auditadas |
 | M0  | Reserva Institucional | Instrumento de liquidez de nível interbancário e de autoridade |
 | M1  | Circulação Comercial | Camada de eMoney de mercado e liquidação |
+
+Mapeamento de implementação atual: os ativos canônicos `c*` na Chain 138 são instrumentos GRU M1. Os ativos `cW*` em redes públicas são representações de transporte espelhadas da mesma camada GRU M1 e não constituem uma classe monetária separada.
 
 ## Política de Reservas
 - Cobertura mínima: ≥ 120% do valor GRU em circulação.
@@ -99,4 +103,4 @@ O quadro combina emissão matematicamente disciplinada, paridade de ouro e rotea
 
 Este quadro usa Diamond deliberadamente para que as camadas monetárias, de conformidade, de índice e de ativos evoluam separadamente sem quebrar uma única superfície de governança.
 
-*Veja Glossary e GRU_Formulas para especificação completa e campos de auditoria.*
+*Veja também [índice de especificações determinísticas](../../../meta/Deterministic_Specifications_Index.md), [referência rápida de paridade canónica](../../../meta/Canonical_Parity_Quick_Reference.md) e [estado de implementação](../../../meta/Implementation_Status_and_Control_Disclosure.md); além disso, Glossary e GRU_Formulas para especificação completa e campos de auditoria.*

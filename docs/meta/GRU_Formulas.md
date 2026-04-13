@@ -8,7 +8,7 @@ checksum: pending
 
 # Global Reserve Unit (GRU) — Core Formulas
 
-This document records the currently defined structural and conversion formulas for the Global Reserve Unit (GRU) monetary framework.
+This document records the currently defined structural and conversion formulas for the Global Reserve Unit (GRU) monetary framework. For a **one-page** face vs supporting summary (and deprecated “XAU GRU” shorthand), see [Canonical parity quick reference](Canonical_Parity_Quick_Reference.md). For **code vs policy** status, see [Implementation status and control disclosure](Implementation_Status_and_Control_Disclosure.md).
 
 ## 1. Monetary Layer Relationships
 ```
@@ -218,7 +218,7 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   Used for reserve magnitude and issuance collateral.
 
 ## Consistency Notes
-- Scalar parity S = 1.2/(0.9475^4) applies to all Li indices.
+- Scalar parity S = 1.2/(0.9475^4) applies to all **Li** indices (collateral-side valuation); it does **not** redefine GRU **face** parity (`1 GRU = 1 XAU`).
 - Any change in basket weights requires re-publication of both LiCRI and M00 composite, with effective date and version.
 
 ## Audit/Registry Fields (Recommended)
@@ -234,6 +234,16 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
 ---
 
 *See Glossary for definitions and integration notes.*
+
+## Related deterministic specifications
+
+Auditor-grade rules that complement this formula sheet:
+
+- [Deterministic specifications index](Deterministic_Specifications_Index.md)
+- [Canonical parity and unit definition](Canonical_Parity_and_Unit_Definition_Specification.md)
+- [Collateral stack decomposition](Collateral_Stack_Decomposition.md)
+- [Transaction state propagation](Transaction_State_Propagation_Specification.md)
+- [Solvency worked ledger examples (7:10)](Solvency_Worked_Ledger_Examples_7_10_Protocol.md)
 
 ---
 © 2025 GRU Monetary Authority — Commodity Index Division

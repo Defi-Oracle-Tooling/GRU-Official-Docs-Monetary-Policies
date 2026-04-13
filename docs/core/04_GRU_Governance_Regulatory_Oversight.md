@@ -32,6 +32,8 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 - Jurisdictional supervision: upgrade-sensitive asset changes should be proposed per asset, derive jurisdiction and notice periods from registry state, route registry jurisdiction-policy updates through asset-derived governance entry points, and collect explicit authority approval before queue or execution when required
 - Governance execution boundary: normal token and registry metadata changes execute only through the governance controller, while emergency/manual admin paths remain available for incident response and regulator-directed intervention
 
+> **Legal posture:** References below to **UNCITRAL**, **PIMI**, **arbitration seats**, or similar are **institutional design goals** unless confirmed by **filed instruments** and **counsel**. See the [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md) (site: `/meta/legal-enforceability-annex/`).
+
 ## 4. Legal Recognition
 - UNCITRAL framework alignment
 - Arbitration seat: New York (primary); auxiliary hubs: Geneva, Singapore, Dubai
@@ -186,6 +188,11 @@ Audit_Schedule:
 - **Enhanced Transparency**: Blockchain-based governance record keeping
 - **Stakeholder Engagement**: Enhanced public participation mechanisms
 - **Continuous Improvement**: Regular governance framework assessment and enhancement
+
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Governance matrix:** [Governance decision matrix](../meta/Governance_Decision_Matrix.md) (site: `/meta/governance-decision-matrix/`).
 
 ## Summary
 This enhanced governance framework provides comprehensive institutional oversight, regulatory compliance, and operational resilience, positioning GRU as a reliable and trustworthy reserve and settlement standard meeting the highest international standards for digital monetary instruments.

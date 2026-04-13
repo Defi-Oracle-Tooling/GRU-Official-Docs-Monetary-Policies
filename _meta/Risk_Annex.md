@@ -19,7 +19,7 @@ Catalog primary systemic, operational, financial, technological, legal, and gove
 | Liquidity Elasticity | Over-Expansion | Excess M1 issuance beyond demand | ACP enforced burns + velocity gating |
 | Oracle Integrity | Data Manipulation | Malicious or faulty price feeds | Multi-oracle quorum + cryptographic attestation |
 | Governance Capture | Centralization | Chamber dominance or collusion | Segregated authority, rotation schedule, transparency audits |
-| Compliance/Regulatory | Jurisdictional Challenge | Legal uncertainty or classification conflict | PIMI registration + multi-jurisdiction counsel network |
+| Compliance/Regulatory | Jurisdictional Challenge | Legal uncertainty or classification conflict | PIMI-style positioning **only after** filed instruments — see [Legal enforceability annex](Legal_Enforceability_Annex.md); multi-jurisdiction counsel network |
 | Technology & Security | Smart Contract Exploit | Vulnerability leading to unauthorized issuance | Formal verification + layered audit + emergency pause function |
 | Settlement Interoperability | Bridge Failure | Cross-ledger/CBDC adapter malfunction | Redundant adapter cluster + failover routing |
 | Adoption & Market | Low Institutional Uptake | Insufficient early participation | Phased onboarding incentives + PoR transparency + education (GRU Academy) |

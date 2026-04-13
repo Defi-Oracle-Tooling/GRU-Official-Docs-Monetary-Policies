@@ -36,6 +36,11 @@ Kerangka kebijakan moneter GRU (Global Reserve Unit) menetapkan sistem mata uang
 | Glossary (meta) | Normalisasi terminologi |
 | Risk_Annex (meta) | Katalog risiko & matriks mitigasi |
 | Checksums (meta) | Protokol integritas artefak |
+| Indeks spesifikasi deterministik (meta) | Paritas yang dapat diaudit, silsilah, matriks tata kelola, skema |
+| Referensi cepat paritas kanonis (meta) | Lembar anti-kebingungan wajah vs pendukung (1 halaman) |
+| Status implementasi (meta) | **Master** `live` / `partial` / `placeholder` untuk kode vs kebijakan |
+
+Bila lembar rumus atau PDF master menampilkan `1 M00 GRU = 1.2 × (LiXAU + … + LiBMG3)`, baca sebagai **agregasi kolateral pendukung**, bukan perubahan pada **paritas nominal** (`1 GRU = 1 XAU`) — lihat [referensi cepat](../../../meta/Canonical_Parity_Quick_Reference.md).
 
 ## Rasio & Sinyal Kunci (Snapshot)
 - Rasio Penerbitan Inti: 7:10 garis dasar ekspansi cadangan-ke-sirkulasi.

@@ -26,6 +26,8 @@ The top-level basket relation is:
 1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
 ```
 
+**Face vs supporting:** This expression is the **M00 supporting (collateral) composite**, not a change to **assigned face parity** (`1 GRU = 1 XAU`). See [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
+
 ## Core Pillars
 1. Parity & Stability: Controlled issuance via atomic triangulation (reserve -> XAU -> GRU -> distributed units) with predictable expansion ratios and a hard inflation discipline ceiling. All FX is routed through XAU, with `cXAUC/cXAUT` as the operational asset reference.
 2. Liquidity Management: Bond-driven (Li99) recycling, 40/40/20 allocation logic (reserves / liquidity instruments / strategic programs) ensuring structural balance.
@@ -48,6 +50,9 @@ The top-level basket relation is:
 | 05_Digital_Bank_for_International_Settlements_Charter | Charter integration, DRB composition, interoperability |
 | 06_GRU_Enhancement_Expansion_Roadmap | Phased evolution, metrics, technical enhancements |
 | 07_OMNL_Central_Bank_DBIS_Operational_Manual | OMNL/DBIS operational policy, monetary structure, transaction flows |
+| Deterministic specifications index (meta) | Auditor-grade parity, lineage, governance matrix, schemas |
+| Canonical parity quick reference (meta) | One-page face vs supporting anti-confusion sheet |
+| Implementation status (meta) | **Master** `live` / `partial` / `placeholder` disclosure for code vs policy |
 | GRU_Formulas (meta) | Canonical formula inventory |
 | Glossary (meta) | Terminology normalization |
 | Risk_Annex (meta) | Risk catalog & mitigation matrix |

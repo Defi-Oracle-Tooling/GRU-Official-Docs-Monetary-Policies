@@ -2,6 +2,8 @@
 
 مرحبًا بك في النسخة العربية من الوثائق الرسمية لوحدة الاحتياطي العالمية (GRU).
 
+**المرجع الإنجليزي للتكافؤ (*face* مقابل *supporting*) والنِسَب 6 / 1.2 / 0.24:** راجع [Canonical_Parity_Quick_Reference.md](../../meta/Canonical_Parity_Quick_Reference.md).
+
 ## الوثائق المتاحة
 
 ### الوثائق الأساسية (docs/core/)

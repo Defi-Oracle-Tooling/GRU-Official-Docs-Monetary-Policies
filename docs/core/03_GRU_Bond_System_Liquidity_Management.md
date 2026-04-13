@@ -80,5 +80,10 @@ The following diagram illustrates the closed-loop liquidity path for Li99-series
 ### Coverage-Weighted Velocity Integration (Preview)
 Upcoming revisions will align coupon reinvestment pacing with coverage-weighted velocity (v_cov), dynamically scaling escrow top-ups when transactional velocity softens, preserving buy-back funding certainty.
 
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Parity / collateral stack:** [Deterministic specifications index](../meta/Deterministic_Specifications_Index.md) (canonical parity + collateral decomposition).
+
 ## Summary
 Li99-series bonds enable scalable, self-redeeming liquidity expansion without external leverage, ensuring perpetual stability through structured coupon cycles and reserve-tied buy-back mechanics.

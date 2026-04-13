@@ -35,4 +35,5 @@
   <text x="40" y="20" class="caption">Coverage maintained: R ≥ target</text>
   <text x="300" y="20" class="caption">Formula: E = I × (10/7) × (1 - f)^n</text>
   <text x="560" y="20" class="caption">Stability instruments engaged</text>
+  <text x="20" y="248" class="caption" font-size="11">Face parity (policy): 1 GRU = 1 XAU at M00/M0/M1; 7:10 and E=I×(10/7)×(1−f)^n describe issuance mechanics / supporting coverage, not a change to face parity.</text>
 </svg>

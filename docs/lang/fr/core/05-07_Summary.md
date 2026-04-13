@@ -77,3 +77,5 @@ Ce manuel fournit des orientations opérationnelles complètes pour exécuter l'
 Les documents 05, 06 et 07 sont actuellement résumés ici. Les traductions complètes de ces documents seront disponibles dans les futures mises à jour de la documentation. Pour les versions complètes en anglais, veuillez consulter le répertoire principal `docs/core/`.
 
 Les documents principaux entièrement traduits (00-04) couvrent les informations les plus critiques pour comprendre le cadre de politique monétaire GRU, le système de réserves, les mécaniques d'émission, le système d'obligations et la structure de gouvernance.
+
+**Parité nominale (face) :** dans l'ensemble du noyau de politique, `1 GRU = 1 XAU` aux couches M00/M0/M1 ; les multiples `6` / `1.2` / `0.24` renvoient uniquement à la **couverture de soutien**. Voir la [référence rapide](../../../meta/Canonical_Parity_Quick_Reference.md) (anglais) et `docs/core/01`.

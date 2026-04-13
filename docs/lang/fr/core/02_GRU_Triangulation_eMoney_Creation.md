@@ -80,5 +80,12 @@ Couverture Cible ≈ 2.5 × Réserve de Base
 - Triangulation multi-ancre (panier XAU/XAG/XPT) avec contingences de secours, tout en maintenant XAU comme ancre principale du FX
 - Réseau de redondance d'oracle on-chain
 
+## Spécifications associées
+
+- **Réalité d'implémentation :** [État d'implémentation et divulgation des contrôles](../../../meta/Implementation_Status_and_Control_Disclosure.md) (`live` / `partial` / `placeholder`).
+- **Parité (résumé) :** [Référence rapide de parité canonique](../../../meta/Canonical_Parity_Quick_Reference.md).
+- **Événements normatifs (cible) :** [Propagation de l'état des transactions](../../../meta/Transaction_State_Propagation_Specification.md).
+- **Index :** [Index des spécifications déterministes](../../../meta/Deterministic_Specifications_Index.md).
+
 ## Résumé
 Le système de triangulation et d'émission atomique produit une expansion de liquidité contrôlée et ancrée sur les actifs avec stabilité et auditabilité intégrées, formant l'épine dorsale mécanique de la circulation GRU.

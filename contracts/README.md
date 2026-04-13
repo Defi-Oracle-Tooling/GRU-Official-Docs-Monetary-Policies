@@ -2,6 +2,8 @@
 
 This directory contains the GRU adaptation of the ERC-2535 Diamond Standard ("GRC-2535"). It modularizes protocol functionality into upgradeable facets governed by institutional policy constraints.
 
+**Implementation truth (repo master):** see [`docs/meta/Implementation_Status_and_Control_Disclosure.md`](../docs/meta/Implementation_Status_and_Control_Disclosure.md) (published site `/meta/implementation-status-and-control-disclosure/`) for `live` / `partial` / `conceptual` / `placeholder` / `deprecated` status of facets and controls. Policy docs may describe **target** behavior; that file states what is **actually** deployed or stubbed.
+
 ## Core Concepts
 - Diamond (`GrcDiamond.sol`): Upgrade dispatcher holding selector -> facet address mapping and enumerability state for loupe introspection.
 - Facets: Grouped logic domains (Monetary, Triangulation, Index, Bond, Audit, Governance, Access, Pause).

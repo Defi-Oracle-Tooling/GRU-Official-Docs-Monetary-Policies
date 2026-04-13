@@ -31,10 +31,15 @@ The GRU (Global Reserve Unit) monetary policy framework establishes a discipline
 | 05_Digital_Bank_for_International_Settlements_Charter | Charter integration, DRB composition, interoperability |
 | 06_GRU_Enhancement_Expansion_Roadmap | Phased evolution, metrics, technical enhancements |
 | 07_OMNL_Central_Bank_DBIS_Operational_Manual | OMNL/DBIS operational policy, monetary structure, transaction flows |
+| Deterministic specifications index (meta) | Auditor-grade parity, lineage, governance matrix, schemas |
+| Canonical parity quick reference (meta) | One-page face vs supporting anti-confusion sheet |
+| Implementation status (meta) | **Master** `live` / `partial` / `placeholder` disclosure for code vs policy |
 | GRU_Formulas (meta) | Canonical formula inventory |
 | Glossary (meta) | Terminology normalization |
 | Risk_Annex (meta) | Risk catalog & mitigation matrix |
 | Checksums (meta) | Artifact integrity protocol |
+
+Where the formula sheet or master PDF shows `1 M00 GRU = 1.2 × (LiXAU + … + LiBMG3)`, read it as **supporting collateral aggregation**, not a change to **face** parity (`1 GRU = 1 XAU`) — see [quick reference](../meta/Canonical_Parity_Quick_Reference.md).
 
 ## Key Ratios & Signals (Snapshot)
 - Core Issuance Ratio: 7:10 reserve-to-circulating expansion baseline.

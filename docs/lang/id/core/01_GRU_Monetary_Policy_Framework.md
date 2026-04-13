@@ -24,18 +24,20 @@ Global Reserve Unit (GRU) menetapkan sistem moneter multi-tingkat yang didukung 
 ```
 Koefisien dinamis (x, y) adalah bobot distribusi yang disesuaikan kebijakan antara lapisan M0 (institusional) dan M1 (komersial).
 
-## Nilai Nominal yang Ditetapkan vs Nilai Aset Pendukung
+## Nilai nominal yang ditetapkan vs nilai aset pendukung
 ```text
-Nilai nominal / paritas:
+Nilai nominal / paritas (wajah, akuntansi, penyelesaian):
 1 GRU = 1 XAU
 1 M0 GRU = 1 XAU
+1 M1 GRU = 1 XAU
 
-Nilai aset pendukung:
+Nilai aset pendukung (cakupan sisi cadangan):
 1 M0 GRU = 1.2 XAU aset pendukung
 1 M00 GRU = 6.0 XAU aset pendukung
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-Nilai nominal yang ditetapkan adalah unit paritas dan pembukuan. Nilai aset pendukung adalah jumlah aset cadangan yang menopang unit tersebut pada lapisan terkait.
+Untuk menghindari kerancuan, nilai nominal yang ditetapkan dan nilai aset pendukung adalah ukuran yang berbeda. Nilai nominal adalah unit yang dipakai untuk paritas, pembukuan, penyelesaian, dan kontrol kebijakan. Nilai aset pendukung adalah besarnya aset cadangan yang diperlukan untuk menyangga unit tersebut pada suatu lapisan. Rumus singkat lama seperti `1 XAU GRU = 1.2 XAU` merujuk hanya pada nilai pendukung dan tidak mengubah paritas nominal `1 GRU = 1 XAU`.
+
 LiXAU adalah indeks cadangan emas. Di dalam kerangka Li, ada lima komponen bernilai sama yang membentuk komposit operasional:
 - `LiXAU` = indeks cadangan emas
 - `LiPMG` = Precious Metals Group index
@@ -49,6 +51,8 @@ LiXAU adalah indeks cadangan emas. Di dalam kerangka Li, ada lima komponen berni
 | M00 | Penerbitan Berdaulat | Penciptaan dasar terikat 1:1 dengan cadangan yang diaudit |
 | M0  | Cadangan Institusional | Instrumen likuiditas tingkat antarbank & otoritas |
 | M1  | Sirkulasi Komersial | Lapisan eMoney pasar & penyelesaian |
+
+Pemetaan implementasi saat ini: aset `c*` kanonis di Chain 138 adalah instrumen GRU lapisan M1. Aset `cW*` di jaringan publik adalah representasi transport bermiror untuk lapisan GRU M1 yang sama dan bukan kelas moneter terpisah.
 
 ## Kebijakan Cadangan
 - Cakupan minimum: ≥ 120% dari nilai GRU yang beredar.
@@ -99,4 +103,4 @@ Kerangka kerja menggabungkan penerbitan yang didisiplinkan secara matematis, par
 
 Kerangka ini sengaja menggunakan Diamond karena lapisan moneter, kepatuhan, indeks, dan jalur aset harus bisa berevolusi secara terpisah tanpa memecah satu permukaan tata kelola.
 
-*Lihat Glossary dan GRU_Formulas untuk spesifikasi lengkap dan bidang audit.*
+*Lihat juga [indeks spesifikasi deterministik](../../../meta/Deterministic_Specifications_Index.md), [referensi cepat paritas kanonis](../../../meta/Canonical_Parity_Quick_Reference.md), dan [status implementasi](../../../meta/Implementation_Status_and_Control_Disclosure.md); serta Glossary dan GRU_Formulas untuk spesifikasi lengkap dan bidang audit.*

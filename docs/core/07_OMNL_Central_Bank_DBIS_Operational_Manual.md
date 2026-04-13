@@ -1,12 +1,13 @@
 ---
 title: OMNL Central Bank | Digital Bank of International Settlements - Operational Policy & Transaction Flow Manual
-version: 1.0.0
+version: 1.0.1
 status: stable
-last_updated: 2025-10-29
+last_updated: 2026-04-12
 layer: operational-policy
 document_ref: OMNL/DBIS-GRU-2025-POL01
 effective_date: October 2025
 checksum: pending
+lang: en
 ---
 
 # OMNL Central Bank | Digital Bank of International Settlements  
@@ -16,28 +17,63 @@ checksum: pending
 
 ---
 
+## 0 — Document scope, authority, and alignment with the core corpus
+
+This manual is an **OMNL / DBIS implementation profile**: it describes **European-facing** operational flows (SEPA, EUR settlement, MiCA/DORA reporting labels, ISO 20022 samples) for a **specific deployment**. It does **not** supersede normative monetary definitions in **01_GRU_Monetary_Policy_Framework**, **GRU_Formulas**, or the **[Canonical parity and unit definition specification](../meta/Canonical_Parity_and_Unit_Definition_Specification.md)**.
+
+| Topic | Core / canonical specs | This manual (profile) |
+|-------|-------------------------|------------------------|
+| One-page anti-confusion | [Canonical parity quick reference](../meta/Canonical_Parity_Quick_Reference.md) | Same face vs supporting rules apply to this profile |
+| Face vs supporting XAU per tier | [Canonical parity](../meta/Canonical_Parity_and_Unit_Definition_Specification.md), [Collateral stack](../meta/Collateral_Stack_Decomposition.md) | Table in Section 2 = **supporting** ratios (`6`, `1.20`, `0.24` XAU per GRU) alongside **face** `1 GRU = 1 XAU` |
+| PoR / attestation **cadence** | Framework: **quarterly** composite emphasis; **PoR methodology**: MiCA-aligned **daily** composition reporting where applicable | **Monthly** operational attestation (Section 7) + **quarterly** ICT/AML reviews |
+| Governance labels | Five-chamber **SHTE** model | **MPC / RCC / Audit Board** naming for banking audiences — see [Governance decision matrix](../meta/Governance_Decision_Matrix.md) |
+
+Readers resolving an apparent conflict should treat **canonical parity / collateral stack** as controlling **meanings**, and this manual as controlling **this profile’s** operational cadence and rail-specific flows.
+
+---
+
 ## 1 — Executive Overview
 The **Global Reserve Unit (GRU)** is a gold-referenced, unit-invariant instrument designed to unify reserve, institutional, and settlement liquidity under a transparent regulatory architecture. At the implementation layer, GRU uses ERC-2535 Diamond so reserve policy, compliance, index mechanics, and asset-specific behavior can evolve without fragmenting governance.
 
-- **Parity:** 1 GRU = 1 XAU (troy ounce of gold)  
+The GRU implementation uses the ERC-2535 Diamond standard because the system is intentionally modular: reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors need to coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve without breaking the shared governance surface.
+
+- **Assigned / face parity:** 1 GRU = 1 XAU (troy ounce of gold)  
 - **Governance:** OMNL Central Bank (ARIN code OMNL-DBIS)  
 - **Oversight Partner:** Digital Bank of International Settlements (DBIS)  
 - **Regulatory Alignment:** ECB / ICC / MiCA / DORA / SEPA / AML-CFT / GDPR  
 
 The manual defines monetary structure, account architecture, transaction flow, and compliance responsibilities. Operationally, all FX is triangulated through XAU using `cXAUC/cXAUT`, and the M00 basket references the five equal-value Li indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 
+For audit clarity, this manual distinguishes assigned value from supporting asset value. Assigned value is the accounting and settlement parity of the GRU unit (`1 GRU = 1 XAU`). Supporting asset value is the reserve quantity carried by the layer that supports that unit.
+
 ---
 
 ## 2 — Monetary Structure
 
-| Tier | Function | Asset Coverage | Money Multiplier | Purpose |
-|------|-----------|----------------|------------------|----------|
+| Tier | Function | Supporting asset coverage | Money multiplier | Purpose |
+|------|-----------|---------------------------|------------------|----------|
 | **M00** | Sovereign Reserve | 6 XAU : 1 M00 GRU (6.00 XAU/GRU) | Base Reserve | Long-term collateral |
 | **M0** | Institutional Reserve | 6 XAU : 5 M0 GRU (1.20 XAU/GRU) | 1 M00 = 5 M0 | Monetary Base |
-| **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat Interface |
+| **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat interface |
+
+The M00 reserve basket is composed of five equal-value Li indices:
+
+- LiXAU = gold reserve index  
+- LiPMG = Precious Metals Group index  
+- LiBMG1 = Base Metals Group index  
+- LiBMG2 = Battery Materials Group index  
+- LiBMG3 = Building Metals Group index  
+
+Operationally (M00 composite — **supporting** collateral definition):
+
+```text
+1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
+```
 
 **Cross-Formula:** 1 M00 = 5 M0 = 25 M1 GRU.  
-Face value is always 1 XAU per GRU.
+Assigned / face value is always `1 XAU` per GRU. Supporting asset value is `1.2 XAU` per `M0 GRU`; because M00 is composed of five equal-value Li classes, `1 M00 GRU` carries `6.0 XAU` of supporting asset value.
+
+Current implementation mapping: canonical Chain 138 `c*` instruments and public-network `cW*` mirrors are the current GRU M1 settlement surface. `cW*` denotes a mirrored transport representation of canonical GRU M1, not a separate monetary tier.
 
 ---
 
@@ -153,6 +189,14 @@ Coverage Ratio: 6 XAU per M00 GRU
 Audit Date: [YYYY-MM-DD]
 Auditor: DBIS Oversight Division
 ```
+
+---
+
+## 8.1 — Related specifications (canonical)
+
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Parity quick reference:** [Canonical parity quick reference](../meta/Canonical_Parity_Quick_Reference.md).
+- **Acceptance checklist (branch):** [docs-review-fixes acceptance checklist](../meta/DOCS_REVIEW_FIXES_ACCEPTANCE_CHECKLIST.md).
 
 ---
 

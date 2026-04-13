@@ -21,6 +21,8 @@ At the implementation layer, GRU uses the ERC-2535 Diamond standard because its 
 4. Inclusive interoperability (CBDCs, commodities, securities)
 5. Audit-first governance
 
+> **Legal posture:** Sections on **UNCITRAL**, **treaty-level immunity**, **non-seizure**, and **arbitration** describe **target institutional architecture**, not settled legal outcomes, until **jurisdiction schedules** and **filed instruments** exist. See the [Legal enforceability annex](/meta/legal-enforceability-annex/).
+
 ## III. Governance Architecture
 | Body | Role | Decision Threshold |
 |------|-----|-------------------|
@@ -137,6 +139,11 @@ DRB = 0.40 XAU + 0.25 EUR + 0.15 USD + 0.10 BTC + 0.10 LiXAU
   Used for reserve magnitude and issuance collateral.
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
+
+## Related specifications
+
+- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
+- **Legal enforceability (checklist):** [Legal enforceability annex](/meta/legal-enforceability-annex/).
 
 ## Summary
 The DBIS Charter codifies a modern institutional reserve framework, delivering transparent, asset-backed global settlement capability through GRU integration.

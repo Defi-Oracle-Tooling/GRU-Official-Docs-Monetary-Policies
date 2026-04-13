@@ -2,6 +2,8 @@
 
 A comprehensive checklist of optional additions to: (1) tweak colors and theming, (2) add basket‑weight placeholders + data schemas, and (3) export the Mermaid diagrams to PNG/SVG at publication quality.
 
+**Policy cross-links:** canonical index publication rules live in [Index methodology annex](Index_Methodology_Annex.md) §8; Li scalar change control in [LiXAU scalar annex](LiXAU_Scalar_and_Decay_Exponent_Annex.md) §7; **live vs placeholder** on-chain index wiring in [Implementation status and control disclosure](Implementation_Status_and_Control_Disclosure.md).
+
 ---
 
 ## 1) Theming & Color Tweaks (Mermaid + Markdown)

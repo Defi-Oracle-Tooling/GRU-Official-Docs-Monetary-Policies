@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     tags: [ 'v*' ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, docs-review-fixes ]
 
 jobs:
   build:
@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Scan for stale GRU parity phrasing (strict)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+          bash scripts/verify/check-stale-gru-parity-language.sh --strict
 
       - name: Set up caching for TeX & apt
         uses: actions/cache@v4

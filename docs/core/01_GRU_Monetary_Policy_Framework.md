@@ -35,7 +35,8 @@ Supporting asset value (reserve-side coverage):
 1 M00 GRU = 6.0 XAU of supporting assets
 1.0 LiXAU = 1.2 / 0.9475^4 XAU
 ```
-Assigned value and supporting asset value are different measures. Assigned value is the unit used for parity, booking, settlement, and policy control. Supporting asset value is the quantity of reserve assets required to support that unit at a given layer.
+For avoidance of doubt, assigned value and supporting asset value are different measures. Assigned value is the unit used for parity, booking, settlement, and policy control. Supporting asset value is the quantity of reserve assets required to support that unit at a given layer. Earlier shorthand such as `1 XAU GRU = 1.2 XAU` refers to supporting asset value and must not be read as changing the assigned parity of `1 GRU = 1 XAU`.
+
 LiXAU is the gold reserve index. Within the Li framework, five equal-value components form the operational composite:
 - `LiXAU` = gold reserve index
 - `LiPMG` = Precious Metals Group index
@@ -101,4 +102,4 @@ The framework combines mathematically disciplined issuance, gold parity, and mul
 
 The GRU monetary architecture uses ERC-2535 Diamond because reserve policy, compliance hooks, index logic, and asset-specific modules must evolve independently while sharing one governance surface.
 
-*See Glossary and GRU_Formulas for full specification and audit fields.*
+*See Glossary and GRU_Formulas for full specification and audit fields. For auditor-grade definitions of face vs supporting value, layer fan-out, and triangulation proof targets, see [Deterministic specifications index](../meta/Deterministic_Specifications_Index.md) (published site: `/meta/deterministic-specifications-index/`). For **live vs placeholder** smart-contract and control disclosure, see [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).*

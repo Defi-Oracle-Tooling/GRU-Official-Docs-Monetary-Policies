@@ -2,6 +2,8 @@
 
 Bienvenue dans la version française de la documentation officielle de la Global Reserve Unit (GRU).
 
+**Parité (référence anglaise) :** la synthèse *face* vs *supporting* et les ratios **6 / 1.2 / 0.24** figurent dans [Canonical_Parity_Quick_Reference.md](../../meta/Canonical_Parity_Quick_Reference.md) (document source en anglais).
+
 ## Documents Disponibles
 
 ### Documents Principaux (docs/core/)

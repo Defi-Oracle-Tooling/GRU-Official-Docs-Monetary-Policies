@@ -80,5 +80,12 @@ Cakupan Target ≈ 2.5 × Cadangan Dasar
 - Triangulasi multi-jangkar (keranjang XAU/XAG/XPT) dengan kontingensi fallback, sambil mempertahankan XAU sebagai jangkar FX utama
 - Jaringan redundansi oracle on-chain
 
+## Spesifikasi terkait
+
+- **Kebenaran implementasi:** [Status implementasi dan pengungkapan kontrol](../../../meta/Implementation_Status_and_Control_Disclosure.md) (`live` / `partial` / `placeholder`).
+- **Paritas (ringkas):** [Referensi cepat paritas kanonis](../../../meta/Canonical_Parity_Quick_Reference.md).
+- **Peristiwa normatif (sasaran):** [Spesifikasi propagasi status transaksi](../../../meta/Transaction_State_Propagation_Specification.md).
+- **Indeks:** [Indeks spesifikasi deterministik](../../../meta/Deterministic_Specifications_Index.md).
+
 ## Ringkasan
 Sistem triangulasi dan penerbitan atomik menghasilkan ekspansi likuiditas terkontrol yang dijangkar aset dengan stabilitas dan auditabilitas bawaan, membentuk tulang punggung mekanik sirkulasi GRU.

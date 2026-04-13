@@ -1,8 +1,8 @@
 ---
 title: GRU Glossary
-version: 1.1.1
+version: 1.1.2
 status: stable
-last_updated: 2026-03-31
+last_updated: 2026-04-12
 checksum: pending
 ---
 # GRU Glossary
@@ -13,7 +13,7 @@ checksum: pending
 | M00 | Sovereign issuance layer — directly tied to audited reserves |
 | M0 | Institutional circulation layer — bank & authority operations |
 | M1 | Commercial / eMoney circulation layer — public settlement |
-| XAU GRU | Gold-pegged denomination unit; assigned parity is `1 GRU = 1 XAU`, while M0 carries `1.2 XAU` of supporting asset value |
+| XAU GRU | Gold-referenced GRU; **face** parity is `1 GRU = 1 XAU`. **Supporting** value at M0 is `1.2 XAU` per M0 GRU. Deprecated shorthand `1 XAU GRU = 1.2 XAU` refers to **supporting** only, not face — see [Canonical parity specification](Canonical_Parity_and_Unit_Definition_Specification.md). |
 | Chain 138 `c*` | Canonical GRU M1 implementation surface |
 | Public-network `cW*` | Mirrored transport representation of canonical GRU M1 on compatible public chains |
 | LiXAU | Gold reserve index used as one of the five equal-value Li basket components |
@@ -222,7 +222,7 @@ mindmap
 
 | Index      | Focus / Constituents                            | Valuation (relative to XAU)                                       | Primary Use                              |
 | :--------- | :---------------------------------------------- | :---------------------------------------------------------------- | :--------------------------------------- |
-| **LiXAU**  | Gold benchmark (XAU)                            | **1 LiXAU = 1.2 / (0.9475^4) XAU**                                | Core parity reference for all Li-indices |
+| **LiXAU**  | Gold benchmark (XAU)                            | **1 LiXAU = 1.2 / (0.9475^4) XAU**                                | Li **valuation** scalar (not GRU **face**; face stays `1 GRU = 1 XAU`) |
 | **LiPMG**  | Au, Ag, Pt, Pd, Rh                              | **1 LiPMG = [1.2 / (0.9475^4)] × (weighted precious basket)**     | Reserve & inflation hedge index          |
 | **LiBMG1** | Cu, Ni, Al, Zn, Pb                              | **1 LiBMG1 = [1.2 / (0.9475^4)] × (weighted base metals)**        | Industrial activity barometer            |
 | **LiBMG2** | Li, Co, Graphite, Mn, Ni                        | **1 LiBMG2 = [1.2 / (0.9475^4)] × (weighted battery materials)**  | Energy transition & storage proxy        |
@@ -253,7 +253,7 @@ LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
 
 **Interpretation:** LiCRI is a *face‑value composite of M00* (not the asset‑collateral sum). It is primarily used for reporting, benchmarking, and policy dashboards.
 
-> **Note:** Each Li(Index) adheres to the scalar parity S = 1.2/(0.9475^4) × XAU basis.
+> **Note:** Each Li(Index) adheres to the scalar **S = 1.2/(0.9475^4) × XAU** valuation basis (**Li collateral-side**). This is **not** GRU **face** parity; GRU face remains `1 GRU = 1 XAU` ([quick reference](Canonical_Parity_Quick_Reference.md)).
 
 ---
 
