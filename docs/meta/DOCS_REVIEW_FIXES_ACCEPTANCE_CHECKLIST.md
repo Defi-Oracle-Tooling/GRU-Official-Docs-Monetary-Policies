@@ -101,6 +101,21 @@ For each **extra** path not listed above: apply **§4** spot checks.
 
 ---
 
+## 3b. Translated core (`docs/lang/{pt,fr,ar,id}/core/`)
+
+| Pattern | Primary acceptance criteria |
+|---------|------------------------------|
+| `…/core/00_*.md` | Document map lists deterministic index, quick ref, implementation master; M00 `1.2×(LiXAU+…)` read as **supporting** with link to quick reference (`../../../meta/`). |
+| `…/core/01_*.md` | Face lines include **M1**; avoidance-of-doubt + deprecated `1 XAU GRU = 1.2 XAU` = supporting only; Chain 138 `c*` / public `cW*` note; footer links to meta use **`../../../meta/`** (not `../../meta/`). |
+| `…/core/02_*.md` | Localized **Related specifications** block before closing summary; same four targets as English `docs/core/02`. |
+| `…/core/03_*.md` | Related specs → implementation disclosure + deterministic index (parity / collateral stack). |
+| `…/core/04_*.md` | Related specs → implementation disclosure + governance decision matrix. |
+| `…/core/05-07_Summary.md` | Face parity reminder (`1 GRU = 1 XAU` at M00/M0/M1; `6`/`1.2`/`0.24` supporting only) + quick reference link. |
+
+**Mirror rule:** `docs/meta/*.md` → `_meta/` after any edit under `docs/meta/` (unchanged from §1).
+
+---
+
 ## 4. Global spot checks (all contributors)
 
 | # | Check | Pass? |

@@ -5,7 +5,6 @@ status: stable
 last_updated: 2026-03-31
 layer: mechanics
 checksum: pending
-lang: en
 ---
 # GRU Triangulation & eMoney Creation Framework
 
@@ -22,7 +21,7 @@ All GRU triangulations pass through XAU irrespective of destination class (commo
 Current implementation surface for GRU M1: canonical Chain 138 `c*` assets with mirrored public-network `cW*` transport assets.
 
 ### Triangulation Flow Diagram
-![Triangulation Flow](/assets/media/triangulation_flow.png){: loading="lazy" }
+![Triangulation Flow](/assets/media/triangulation_flow.png)
 *Figure: Reserve (M0) → Issuance (M1) → Distribution (M2+) with control instrument feedback path.*
 
 ## 3. Atomic Issuance Logic (7:10 Protocol)
@@ -79,15 +78,15 @@ Target Coverage ≈ 2.5 × Base Reserve
 
 ## 8. Future Enhancements (Planned)
 - Adaptive atomic cycle count based on reserve velocity
-- Multi-anchor triangulation (XAU/XAG/XPT basket) with fallback contingencies
+- Multi-anchor triangulation (XAU/XAG/XPT basket) with fallback contingencies, while preserving XAU as the primary FX anchor
 - On-chain oracle redundancy network
 
 ## Related specifications
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/) (`live` / `partial` / `placeholder`).
-- **Parity (quick):** [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
-- **Normative events (target):** [Transaction state propagation](/meta/transaction-state-propagation-specification/).
-- **Index:** [Deterministic specifications index](/meta/deterministic-specifications-index/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md) (`live` / `partial` / `placeholder`).
+- **Parity (quick):** [Canonical parity quick reference](../meta/Canonical_Parity_Quick_Reference.md).
+- **Normative events (target):** [Transaction state propagation](../meta/Transaction_State_Propagation_Specification.md).
+- **Index:** [Deterministic specifications index](../meta/Deterministic_Specifications_Index.md).
 
 ## Summary
 The triangulation and atomic issuance system produce controlled, asset-anchored liquidity expansion with built-in stability and auditability, forming the mechanical backbone of GRU circulation.

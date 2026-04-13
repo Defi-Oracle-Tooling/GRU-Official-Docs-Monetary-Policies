@@ -81,5 +81,10 @@ O diagrama a seguir ilustra o caminho de liquidez de ciclo fechado para títulos
 ### Integração de Velocidade Ponderada por Cobertura (Preview)
 As revisões futuras alinharão o ritmo de reinvestimento de cupom com a velocidade ponderada por cobertura (v_cov), escalando dinamicamente recargas de depósito quando a velocidade transacional diminui, preservando a certeza de financiamento de recompra.
 
+## Especificações relacionadas
+
+- **Verdade de implementação:** [Estado de implementação e divulgação de controle](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Paridade / pilha de colateral:** [Índice de especificações determinísticas](../../../meta/Deterministic_Specifications_Index.md) (paridade canónica + decomposição de colateral).
+
 ## Resumo
 Os títulos da série Li99 permitem expansão de liquidez escalável e auto-redimível sem alavancagem externa, garantindo estabilidade perpétua através de ciclos de cupom estruturados e mecânicas de recompra vinculadas a reservas.

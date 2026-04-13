@@ -113,5 +113,10 @@ Examen annuel complet : méthodologie et contrôles PoR complets
 - Vote Tokenisé : Participation des parties prenantes dans les décisions de gouvernance
 - Surveillance Améliorée par IA : Machine learning pour surveillance des risques et conformité
 
+## Spécifications associées
+
+- **Réalité d'implémentation :** [État d'implémentation et divulgation des contrôles](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Matrice de gouvernance :** [Matrice de décision de gouvernance](../../../meta/Governance_Decision_Matrix.md) (site : `/meta/governance-decision-matrix/`).
+
 ## Résumé
 Ce cadre de gouvernance amélioré fournit une surveillance institutionnelle complète, une conformité réglementaire et une résilience opérationnelle, positionnant le GRU comme un standard de réserve et de règlement fiable et digne de confiance répondant aux normes internationales les plus élevées pour les instruments monétaires numériques.

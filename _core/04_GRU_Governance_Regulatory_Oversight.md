@@ -5,7 +5,6 @@ status: stable
 last_updated: 2026-03-31
 layer: governance
 checksum: pending
-lang: en
 ---
 # GRU Governance & Regulatory Oversight Framework
 
@@ -22,7 +21,7 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 | ECC (Ethics & Compliance) | AML/KYC, legal neutrality, conduct | Compliance certifications |
 
 ### Governance Structure Diagram
-![Governance Chambers](/assets/media/governance_chambers.png){: loading="lazy" }
+![Governance Chambers](/assets/media/governance_chambers.png)
 *Figure: Multi-chamber model with external audit / DBIS council integration.*
 
 ## 3. Oversight Principles
@@ -33,7 +32,7 @@ The GRU operates under a Sovereign Hybrid Trust Entity (SHTE) combining trust la
 - Jurisdictional supervision: upgrade-sensitive asset changes should be proposed per asset, derive jurisdiction and notice periods from registry state, route registry jurisdiction-policy updates through asset-derived governance entry points, and collect explicit authority approval before queue or execution when required
 - Governance execution boundary: normal token and registry metadata changes execute only through the governance controller, while emergency/manual admin paths remain available for incident response and regulator-directed intervention
 
-> **Legal posture:** References below to **UNCITRAL**, **PIMI**, **arbitration seats**, or similar are **institutional design goals** unless confirmed by **filed instruments** and **counsel**. See the [Legal enforceability annex](/meta/legal-enforceability-annex/).
+> **Legal posture:** References below to **UNCITRAL**, **PIMI**, **arbitration seats**, or similar are **institutional design goals** unless confirmed by **filed instruments** and **counsel**. See the [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md) (site: `/meta/legal-enforceability-annex/`).
 
 ## 4. Legal Recognition
 - UNCITRAL framework alignment
@@ -192,8 +191,8 @@ Audit_Schedule:
 
 ## Related specifications
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
-- **Governance matrix:** [Governance decision matrix](/meta/governance-decision-matrix/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Governance matrix:** [Governance decision matrix](../meta/Governance_Decision_Matrix.md) (site: `/meta/governance-decision-matrix/`).
 
 ## Summary
 This enhanced governance framework provides comprehensive institutional oversight, regulatory compliance, and operational resilience, positioning GRU as a reliable and trustworthy reserve and settlement standard meeting the highest international standards for digital monetary instruments.

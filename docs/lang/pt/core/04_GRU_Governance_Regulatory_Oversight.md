@@ -185,5 +185,10 @@ Audit_Schedule:
 - **Engajamento de Stakeholders**: Mecanismos aprimorados de participação pública
 - **Melhoria Contínua**: Avaliação e aprimoramento regulares da estrutura de governança
 
+## Especificações relacionadas
+
+- **Verdade de implementação:** [Estado de implementação e divulgação de controle](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Matriz de governação:** [Matriz de decisão de governação](../../../meta/Governance_Decision_Matrix.md) (site: `/meta/governance-decision-matrix/`).
+
 ## Resumo
 Esta estrutura de governança aprimorada fornece supervisão institucional abrangente, conformidade regulatória e resiliência operacional, posicionando o GRU como um padrão de reserva e liquidação confiável e digno de confiança que atende aos mais altos padrões internacionais para instrumentos monetários digitais.

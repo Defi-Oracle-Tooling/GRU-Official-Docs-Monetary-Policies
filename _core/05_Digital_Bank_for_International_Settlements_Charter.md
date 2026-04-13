@@ -5,14 +5,11 @@ status: stable
 last_updated: 2026-03-31
 layer: charter
 checksum: pending
-lang: en
 ---
 # Digital Bank for International Settlements (DBIS) — Concept Charter
 
 ## I. Preamble
-The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed coordination layer for global monetary stability using the GRU.
-
-At the implementation layer, GRU uses the ERC-2535 Diamond standard because its reserve architecture is intentionally modular: multiple issuance layers, compliance controls, token standards, and asset-specific behaviors must coexist without forcing a single monolithic contract. Diamond facets let the GRU evolve policy-by-policy while preserving one coherent governance surface.
+The DBIS is founded to provide a sovereign-neutral, transparent, asset-backed coordination layer for global monetary stability using the GRU. At the implementation layer, GRU uses ERC-2535 Diamond so issuance modules, compliance logic, index mechanics, and asset-specific behaviors can evolve without breaking governance coherence.
 
 ## II. Principles
 1. Sovereign neutrality
@@ -21,7 +18,7 @@ At the implementation layer, GRU uses the ERC-2535 Diamond standard because its 
 4. Inclusive interoperability (CBDCs, commodities, securities)
 5. Audit-first governance
 
-> **Legal posture:** Sections on **UNCITRAL**, **treaty-level immunity**, **non-seizure**, and **arbitration** describe **target institutional architecture**, not settled legal outcomes, until **jurisdiction schedules** and **filed instruments** exist. See the [Legal enforceability annex](/meta/legal-enforceability-annex/).
+> **Legal posture:** Sections on **UNCITRAL**, **treaty-level immunity**, **non-seizure**, and **arbitration** describe **target institutional architecture**, not settled legal outcomes, until **jurisdiction schedules** and **filed instruments** exist. See the [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md).
 
 ## III. Governance Architecture
 | Body | Role | Decision Threshold |
@@ -44,27 +41,10 @@ Assigned / face parity: 1 GRU = 1 XAU
 Supporting asset value: 1 M0 GRU = 1.2 XAU
 Supporting asset value: 1 M00 GRU = 6.0 XAU
 ```
-Minimum reserve coverage: ≥ 120% verified.
-Assigned / face parity remains `1 XAU` per GRU. The larger XAU figures in this charter describe supporting asset coverage, not a separate settlement unit.
-
-The M00 reserve basket is built from five equal-value Li indices:
-
-- LiXAU = gold reserve index
-- LiPMG = Precious Metals Group index
-- LiBMG1 = Base Metals Group index
-- LiBMG2 = Battery Materials Group index
-- LiBMG3 = Building Metals Group index
-
-Accordingly:
-
-```text
-1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
-```
-
-Current M1 implementation surface: canonical Chain 138 `c*` assets and mirrored public-network `cW*` transport assets.
+Minimum reserve coverage: ≥ 120% verified. Assigned / face parity remains `1 XAU` per GRU. The Li basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3, so `1 M00 GRU` carries `6.0 XAU` of supporting asset value.
 
 ## VI. Triangulation & Issuance
-- All issuance atomic: Source → XAU → GRU → Destination
+- All issuance atomic: Source → XAU → GRU → Destination, with FX routed through `cXAUC/cXAUT`
 - Expansion function: E = I × (10/7) × (1 - f)^n
 - 40/40/20 application binding for standardized liquidity alignment
 
@@ -122,6 +102,14 @@ DRB = 0.40 XAU + 0.25 EUR + 0.15 USD + 0.10 BTC + 0.10 LiXAU
 - Annex IV: PoR Attestation Template
 - Annex V: Legal Reference Index
 
+## XVI. Participation Framework
+DBIS operates under an **Irrevocable Right of Use (IRU)** participation framework, not an equity-based model. All participation is through IRUs, which are non-equity, non-share infrastructure access rights.
+
+**Related Documentation**:
+- [IRU Participation Agreement](../../../dbis_core/docs/legal/IRU_Participation_Agreement.md) - Master IRU Participation Agreement
+- [Foundational Charter IRU Excerpt](../../../dbis_core/docs/legal/Foundational_Charter_IRU_Excerpt.md) - Constitutional foundation for IRU model
+- [Regulatory Positioning Memo](../../../dbis_core/docs/legal/Regulatory_Positioning_Memo_CBs_DFIs.md) - Regulatory guidance for central banks and DFIs
+
 ---
 
 ## Commodity Index Registry & Dashboard Integration
@@ -142,8 +130,8 @@ DRB = 0.40 XAU + 0.25 EUR + 0.15 USD + 0.10 BTC + 0.10 LiXAU
 
 ## Related specifications
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
-- **Legal enforceability (checklist):** [Legal enforceability annex](/meta/legal-enforceability-annex/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Legal enforceability (checklist):** [Legal enforceability annex](../meta/Legal_Enforceability_Annex.md).
 
 ## Summary
 The DBIS Charter codifies a modern institutional reserve framework, delivering transparent, asset-backed global settlement capability through GRU integration.

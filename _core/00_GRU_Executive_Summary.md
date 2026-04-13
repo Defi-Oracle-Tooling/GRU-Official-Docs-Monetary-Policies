@@ -1,38 +1,19 @@
 ---
-title: GRU Executive Summary
-version: 1.1.0
-status: stable
-last_updated: 2025-10-24
-lang: en
+Title: GRU Executive Summary
+Version: 1.1.0
+Status: Stable
+Last-Updated: 2025-10-24
 ---
 
 # Executive Summary
 
-The GRU (Global Reserve Unit) monetary policy framework establishes a disciplined, transparent, and adaptive reserve-backed currency system designed to maintain parity stability, liquidity assurance, and multi-jurisdictional governance oversight.
-
-At the implementation level, GRU uses the ERC-2535 Diamond standard because the system is intentionally modular: reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors all need to coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve token-by-token and policy-by-policy while preserving one coherent governance surface.
-
-The M00 reserve basket is built from five equal-value Li indices:
-
-- `LiXAU` = gold reserve index
-- `LiPMG` = Precious Metals Group index
-- `LiBMG1` = Base Metals Group index
-- `LiBMG2` = Battery Materials Group index
-- `LiBMG3` = Building Metals Group index
-
-The top-level basket relation is:
-
-```text
-1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
-```
-
-**Face vs supporting:** This expression is the **M00 supporting (collateral) composite**, not a change to **assigned face parity** (`1 GRU = 1 XAU`). See [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
+The GRU (Global Reserve Unit) monetary policy framework establishes a disciplined, transparent, and adaptive reserve-backed currency system designed to maintain parity stability, liquidity assurance, and multi-jurisdictional governance oversight. At the implementation level, GRU uses the ERC-2535 Diamond standard because reserve layers, compliance logic, index mechanics, and asset-specific behaviors must evolve modularly without fragmenting governance.
 
 ## Core Pillars
 1. Parity & Stability: Controlled issuance via atomic triangulation (reserve -> XAU -> GRU -> distributed units) with predictable expansion ratios and a hard inflation discipline ceiling. All FX is routed through XAU, with `cXAUC/cXAUT` as the operational asset reference.
 2. Liquidity Management: Bond-driven (Li99) recycling, 40/40/20 allocation logic (reserves / liquidity instruments / strategic programs) ensuring structural balance.
 3. Governance & Oversight: Multi-chamber separation (Policy, Risk, Compliance, Technical) plus external audits and open verification.
-4. Programmable Expansion: Issuance formulas (E = I × (10/7) × (1 - f)^n) and structured macro/micro cycles enabling scenario modeling.
+4. Programmable Expansion: Issuance formulas (E = I × (10/7) × (1 - f)^n) and structured macro/micro cycles enabling scenario modeling. The Li reserve basket is composed of five equal-value indices: LiXAU, LiPMG, LiBMG1, LiBMG2, and LiBMG3.
 5. Interoperable Charter: DBIS (Digital Bank for International Settlements) integration path facilitating cross-border settlement standardization.
 
 ## Strategic Objectives
@@ -57,6 +38,8 @@ The top-level basket relation is:
 | Glossary (meta) | Terminology normalization |
 | Risk_Annex (meta) | Risk catalog & mitigation matrix |
 | Checksums (meta) | Artifact integrity protocol |
+
+Where the formula sheet or master PDF shows `1 M00 GRU = 1.2 × (LiXAU + … + LiBMG3)`, read it as **supporting collateral aggregation**, not a change to **face** parity (`1 GRU = 1 XAU`) — see [quick reference](../meta/Canonical_Parity_Quick_Reference.md).
 
 ## Key Ratios & Signals (Snapshot)
 - Core Issuance Ratio: 7:10 reserve-to-circulating expansion baseline.

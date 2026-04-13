@@ -81,5 +81,10 @@ Diagram berikut mengilustrasikan jalur likuiditas loop tertutup untuk obligasi s
 ### Integrasi Kecepatan Berbobot Cakupan (Preview)
 Revisi mendatang akan menyelaraskan kecepatan reinvestasi kupon dengan kecepatan berbobot cakupan (v_cov), penskalaan dinamis top-up escrow ketika kecepatan transaksional melunak, mempertahankan kepastian pendanaan pembelian kembali.
 
+## Spesifikasi terkait
+
+- **Kebenaran implementasi:** [Status implementasi dan pengungkapan kontrol](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Paritas / tumpukan kolateral:** [Indeks spesifikasi deterministik](../../../meta/Deterministic_Specifications_Index.md) (paritas kanonis + dekomposisi kolateral).
+
 ## Ringkasan
 Obligasi seri Li99 memungkinkan ekspansi likuiditas yang dapat diskalakan dan dapat ditebus sendiri tanpa leverage eksternal, memastikan stabilitas perpetual melalui siklus kupon terstruktur dan mekanik pembelian kembali yang terikat cadangan.

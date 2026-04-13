@@ -5,14 +5,11 @@ status: stable
 last_updated: 2025-10-24
 layer: roadmap
 checksum: pending
-lang: en
 ---
 # GRU Enhancement & Expansion Roadmap
 
 ## 1. Strategic Objectives
 Transition GRU from architectural foundation to globally recognized, multi-asset settlement layer integrated with DBIS.
-
-The GRU implementation remains Diamond-based so the system can add or adjust reserve facets, compliance modules, token standards, and asset-specific logic without collapsing everything into a single contract shape.
 
 ## 2. Policy Enhancements
 | Objective | Target | Description |
@@ -29,7 +26,7 @@ The GRU implementation remains Diamond-based so the system can add or adjust res
 
 ## 4. Technical Enhancements
 - Adaptive atomic cycle orchestration based on velocity thresholds
-- Multi-anchor reserve matrix (XAU/XAG/XPT + LiXAU composite basket: LiXAU, LiPMG, LiBMG1, LiBMG2, LiBMG3)
+- Multi-anchor reserve matrix (XAU/XAG/XPT + LiXAU composite)
 - Ledger resiliency: multi-region replication + threshold signatures
 
 ## 5. Governance Evolution
@@ -89,7 +86,7 @@ Add GRU Monetary Authority (GMA) as permanent secretariat coordinating:
 ### Velocity Metrics Diagram
 The composite velocity index (V_GRU) integrates adjusted transaction cadence, coverage weighting, and stability filtering:
 
-![Velocity Metrics (V_GRU)](/assets/media/velocity_metrics.png){: loading="lazy" }
+![Velocity Metrics (V_GRU)](/assets/media/velocity_metrics.png)
 
 Where:
 - v_raw = Tx_count / Interval
@@ -106,22 +103,19 @@ Where:
   ```
   LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   ```
-  Used for monthly dashboard and reporting. This is the equal-value Li basket average.
+  Used for monthly dashboard and reporting.
 
 - **M00 Composite (Asset-Backed Collateral):**
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral (**supporting** definition; **face** parity remains `1 GRU = 1 XAU` — [quick reference](/meta/canonical-parity-quick-reference/)). This is the operational basket relation used by the GRU collateral logic.
-
-- **Diamond implementation note:**
-  ERC-2535 Diamond facets are the intended mechanism for evolving GRU policy, issuance, compliance, and asset-specific modules while keeping a single governance surface.
+  Used for reserve magnitude and issuance collateral (**supporting** collateral definition; **face** parity remains `1 GRU = 1 XAU` — see [quick reference](../meta/Canonical_Parity_Quick_Reference.md)).
 
 *See Glossary and GRU_Formulas for full specification and audit fields.*
 
 ## Related specifications
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
 
 ## Summary
 This roadmap operationalizes GRU as a transparent, adaptive, and globally interoperable monetary infrastructure, enabling resilient institutional adoption under the DBIS umbrella.

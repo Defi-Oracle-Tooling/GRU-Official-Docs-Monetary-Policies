@@ -5,7 +5,6 @@ status: stable
 last_updated: 2025-10-24
 layer: instruments
 checksum: pending
-lang: en
 ---
 # GRU Bond System & Liquidity Management
 
@@ -38,7 +37,7 @@ Bond servicing integrated with atomic issuance & 40/40/20 cycles:
 ### Bond Cycle Diagram
 The following diagram illustrates the closed-loop liquidity path for Li99-series bonds over the 10-year coupon and buy-back horizon:
 
-![Bond Cycle Liquidity Loop](/assets/media/bond_cycle.png){: loading="lazy" }
+![Bond Cycle Liquidity Loop](/assets/media/bond_cycle.png)
 
 ## 5. Coupon Flow
 | Stage | Action | Impact |
@@ -83,8 +82,8 @@ Upcoming revisions will align coupon reinvestment pacing with coverage-weighted 
 
 ## Related specifications
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
-- **Parity / collateral stack:** [Deterministic specifications index](/meta/deterministic-specifications-index/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Parity / collateral stack:** [Deterministic specifications index](../meta/Deterministic_Specifications_Index.md) (canonical parity + collateral decomposition).
 
 ## Summary
 Li99-series bonds enable scalable, self-redeeming liquidity expansion without external leverage, ensuring perpetual stability through structured coupon cycles and reserve-tied buy-back mechanics.

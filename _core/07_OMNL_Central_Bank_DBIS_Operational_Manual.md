@@ -2,7 +2,7 @@
 title: OMNL Central Bank | Digital Bank of International Settlements - Operational Policy & Transaction Flow Manual
 version: 1.0.1
 status: stable
-last_updated: 2026-03-31
+last_updated: 2026-04-12
 layer: operational-policy
 document_ref: OMNL/DBIS-GRU-2025-POL01
 effective_date: October 2025
@@ -19,14 +19,14 @@ lang: en
 
 ## 0 — Document scope, authority, and alignment with the core corpus
 
-This manual is an **OMNL / DBIS implementation profile**: it describes **European-facing** operational flows (SEPA, EUR settlement, MiCA/DORA reporting labels, ISO 20022 samples) for a **specific deployment**. It does **not** supersede normative monetary definitions in **01_GRU_Monetary_Policy_Framework**, **GRU_Formulas**, or the **[canonical parity and unit definition specification](/meta/canonical-parity-and-unit-definition-specification/)**.
+This manual is an **OMNL / DBIS implementation profile**: it describes **European-facing** operational flows (SEPA, EUR settlement, MiCA/DORA reporting labels, ISO 20022 samples) for a **specific deployment**. It does **not** supersede normative monetary definitions in **01_GRU_Monetary_Policy_Framework**, **GRU_Formulas**, or the **[Canonical parity and unit definition specification](../meta/Canonical_Parity_and_Unit_Definition_Specification.md)**.
 
 | Topic | Core / canonical specs | This manual (profile) |
 |-------|-------------------------|------------------------|
-| One-page anti-confusion | [Canonical parity quick reference](/meta/canonical-parity-quick-reference/) | Same face vs supporting rules apply to this profile |
-| Face vs supporting XAU per tier | [Canonical parity](/meta/canonical-parity-and-unit-definition-specification/), [Collateral stack](/meta/collateral-stack-decomposition/) | Table in Section 2 = **supporting** ratios (`6`, `1.20`, `0.24` XAU per GRU) alongside **face** `1 GRU = 1 XAU` |
+| One-page anti-confusion | [Canonical parity quick reference](../meta/Canonical_Parity_Quick_Reference.md) | Same face vs supporting rules apply to this profile |
+| Face vs supporting XAU per tier | [Canonical parity](../meta/Canonical_Parity_and_Unit_Definition_Specification.md), [Collateral stack](../meta/Collateral_Stack_Decomposition.md) | Table in Section 2 = **supporting** ratios (`6`, `1.20`, `0.24` XAU per GRU) alongside **face** `1 GRU = 1 XAU` |
 | PoR / attestation **cadence** | Framework: **quarterly** composite emphasis; **PoR methodology**: MiCA-aligned **daily** composition reporting where applicable | **Monthly** operational attestation (Section 7) + **quarterly** ICT/AML reviews |
-| Governance labels | Five-chamber **SHTE** model | **MPC / RCC / Audit Board** naming for banking audiences — see [Governance decision matrix](/meta/governance-decision-matrix/) |
+| Governance labels | Five-chamber **SHTE** model | **MPC / RCC / Audit Board** naming for banking audiences — see [Governance decision matrix](../meta/Governance_Decision_Matrix.md) |
 
 Readers resolving an apparent conflict should treat **canonical parity / collateral stack** as controlling **meanings**, and this manual as controlling **this profile’s** operational cadence and rail-specific flows.
 
@@ -50,21 +50,21 @@ For audit clarity, this manual distinguishes assigned value from supporting asse
 
 ## 2 — Monetary Structure
 
-| Tier | Function | Supporting Asset Coverage | Money Multiplier | Purpose |
+| Tier | Function | Supporting asset coverage | Money multiplier | Purpose |
 |------|-----------|---------------------------|------------------|----------|
 | **M00** | Sovereign Reserve | 6 XAU : 1 M00 GRU (6.00 XAU/GRU) | Base Reserve | Long-term collateral |
 | **M0** | Institutional Reserve | 6 XAU : 5 M0 GRU (1.20 XAU/GRU) | 1 M00 = 5 M0 | Monetary Base |
-| **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat Interface |
+| **M1** | Circulation / Settlement | 6 XAU : 25 M1 GRU (0.24 XAU/GRU) | 1 M0 = 5 M1 | SEPA Fiat interface |
 
 The M00 reserve basket is composed of five equal-value Li indices:
 
-- LiXAU = gold reserve index
-- LiPMG = Precious Metals Group index
-- LiBMG1 = Base Metals Group index
-- LiBMG2 = Battery Materials Group index
-- LiBMG3 = Building Metals Group index
+- LiXAU = gold reserve index  
+- LiPMG = Precious Metals Group index  
+- LiBMG1 = Base Metals Group index  
+- LiBMG2 = Battery Materials Group index  
+- LiBMG3 = Building Metals Group index  
 
-Operationally:
+Operationally (M00 composite — **supporting** collateral definition):
 
 ```text
 1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
@@ -194,9 +194,9 @@ Auditor: DBIS Oversight Division
 
 ## 8.1 — Related specifications (canonical)
 
-- **Implementation truth:** [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).
-- **Parity quick reference:** [Canonical parity quick reference](/meta/canonical-parity-quick-reference/).
-- **Acceptance checklist (branch):** [docs-review-fixes acceptance checklist](/meta/docs-review-fixes-acceptance-checklist/).
+- **Implementation truth:** [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Parity quick reference:** [Canonical parity quick reference](../meta/Canonical_Parity_Quick_Reference.md).
+- **Acceptance checklist (branch):** [docs-review-fixes acceptance checklist](../meta/DOCS_REVIEW_FIXES_ACCEPTANCE_CHECKLIST.md).
 
 ---
 

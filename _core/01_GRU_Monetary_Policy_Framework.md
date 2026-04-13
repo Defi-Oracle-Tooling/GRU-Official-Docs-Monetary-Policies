@@ -5,17 +5,14 @@ status: stable
 last_updated: 2026-03-31
 layer: policy
 checksum: pending
-lang: en
 ---
 # GRU Monetary Policy Framework
 
 ## Overview
-The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility.
-
-The GRU monetary architecture uses the ERC-2535 Diamond standard because the system is intentionally modular: different reserve layers, issuance rules, compliance controls, multi-token baskets, and asset-specific behaviors must coexist without forcing a single monolithic contract shape. Diamond facets let the GRU evolve token-by-token and policy-by-policy while preserving a single coherent governance surface.
+The Global Reserve Unit (GRU) establishes a multi-tier, asset-backed monetary system, anchoring all liquidity via XAU (gold) to ensure intrinsic value, auditable parity, and cross-domain convertibility. In operational terms, all FX is triangulated through XAU with `cXAUC/cXAUT` as the on-chain asset reference.
 
 ### Issuance Cycle Diagram
-![GRU Issuance Cycle](/assets/media/issuance_cycle.png){: loading="lazy" }
+![GRU Issuance Cycle](/assets/media/issuance_cycle.png)
 *Figure: Reserve → Issuance → Circulation with liquidity recycling loop and coverage maintenance.*
 
 ## Core Ratios
@@ -47,23 +44,6 @@ LiXAU is the gold reserve index. Within the Li framework, five equal-value compo
 - `LiBMG2` = Battery Materials Group index
 - `LiBMG3` = Building Metals Group index
 
-## Li Composite Basket
-The GRU reserve basket is built from five equal-value index components:
-
-- `LiXAU` = gold reserve index
-- `LiPMG` = Precious Metals Group index
-- `LiBMG1` = Base Metals Group index
-- `LiBMG2` = Battery Materials Group index
-- `LiBMG3` = Building Metals Group index
-
-Each component contributes equally at the Li index layer. Each Li component contributes `1.2 XAU` of supporting asset value, so the five-class M00 basket contributes `6.0 XAU` of supporting asset value per `1 M00 GRU`. The M00 reserve formulation is:
-
-```text
-1 M00 GRU = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
-```
-
-Equivalently, each GRU reserve basket unit is composed of five equal-value Li indices, scaled by the 1.2 issuance factor.
-
 ## Layer Structure
 | Layer | Function | Description |
 |-------|----------|-------------|
@@ -75,7 +55,7 @@ Current implementation mapping: canonical Chain 138 `c*` assets are GRU M1 instr
 
 ## Reserve Policy
 - Minimum coverage: ≥ 120% of circulating GRU value.
-- Asset tiers: Primary (XAU), secondary (Li, Pt, REE, sovereign ETFs), dynamic (tokenized verified assets).
+- Asset tiers: Primary (XAU via `cXAUC/cXAUT`), secondary (Li, Pt, REE, sovereign ETFs), dynamic (tokenized verified assets).
 - Parity deviation threshold: ±2.5% triggers MPAP (Monetary Parity Adjustment Protocol).
 
 ## Governance
@@ -112,12 +92,14 @@ The framework combines mathematically disciplined issuance, gold parity, and mul
   ```
   LiCRI = (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3) / 5
   ```
-  Used for reporting, benchmarking, and dashboards. This is the face-value average of the five equal-weight Li reserve indices.
+  Used for reporting, benchmarking, and dashboards.
 
 - **M00 Composite (Asset-Backed Collateral):**
   ```
   1 M00 = 1.2 × (LiXAU + LiPMG + LiBMG1 + LiBMG2 + LiBMG3)
   ```
-  Used for reserve magnitude and issuance collateral. This is the operational basket used for the GRU’s M00 collateral logic.
+  Used for reserve magnitude and issuance collateral.
 
-*See Glossary and GRU_Formulas for full specification and audit fields. For auditor-grade definitions of face vs supporting value, layer fan-out, and triangulation proof targets, see the [deterministic specifications index](/meta/deterministic-specifications-index/). For **live vs placeholder** smart-contract and control disclosure, see [Implementation status and control disclosure](/meta/implementation-status-and-control-disclosure/).*
+The GRU monetary architecture uses ERC-2535 Diamond because reserve policy, compliance hooks, index logic, and asset-specific modules must evolve independently while sharing one governance surface.
+
+*See Glossary and GRU_Formulas for full specification and audit fields. For auditor-grade definitions of face vs supporting value, layer fan-out, and triangulation proof targets, see [Deterministic specifications index](../meta/Deterministic_Specifications_Index.md) (published site: `/meta/deterministic-specifications-index/`). For **live vs placeholder** smart-contract and control disclosure, see [Implementation status and control disclosure](../meta/Implementation_Status_and_Control_Disclosure.md).*

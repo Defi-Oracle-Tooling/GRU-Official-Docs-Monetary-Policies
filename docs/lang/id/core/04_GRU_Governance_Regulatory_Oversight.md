@@ -185,5 +185,10 @@ Audit_Schedule:
 - **Keterlibatan Pemangku Kepentingan**: Mekanisme partisipasi publik yang ditingkatkan
 - **Perbaikan Berkelanjutan**: Penilaian dan peningkatan kerangka tata kelola secara teratur
 
+## Spesifikasi terkait
+
+- **Kebenaran implementasi:** [Status implementasi dan pengungkapan kontrol](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Matriks tata kelola:** [Matriks keputusan tata kelola](../../../meta/Governance_Decision_Matrix.md) (situs: `/meta/governance-decision-matrix/`).
+
 ## Ringkasan
 Kerangka tata kelola yang ditingkatkan ini menyediakan pengawasan institusional komprehensif, kepatuhan regulasi, dan ketahanan operasional, memposisikan GRU sebagai standar cadangan dan penyelesaian yang andal dan dapat dipercaya yang memenuhi standar internasional tertinggi untuk instrumen moneter digital.

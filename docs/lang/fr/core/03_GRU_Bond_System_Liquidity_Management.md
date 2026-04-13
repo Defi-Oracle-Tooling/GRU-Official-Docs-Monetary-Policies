@@ -81,5 +81,10 @@ Le diagramme suivant illustre le chemin de liquidité en boucle fermée pour les
 ### Intégration de Vélocité Pondérée par Couverture (Aperçu)
 Les révisions à venir aligneront le rythme de réinvestissement des coupons avec la vélocité pondérée par couverture (v_cov), en mettant à l'échelle dynamiquement les recharges de séquestre lorsque la vélocité transactionnelle s'adoucit, préservant la certitude du financement de rachat.
 
+## Spécifications associées
+
+- **Réalité d'implémentation :** [État d'implémentation et divulgation des contrôles](../../../meta/Implementation_Status_and_Control_Disclosure.md).
+- **Parité / pile collatérale :** [Index des spécifications déterministes](../../../meta/Deterministic_Specifications_Index.md) (parité canonique + décomposition collatérale).
+
 ## Résumé
 Les obligations de la série Li99 permettent une expansion de liquidité évolutive et auto-rachetable sans levier externe, garantissant une stabilité perpétuelle grâce à des cycles de coupons structurés et des mécanismes de rachat liés aux réserves.
