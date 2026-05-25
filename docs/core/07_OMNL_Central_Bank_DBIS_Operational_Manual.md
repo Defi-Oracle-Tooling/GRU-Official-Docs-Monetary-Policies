@@ -102,8 +102,12 @@ All accounts are subject to PoR (Proof of Reserves) audits and daily reconciliat
 | **PSD2 / E-Money** | Payment services | DBIS licensed PSP under PSD2 |
 | **AML / CFT** | Compliance | KYC, CDD, TM, PEP screening |
 | **GDPR (EU 2016/679)** | Data protection | DPIA filed, no PII on-ledger |
-| **IFRS / IAS 32** | Accounting | GRU treated as financial liability |
+| **IFRS / IAS 32** | Accounting | GRU treated as financial liability — policy: [Accounting_Policy_IFRS_IAS32_GRU.md](../compliance/accounting/Accounting_Policy_IFRS_IAS32_GRU.md); sign-off: `config/compliance/ias32-gru-signoff.v1.json` |
+| **IFRS 9** | Credit impairment | ECL methodology: [IFRS9_ECL_METHODOLOGY_GRU.md](../compliance/accounting/IFRS9_ECL_METHODOLOGY_GRU.md); monthly: `scripts/compliance/run-ifrs9-ecl-monthly.sh` |
+| **Custodian / PoR** | Reserve evidence | Snapshot ops: [CUSTODIAN_SNAPSHOT_OPERATIONS.md](../../../docs/compliance/CUSTODIAN_SNAPSHOT_OPERATIONS.md); triple-state: `scripts/omnl/omnl-reconcile-triple-state.sh` |
 | **ICC (UCP 600 / URDG 758)** | Documentary discipline | Standardized undertaking formats |
+
+**Compliance index (repo):** [COMPLIANCE_SIGNOFF_AND_ECL_README.md](../../../docs/compliance/COMPLIANCE_SIGNOFF_AND_ECL_README.md) · API `GET /api/v1/omnl/compliance/signoffs`
 
 ---
 
