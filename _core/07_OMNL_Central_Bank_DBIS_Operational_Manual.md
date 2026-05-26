@@ -75,6 +75,8 @@ Assigned / face value is always `1 XAU` per GRU. Supporting asset value is `1.2 
 
 Current implementation mapping: canonical Chain 138 `c*` instruments and public-network `cW*` mirrors are the current GRU M1 settlement surface. `cW*` denotes a mirrored transport representation of canonical GRU M1, not a separate monetary tier.
 
+**Li\*** M00 indices (RWA track) and **c\*** / **cW\*** M1 transport are separate on Chain 138 — see [Monetary Policy Framework § Chain 138](./01_GRU_Monetary_Policy_Framework.md#chain-138-defi-oracle-meta--rwa-indices-vs-m1-transport).
+
 ---
 
 ## 3 — Account and Custody Framework

@@ -1,8 +1,8 @@
 ---
 title: Triangulation GRU et Création d'eMoney
-version: 1.0.1
+version: 1.0.2
 status: stable
-last_updated: 2026-03-31
+last_updated: 2026-05-25
 layer: mécanique
 checksum: en attente
 lang: fr
@@ -22,6 +22,13 @@ Toutes les triangulations GRU passent par XAU indépendamment de la classe de de
 ### Diagramme de Flux de Triangulation
 ![Flux de Triangulation](/assets/media/triangulation_flow.png)
 *Figure : Réserve (M0) → Émission (M1) → Distribution (M2+) avec chemin de rétroaction de l'instrument de contrôle.*
+
+### Chain 138 hub and cW* transport (mechanical)
+
+*(English — authoritative; mirrors `docs/core/02` v1.0.2.)*
+
+Triangulation and issuance produce **c\*** on Chain 138. **cW\*** on public EVM networks is **transport only**: hub **c\*** locked in **CWMultiTokenBridgeL1** escrow on 138, then minted on the destination via the GRU multichain bridge mesh. Separate from **Li\*** M00 index/RWA instruments on 138. See [Monetary Policy Framework § Chain 138](../../../core/01_GRU_Monetary_Policy_Framework.md#chain-138-defi-oracle-meta--rwa-indices-vs-m1-transport) (English).
+
 
 ## 3. Logique d'Émission Atomique (Protocole 7:10)
 Pour chaque 7 unités d'entrée (équivalent fiduciaire), 10 unités GRU M1 sont frappées.

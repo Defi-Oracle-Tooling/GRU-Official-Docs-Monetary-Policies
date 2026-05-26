@@ -1,8 +1,8 @@
 ---
 title: التثليث GRU وإنشاء النقود الإلكترونية
-version: 1.0.1
+version: 1.0.2
 status: مستقر
-last_updated: 2026-03-31
+last_updated: 2026-05-25
 layer: ميكانيكا
 checksum: معلق
 lang: ar
@@ -22,6 +22,13 @@ lang: ar
 ### رسم تخطيطي لتدفق التثليث
 ![تدفق التثليث](/assets/media/triangulation_flow.png)
 *الشكل: الاحتياطي (M0) → الإصدار (M1) → التوزيع (M2+) مع مسار التغذية الراجعة لأداة التحكم.*
+
+### Chain 138 hub and cW* transport (mechanical)
+
+*(English — authoritative; mirrors `docs/core/02` v1.0.2.)*
+
+Triangulation and issuance produce **c\*** on Chain 138. **cW\*** on public EVM networks is **transport only**: hub **c\*** locked in **CWMultiTokenBridgeL1** escrow on 138, then minted on the destination via the GRU multichain bridge mesh. Separate from **Li\*** M00 index/RWA instruments on 138. See [Monetary Policy Framework § Chain 138](../../../core/01_GRU_Monetary_Policy_Framework.md#chain-138-defi-oracle-meta--rwa-indices-vs-m1-transport) (English).
+
 
 ## 3. منطق الإصدار الذري (بروتوكول 7:10)
 لكل 7 وحدات إدخال (ما يعادل العملة الورقية)، يتم سك 10 وحدات GRU M1.
