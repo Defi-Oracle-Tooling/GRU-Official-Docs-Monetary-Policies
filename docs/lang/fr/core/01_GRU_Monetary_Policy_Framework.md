@@ -1,8 +1,8 @@
 ---
 title: Cadre de Politique Monétaire GRU
-version: 1.0.1
+version: 1.0.2
 status: stable
-last_updated: 2026-03-31
+last_updated: 2026-05-25
 layer: politique
 checksum: en attente
 lang: fr
@@ -53,6 +53,31 @@ LiXAU est un indice de réserve or. Dans le cadre Li, cinq composantes de valeur
 | M1  | Circulation Commerciale | Couche de monnaie électronique de marché et de règlement |
 
 Cartographie d'implémentation actuelle : les actifs canoniques `c*` sur la chaîne 138 sont des instruments GRU M1. Les actifs `cW*` sur les réseaux publics sont des représentations de transport en miroir de cette même couche GRU M1 et ne constituent pas une classe monétaire distincte.
+
+## Chain 138 (Defi Oracle Meta) — RWA indices vs M1 transport
+
+*(English — authoritative for integrators; mirrors `docs/core/01` v1.0.2.)*
+
+Chain 138 (`dfio_meta_main`, chainId **138**) hosts **two parallel tracks**. They must not be described as a single flow (“RWA → lock → CCIP → mint on public chains”) for all assets.
+
+| Track | GRU layer | Symbols | Role on 138 | Public networks |
+|-------|-----------|---------|-------------|-----------------|
+| **Commodity / index RWA** | **M00** | **Li\*** (LiXAU, LiPMG, LiBMG1–3) | Institutional index instruments when deployed | DefiLlama **RWA** path when evidenced — **not** created via **cW\*** bridge escrow |
+| **Compliant eMoney** | **M1** | **c\*** (cUSDT, cUSDC, cEURC, …) | Native hub issuance and settlement | **cW\*** wrapped transport (e.g. Ethereum, Optimism, BSC, Polygon, Wemix) |
+
+**cXAUC / cXAUT** are **M1** eMoney with gold exposure for FX triangulation — **not** substitutes for **LiXAU** (M00 gold reserve index).
+
+### M1 transport (c\* → cW\*)
+
+```text
+Off-chain GRU reserves → c* native on Chain 138 → hub c* locked (CWMultiTokenBridgeL1) → GRU bridge mesh → cW* on public networks
+```
+
+Escrow for wrapped supply sits on **138**, not Circle USDC or Tether USDT on the destination chain. **CCIP** applies to defined lanes (WETH9/WETH10, LINK) — not the generic label for all **c\*** → **cW\*** movement.
+
+Operator reference: `docs/04-configuration/CHAIN138_RWA_AND_TRANSPORT_ARCHITECTURE.md` (Proxmox monorepo).
+
+
 
 ## Politique de Réserves
 - Couverture minimale : ≥ 120% de la valeur GRU en circulation.

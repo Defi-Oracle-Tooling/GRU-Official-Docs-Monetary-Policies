@@ -1,8 +1,8 @@
 ---
 title: GRU Triangulation & eMoney Creation
-version: 1.0.1
+version: 1.0.2
 status: stable
-last_updated: 2026-03-31
+last_updated: 2026-05-25
 layer: mechanics
 checksum: pending
 ---
@@ -19,6 +19,10 @@ Triangulation converts any source asset → XAU → GRU → target asset, enforc
 All GRU triangulations pass through XAU irrespective of destination class (commodity, currency, security, other). This keeps every FX route tied to the same gold anchor before converting into GRU or back out to the target asset.
 
 Current implementation surface for GRU M1: canonical Chain 138 `c*` assets with mirrored public-network `cW*` transport assets.
+
+### Chain 138 hub and cW* transport (mechanical)
+
+Triangulation and issuance produce **c\*** on Chain 138. **cW\*** on public EVM networks (chain IDs such as 1, 10, 56, 137, 1111) is **transport only**: hub **c\*** is locked in **CWMultiTokenBridgeL1** escrow on 138, then minted on the destination via the GRU multichain bridge mesh. That path is separate from **Li\*** M00 index/RWA instruments on 138. See [Monetary Policy Framework — Chain 138 RWA vs transport](./01_GRU_Monetary_Policy_Framework.md#chain-138-defi-oracle-meta--rwa-indices-vs-m1-transport).
 
 ### Triangulation Flow Diagram
 ![Triangulation Flow](/assets/media/triangulation_flow.png)

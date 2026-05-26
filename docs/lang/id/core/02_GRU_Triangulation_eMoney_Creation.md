@@ -1,8 +1,8 @@
 ---
 title: Triangulasi GRU & Penciptaan eMoney
-version: 1.0.1
+version: 1.0.2
 status: stabil
-last_updated: 2026-03-31
+last_updated: 2026-05-25
 layer: mekanik
 checksum: tertunda
 lang: id
@@ -18,6 +18,13 @@ Triangulasi mengonversi aset sumber apa pun → XAU → GRU → aset target, men
 3. GRU → Aset Target (triangulasi terbalik)
 
 Semua triangulasi GRU melewati XAU terlepas dari kelas tujuan (komoditas, mata uang, sekuritas, lainnya). Ini menjaga agar seluruh jalur FX tetap berangkat dari jangkar emas yang sama sebelum dikonversi ke GRU atau kembali ke aset target.
+### Chain 138 hub and cW* transport (mechanical)
+
+*(English — authoritative; mirrors `docs/core/02` v1.0.2.)*
+
+Triangulation and issuance produce **c\*** on Chain 138. **cW\*** on public EVM networks is **transport only**: hub **c\*** locked in **CWMultiTokenBridgeL1** escrow on 138, then minted on the destination via the GRU multichain bridge mesh. Separate from **Li\*** M00 index/RWA instruments on 138. See [Monetary Policy Framework § Chain 138](../../../core/01_GRU_Monetary_Policy_Framework.md#chain-138-defi-oracle-meta--rwa-indices-vs-m1-transport) (English).
+
+
 
 ### Diagram Aliran Triangulasi
 ![Aliran Triangulasi](/assets/media/triangulation_flow.png)
